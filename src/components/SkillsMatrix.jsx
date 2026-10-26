@@ -5,6 +5,7 @@ import {
   Database, 
   BarChart3, 
   Search, 
+  Sparkles,
   SlidersHorizontal,
   CheckCircle2,
   Cpu,
@@ -17,10 +18,10 @@ export default function SkillsMatrix() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const categoryIcons = {
-    'Cloud & Data Engineering': <Cloud className="w-4 h-4 text-cyan-400" />,
-    'Languages & Frameworks': <Code className="w-4 h-4 text-emerald-400" />,
-    'Big Data & Streaming': <Database className="w-4 h-4 text-purple-400" />,
-    'Analytics & Visualization': <BarChart3 className="w-4 h-4 text-amber-400" />
+    'Agentic AI & LLM Systems': <Sparkles className="w-4 h-4 text-cyan-400" />,
+    'Cloud & Data Warehousing': <Cloud className="w-4 h-4 text-sky-400" />,
+    'Languages & Data Processing': <Code className="w-4 h-4 text-emerald-400" />,
+    'Analytics, BI & Governance': <BarChart3 className="w-4 h-4 text-amber-400" />
   };
 
   const categories = ['All', ...technicalSkills.map((cat) => cat.category)];
@@ -54,10 +55,10 @@ export default function SkillsMatrix() {
             <Cpu className="w-3.5 h-3.5" /> Technical Expertise & Tools
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-            Cloud Architecture, ETL & Analytics Stack
+            Agentic AI, Cloud Architecture & Analytics Stack
           </h2>
           <p className="text-slate-400 text-sm">
-            Comprehensive technical proficiency across AWS cloud services, distributed big data processing, data warehousing, and modern visualization engines.
+            Comprehensive technical proficiency across AgentSQL, Model Context Protocol (MCP), distributed cloud data warehousing, PySpark ETL, and enterprise BI engines.
           </p>
         </div>
 

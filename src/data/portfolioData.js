@@ -1,14 +1,16 @@
 export const personalInfo = {
   name: "Krishna Sidhvi Nekkanti",
-  title: "Data Engineer & Data Analytics Engineer",
+  title: "Forward Deployment AI Engineer & Enterprise Data Specialist",
   subtitles: [
-    "AWS & Azure Data Pipeline Architect",
-    "ETL & Data Quality Specialist",
-    "Data Science & Predictive Modeling Specialist"
+    "Forward Deployment AI Engineer @ Trida Labs",
+    "Agentic AI, Text-to-SQL & AgentSQL Systems",
+    "Model Context Protocol (MCP) & LLM Orchestration",
+    "Enterprise Data Architect (Snowflake, Databricks, Redshift)",
+    "High-Throughput Analytics & Data Quality Specialist"
   ],
-  tagline: "3+ Years Enterprise Experience · Ex-Amazon, Global Payments & Vanguard",
-  availability: "Open to Full-Time, Remote & Hybrid Roles (Hyderabad, Bengaluru & Global Remote)",
-  experienceYears: "3+ Years",
+  tagline: "Forward Deployment AI Engineer @ Trida Labs · Ex-Global Payments, Amazon & Vanguard",
+  availability: "Open to Enterprise AI, Forward Deployment & Data Engineering Opportunities (Hyderabad & Global Remote)",
+  experienceYears: "4+ Years",
   location: "Hyderabad, India (Open to Relocation & Remote)",
   phone: "+91 8341145666",
   email: "krishnanekkanti04@gmail.com",
@@ -18,124 +20,143 @@ export const personalInfo = {
   profileImg: "./profile.jpg",
   avatarImg: "./avatar.png",
   resumePdfUrl: "./Krishna_Nekkanti_Resume.pdf",
-  summary: "Highly skilled Data Analyst and Engineer with 3+ years of enterprise experience designing, building, and optimizing scalable cloud data pipelines and ETL solutions across Amazon, Global Payments, and Vanguard. Proven track record of improving processing reliability by up to 30% and slashing data anomalies by 50%. Proficient in AWS (Glue, Redshift, Lambda), Snowflake, dbt, Apache Spark, and Azure Data Factory to deliver secure, high-throughput analytics."
+  summary: "Forward Deployment AI Engineer and Enterprise Data Specialist with 4+ years of cross-functional experience designing, operationalizing, and scaling Agentic AI solutions and cloud data infrastructure across Trida Labs, Global Payments, Amazon, and Vanguard. Expert in productionizing AgentSQL (autonomous Text-to-SQL and dynamic dashboard engine) and TridaPad, architecting Model Context Protocol (MCP) server integrations across Snowflake, Databricks, PostgreSQL, and Redshift, and establishing deterministic guardrails with 99%+ relational accuracy. Proven record of cutting data anomalies by 40-50% and boosting pipeline reliability by 30% in high-volume enterprise environments."
 };
 
 export const keyImpactMetrics = [
+  {
+    label: "Relational SQL Accuracy",
+    value: "99%+",
+    prefix: "",
+    description: "Syntactic & relational accuracy on complex multi-table joins via AgentSQL & MCP guardrails at Trida Labs",
+    color: "cyan"
+  },
+  {
+    label: "Data Anomaly Reduction",
+    value: "40%",
+    prefix: "-",
+    description: "Achieved via automated Redshift data validation frameworks across transaction tables at Global Payments",
+    color: "emerald"
+  },
   {
     label: "Pipeline Reliability Boost",
     value: "30%",
     prefix: "+",
     description: "Enhanced AWS Glue & Informatica ETL data pipelines scalability at Amazon",
-    color: "cyan"
-  },
-  {
-    label: "Data Anomaly Reduction",
-    value: "50%",
-    prefix: "-",
-    description: "Achieved through Python & AWS Redshift data quality validation frameworks",
-    color: "emerald"
-  },
-  {
-    label: "Model Accuracy Gain",
-    value: "95%",
-    prefix: "",
-    description: "Vehicle registration extraction accuracy using YOLO-based CNN models",
     color: "amber"
   },
   {
     label: "Fraud False Positives",
     value: "15%",
     prefix: "-",
-    description: "Reduction in payment channel fraud false positives at Global Payments",
+    description: "Historical anomaly refinement improving predictive model precision at Global Payments",
     color: "purple"
   }
 ];
 
 export const competencies = [
-  "Data Analysis & Management",
-  "Data Science, Governance & Reporting",
-  "Data Quality & Integrity",
-  "Data Warehouse & Integrations",
-  "Replication & Schema Translation",
-  "ETL Pipelines & Workflow Automation",
-  "Database Management & Optimization",
-  "Risk Mitigation & Key Performance Metrics",
-  "Data-Driven Decision Making",
-  "Cross-functional Collaboration"
+  "Forward Deployment Engineering",
+  "Agentic AI & LLM Orchestration",
+  "Text-to-SQL & AgentSQL Architecture",
+  "Model Context Protocol (MCP) Integrations",
+  "Schema-Aware Guardrails & Hallucination Defense",
+  "Enterprise Data Warehouses (Snowflake, Databricks, Redshift)",
+  "Data Quality & Validation Frameworks",
+  "High-Throughput ETL & PySpark Pipelines",
+  "Enterprise RBAC, Governance & Compliance",
+  "Cross-Functional Client & Product Engineering"
 ];
 
 export const technicalSkills = [
   {
-    category: "Cloud & Data Engineering",
+    category: "Agentic AI & LLM Systems",
+    icon: "Sparkles",
+    skills: [
+      { name: "AgentSQL & TridaPad", level: 96, tag: "AI Analytics" },
+      { name: "Model Context Protocol (MCP)", level: 95, tag: "Agent Tooling" },
+      { name: "Text-to-SQL Architecture", level: 95, tag: "Autonomous SQL" },
+      { name: "LLM Orchestration & Prompting", level: 92, tag: "Context Pipelines" },
+      { name: "Deterministic SQL Guardrails", level: 94, tag: "Hallucination Control" },
+      { name: "LangChain & RAG Architectures", level: 90, tag: "Vector & Retrieval" }
+    ]
+  },
+  {
+    category: "Cloud & Data Warehousing",
     icon: "Cloud",
     skills: [
-      { name: "AWS Glue", level: 95, tag: "Cloud ETL" },
-      { name: "AWS Redshift", level: 92, tag: "Data Warehouse" },
-      { name: "Snowflake", level: 88, tag: "Modern DW" },
-      { name: "dbt (Data Build Tool)", level: 90, tag: "Transformation" },
-      { name: "AWS Lambda", level: 90, tag: "Serverless" },
+      { name: "Snowflake", level: 92, tag: "Cloud DW" },
+      { name: "Databricks", level: 90, tag: "Lakehouse" },
+      { name: "AWS Redshift", level: 94, tag: "Data Warehouse" },
+      { name: "AWS Glue & Lambda", level: 93, tag: "Serverless ETL" },
+      { name: "PostgreSQL & SQL Server", level: 92, tag: "Relational DB" },
       { name: "Azure Data Factory", level: 88, tag: "Cloud Integration" },
-      { name: "Apache Airflow", level: 86, tag: "Orchestration" },
-      { name: "Informatica", level: 85, tag: "ETL Tool" },
-      { name: "AWS Athena", level: 88, tag: "Serverless Query" },
-      { name: "Azure Fabric", level: 82, tag: "SaaS Analytics" }
+      { name: "dbt (Data Build Tool)", level: 90, tag: "Data Modeling" },
+      { name: "Informatica", level: 85, tag: "Enterprise ETL" },
+      { name: "AWS Athena", level: 88, tag: "Serverless Query" }
     ]
   },
   {
-    category: "Languages & Frameworks",
+    category: "Languages & Data Processing",
     icon: "Code",
     skills: [
-      { name: "Python", level: 95, tag: "Primary Language" },
-      { name: "SQL", level: 96, tag: "Data Querying" },
-      { name: "Pandas & NumPy", level: 92, tag: "Data Manipulation" },
-      { name: "Scikit-Learn", level: 88, tag: "Machine Learning" },
-      { name: "TensorFlow & PyTorch", level: 84, tag: "Deep Learning" },
-      { name: "LangChain & RAG", level: 88, tag: "GenAI & LLM" },
-      { name: "Docker", level: 85, tag: "DevOps & Containers" },
-      { name: "REST APIs", level: 90, tag: "Integration" }
-    ]
-  },
-  {
-    category: "Big Data & Streaming",
-    icon: "Database",
-    skills: [
+      { name: "Python", level: 96, tag: "Primary Language" },
+      { name: "SQL (Advanced)", level: 98, tag: "Core Querying" },
       { name: "Apache Spark (PySpark)", level: 88, tag: "Distributed Computing" },
-      { name: "Apache Kafka", level: 85, tag: "Real-time Streaming" },
-      { name: "Hadoop", level: 80, tag: "Big Data Storage" },
-      { name: "MongoDB", level: 82, tag: "NoSQL DB" },
-      { name: "PostgreSQL & SQL Server", level: 90, tag: "Relational DB" }
+      { name: "Apache Kafka", level: 86, tag: "Real-time Streaming" },
+      { name: "Pandas & NumPy", level: 92, tag: "Data Manipulation" },
+      { name: "Docker & Containerization", level: 85, tag: "DevOps & Containers" },
+      { name: "REST & MCP APIs", level: 92, tag: "API Architecture" },
+      { name: "Scikit-Learn", level: 88, tag: "Machine Learning" }
     ]
   },
   {
-    category: "Analytics & Visualization",
+    category: "Analytics, BI & Governance",
     icon: "BarChart3",
     skills: [
-      { name: "Tableau", level: 94, tag: "BI Dashboard" },
-      { name: "Power BI", level: 90, tag: "Reporting & Dashboards" },
-      { name: "Matplotlib & Seaborn", level: 88, tag: "Python Viz" },
-      { name: "Power Apps & Automate", level: 82, tag: "Low-code Automation" }
+      { name: "Tableau", level: 94, tag: "BI Dashboards" },
+      { name: "Power BI", level: 90, tag: "Enterprise Reporting" },
+      { name: "Enterprise RBAC & Security", level: 92, tag: "Data Governance" },
+      { name: "Fraud Detection Analytics", level: 88, tag: "Risk Modeling" },
+      { name: "Matplotlib & Seaborn", level: 88, tag: "Data Viz" },
+      { name: "Power Apps & Automate", level: 82, tag: "Automation" }
     ]
   }
 ];
 
 export const workExperience = [
   {
-    id: "global-payments",
-    company: "Global Payments",
-    location: "Atlanta, GA (Contract)",
-    role: "Data Analytics Engineer",
-    period: "March 2024 – January 2026",
-    badge: "Contract",
-    summary: "Led data quality validation frameworks and real-time payment analytics for operations & risk management teams.",
+    id: "trida-labs",
+    company: "Trida Labs",
+    location: "Hyderabad, Telangana, India",
+    role: "Forward Deployment AI Engineer",
+    period: "May 2025 – Present",
+    badge: "Full-time",
+    summary: "Spearheading customer-facing engineering and enterprise deployment for Trida Labs’ AI-native analytics ecosystem, including TridaPad (collaborative data workspace) and AgentSQL (agentic Text-to-SQL and autonomous dashboard engine).",
     achievements: [
-      "Analyzed transaction patterns across payment channels to optimize payment processing efficiency using Python and SQL.",
-      "Developed and maintained Tableau dashboards for real-time tracking of key payment metrics across operations and risk management teams.",
-      "Supported fraud detection initiatives by analyzing historical data to identify anomalies, improving model accuracy and reducing false positives by 15%.",
-      "Refined ETL pipelines in collaboration with data engineers using AWS Redshift and Informatica, ensuring seamless data integration.",
-      "Implemented rigorous data quality validation frameworks, reducing data anomalies by 40% and ensuring strict compliance with regulatory standards."
+      "Deploy and operationalize AgentSQL across enterprise customer architectures, enabling non-technical stakeholders to autonomously generate production-grade SQL and dynamic dashboards from natural language queries.",
+      "Implement and optimize Model Context Protocol (MCP) server integrations, seamlessly connecting external LLMs and agentic AI tools directly to clients' distributed databases (PostgreSQL, Snowflake, Databricks, Redshift).",
+      "Design schema-aware contextual prompt pipelines and deterministic SQL guardrails, minimizing LLM hallucinations and ensuring 99%+ syntactic and relational accuracy on complex multi-table joins.",
+      "Bridge client requirements with core product engineering, identifying edge-case query patterns, optimizing execution latency, and tailoring real-time analytics collaboration workflows within TridaPad.",
+      "Configure enterprise role-based access controls (RBAC) and data governance policies to guarantee compliance and security across multi-tenant cloud and on-prem deployments."
     ],
-    tech: ["Python", "SQL", "Tableau", "AWS Redshift", "Informatica", "Fraud Analytics", "Data Quality"]
+    tech: ["Agentic AI", "Text-to-SQL", "Model Context Protocol (MCP)", "LLM Orchestration", "Python", "SQL", "Enterprise Data Integration", "TridaPad", "AgentSQL", "Snowflake", "Databricks", "PostgreSQL", "Redshift"]
+  },
+  {
+    id: "global-payments",
+    company: "Global Payments Inc.",
+    location: "Atlanta, Georgia, United States (Hybrid/Remote)",
+    role: "Data Analytics Engineer",
+    period: "March 2024 – January 2025",
+    badge: "Contract",
+    summary: "Engineered end-to-end analytics pipelines and business intelligence infrastructure to monitor high-volume payment transactions, reduce processing latency, and support risk mitigation initiatives.",
+    achievements: [
+      "Analyzed high-throughput multi-channel transaction datasets using Python and advanced SQL, identifying bottleneck patterns and optimizing payment processing workflows across distributed gateways.",
+      "Developed and maintained operational Tableau dashboards integrated with live payment streams, providing real-time visibility into settlement KPIs, transaction failure rates, and interchange metrics for executive and risk teams.",
+      "Collaborated with fraud analytics teams to analyze historical transaction anomalies, refining fraud detection feature inputs to improve predictive model precision and decrease false positives by 15%.",
+      "Refined core ETL workflows in tandem with Data Engineering using AWS Redshift and Informatica, ensuring data pipeline resiliency, consistent data staging, and minimal downstream reporting latency.",
+      "Established automated data quality and validation frameworks across transactional tables, reducing data anomalies by 40% and ensuring adherence to PCI-DSS regulatory reporting standards."
+    ],
+    tech: ["Amazon Redshift", "Python", "SQL", "Tableau", "Informatica", "Fraud Detection Analytics", "Data Quality Frameworks", "ETL"]
   },
   {
     id: "amazon",
@@ -332,8 +353,53 @@ export const certifications = [
 
 export const sampleSqlQueries = [
   {
-    title: "Data Quality Anomaly Audit Query (AWS Redshift / Athena)",
-    description: "Detects schema drift and validates null percentage across high-throughput transaction pipelines",
+    title: "AgentSQL: Schema-Aware Agentic Text-to-SQL & MCP Server Integration (Trida Labs)",
+    tabLabel: "AgentSQL & MCP Agent",
+    badge: "Agentic AI",
+    description: "Model Context Protocol (MCP) server handler translating natural language queries into production-grade, syntax-verified SQL with schema-aware guardrails and deterministic validation",
+    code: `import mcp.server.stdio
+from trida.agentsql import GuardrailEngine, SchemaContext
+from trida.database import SnowflakeConnector, PostgresConnector
+
+# Initialize MCP Server for enterprise client database inspection
+mcp_server = mcp.server.Server("trida-agentsql-mcp")
+schema_ctx = SchemaContext.load_catalog(database="ENTERPRISE_ANALYTICS_DW")
+guardrails = GuardrailEngine(strict_mode=True, max_join_depth=4)
+
+@mcp_server.call_tool()
+async def generate_production_sql(natural_query: str, client_db_target: str) -> dict:
+    """
+    Translates business stakeholder natural queries into production-grade,
+    syntax-verified SQL with schema-aware guardrails and deterministic validation.
+    """
+    # 1. Extract context-aware schema embeddings
+    relevant_tables = schema_ctx.resolve_semantic_entities(natural_query)
+    
+    # 2. Synthesize SQL with LLM contextual prompt pipeline
+    raw_sql = await guardrails.synthesize_query(
+        prompt=natural_query, 
+        schema_metadata=relevant_tables
+    )
+    
+    # 3. Deterministic relational integrity and RBAC verification
+    validated_sql = guardrails.verify_relational_integrity(
+        sql=raw_sql,
+        enforce_multi_tenant_rbac=True,
+        allowed_tables=["orders", "transactions", "customers", "settlements"]
+    )
+    
+    return {
+        "status": "VALIDATED_99_PCT_ACCURACY",
+        "sql": validated_sql,
+        "execution_target": client_db_target,
+        "guardrail_checks": ["SYNTAX_VALID", "RBAC_PASSED", "NO_CARTESIAN_PRODUCT"]
+    }`
+  },
+  {
+    title: "Data Quality Anomaly Audit Query (AWS Redshift / Athena - Global Payments)",
+    tabLabel: "Redshift Quality Audit",
+    badge: "Data Quality",
+    description: "Detects schema drift and validates null percentage across high-throughput transaction pipelines to maintain PCI-DSS compliance",
     code: `SELECT 
     payment_channel,
     COUNT(*) AS total_transactions,
@@ -347,8 +413,10 @@ HAVING null_pct > 0.5
 ORDER BY total_transactions DESC;`
   },
   {
-    title: "AWS Glue PySpark ETL Data Cleansing Job",
-    description: "Automated PySpark transformation script for streaming data deduplication and Parquet partitioning",
+    title: "AWS Glue PySpark ETL Data Cleansing Job (Amazon)",
+    tabLabel: "Glue PySpark Streaming",
+    badge: "Distributed ETL",
+    description: "Automated PySpark transformation script for streaming data deduplication, anomaly tagging, and Parquet partitioning",
     code: `from awsglue.transforms import *
 from awsglue.utils import getResolvedOptions
 from pyspark.context import SparkContext

@@ -49,7 +49,7 @@ export default function Navbar({ onOpenResume }) {
             </span>
             <span className="text-xs text-slate-400 font-mono flex items-center gap-1">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              Data Engineer
+              Forward Deployment AI Engineer
             </span>
           </div>
         </a>

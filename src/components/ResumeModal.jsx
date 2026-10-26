@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { X, Printer, Download, Copy, Check, Mail, Phone, MapPin, Linkedin, Github } from 'lucide-react';
-import { personalInfo, workExperience, projects, education, certifications } from '../data/portfolioData';
+import { personalInfo, workExperience, projects, education, certifications, competencies } from '../data/portfolioData';
 
 export default function ResumeModal({ isOpen, onClose }) {
   const [copied, setCopied] = useState(false);
@@ -188,20 +188,17 @@ export default function ResumeModal({ isOpen, onClose }) {
         <div class="section">
           <div class="section-title">Core Competencies</div>
           <p class="competencies-text">
-            Data Analysis & Management | Data Science, Governance, & Reporting | Data Quality and Integrity | Data Warehouse, Integrations, Replication | ETL Processes | Data Structures & Database Management | Consultative & Solution Selling | Risk Mitigation | Key Performance Metrics Tracking | Cross-functional Collaboration.
+            ${competencies.join(' | ')}
           </p>
         </div>
 
         <div class="section">
           <div class="section-title">Technical Skills</div>
           <ul class="skills-list">
-            <li>• <strong>Programming Languages:</strong> Python, SQL</li>
-            <li>• <strong>Cloud & Data Platforms:</strong> AWS (Glue, Redshift, Lambda), Azure Data Factory, Informatica</li>
-            <li>• <strong>Big Data & ETL:</strong> Apache Spark, Hadoop, ETL</li>
-            <li>• <strong>Data Analytics & Viz:</strong> Power BI, Tableau, Power Apps, Power Automate</li>
-            <li>• <strong>Data Integration & APIs:</strong> REST APIs, AWS Data Pipeline, Azure Fabric</li>
-            <li>• <strong>Frameworks & Libraries:</strong> Scikit-Learn, Pandas, NumPy, Matplotlib, TensorFlow, PyTorch</li>
-            <li>• <strong>Streaming:</strong> Apache Kafka</li>
+            <li>• <strong>Agentic AI & LLMs:</strong> AgentSQL, TridaPad, Model Context Protocol (MCP), Text-to-SQL, Prompt Guardrails, LangChain, RAG</li>
+            <li>• <strong>Cloud & Data Warehouses:</strong> Snowflake, Databricks, AWS (Redshift, Glue, Lambda, Athena), PostgreSQL, SQL Server, Azure Data Factory, dbt, Informatica</li>
+            <li>• <strong>Languages & Processing:</strong> Python, Advanced SQL, Apache Spark (PySpark), Apache Kafka, Pandas, NumPy, Docker, REST & MCP APIs</li>
+            <li>• <strong>Analytics, BI & Governance:</strong> Tableau, Power BI, Enterprise RBAC & Data Governance, Fraud Detection Analytics, Matplotlib, Seaborn</li>
           </ul>
         </div>
 
@@ -278,6 +275,15 @@ LinkedIn: ${personalInfo.linkedIn} | GitHub: ${personalInfo.github}
 
 SUMMARY:
 ${personalInfo.summary}
+
+CORE COMPETENCIES:
+${competencies.join(' | ')}
+
+TECHNICAL SKILLS:
+• Agentic AI & LLM Systems: AgentSQL, TridaPad, Model Context Protocol (MCP), Text-to-SQL, Prompt Guardrails, LangChain, RAG
+• Cloud & Data Warehouses: Snowflake, Databricks, AWS (Redshift, Glue, Lambda, Athena), PostgreSQL, SQL Server, Azure Data Factory, dbt, Informatica
+• Languages & Processing: Python, Advanced SQL, Apache Spark (PySpark), Apache Kafka, Pandas, NumPy, Docker, REST & MCP APIs
+• Analytics, BI & Governance: Tableau, Power BI, Enterprise RBAC, Fraud Detection Analytics
 
 WORK EXPERIENCE:
 ${workExperience.map(j => `${j.role} - ${j.company} (${j.period})\n` + j.achievements.map(a => `• ${a}`).join('\n')).join('\n\n')}
@@ -380,7 +386,7 @@ ${certifications.map(c => `• ${c.name} (${c.issuer})`).join('\n')}
               CORE COMPETENCIES
             </h2>
             <p className="text-xs text-slate-300 leading-relaxed font-mono">
-              Data Analysis & Management | Data Science, Governance, & Reporting | Data Quality and Integrity | Data Warehouse, Integrations, Replication | ETL Processes | Data Structures & Database Management | Consultative & Solution Selling | Risk Mitigation | Key Performance Metrics Tracking | Cross-functional Collaboration.
+              {competencies.join(' | ')}
             </p>
           </div>
 
@@ -390,13 +396,10 @@ ${certifications.map(c => `• ${c.name} (${c.issuer})`).join('\n')}
               TECHNICAL SKILLS
             </h2>
             <ul className="text-xs text-slate-300 space-y-1 font-mono">
-              <li>• <strong className="text-slate-100">Programming Languages:</strong> Python, SQL</li>
-              <li>• <strong className="text-slate-100">Cloud & Data Platforms:</strong> AWS (Glue, Redshift, Lambda), Azure Data Factory, Informatica</li>
-              <li>• <strong className="text-slate-100">Big Data & ETL:</strong> Apache Spark, Hadoop, ETL</li>
-              <li>• <strong className="text-slate-100">Data Analytics & Viz:</strong> Power BI, Tableau, Power Apps, Power Automate</li>
-              <li>• <strong className="text-slate-100">Data Integration & APIs:</strong> REST APIs, AWS Data Pipeline, Azure Fabric</li>
-              <li>• <strong className="text-slate-100">Frameworks & Libraries:</strong> Scikit-Learn, Pandas, NumPy, Matplotlib, TensorFlow, PyTorch</li>
-              <li>• <strong className="text-slate-100">Streaming:</strong> Apache Kafka</li>
+              <li>• <strong className="text-slate-100">Agentic AI & LLM Systems:</strong> AgentSQL, TridaPad, Model Context Protocol (MCP), Text-to-SQL, Prompt Guardrails, LangChain, RAG</li>
+              <li>• <strong className="text-slate-100">Cloud & Data Warehouses:</strong> Snowflake, Databricks, AWS (Redshift, Glue, Lambda, Athena), PostgreSQL, SQL Server, Azure Data Factory, dbt, Informatica</li>
+              <li>• <strong className="text-slate-100">Languages & Data Processing:</strong> Python, Advanced SQL, Apache Spark (PySpark), Apache Kafka, Pandas, NumPy, Docker, REST & MCP APIs</li>
+              <li>• <strong className="text-slate-100">Analytics, BI & Governance:</strong> Tableau, Power BI, Enterprise RBAC & Data Governance, Fraud Detection Analytics, Matplotlib, Seaborn</li>
             </ul>
           </div>
 

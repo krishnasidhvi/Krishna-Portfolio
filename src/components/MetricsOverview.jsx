@@ -4,9 +4,9 @@ import { keyImpactMetrics } from '../data/portfolioData';
 
 export default function MetricsOverview() {
   const getIcon = (label) => {
-    if (label.includes("Reliability")) return <Zap className="w-6 h-6 text-cyan-400" />;
+    if (label.includes("Relational") || label.includes("SQL")) return <Cpu className="w-6 h-6 text-cyan-400" />;
     if (label.includes("Anomaly")) return <ShieldAlert className="w-6 h-6 text-emerald-400" />;
-    if (label.includes("Accuracy")) return <Cpu className="w-6 h-6 text-amber-400" />;
+    if (label.includes("Reliability")) return <Zap className="w-6 h-6 text-amber-400" />;
     return <TrendingUp className="w-6 h-6 text-purple-400" />;
   };
 
@@ -36,11 +36,11 @@ export default function MetricsOverview() {
               <Award className="w-4 h-4" /> Quantified Career Impact
             </span>
             <h2 className="text-2xl font-bold text-white mt-1">
-              Proven Results Across Data Pipelines & Predictive Analytics
+              Proven Results Across Agentic AI, Data Pipelines & Analytics
             </h2>
           </div>
           <p className="text-xs text-slate-400 max-w-md mt-2 md:mt-0 font-mono">
-            Metrics extracted directly from production deliverables at Amazon, Global Payments, and Master's research.
+            Verified production metrics across Trida Labs, Global Payments, Amazon, and Vanguard.
           </p>
         </div>
 

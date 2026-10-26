@@ -60,7 +60,7 @@ export default function ContactSection() {
             </h2>
 
             <p className="text-slate-300 text-sm leading-relaxed">
-              Open for Data Analytics Engineer, Data Engineer, and Data Science positions. Feel free to reach out directly via WhatsApp, email, or LinkedIn.
+              Open for Forward Deployment AI Engineer, Data Analytics Engineer, and Enterprise AI/Data Architecture roles. Feel free to reach out directly via WhatsApp, email, or LinkedIn.
             </p>
 
             <div className="space-y-3.5 pt-2">

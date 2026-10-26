@@ -47,9 +47,9 @@ export default function Hero({ onOpenResume }) {
             {/* Status & Availability Badge */}
             <div className="inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-cyan-500/30 text-xs font-mono text-cyan-300 shadow-inner">
               <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-              <span className="font-semibold text-white">3+ Years Enterprise Experience</span>
+              <span className="font-semibold text-white">Forward Deployment AI Engineer @ Trida Labs</span>
               <span className="text-slate-600 hidden sm:inline">•</span>
-              <span className="text-cyan-300">Ex-Amazon · Global Payments · Vanguard</span>
+              <span className="text-cyan-300">Ex-Global Payments · Amazon · Vanguard</span>
             </div>
 
             {/* Main Heading */}
@@ -200,10 +200,10 @@ export default function Hero({ onOpenResume }) {
                 {/* Core Expertise Chips */}
                 <div className="space-y-3 pt-2">
                   <div className="text-xs font-mono uppercase text-slate-400 tracking-wider text-center">
-                    Primary Cloud Stack
+                    Core AI & Data Engineering Stack
                   </div>
                   <div className="flex flex-wrap justify-center gap-2">
-                    {["AWS Glue", "AWS Redshift", "Python", "SQL", "Informatica", "Tableau", "Apache Spark"].map((tech) => (
+                    {["AgentSQL", "MCP Protocol", "Snowflake", "Databricks", "AWS Redshift", "AWS Glue", "Python", "SQL", "Tableau"].map((tech) => (
                       <span 
                         key={tech}
                         className="px-2.5 py-1 rounded-md bg-slate-800/80 border border-slate-700/80 text-[11px] font-mono text-cyan-300 hover:border-cyan-500/50 hover:bg-slate-800 transition-colors"
