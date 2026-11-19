@@ -46,7 +46,7 @@ ul{margin:2px 0 0;padding-left:15px}li{margin:1px 0;break-inside:avoid}
   `<div><b>${esc(c.category)}:</b> ${c.skills.map((s) => esc(s.name)).join(', ')}</div>`).join('')}</div>
 
 <h2>Work experience</h2>${C.workExperience.map((r) => `<div class="block">
-<div class="row"><div><b>${esc(r.role.toUpperCase())}</b> <span>— ${esc(r.company)}, ${esc(r.location)}</span></div><i>${esc(r.period)}</i></div>
+<div class="row"><div><b>${esc(r.role.toUpperCase())}</b> <span>— ${esc(r.company)}, ${esc(r.location)}${r.badge === 'Contract' ? ' – Contract' : ''}</span></div><i>${esc(r.period)}</i></div>
 <ul>${r.achievements.map((a) => `<li>${esc(a)}</li>`).join('')}</ul></div>`).join('')}
 
 <h2>Master's research: data science projects</h2>${C.projects.map((p) => `<div class="block">

@@ -52,21 +52,21 @@
       "label": "Data Anomaly Reduction",
       "value": "40%",
       "prefix": "-",
-      "description": "Achieved via automated Redshift data validation frameworks across transaction tables at Global Payments",
+      "description": "Data-quality checks and validation frameworks on transaction data at Global Payments",
       "color": "emerald"
     },
     {
       "label": "Pipeline Reliability Boost",
       "value": "30%",
       "prefix": "+",
-      "description": "Enhanced AWS Glue & Informatica ETL data pipelines scalability at Amazon",
+      "description": "Processing reliability and scalability of AWS Glue and Informatica pipelines at Amazon",
       "color": "amber"
     },
     {
       "label": "Fraud False Positives",
       "value": "15%",
       "prefix": "-",
-      "description": "Historical anomaly refinement improving predictive model precision at Global Payments",
+      "description": "Historical anomaly analysis that improved fraud model accuracy at Global Payments",
       "color": "purple"
     }
   ],
@@ -270,6 +270,21 @@
           "keys": [
             "scikit"
           ]
+        },
+        {
+          "name": "Hadoop",
+          "tag": "Big Data",
+          "keys": [
+            "hadoop"
+          ]
+        },
+        {
+          "name": "TensorFlow & PyTorch",
+          "tag": "Deep Learning",
+          "keys": [
+            "tensorflow",
+            "pytorch"
+          ]
         }
       ]
     },
@@ -322,6 +337,33 @@
           ]
         }
       ]
+    },
+    {
+      "category": "Developer Tools",
+      "icon": "Code",
+      "skills": [
+        {
+          "name": "GitHub",
+          "tag": "Version Control",
+          "keys": [
+            "github"
+          ]
+        },
+        {
+          "name": "Jira",
+          "tag": "Collaboration",
+          "keys": [
+            "jira"
+          ]
+        },
+        {
+          "name": "VS Code",
+          "tag": "Editor",
+          "keys": [
+            "vs code"
+          ]
+        }
+      ]
     }
   ],
   "workExperience": [
@@ -330,7 +372,7 @@
       "layer": "gold",
       "id": "trida-labs",
       "company": "Trida Labs",
-      "location": "Hyderabad, Telangana, India",
+      "location": "Hyderabad, India",
       "role": "Forward Deployment AI Engineer",
       "period": "May 2025 – Present",
       "badge": "Full-time",
@@ -367,23 +409,23 @@
       "layer": "silver",
       "id": "global-payments",
       "company": "Global Payments Inc.",
-      "location": "Atlanta, Georgia, United States (Hybrid/Remote)",
+      "location": "Atlanta, GA",
       "role": "Data Analytics Engineer",
       "period": "March 2024 – January 2025",
       "badge": "Contract",
-      "summary": "Engineered end-to-end analytics pipelines and business intelligence infrastructure to monitor high-volume payment transactions, reduce processing latency, and support risk mitigation initiatives.",
+      "summary": "Analysed payment transaction data, built real-time Tableau reporting for operations and risk teams, supported fraud detection, and strengthened ETL and data-quality processes.",
       "achievements": [
-        "Analyzed high-throughput multi-channel transaction datasets using Python and advanced SQL, identifying bottleneck patterns and optimizing payment processing workflows across distributed gateways.",
-        "Developed and maintained operational Tableau dashboards integrated with live payment streams, providing real-time visibility into settlement KPIs, transaction failure rates, and interchange metrics for executive and risk teams.",
-        "Collaborated with fraud analytics teams to analyze historical transaction anomalies, refining fraud detection feature inputs to improve predictive model precision and decrease false positives by 15%.",
-        "Refined core ETL workflows in tandem with Data Engineering using AWS Redshift and Informatica, ensuring data pipeline resiliency, consistent data staging, and minimal downstream reporting latency.",
-        "Established automated data quality and validation frameworks across transactional tables, reducing data anomalies by 40% and ensuring adherence to PCI-DSS regulatory reporting standards."
+        "Analyzed transaction patterns across payment channels to optimize payment processing efficiency, using Python and SQL for deep insights.",
+        "Developed and maintained Tableau dashboards for real-time tracking of key payment metrics, enabling data-driven decisions across operations and risk management teams.",
+        "Supported fraud detection initiatives by analyzing historical data to identify anomalies, improving model accuracy and reducing false positives by 15%.",
+        "Refined ETL pipelines in collaboration with data engineers using AWS Redshift and Informatica, ensuring seamless data integration and consistent workflows.",
+        "Conducted rigorous data quality checks and implemented validation frameworks, reducing data anomalies by 40% and ensuring compliance with regulatory standards."
       ],
       "tech": [
-        "Amazon Redshift",
         "Python",
         "SQL",
         "Tableau",
+        "AWS Redshift",
         "Informatica",
         "Fraud Detection Analytics",
         "Data Quality Frameworks",
@@ -399,17 +441,17 @@
       "layer": "bronze",
       "id": "amazon",
       "company": "Amazon",
-      "location": "Seattle, WA (Contract)",
+      "location": "Seattle, WA",
       "role": "Data Engineer",
       "period": "September 2023 – January 2024",
       "badge": "Contract",
-      "summary": "Architected high-throughput AWS ETL workflows and automated month-end data mapping frameworks.",
+      "summary": "Improved the reliability and automation of AWS ETL pipelines that feed analytics and month-end reporting.",
       "achievements": [
         "Spearheaded enhancements to data pipelines using AWS Glue and Informatica, achieving a 30% improvement in processing reliability and scalability.",
-        "Automated ETL workflows with AWS Data Pipeline, reducing manual effort and increasing efficiency by 25%, ensuring timely data delivery.",
-        "Conducted robust data quality checks with Python and AWS Redshift, reducing data anomalies by 50% for high-quality downstream analytics.",
-        "Integrated REST APIs with AWS services to enable seamless data extraction and accessibility across business analytics teams.",
-        "Optimized SQL-based data mapping using AWS Athena, ensuring precise and timely month-end financial and operational reporting."
+        "Automated ETL workflows with AWS Data Pipeline, reducing manual effort and increasing efficiency by 25%, ensuring timely and accurate data delivery.",
+        "Conducted robust data quality checks with Python and AWS Redshift, reducing data anomalies by 50% and ensuring high-quality datasets for analytics.",
+        "Integrated REST APIs with AWS services to enable seamless data extraction and accessibility, supporting critical business analytics and reporting needs.",
+        "Optimized SQL-based data mapping using Athena, ensuring precise and timely month-end reporting for data-driven decision-making."
       ],
       "tech": [
         "AWS Glue",
@@ -431,15 +473,15 @@
       "layer": "raw",
       "id": "vanguard",
       "company": "Vanguard",
-      "location": "Malvern, PA (Contract)",
+      "location": "Malvern, PA",
       "role": "Data Analyst",
       "period": "July 2022 – December 2022",
       "badge": "Contract",
-      "summary": "Built KPI tracking dashboards and Azure Data Factory pipelines for enterprise asset management metrics.",
+      "summary": "Built and optimised KPI dashboards and the Azure Data Factory pipelines behind them.",
       "achievements": [
-        "Optimized Tableau dashboards connected to SQL Server and PostgreSQL, driving real-time KPI monitoring and boosting operational efficiency by 15%.",
-        "Enhanced reporting capabilities by developing supplemental Power BI solutions to augment complex Tableau financial insights.",
-        "Managed Azure Data Factory pipelines, ensuring seamless and accurate data flows for real-time dashboard updates.",
+        "Optimized Tableau dashboards connected to SQL Server and PostgreSQL, driving real-time monitoring of KPIs and improving operational efficiency by 15%.",
+        "Enhanced reporting capabilities and enabled data-driven decision-making by developing supplemental Power BI solutions to augment Tableau insights.",
+        "Managed Azure Data Factory pipelines, ensuring seamless and accurate data flows for real-time dashboard updates and analysis.",
         "Coordinated Azure Fabric and REST API integration, enabling seamless cross-platform data flow and supporting dynamic reporting needs."
       ],
       "tech": [
@@ -470,16 +512,17 @@
       "isInternalDemo": false,
       "architectureSteps": [
         "Input Video Stream",
-        "YOLOv8 CNN Detection",
-        "Bounding Box Crop",
-        "OCR Digit Recognition",
-        "95% Validated Extraction"
+        "YOLO CNN Detection",
+        "Plate Localisation",
+        "Number Extraction",
+        "95% Extraction Accuracy"
       ],
-      "description": "Designed and implemented a deep learning vehicle registration number detection system using YOLO-based CNN for automated traffic monitoring and law enforcement workflows.",
+      "description": "Designed and implemented a real-time vehicle registration number detection system to enhance traffic management, using a YOLO-based CNN.",
       "keyPoints": [
-        "Built custom object detection pipeline leveraging YOLO-based Convolutional Neural Networks and OpenCV.",
-        "Extracted plate numbers with 95% accuracy in real-time camera feeds, drastically reducing manual enforcement intervention.",
-        "Trained model in Google Colab environment using PyTorch and TensorFlow with custom image augmentation techniques."
+        "Designed and implemented a real-time vehicle registration number detection system to enhance traffic management.",
+        "Achieved 95% accuracy in number extraction using YOLO-based CNN and Python, improving traffic monitoring efficiency.",
+        "Reduced manual intervention, streamlining traffic law enforcement workflows.",
+        "Utilized YOLO-based CNN, OpenCV, TensorFlow, Google Colab, and NumPy."
       ],
       "tags": [
         "YOLO CNN",
@@ -494,7 +537,7 @@
     },
     {
       "id": "chicago-crime",
-      "title": "Chicago Crime Analytics & Prediction",
+      "title": "Chicago Crime Analytics",
       "subtitle": "Master's Degree Research | UMBC",
       "period": "August 2021 – May 2023",
       "metrics": "12% Reduction in Targeted Area Crime",
@@ -503,17 +546,18 @@
       "demoLabel": "Methodology Walkthrough",
       "isInternalDemo": true,
       "architectureSteps": [
-        "Multi-GB Historical Crime Ingestion",
-        "Pandas & NumPy Feature Cleaning",
-        "Random Forest & XGBoost Models",
-        "Spatial-Temporal Tactical Allocation",
-        "12% Drop in Targeted Crime"
+        "Historical Crime Data",
+        "Pandas & NumPy Preprocessing",
+        "Scikit-Learn ML Models",
+        "Tableau Dashboards",
+        "12% Drop in Targeted Areas"
       ],
-      "description": "Developed predictive machine learning models to forecast crime patterns in Chicago, empowering law enforcement to optimize resource allocation through interactive Tableau spatial dashboards.",
+      "description": "Developed a machine learning model to predict crime patterns in Chicago, enabling data-driven allocation of law enforcement resources through Tableau dashboards.",
       "keyPoints": [
-        "Processed multi-gigabyte historical crime datasets using Python, Pandas, and NumPy.",
-        "Trained spatial-temporal machine learning models using Scikit-Learn algorithms (Random Forests, XGBoost).",
-        "Delivered interactive Tableau visualization tool enabling tactical police unit deployment, directly contributing to a 12% crime drop in targeted zones."
+        "Developed a machine learning model to predict crime patterns in Chicago, enabling data-driven allocation of law enforcement resources.",
+        "Reduced crime rates by 12% in targeted areas through actionable insights provided via Tableau dashboards.",
+        "Conducted extensive data preprocessing and analysis using Python, Pandas, and NumPy, and implemented machine learning models with scikit-learn.",
+        "Delivered a comprehensive visualization tool for operational decision-making."
       ],
       "tags": [
         "Python",
@@ -527,7 +571,7 @@
     },
     {
       "id": "fraud-detection",
-      "title": "Real-Time Credit Card Fraud Detection",
+      "title": "Fraud Prediction on Credit Card Transactions",
       "subtitle": "Master's Degree Research | UMBC",
       "period": "August 2021 – May 2023",
       "metrics": "25% Detection Accuracy Gain",
@@ -536,25 +580,26 @@
       "demoLabel": "Pipeline Architecture",
       "isInternalDemo": true,
       "architectureSteps": [
-        "Real-Time Transaction Stream",
-        "Apache Kafka Queue Ingestion",
-        "AWS Lambda Real-Time Scoring",
-        "MongoDB Event Store",
-        "25% Accuracy Boost (<50ms)"
+        "Transaction Stream",
+        "Apache Kafka Streaming",
+        "AWS Lambda Scoring",
+        "MongoDB Storage",
+        "25% Accuracy Gain"
       ],
-      "description": "Built and deployed a streaming fraud prevention pipeline combining AWS Lambda and Apache Kafka to identify high-risk transaction anomalies in real time.",
+      "description": "Built and deployed a fraud detection system that identifies fraudulent transactions with high accuracy and fewer false positives, using AWS Lambda and Kafka for real-time prevention.",
       "keyPoints": [
-        "Engineered real-time message streaming with Apache Kafka for microsecond transaction payload ingestion.",
-        "Deployed event-driven anomaly detection models on AWS Lambda, storing clean event streams in MongoDB.",
-        "Improved fraud detection accuracy by 25%, significantly cutting financial loss and false positive customer blocks."
+        "Built and deployed a fraud detection system to identify fraudulent transactions with high accuracy and reduced false positives.",
+        "Enhanced fraud detection accuracy by 25%, leading to significant cost savings and increased customer trust.",
+        "Implemented real-time fraud prevention measures using AWS Lambda and Kafka for seamless deployment and data streaming.",
+        "Leveraged Python, MongoDB, Matplotlib, and Seaborn for analysis and visualization."
       ],
       "tags": [
         "AWS Lambda",
         "Apache Kafka",
         "MongoDB",
         "Python",
-        "Seaborn",
-        "Streaming ETL"
+        "Matplotlib",
+        "Seaborn"
       ],
       "gradient": "from-purple-500/20 via-slate-900 to-indigo-900/40",
       "accentColor": "#a855f7"
@@ -573,18 +618,18 @@
       "institution": "Amity University of Rajasthan",
       "location": "Jaipur, India",
       "year": "May 2021",
-      "details": "Minors in Business Management and German (Foreign Language)."
+      "details": "Minor degree in Business Management; additional minor in German (foreign language)."
     }
   ],
   "certifications": [
     {
-      "name": "AWS Certified Associate Data Engineer",
+      "name": "AWS Certified Data Engineer – Associate",
       "issuer": "Amazon Web Services (AWS)",
       "date": "Certified",
       "icon": "Award",
       "color": "amber",
       "credentialUrl": null,
-      "issuerUrl": "https://cp.certmetrics.com/amazon/en/public/verify/credential"
+      "issuerUrl": "https://aws.amazon.com/certification/certified-data-engineer-associate/"
     },
     {
       "name": "Academy Accreditation – Generative AI Fundamentals",
@@ -597,39 +642,30 @@
     },
     {
       "name": "Introduction to Career Skills in Data Analytics",
-      "issuer": "LinkedIn",
+      "issuer": "LinkedIn Learning",
       "date": "Completed",
       "icon": "CheckCircle",
       "color": "emerald",
       "credentialUrl": null,
-      "issuerUrl": "https://www.linkedin.com/learning/certificates/"
-    },
-    {
-      "name": "Salesforce Administrator",
-      "issuer": "Salesforce",
-      "date": "Certified",
-      "icon": "ShieldCheck",
-      "color": "purple",
-      "credentialUrl": null,
-      "issuerUrl": "https://trailhead.salesforce.com/en/credentials/administrator"
-    },
-    {
-      "name": "Execute and Evaluate Hugging Face AI Models",
-      "issuer": "Hugging Face / DeepLearning.AI",
-      "date": "Certified",
-      "icon": "Sparkles",
-      "color": "cyan",
-      "credentialUrl": null,
-      "issuerUrl": "https://www.deeplearning.ai/short-courses/"
+      "issuerUrl": "https://www.linkedin.com/learning/"
     },
     {
       "name": "Build LLM Evaluation Applications with LangChain",
-      "issuer": "LangChain / DeepLearning.AI",
-      "date": "Certified",
+      "issuer": "LinkedIn Learning",
+      "date": "Completed",
       "icon": "Sparkles",
       "color": "emerald",
       "credentialUrl": null,
-      "issuerUrl": "https://www.deeplearning.ai/short-courses/"
+      "issuerUrl": "https://www.linkedin.com/learning/"
+    },
+    {
+      "name": "Execute and Evaluate Hugging Face AI Models",
+      "issuer": "LinkedIn Learning",
+      "date": "Completed",
+      "icon": "Sparkles",
+      "color": "cyan",
+      "credentialUrl": null,
+      "issuerUrl": "https://www.linkedin.com/learning/"
     }
   ],
   "sampleSqlQueries": [
@@ -644,15 +680,15 @@
       "title": "Data Quality Anomaly Audit Query (AWS Redshift / Athena - Global Payments)",
       "tabLabel": "Redshift Quality Audit",
       "badge": "Data Quality",
-      "description": "Detects schema drift and validates null percentage across high-throughput transaction pipelines to maintain PCI-DSS compliance",
+      "description": "Detects schema drift and validates null percentage across high-throughput transaction pipelines to support regulatory compliance",
       "code": "SELECT \n    payment_channel,\n    COUNT(*) AS total_transactions,\n    SUM(CASE WHEN transaction_amount IS NULL THEN 1 ELSE 0 END) AS null_amounts,\n    ROUND(100.0 * SUM(CASE WHEN transaction_amount IS NULL THEN 1 ELSE 0 END) / COUNT(*), 2) AS null_pct,\n    AVG(processing_time_ms) AS avg_latency_ms\nFROM redshift_db.payment_events_raw\nWHERE transaction_timestamp >= CURRENT_DATE - INTERVAL '30 days'\nGROUP BY payment_channel\nHAVING null_pct > 0.5\nORDER BY total_transactions DESC;"
     },
     {
-      "title": "AWS Glue PySpark ETL Data Cleansing Job (Amazon)",
+      "title": "AWS Glue PySpark ETL Data Cleansing Job (illustrative)",
       "tabLabel": "Glue PySpark Streaming",
       "badge": "Distributed ETL",
       "description": "Automated PySpark transformation script for streaming data deduplication, anomaly tagging, and Parquet partitioning",
-      "code": "from awsglue.transforms import *\nfrom awsglue.utils import getResolvedOptions\nfrom pyspark.context import SparkContext\nfrom awsglue.context import GlueContext\nfrom pyspark.sql.functions import col, when, current_timestamp\n\nglueContext = GlueContext(SparkContext.getOrCreate())\ndf = glueContext.create_dynamic_frame.from_catalog(\n    database=\"payment_dw\", \n    table_name=\"raw_fraud_stream\"\n).toDF()\n\n# Data Quality Filter: Remove anomalies & cast types\ncleaned_df = df.filter(col(\"amount\") > 0) \\\n    .withColumn(\"is_anomalous\", when(col(\"risk_score\") > 0.85, True).otherwise(False)) \\\n    .withColumn(\"etl_processed_at\", current_timestamp()) \\\n    .dropDuplicates([\"transaction_id\"])\n\ncleaned_df.write.mode(\"append\") \\\n    .partitionBy(\"payment_channel\") \\\n    .parquet(\"s3://global-payments-analytics-prod/processed_transactions/\")"
+      "code": "from awsglue.transforms import *\nfrom awsglue.utils import getResolvedOptions\nfrom pyspark.context import SparkContext\nfrom awsglue.context import GlueContext\nfrom pyspark.sql.functions import col, when, current_timestamp\n\nglueContext = GlueContext(SparkContext.getOrCreate())\ndf = glueContext.create_dynamic_frame.from_catalog(\n    database=\"payment_dw\", \n    table_name=\"raw_fraud_stream\"\n).toDF()\n\n# Data Quality Filter: Remove anomalies & cast types\ncleaned_df = df.filter(col(\"amount\") > 0) \\\n    .withColumn(\"is_anomalous\", when(col(\"risk_score\") > 0.85, True).otherwise(False)) \\\n    .withColumn(\"etl_processed_at\", current_timestamp()) \\\n    .dropDuplicates([\"transaction_id\"])\n\ncleaned_df.write.mode(\"append\") \\\n    .partitionBy(\"payment_channel\") \\\n    .parquet(\"s3://analytics-prod/processed_transactions/\")"
     }
   ],
   "reel": {
@@ -795,12 +831,12 @@
       {
         "role_id": 1,
         "skill_id": 7,
-        "evidence": "Chicago crime forecasting dashboards"
+        "evidence": "Chicago crime prediction dashboards"
       },
       {
         "role_id": 1,
         "skill_id": 12,
-        "evidence": "Streaming fraud-detection pipeline"
+        "evidence": "Real-time fraud detection with AWS Lambda"
       },
       {
         "role_id": 2,
@@ -865,12 +901,12 @@
       {
         "role_id": 4,
         "skill_id": 5,
-        "evidence": "DQ framework, -40% anomalies"
+        "evidence": "ETL pipelines with Informatica"
       },
       {
         "role_id": 4,
         "skill_id": 0,
-        "evidence": "High-volume transaction analysis"
+        "evidence": "Transaction-pattern analysis"
       },
       {
         "role_id": 4,
@@ -880,7 +916,7 @@
       {
         "role_id": 4,
         "skill_id": 7,
-        "evidence": "Real-time settlement KPI dashboards"
+        "evidence": "Real-time payment-metrics dashboards"
       },
       {
         "role_id": 4,
@@ -979,20 +1015,20 @@
       {
         "project": "Real-time number plate detection",
         "year": 2023,
-        "stack": "YOLO, OpenCV, Python",
+        "stack": "YOLO CNN, OpenCV, TensorFlow, Python",
         "result": "95% extraction accuracy"
       },
       {
         "project": "Chicago crime analytics",
         "year": 2022,
-        "stack": "Python, Scikit-Learn, Tableau",
-        "result": "Spatial-temporal forecasts"
+        "stack": "Python, scikit-learn, Tableau",
+        "result": "12% fewer crimes in targeted areas"
       },
       {
-        "project": "Streaming fraud detection",
+        "project": "Fraud prediction on credit card transactions",
         "year": 2022,
-        "stack": "Kafka, AWS Lambda, MongoDB",
-        "result": "Real-time scoring"
+        "stack": "Kafka, AWS Lambda, MongoDB, Python",
+        "result": "25% better fraud detection accuracy"
       }
     ],
     "layers": [
@@ -1005,7 +1041,7 @@
       {
         "eyebrow": "Layer 01 · Raw · 2021 – 2022",
         "title": "Vanguard<br>&amp; <em>UMBC</em>",
-        "body": "Tableau and Power BI over SQL Server and PostgreSQL for asset-management KPIs, fed by Azure Data Factory pipelines. In parallel, a Master's in Data Science at UMBC: YOLO number-plate detection, Chicago crime forecasting and Kafka fraud streams.",
+        "body": "Tableau and Power BI over SQL Server and PostgreSQL for KPI monitoring, fed by Azure Data Factory pipelines. In parallel, a Master's in Data Science at UMBC: YOLO number-plate detection, Chicago crime prediction and real-time fraud detection with Kafka and AWS Lambda.",
         "metrics": [
           [
             "+15%",
@@ -1043,7 +1079,7 @@
       {
         "eyebrow": "Layer 03 · Silver · Mar 2024 – Jan 2025",
         "title": "Global Payments.<br><em>Trusted</em> streams.",
-        "body": "Data Analytics Engineer on high-throughput payment data. Built automated data-quality frameworks in Redshift, real-time Tableau views of settlement KPIs, and refined fraud features with the risk team.",
+        "body": "Data Analytics Engineer on payment transaction data. Analysed transaction patterns in Python and SQL, built Tableau dashboards for real-time payment metrics, refined Redshift and Informatica ETL with data engineers, and supported fraud detection.",
         "metrics": [
           [
             "−40%",
@@ -1117,33 +1153,33 @@
       "role": "Data Analytics Engineer",
       "period": "March 2024 – January 2025",
       "layer": 3,
-      "title": "Trustworthy numbers for a high-volume payments platform",
+      "title": "Cleaner payment data and fewer false fraud alerts",
       "metric": [
         "−40%",
         "data anomalies across transactional tables"
       ],
-      "context": "Global Payments processes high-volume, multi-channel card transactions. Operations, risk and executive teams use the data for settlement, fraud and regulatory reporting.",
-      "challenge": "Anomalies in transactional tables put reporting and PCI-DSS compliance at risk, and the fraud model was flagging too many legitimate transactions.",
+      "context": "Contract Data Analytics Engineer at Global Payments, working with operations, risk management and data engineering teams on payment transaction data.",
+      "challenge": "Data anomalies made payment reporting less reliable and put regulatory compliance at risk, and the fraud model flagged too many legitimate transactions.",
       "actions": [
-        "Implemented automated data-quality and validation frameworks across transactional tables.",
-        "Refined ETL pipelines with the data engineering team on AWS Redshift and Informatica for consistent staging and low reporting latency.",
-        "Analysed historical transaction anomalies with the fraud analytics team and refined the model's input features.",
-        "Built and maintained Tableau dashboards on live payment streams for settlement KPIs, failure rates and interchange metrics.",
-        "Analysed multi-channel transaction patterns in Python and SQL to find processing bottlenecks."
+        "Conducted rigorous data-quality checks and implemented validation frameworks.",
+        "Refined ETL pipelines with the data engineering team on AWS Redshift and Informatica for seamless integration and consistent workflows.",
+        "Analysed historical data with the fraud detection effort to identify anomalies and improve model accuracy.",
+        "Developed and maintained Tableau dashboards for real-time tracking of key payment metrics.",
+        "Analysed transaction patterns across payment channels in Python and SQL to optimise processing efficiency."
       ],
       "results": [
-        "40% fewer data anomalies, in line with PCI-DSS reporting standards",
+        "40% fewer data anomalies, in compliance with regulatory standards",
         "15% fewer fraud false positives",
-        "Real-time visibility of payment KPIs for operations and risk teams"
+        "Real-time payment-metric dashboards for operations and risk teams"
       ],
       "stack": [
-        "AWS Redshift",
-        "Informatica",
         "Python",
         "SQL",
         "Tableau",
-        "Fraud analytics",
-        "Data quality"
+        "AWS Redshift",
+        "Informatica",
+        "Data quality",
+        "Fraud analytics"
       ]
     },
     {
@@ -1157,19 +1193,19 @@
         "+30%",
         "processing reliability and scalability"
       ],
-      "context": "Contract data engineer on AWS ETL workflows that feed month-end financial and operational reporting for business analytics teams.",
-      "challenge": "The AWS Glue and Informatica pipelines needed to be more reliable and scalable, manual steps slowed delivery, and data anomalies were reaching downstream analytics.",
+      "context": "Contract Data Engineer at Amazon on AWS ETL pipelines that feed business analytics and month-end reporting.",
+      "challenge": "The pipelines needed to be more reliable and scalable, manual steps slowed data delivery, and data anomalies reached the datasets analysts used.",
       "actions": [
         "Enhanced data pipelines on AWS Glue and Informatica.",
         "Automated ETL workflows with AWS Data Pipeline to remove manual steps.",
-        "Ran data-quality checks with Python and AWS Redshift before data reached analysts.",
-        "Integrated REST APIs with AWS services so analytics teams could extract data directly.",
-        "Optimised SQL-based data mapping in AWS Athena for month-end close."
+        "Ran data-quality checks with Python and AWS Redshift.",
+        "Integrated REST APIs with AWS services for data extraction across analytics and reporting.",
+        "Optimised SQL-based data mapping in Athena for month-end reporting."
       ],
       "results": [
         "30% better processing reliability and scalability",
-        "25% less manual effort, with on-time data delivery",
-        "50% fewer data anomalies in downstream analytics"
+        "25% less manual effort, with timely and accurate data delivery",
+        "50% fewer data anomalies in analytics datasets"
       ],
       "stack": [
         "AWS Glue",
@@ -1194,22 +1230,22 @@
         "plate extraction accuracy on real-time feeds"
       ],
       "context": "Master's research at the University of Maryland, Baltimore County.",
-      "challenge": "Automate vehicle registration reading for traffic monitoring and enforcement, from real-time camera feeds rather than still images.",
+      "challenge": "Read vehicle registration numbers from real-time camera feeds to improve traffic management and reduce manual work in enforcement.",
       "actions": [
-        "Built a custom object-detection pipeline with YOLO-based convolutional neural networks and OpenCV.",
-        "Cropped detected plates and recognised their characters to extract the registration number.",
-        "Trained the model in Google Colab with PyTorch and TensorFlow, using custom image augmentation."
+        "Designed and implemented a real-time vehicle registration number detection system.",
+        "Built the detection on a YOLO-based convolutional neural network with OpenCV, in Python.",
+        "Trained and evaluated in Google Colab with TensorFlow and NumPy."
       ],
       "results": [
-        "95% plate extraction accuracy in real-time camera feeds",
-        "Far less manual review in enforcement workflows"
+        "95% accuracy in number extraction",
+        "Less manual intervention in traffic law enforcement workflows"
       ],
       "stack": [
-        "YOLO",
+        "YOLO CNN",
         "OpenCV",
-        "PyTorch",
         "TensorFlow",
         "Python",
+        "NumPy",
         "Google Colab"
       ],
       "link": "https://github.com/krishnasidhvi/Capstone_DATA606"
