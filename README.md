@@ -22,7 +22,7 @@
 
 The homepage is a cinematic reel: my career refined through the Raw → Bronze → Silver → Gold → Insight data layers.
 
-- **Opening titles** built in code and aware of the visitor's device (graphics card, local time vs. mine), then a 12,000-point **AI twin**: a procedural humanoid sampled from a signed distance field, with glowing panel seams, eyes and core
+- **Opening titles** built in code and aware of the visitor's device (graphics card, local time vs. mine), then a 20,000-point **AI twin**: a procedural humanoid sampled from a signed distance field, with glowing panel seams, eyes and core
 - **Recruiter dossier**: photo, at-a-glance facts, pitch, signature results, full experience, skills with where each was used, projects, education, certifications, print-to-PDF, and a **job-description matcher** that scores a pasted JD against my real record
 - **Timeline scrubber** (2021 → now), opt-in sound prompt, **View in AR** (Google model-viewer; `public/twin.glb` is built from the same SDF with `npm run twin`), and privacy-friendly GoatCounter stats (set `personal.analytics.goatcounter` in `src/data/career.json`)
 - **One data file**: `src/data/career.json` drives the reel, the dossier, the twin's SQL tables and the classic site

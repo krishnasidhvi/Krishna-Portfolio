@@ -36,6 +36,13 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-bod
 body{overflow-x:hidden}
 #gl{position:fixed;inset:0;width:100vw;height:100vh;display:block;z-index:0}
 .track{position:relative;z-index:-1}
+.aurora{position:fixed;inset:-25%;z-index:1;pointer-events:none;mix-blend-mode:screen;opacity:.6;filter:blur(70px);
+  background:radial-gradient(34% 40% at 66% 42%,color-mix(in srgb,var(--layer) 26%,transparent),transparent 70%),
+    radial-gradient(30% 28% at 22% 72%,rgba(124,92,255,.2),transparent 70%),
+    radial-gradient(24% 22% at 86% 84%,color-mix(in srgb,var(--layer) 14%,transparent),transparent 70%),
+    radial-gradient(22% 20% at 30% 18%,rgba(60,150,255,.12),transparent 70%);
+  animation:aur 28s ease-in-out infinite alternate}
+@keyframes aur{0%{transform:translate(0,0) rotate(0deg) scale(1)}50%{transform:translate(-4%,3%) rotate(7deg) scale(1.08)}100%{transform:translate(3%,-2%) rotate(-5deg) scale(1.03)}}
 .vignette{position:fixed;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse at 60% 50%,transparent 35%,rgba(0,0,0,.75) 100%)}
 .grain{position:fixed;inset:-50%;pointer-events:none;z-index:2;opacity:.09;mix-blend-mode:overlay;animation:grain .7s steps(6) infinite}
 @keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-4%)}60%{transform:translate(-4%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
@@ -326,12 +333,13 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
   #cut .case{break-inside:avoid}
   #cut *{color:#111!important;background:transparent!important;box-shadow:none!important;text-shadow:none!important;border-color:#ccc!important}
 }
-@media (prefers-reduced-motion:reduce){.grain,.dot,.caret,.hint i,.pulse,.hstate i{animation:none}.shutter{transition:none}}
+@media (prefers-reduced-motion:reduce){.aurora,.grain,.dot,.caret,.hint i,.pulse,.hstate i{animation:none}.shutter{transition:none}}
 </style>
 </head>
 <body>
 
 <canvas id="gl" aria-hidden="true"></canvas>
+<div class="aurora" aria-hidden="true"></div>
 <div class="vignette"></div>
 <div class="grain" id="grain"></div>
 <div class="nodes" id="nodes" aria-hidden="true"></div>
@@ -752,7 +760,7 @@ var COLS=[['#1d5f8a','#bfe9ff'],['#4a4f58','#d4d8df'],['#6e3414','#ffa060'],['#5
 var PHOTO=[1,0,0,0,0,1],HOLO=[1,0,0,0,0,1],GOLD=[0,0,0,0,1,0],ALPHA=[.72,.8,.8,.85,.8,.72];
 var BASE_HZ=[55,49,58.27,65.41,73.42,82.41];
 var SQL=[
-  "<span class='kw'>SELECT</span> * <span class='kw'>FROM</span> twin.krishna <span class='kw'>WHERE</span> points = 12000;  -- move your mouse",
+  "<span class='kw'>SELECT</span> * <span class='kw'>FROM</span> twin.krishna <span class='kw'>WHERE</span> points = 20000;  -- move your mouse",
   "<span class='kw'>SELECT</span> * <span class='kw'>FROM</span> raw.vanguard_2022 <span class='kw'>UNION ALL</span> <span class='kw'>SELECT</span> * <span class='kw'>FROM</span> raw.umbc_research;",
   "<span class='kw'>CREATE TABLE</span> bronze.amazon <span class='kw'>AS SELECT</span> * <span class='kw'>FROM</span> glue.etl <span class='kw'>WHERE</span> reliability_gain >= 0.30;",
   "<span class='kw'>MERGE INTO</span> silver.payments <span class='kw'>USING</span> dq_checks <span class='kw'>ON</span> txn_id;  -- Chicago open data drives this flow",
@@ -852,9 +860,9 @@ addEventListener('keydown',function(e){
 });
 
 /* ================= particle data (static, uploaded once; all motion runs on the GPU) ================= */
-var N=12000,GCOL=150,GROW=80;
+var N=20000,GCOL=200,GROW=100;
 var aRand=new Float32Array(N*3),aDir=new Float32Array(N*3),aGrid=new Float32Array(N*3),aGA=new Float32Array(N*3),aGB=new Float32Array(N*3),
-    aGS=new Float32Array(N),aNode=new Float32Array(N),aE1=new Float32Array(N),aE2=new Float32Array(N),avPos=new Float32Array(N*3),avCol=new Float32Array(N*3);
+    aGS=new Float32Array(N),aNode=new Float32Array(N),aE1=new Float32Array(N),aE2=new Float32Array(N),avPos=new Float32Array(N*3),avCol=new Float32Array(N*3),aRing=new Float32Array(N);
 var seed=1337;function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647;}
 var NODES=[],EDGES=[[0,1],[0,7],[0,5],[5,6],[6,2],[1,2],[9,8],[9,0],[8,3],[8,4],[8,5],[3,4],[1,9],[7,5]];
 for(var k=0;k<GRAPH_N;k++){var yy=1-(k+.5)/GRAPH_N*2,rr=Math.sqrt(1-yy*yy),tt=k*2.39996;NODES.push([Math.cos(tt)*rr*4.6,yy*3.6,Math.sin(tt)*rr*3.2]);}
@@ -862,7 +870,7 @@ for(var i=0;i<N;i++){
   var a=rnd(),b=rnd(),c=rnd();aRand[i*3]=a;aRand[i*3+1]=b;aRand[i*3+2]=c;
   var u=rnd()*2-1,th=rnd()*Math.PI*2,s=Math.sqrt(1-u*u),dx=s*Math.cos(th),dy=u,dz=s*Math.sin(th);
   aDir[i*3]=dx;aDir[i*3+1]=dy;aDir[i*3+2]=dz;
-  var col=i%GCOL,row=Math.floor(i/GCOL);aGrid[i*3]=(col-(GCOL-1)/2)*.088;aGrid[i*3+1]=(row-(GROW-1)/2)*.088;aGrid[i*3+2]=col;
+  var col=i%GCOL,row=Math.floor(i/GCOL);aGrid[i*3]=(col-(GCOL-1)/2)*.066;aGrid[i*3+1]=(row-(GROW-1)/2)*.066;aGrid[i*3+2]=col;
   if(a<.42){var nd=Math.floor(b*GRAPH_N)%GRAPH_N,n=NODES[nd],g=Math.abs(rnd()+rnd()+rnd()-1.5)*.55;
     aNode[i]=nd;aE1[i]=aE2[i]=-1;aGS[i]=-1;aGA[i*3]=n[0]+dx*g;aGA[i*3+1]=n[1]+dy*g;aGA[i*3+2]=n[2]+dz*g;}
   else{var e=EDGES[Math.floor(b*EDGES.length)%EDGES.length],p=NODES[e[0]],q=NODES[e[1]];
@@ -872,21 +880,63 @@ for(var i=0;i<N;i++){
 
 /* ================= the AI twin: a procedural humanoid sampled from a signed distance field ================= */
 (function buildTwin(){
+  /* The AI twin, layer by layer: glowing eyes, rayed core, panel seams, circuit traces with pads, head contour lines,
+     an internal "x-ray" skeleton and neural lattice, three orbiting gyroscope rings, a rising data aura, then the lit shell. */
   var S=1.2,OY=-.35,j=0,sdf=TwinSDF.sdf;
-  function put(p,cl){if(j>=N)return;avPos[j*3]=p[0]*S;avPos[j*3+1]=p[1]*S+OY;avPos[j*3+2]=p[2]*S;avCol[j*3]=cl[0];avCol[j*3+1]=cl[1];avCol[j*3+2]=cl[2];j++;}
-  function project(p){for(var it=0;it<6;it++){var d=sdf(p),n=TwinSDF.normal(p);p=[p[0]-n[0]*d,p[1]-n[1]*d,p[2]-n[2]*d];}return p;}
-  function shell(count,box,accept,col){var g=0,goal=j+count;
-    while(j<goal&&j<N&&g<count*400){g++;
+  function put(p,cl,ring,raw){if(j>=N)return;
+    avPos[j*3]=raw?p[0]:p[0]*S;avPos[j*3+1]=raw?p[1]:p[1]*S+OY;avPos[j*3+2]=raw?p[2]:p[2]*S;
+    avCol[j*3]=cl[0];avCol[j*3+1]=cl[1];avCol[j*3+2]=cl[2];aRing[j]=ring||0;j++;}
+  function dim(c,k){return [c[0]*k,c[1]*k,c[2]*k];}
+  function project(p){for(var it=0;it<8;it++){var d=sdf(p),n=TwinSDF.normal(p);p=[p[0]-n[0]*d,p[1]-n[1]*d,p[2]-n[2]*d];}return p;}
+  function shell(count,box,accept,col){var g=0,goal=Math.min(N,j+count);
+    while(j<goal&&g<count*500){g++;
       var p=[box[0]+rnd()*(box[1]-box[0]),box[2]+rnd()*(box[3]-box[2]),box[4]+rnd()*(box[5]-box[4])],d=sdf(p);
       if(Math.abs(d)>.03)continue;var n=TwinSDF.normal(p);p=[p[0]-n[0]*d,p[1]-n[1]*d,p[2]-n[2]*d];
-      if(accept&&!accept(p))continue;put(p,col||TwinSDF.color(p,n));}}
-  // eyes: a tight bright cloud in each socket
-  for(var e=0;e<300;e++){var E=TwinSDF.EYES[e%2];put([E[0]+(rnd()-.5)*.2,E[1]+(rnd()-.5)*.06,E[2]+.03+rnd()*.04],[.85,1,1]);}
-  // core: a glowing ring on the chest
-  for(var c=0;c<220;c++){var a=rnd()*6.2832,r=.12+rnd()*.08,C=TwinSDF.CORE;put(project([C[0]+Math.cos(a)*r,C[1]+Math.sin(a)*r,1.2]),[1,.82,.4]);}
+      if(accept&&!accept(p))continue;put(p,typeof col==='function'?col(p,n):(col||TwinSDF.color(p,n)));}}
+  var CYAN=[.5,.97,1],VIOLET=[.62,.52,1],GOLD=[1,.8,.38];
+
+  // eyes
+  for(var e=0;e<340;e++){var E=TwinSDF.EYES[e%2];put([E[0]+(rnd()-.5)*.2,E[1]+(rnd()-.5)*.06,E[2]+.03+rnd()*.04],[.88,1,1]);}
+  // core: ring plus six rays running across the chest surface
+  var C=TwinSDF.CORE;
+  for(var c=0;c<180;c++){var a=rnd()*6.2832,r=.12+rnd()*.08;put(project([C[0]+Math.cos(a)*r,C[1]+Math.sin(a)*r,1.2]),GOLD);}
+  for(var k=0;k<6;k++){var ang=k/6*6.2832+.26;
+    for(var s=0;s<30;s++){var rr=.24+s*.022;put(project([C[0]+Math.cos(ang)*rr,C[1]+Math.sin(ang)*rr,1.2]),dim(GOLD,1-s/34));}}
   // panel seams
-  shell(2600,[-2,2,-2.3,3,-1,1.1],TwinSDF.seam,[.55,.97,1]);
-  // head, then body
+  shell(2400,[-2,2,-2.3,3,-1,1.1],TwinSDF.seam,CYAN);
+  // circuit traces: right-angle paths drawn onto the front and back, with pads at the corners
+  for(var t=0;t<44;t++){
+    var back=t>=30,top=.62,x=(rnd()*2-1)*1.15,y=-2.05+rnd()*(top+2.05),horiz=rnd()<.5,segs=3+Math.floor(rnd()*3);
+    if(y>.9&&Math.abs(x)>.55)x*=.5;
+    for(var sg=0;sg<segs;sg++){
+      var len=(.14+rnd()*.4)*(rnd()<.5?-1:1),nx=horiz?x+len:x,ny=horiz?y:y+len,steps=Math.ceil(Math.abs(len)/.014);
+      for(var q=0;q<=steps;q++){var u=q/steps,tp=project([x+(nx-x)*u,y+(ny-y)*u,back?-1.3:1.3]);if(tp[1]<.72)put(tp,dim(CYAN,.82));}
+      for(var pd=0;pd<9;pd++){var pa=rnd()*6.2832,pr=rnd()*.03,pp=project([nx+Math.cos(pa)*pr,ny+Math.sin(pa)*pr,back?-1.3:1.3]);if(pp[1]<.72)put(pp,[.85,1,1]);}
+      x=nx;y=Math.max(-2.2,Math.min(top,ny));horiz=!horiz;}
+  }
+  // contour lines: horizontal rings on the head, vertical lines on the body
+  shell(1500,[-1,1,.95,3,-1,1.05],function(p){return Math.abs(p[1]*10-Math.round(p[1]*10))<.07;},function(p,n){return dim(TwinSDF.color(p,n),.75);});
+  shell(900,[-2,2,-2.3,.9,-1,1],function(p){return Math.abs(p[0]*6-Math.round(p[0]*6))<.05;},function(p,n){return dim(TwinSDF.color(p,n),.7);});
+  // x-ray skeleton: spine, ribs, collarbones
+  for(var v=0;v<30;v++){var vy=1.25-v*.112;for(var vp=0;vp<10;vp++)put([(rnd()-.5)*.12,vy+(rnd()-.5)*.06,-.25+(rnd()-.5)*.1],dim(VIOLET,.6));}
+  for(var rb=0;rb<7;rb++){var ry=.35-rb*.27,rx=.95-rb*.04;
+    for(var sd=-1;sd<=1;sd+=2)for(var rp=0;rp<50;rp++){var th=rp/49*Math.PI;put([sd*rx*Math.sin(th),ry-.12*Math.sin(th),-.25+.35*(1-Math.cos(th))],dim(VIOLET,.55));}}
+  for(var cl=-1;cl<=1;cl+=2)for(var cp=0;cp<60;cp++){var cu=cp/59;put([cl*(.1+1.05*cu),.75-.2*cu,.25-.25*cu],dim(VIOLET,.6));}
+  // neural lattice inside the head
+  var NN=[];for(var ni=0;ni<36;ni++){var nu=rnd()*2-1,nt=rnd()*6.2832,ns=Math.sqrt(1-nu*nu),nr=Math.cbrt(rnd());
+    NN.push([ns*Math.cos(nt)*.5*nr,2.0+nu*.66*nr,ns*Math.sin(nt)*.58*nr]);}
+  NN.forEach(function(p){for(var z=0;z<5;z++)put([p[0]+(rnd()-.5)*.04,p[1]+(rnd()-.5)*.04,p[2]+(rnd()-.5)*.04],[.8,.7,1]);});
+  NN.forEach(function(p,ia){var best=NN.map(function(q,ib){return [ib,(p[0]-q[0])*(p[0]-q[0])+(p[1]-q[1])*(p[1]-q[1])+(p[2]-q[2])*(p[2]-q[2])];})
+    .filter(function(x){return x[0]>ia;}).sort(function(a,b){return a[1]-b[1];}).slice(0,2);
+    best.forEach(function(bq){var q=NN[bq[0]];for(var z=1;z<8;z++){var w=z/8;put([p[0]+(q[0]-p[0])*w,p[1]+(q[1]-p[1])*w,p[2]+(q[2]-p[2])*w],dim(VIOLET,.7));}});});
+  // orbiting gyroscope rings (aRing = signed spin speed around the vertical axis; aura points use aRing <= -10)
+  [[1.95,1.3,.35,.55,CYAN,420],[-.2,2.45,-.22,-.32,GOLD,620],[.8,1.85,.95,.75,VIOLET,440]].forEach(function(R){
+    for(var o=0;o<R[5];o++){var th=rnd()*6.2832;if(R[4]===GOLD&&(th*7%1)<.35)continue;
+      var px=Math.cos(th)*R[1],pz=Math.sin(th)*R[1],py=-pz*Math.sin(R[2]),pz2=pz*Math.cos(R[2]);
+      put([px*S+(rnd()-.5)*.03,(R[0]+py)*S+OY+(rnd()-.5)*.03,pz2*S],(th*5%1)<.06?[1,1,1]:R[4],R[3],true);}});
+  // rising data aura (aRing = -(10 + upward speed))
+  for(var au=0;au<1100;au++){var at=rnd()*6.2832,ar=1.9+rnd()*1.8;put([Math.cos(at)*ar,-3.2+rnd()*7,Math.sin(at)*ar*.7],[.3,.6,.9],-(10.25+rnd()*.4),true);}
+  // the lit shell: head, then body
   shell(Math.floor((N-j)*.42),[-1,1,.8,3,-1,1.05]);
   shell(N-j,[-2,2,-2.3,1.1,-1,1]);
   while(j<N)put([0,-6,0],[0,0,0]);
@@ -894,23 +944,27 @@ for(var i=0;i<N;i++){
 
 /* ================= three.js ================= */
 var canvas=document.getElementById('gl'),hasGL=typeof THREE!=='undefined';
-var renderer,scene,camera,group,geo,mat,HI=[0,0,0,0,0,0,0,0,0,0],HI_T=HI.slice();
+var renderer,scene,camera,group,geo,mat,bgMat,bgGroup,HI=[0,0,0,0,0,0,0,0,0,0],HI_T=HI.slice();
 var VERT=[
   'attribute vec3 aCol;attribute vec3 aRand;attribute vec3 aDir;attribute vec3 aGrid;attribute vec3 aGA;attribute vec3 aGB;',
-  'attribute float aGS;attribute float aNode;attribute float aE1;attribute float aE2;',
+  'attribute float aGS;attribute float aNode;attribute float aE1;attribute float aE2;attribute float aRing;',
   'uniform float uA;uniform float uB;uniform float uM;uniform float uBurst;uniform float uTime;uniform float uFlow;uniform float uIntro;',
   'uniform float uSize;uniform float uPixel;uniform float uGold;uniform float uScan;uniform float uHolo;uniform float uHi[10];',
   'uniform float uPulse;uniform float uRipple;',
-  'varying float vS;varying vec3 vCol;varying float vGlow;varying float vScan;',
+  'varying float vS;varying vec3 vCol;varying float vGlow;varying float vScan;varying float vFade;',
+  'vec3 twin(){vec3 p=position;',
+  ' if(aRing<-9.5){p.y=mod(p.y+3.2+uTime*(-aRing-10.0),7.0)-3.2;}',
+  ' else if(aRing!=0.0){float a=uTime*aRing;float c=cos(a),s=sin(a);p=vec3(p.x*c+p.z*s,p.y,-p.x*s+p.z*c);}',
+  ' return p;}',
   'float hiAt(float k){float v=0.0;for(int j=0;j<10;j++){if(abs(float(j)-k)<0.5)v=uHi[j];}return v;}',
   'vec3 formAt(float s){',
-  ' if(s<0.5)return position;',
+  ' if(s<0.5)return twin();',
   ' if(s<1.5)return vec3((aRand.x-0.5)*15.0,5.0-fract(aRand.y+uTime*0.07*(0.5+aRand.z))*10.0,(aRand.z-0.5)*8.0);',
-  ' if(s<2.5){float st=mod(aGrid.z,15.0)<0.5?0.12:0.0;return vec3(aGrid.x,aGrid.y*0.82,aGrid.y*0.57+sin(aGrid.z*0.14+uTime*0.9)*0.07+st);}',
+  ' if(s<2.5){float st=mod(aGrid.z,20.0)<0.5?0.12:0.0;return vec3(aGrid.x,aGrid.y*0.82,aGrid.y*0.57+sin(aGrid.z*0.14+uTime*0.9)*0.07+st);}',
   ' if(s<3.5){float lane=floor(aRand.x*7.0);float u=fract(aRand.y+uFlow*0.05*(0.6+aRand.z*0.8));float px=(u-0.5)*18.0;',
   '   return vec3(px,(lane-3.0)*0.85+sin(px*0.5+lane*1.3+uTime*0.6)*0.5+(aRand.z-0.5)*0.14,sin(px*0.3+lane)*1.2+(fract(aRand.x*7.0)-0.5)*0.2);}',
   ' if(s<4.5){if(aGS<0.0)return aGA;float w=fract(aRand.z+uTime*aGS);return mix(aGA,aGB,w)+aDir*0.04;}',
-  ' return position+vec3(sin(uTime*0.9+position.y)*0.03,0.0,0.0);',
+  ' vec3 tw=twin();return tw+vec3(sin(uTime*0.9+tw.y)*0.03,0.0,0.0);',
   '}',
   'void main(){',
   ' vec3 p=formAt(uA);',
@@ -922,17 +976,18 @@ var VERT=[
   ' float g=aNode>-0.5?hiAt(aNode):min(hiAt(aE1),hiAt(aE2));g*=uGold;',
   ' float qy=(p.y-uScan)*2.2;float sc=uHolo*exp(-qy*qy);',
   ' vS=aRand.x;vCol=aCol;vGlow=g;vScan=sc;',
+  ' float fa=aRing<-9.5?sin(3.14159*clamp((p.y+3.2)/7.0,0.0,1.0)):1.0;vFade=mix(1.0,fa,uHolo);',
   ' gl_PointSize=uSize*uPixel*(0.45+aRand.x*0.9)*(1.0+g*1.4+sc*0.5+uPulse*0.3)/-mv.z;',
   '}'].join('\n');
 var FRAG=[
   'uniform vec3 uCA;uniform vec3 uCB;uniform vec3 uHot;uniform vec3 uTint;uniform float uTintAmt;uniform float uAlpha;uniform float uPhoto;uniform float uPulse;',
-  'varying float vS;varying vec3 vCol;varying float vGlow;varying float vScan;',
+  'varying float vS;varying vec3 vCol;varying float vGlow;varying float vScan;varying float vFade;',
   'void main(){vec2 c=gl_PointCoord-0.5;float d=length(c);if(d>0.5)discard;float a=1.0-smoothstep(0.0,0.5,d);a*=a;',
   ' vec3 base=mix(uCA,uCB,vS);vec3 twin=vCol*1.1;',
   ' vec3 col=mix(base,twin,uPhoto);',
   ' float lum=dot(vCol,vec3(0.299,0.587,0.114));col=mix(col,uTint*(0.45+lum*1.1),uTintAmt*uPhoto);',
   ' col=mix(col,uHot,clamp(vGlow,0.0,1.0))+vec3(0.35,0.8,1.0)*vScan+vec3(0.25,0.55,0.7)*uPulse*uPhoto*0.4;',
-  ' gl_FragColor=vec4(col,a*(uAlpha+vGlow*0.7));}'].join('\n');
+  ' gl_FragColor=vec4(col,a*(uAlpha+vGlow*0.7)*vFade);}'].join('\n');
 if(hasGL){
   try{
     renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:false,alpha:false,powerPreference:'high-performance'});
@@ -941,7 +996,7 @@ if(hasGL){
     group=new THREE.Group();scene.add(group);
     geo=new THREE.BufferGeometry();
     geo.setAttribute('position',new THREE.BufferAttribute(avPos,3));geo.setAttribute('aCol',new THREE.BufferAttribute(avCol,3));
-    [['aRand',aRand,3],['aDir',aDir,3],['aGrid',aGrid,3],['aGA',aGA,3],['aGB',aGB,3],['aGS',aGS,1],['aNode',aNode,1],['aE1',aE1,1],['aE2',aE2,1]]
+    [['aRand',aRand,3],['aDir',aDir,3],['aGrid',aGrid,3],['aGA',aGA,3],['aGB',aGB,3],['aGS',aGS,1],['aNode',aNode,1],['aE1',aE1,1],['aE2',aE2,1],['aRing',aRing,1]]
       .forEach(function(x){geo.setAttribute(x[0],new THREE.BufferAttribute(x[1],x[2]));});
     mat=new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,vertexShader:VERT,fragmentShader:FRAG,
       uniforms:{uA:{value:0},uB:{value:0},uM:{value:0},uBurst:{value:0},uTime:{value:0},uFlow:{value:0},uIntro:{value:0},
@@ -949,6 +1004,27 @@ if(hasGL){
         uPulse:{value:0},uRipple:{value:0},uCA:{value:new THREE.Color()},uCB:{value:new THREE.Color()},uHot:{value:new THREE.Color('#fff3c4')},
         uTint:{value:new THREE.Color('#9fd8ff')},uTintAmt:{value:0},uAlpha:{value:.8},uPhoto:{value:1}}});
     var pts=new THREE.Points(geo,mat);pts.frustumCulled=false;group.add(pts);
+    // background: twinkling starfield with depth, and a holographic dot-floor that flows toward the camera
+    var BG_STARS=3200,FX=88,FZ=40,bgN=BG_STARS+FX*FZ,bgPos=new Float32Array(bgN*3),bgInfo=new Float32Array(bgN*2);
+    for(var b2=0;b2<BG_STARS;b2++){var bu=rnd()*2-1,bt=rnd()*6.2832,bs=Math.sqrt(1-bu*bu),br=24+rnd()*32;
+      bgPos[b2*3]=bs*Math.cos(bt)*br;bgPos[b2*3+1]=bu*br*.6;bgPos[b2*3+2]=-Math.abs(bs*Math.sin(bt)*br)-6;bgInfo[b2*2]=0;bgInfo[b2*2+1]=rnd();}
+    for(var fx=0;fx<FX;fx++)for(var fz=0;fz<FZ;fz++){var bi=BG_STARS+fx*FZ+fz;
+      bgPos[bi*3]=(fx-(FX-1)/2)*.25;bgPos[bi*3+1]=-4.7;bgPos[bi*3+2]=-32+fz*.95;bgInfo[bi*2]=1;bgInfo[bi*2+1]=rnd();}
+    var bgGeo=new THREE.BufferGeometry();bgGeo.setAttribute('position',new THREE.BufferAttribute(bgPos,3));bgGeo.setAttribute('aInfo',new THREE.BufferAttribute(bgInfo,2));
+    bgMat=new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,
+      uniforms:{uTime:{value:0},uPixel:{value:renderer.getPixelRatio()},uColor:{value:new THREE.Color('#9fd8ff')},uBgA:{value:1}},
+      vertexShader:['attribute vec2 aInfo;uniform float uTime;uniform float uPixel;varying float vA;varying float vK;',
+        'void main(){vec3 p=position;float a;',
+        ' if(aInfo.x>0.5){p.z=mod(p.z+32.0+uTime*1.1,38.0)-32.0;a=smoothstep(-32.0,-12.0,p.z)*(1.0-smoothstep(1.0,6.0,p.z));',
+        '  a*=0.55+0.45*sin(uTime*1.4+aInfo.y*30.0+p.x*0.6);}',
+        ' else{a=0.3+0.7*(0.5+0.5*sin(uTime*(0.5+aInfo.y*2.0)+aInfo.y*60.0));}',
+        ' vec4 mv=modelViewMatrix*vec4(p,1.0);gl_Position=projectionMatrix*mv;',
+        ' gl_PointSize=uPixel*(aInfo.x>0.5?40.0/-mv.z:(1.0+aInfo.y*1.9));vA=a;vK=aInfo.x;}'].join('\n'),
+      fragmentShader:['uniform vec3 uColor;uniform float uBgA;varying float vA;varying float vK;',
+        'void main(){vec2 c=gl_PointCoord-0.5;float d=length(c);if(d>0.5)discard;float s=1.0-smoothstep(0.0,0.5,d);',
+        ' vec3 col=vK>0.5?uColor:mix(vec3(0.78,0.86,1.0),uColor,0.35);',
+        ' gl_FragColor=vec4(col,s*vA*(vK>0.5?0.5:0.85)*uBgA);}'].join('\n')});
+    bgGroup=new THREE.Group();var bgPts=new THREE.Points(bgGeo,bgMat);bgPts.frustumCulled=false;bgGroup.add(bgPts);scene.add(bgGroup);
   }catch(err){hasGL=false;canvas.style.display='none';}
 }
 var tA,tB,v3;
@@ -1438,6 +1514,8 @@ function frame(now){
     group.rotation.y=Math.sin(t*.12)*.22*(1-photo)+smx*(.5+photo*.5)+Math.sin(t*.35)*.06*photo;
     group.rotation.x=smy*(.25+photo*.1);
     camera.position.z=14-Math.sin(Math.PI*m)*1.5;
+    bgMat.uniforms.uTime.value=t;bgMat.uniforms.uColor.value.copy(U.uCB.value);bgMat.uniforms.uBgA.value=WIDE?1:.75;
+    bgGroup.rotation.y=smx*.07;bgGroup.rotation.x=smy*.03;
     renderer.render(scene,camera);
     hEl.classList.toggle('on',photo>.5&&intro>.9);
     group.updateMatrixWorld();
