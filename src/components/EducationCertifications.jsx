@@ -80,14 +80,20 @@ export default function EducationCertifications() {
                       <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800">
                         {getCertIcon(cert.icon)}
                       </div>
-                      <a
-                        href={cert.verifyUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-[10px] font-mono text-emerald-400 hover:text-emerald-300 px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 flex items-center gap-1 transition-colors"
-                      >
-                        Verified <ExternalLink className="w-2.5 h-2.5" />
-                      </a>
+                      {cert.credentialUrl ? (
+                        <a
+                          href={cert.credentialUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-[10px] font-mono text-emerald-400 hover:text-emerald-300 px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 flex items-center gap-1 transition-colors"
+                        >
+                          Verified <ExternalLink className="w-2.5 h-2.5" />
+                        </a>
+                      ) : (
+                        <span className="text-[10px] font-mono text-slate-400 px-2 py-0.5 rounded bg-slate-800 border border-slate-700">
+                          {cert.date}
+                        </span>
+                      )}
                     </div>
 
                     <h4 className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors leading-tight">
@@ -98,12 +104,12 @@ export default function EducationCertifications() {
                   <div className="pt-4 mt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
                     <span className="font-semibold text-slate-300">{cert.issuer}</span>
                     <a
-                      href={cert.verifyUrl}
+                      href={cert.credentialUrl || cert.issuerUrl}
                       target="_blank"
                       rel="noreferrer"
                       className="font-mono text-[11px] text-cyan-400 hover:text-cyan-300 flex items-center gap-1 transition-colors"
                     >
-                      Verify <ExternalLink className="w-3 h-3" />
+                      {cert.credentialUrl ? 'View credential' : 'Issuer'} <ExternalLink className="w-3 h-3" />
                     </a>
                   </div>
                 </div>

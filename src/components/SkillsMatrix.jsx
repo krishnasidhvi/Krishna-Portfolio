@@ -129,12 +129,18 @@ export default function SkillsMatrix() {
                       </span>
                     </div>
 
-                    {/* Progress Bar */}
-                    <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden p-0.5 border border-slate-800">
-                      <div
-                        className="h-full bg-gradient-to-r from-cyan-500 via-sky-400 to-blue-500 rounded-full transition-all duration-1000 group-hover:brightness-125"
-                        style={{ width: `${skill.level}%` }}
-                      />
+                    {/* Evidence: where this skill was used */}
+                    <div className="flex flex-wrap items-center gap-1.5 text-[10.5px] font-mono">
+                      {skill.usedAt.length ? (
+                        <>
+                          <span className="text-slate-500">Used at</span>
+                          {skill.usedAt.map((c) => (
+                            <span key={c} className="px-2 py-0.5 rounded-md bg-cyan-500/10 border border-cyan-500/25 text-cyan-300">{c}</span>
+                          ))}
+                        </>
+                      ) : (
+                        <span className="text-slate-500">Academic and personal projects</span>
+                      )}
                     </div>
                   </div>
                 ))}

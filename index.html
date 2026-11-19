@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Krishna Sidhvi Nekkanti · Medallion Reel</title>
-<meta name="description" content="Forward Deployment AI Engineer and data engineer. A cinematic reel: my career refined through raw, bronze, silver and gold data layers. Ask my hologram, or query my career in SQL.">
+<meta name="description" content="Forward Deployment AI Engineer and data engineer. A cinematic reel: my career refined through raw, bronze, silver and gold data layers. Ask my AI twin, query my career in SQL, or open the recruiter dossier.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://krishnasidhvi.github.io/Krishna-Portfolio/">
 <meta property="og:title" content="Krishna Sidhvi Nekkanti · Medallion Reel">
-<meta property="og:description" content="Forward Deployment AI Engineer (AgentSQL, MCP, Snowflake, Databricks). Ask my hologram, or query my career in SQL.">
+<meta property="og:description" content="Forward Deployment AI Engineer (AgentSQL, MCP, Snowflake, Databricks). Ask my AI twin, or query my career in SQL.">
 <meta property="og:image" content="https://krishnasidhvi.github.io/Krishna-Portfolio/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -18,17 +18,17 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23050507'/><circle cx='16' cy='16' r='9' fill='none' stroke='%239fd8ff' stroke-width='2'/><circle cx='16' cy='16' r='3' fill='%23ffd36b'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,900&family=Geist:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,900&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: fixed WebGL particle stage + fixed stack of text layers that travel along the z-axis as you scroll; letterbox HUD top and bottom.
-   Phones: the hologram sits in the upper half and each layer becomes a bottom panel. */
+/* Layout: fixed WebGL particle stage + fixed stack of text layers that travel along the z-axis as you scroll;
+   letterbox HUD top and bottom, timeline scrubber above the bottom bar. Phones: twin on top, layers as bottom panels. */
 :root{
-  --bg:#050507; --ink:#EEF0F4; --dim:#8D93A0; --bar:#000; --hot:#fff3c4;
+  --bg:#050507; --ink:#EEF0F4; --dim:#8D93A0; --bar:#000; --hot:#fff3c4; --line:#ffffff1c;
   --layer:#9fd8ff;
   --f-title:"Archivo",ui-sans-serif,system-ui,sans-serif;
   --f-body:"Geist",ui-sans-serif,system-ui,sans-serif;
   --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
-  --bar-h:52px;
+  --bar-h:52px; --scrub-h:34px;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -40,10 +40,11 @@ body{overflow-x:hidden}
 .grain{position:fixed;inset:-50%;pointer-events:none;z-index:2;opacity:.09;mix-blend-mode:overlay;animation:grain .7s steps(6) infinite}
 @keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-4%)}60%{transform:translate(-4%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+a{color:inherit}
 
 /* letterbox HUD */
 .bar{position:fixed;left:0;right:0;height:calc(var(--bar-h) + env(safe-area-inset-top,0px));background:var(--bar);z-index:5;
-  display:flex;align-items:center;gap:14px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;color:var(--dim);
+  display:flex;align-items:center;gap:12px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;color:var(--dim);
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .bar.top{top:0;padding-top:env(safe-area-inset-top,0px)}
 .bar.bot{bottom:0;height:calc(var(--bar-h) + env(safe-area-inset-bottom,0px));padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -52,15 +53,30 @@ body{overflow-x:hidden}
 @keyframes rec{50%{opacity:.25}}
 .sp{flex:1}
 .layer-name{color:var(--layer);transition:color .6s;white-space:nowrap}
-.btn{font:inherit;letter-spacing:inherit;color:var(--ink);background:transparent;border:1px solid #2b2f38;border-radius:999px;padding:7px 13px;cursor:pointer;text-transform:uppercase;white-space:nowrap;text-decoration:none}
+.btn{font:inherit;letter-spacing:inherit;color:var(--ink);background:transparent;border:1px solid #2b2f38;border-radius:999px;padding:7px 13px;cursor:pointer;text-transform:uppercase;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
 .btn:hover{border-color:var(--layer);color:var(--layer)}
 .btn[aria-pressed="true"]{border-color:var(--layer);color:var(--layer)}
-.btn.askb{border-color:#9fd8ff66;color:#bfe9ff}
-button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--layer);outline-offset:3px}
+.btn.hl{border-color:#9fd8ff66;color:#bfe9ff}
+.btn.solid{background:#9fd8ff;color:#03070c;border-color:#9fd8ff}
+.btn.solid:hover{filter:brightness(1.08);color:#03070c}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--layer);outline-offset:3px}
 .sql{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1;color:#c9cdd6}
 .sql .kw{color:var(--layer)}
 .caret{display:inline-block;width:7px;height:13px;background:var(--layer);vertical-align:-2px;margin-left:2px;animation:rec 1s steps(2) infinite}
 .hide-sm{display:inline}
+
+/* timeline scrubber */
+.scrub{position:fixed;left:0;right:0;bottom:calc(var(--bar-h) + env(safe-area-inset-bottom,0px));height:var(--scrub-h);z-index:5;
+  background:linear-gradient(transparent,#000c);touch-action:none;cursor:pointer;user-select:none}
+.scrub-in{position:absolute;left:max(24px,env(safe-area-inset-left,0px));right:max(24px,env(safe-area-inset-right,0px));top:0;bottom:0}
+.rail{position:absolute;left:0;right:0;top:9px;height:2px;background:#ffffff22;border-radius:2px}
+.rail i{position:absolute;left:0;top:0;bottom:0;background:var(--layer);box-shadow:0 0 10px var(--layer);border-radius:2px;width:0}
+.rail b{position:absolute;top:50%;width:13px;height:13px;margin:-6.5px 0 0 -6.5px;border-radius:50%;background:var(--bg);border:2px solid var(--layer);box-shadow:0 0 12px var(--layer)}
+.mk{position:absolute;top:16px;transform:translateX(-50%);font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;color:#6b7280;white-space:nowrap;text-transform:uppercase;pointer-events:none}
+.mk::before{content:"";position:absolute;left:50%;top:-9px;width:1px;height:6px;background:#ffffff40}
+.mk.on{color:var(--layer)}
+.mk:first-child{transform:none}.mk:last-child{transform:translateX(-100%)}
+.mk:first-child::before{left:0}.mk:last-child::before{left:auto;right:0}
 
 /* depth gauge */
 .gauge{position:fixed;left:max(20px,env(safe-area-inset-left,0px));top:50%;transform:translateY(-50%);z-index:4;display:flex;flex-direction:column;gap:14px}
@@ -69,7 +85,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 .tick.on{color:var(--layer)}
 .tick.on i{width:40px;background:var(--layer);box-shadow:0 0 8px var(--layer)}
 
-/* hologram state badge */
+/* twin state badge */
 .hstate{position:fixed;z-index:3;right:max(20px,env(safe-area-inset-right,0px));top:calc(var(--bar-h) + 16px);font-family:var(--f-mono);font-size:10.5px;letter-spacing:.16em;
   text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:8px;opacity:0;transition:opacity .5s;pointer-events:none}
 .hstate.on{opacity:1}
@@ -85,7 +101,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 .nl.hot{color:#120d00;background:var(--hot);box-shadow:0 0 18px #ffd978}
 
 /* z-axis text layers */
-.stage{position:fixed;inset:var(--bar-h) 0;z-index:4;pointer-events:none}
+.stage{position:fixed;left:0;right:0;top:var(--bar-h);bottom:calc(var(--bar-h) + var(--scrub-h));z-index:4;pointer-events:none}
 .layer{position:absolute;left:clamp(110px,12vw,220px);top:50%;width:min(600px,calc(100vw - 150px));transform-origin:20% 50%;
   display:flex;flex-direction:column;gap:14px;will-change:transform,opacity,filter;opacity:0}
 .layer.live{pointer-events:auto}
@@ -94,11 +110,14 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
   font-size:clamp(2rem,5vw,4.4rem);margin:0;text-wrap:balance;text-shadow:0 4px 40px rgba(0,0,0,.8)}
 .title em{font-style:normal;color:var(--layer)}
 .body{font-size:clamp(.96rem,1.2vw,1.06rem);line-height:1.62;color:#c4c8d1;max-width:52ch;margin:0;text-shadow:0 2px 18px rgba(0,0,0,.95)}
-.metrics{display:flex;flex-wrap:wrap;gap:10px 26px;padding-top:6px;border-top:1px solid #ffffff1c}
+.metrics{display:flex;flex-wrap:wrap;gap:10px 26px;padding-top:6px;border-top:1px solid var(--line)}
 .metric{display:flex;flex-direction:column;gap:2px}
 .metric b{font-family:var(--f-title);font-stretch:125%;font-weight:700;font-size:1.45rem;color:var(--ink);font-variant-numeric:tabular-nums}
 .metric span{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
 .stack{font-family:var(--f-mono);font-size:11px;color:var(--dim);letter-spacing:.04em}
+.glance{display:flex;flex-wrap:wrap;gap:6px 12px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:#c9d4e2;text-transform:uppercase;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:8px 0}
+.glance b{color:#7ee2a8;font-weight:500}
 .cta{display:flex;flex-wrap:wrap;gap:10px}
 .cta a,.cta button{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);text-decoration:none;
   border:1px solid #ffffff33;border-radius:999px;padding:9px 15px;background:#00000066;backdrop-filter:blur(6px);cursor:pointer}
@@ -106,8 +125,10 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 .cta .primary{background:var(--layer);color:#050507;border-color:var(--layer)}
 .cta .primary:hover{color:#050507;filter:brightness(1.1)}
 .hint{font-family:var(--f-mono);font-size:11px;letter-spacing:.2em;color:var(--dim);display:flex;align-items:center;gap:10px}
-.hint i{display:block;width:1px;height:34px;background:linear-gradient(var(--layer),transparent);animation:drop 1.8s ease-in-out infinite}
+.hint i{display:block;width:1px;height:30px;background:linear-gradient(var(--layer),transparent);animation:drop 1.8s ease-in-out infinite}
 @keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.clock{font-family:var(--f-mono);font-size:11px;color:var(--dim);letter-spacing:.06em}
+.clock b{color:var(--ink);font-weight:500}
 
 /* live feed (silver) */
 .live{display:flex;align-items:center;gap:14px;border:1px solid #ffffff22;border-radius:10px;padding:10px 12px;background:#0009;backdrop-filter:blur(6px);max-width:520px}
@@ -118,7 +139,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 .pulse{display:inline-block;width:7px;height:7px;border-radius:50%;background:#7ee2a8;box-shadow:0 0 8px #7ee2a8;margin-right:6px;animation:rec 1.6s infinite}
 .pulse.off{background:#ffb86b;box-shadow:0 0 8px #ffb86b}
 
-/* SQL console (gold) */
+/* SQL console (gold) + ask (insight) */
 .console{display:flex;flex-direction:column;gap:8px;border:1px solid #ffd97844;border-radius:12px;padding:12px;background:#07060399;backdrop-filter:blur(8px)}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chips button{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.04em;color:var(--chip,#ffd978);background:color-mix(in srgb,var(--chip,#ffd978) 9%,transparent);
@@ -135,8 +156,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 .meta{font-family:var(--f-mono);font-size:10.5px;color:var(--dim);padding:4px 2px}
 .err{font-family:var(--f-mono);font-size:11.5px;color:#ff9d8a;padding:4px 2px}
 .schema{font-family:var(--f-mono);font-size:10px;color:var(--dim);letter-spacing:.04em}
-
-/* ask my hologram (insight) */
 .ask{--chip:#9fd8ff;display:flex;flex-direction:column;gap:8px;border:1px solid #9fd8ff44;border-radius:12px;padding:12px;background:#03070c99;backdrop-filter:blur(8px)}
 .ask .qrow button.go{background:#9fd8ff;color:#03070c}
 .ask .qrow .mic{background:transparent;border:1px solid #c08bff66;color:#d9b8ff;padding:0 11px;font-size:13px}
@@ -153,6 +172,15 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 .tiny{font-family:var(--f-mono);font-size:10px;color:var(--dim);letter-spacing:.03em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .tiny button{font:inherit;color:#bfe9ff;background:none;border:1px solid #2b2f38;border-radius:999px;padding:3px 9px;cursor:pointer}
 
+/* sound prompt */
+.toast{position:fixed;z-index:6;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(var(--bar-h) + var(--scrub-h) + 12px + env(safe-area-inset-bottom,0px));
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;max-width:min(380px,calc(100vw - 32px));padding:10px 12px;border-radius:12px;border:1px solid #9fd8ff44;
+  background:#03070ce6;backdrop-filter:blur(10px);font-family:var(--f-mono);font-size:11.5px;color:#cfe9ff;transform:translateY(12px);opacity:0;transition:opacity .4s,transform .4s}
+.toast.on{opacity:1;transform:none}
+.toast span{flex:1 1 180px}
+.toast button{font:inherit;font-size:11px;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:6px 11px;cursor:pointer;border:1px solid #2b2f38;background:none;color:var(--dim)}
+.toast button.y{background:#9fd8ff;color:#03070c;border-color:#9fd8ff}
+
 /* intro shutter + opening titles */
 .shutter{position:fixed;left:0;right:0;height:50vh;background:#000;z-index:8;transition:transform 1.6s cubic-bezier(.7,0,.2,1)}
 .shutter.t{top:0}.shutter.b{bottom:0}
@@ -160,13 +188,14 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 .intro{position:fixed;inset:0;z-index:10;background:#000;transition:opacity .9s ease;cursor:pointer}
 .intro.gone{opacity:0;pointer-events:none}
 .intro>*{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center}
-.boot{font-family:var(--f-mono);font-size:13px;letter-spacing:.06em;color:#8D93A0;margin:0;white-space:nowrap;opacity:0;transition:opacity .3s}
+.boot{font-family:var(--f-mono);font-size:13px;line-height:1.9;letter-spacing:.05em;color:#8D93A0;margin:0;width:min(640px,92vw);opacity:0;transition:opacity .3s}
 .boot.on{opacity:1}
+.boot b{color:#cfe9ff;font-weight:500}
 .credit{display:flex;flex-direction:column;gap:14px;align-items:center;width:92vw;opacity:0}
 .credit .cap{font-family:var(--f-mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--c,#9fd8ff)}
 .credit .big{font-family:var(--f-title);font-stretch:125%;font-weight:900;text-transform:uppercase;line-height:.95;
   font-size:clamp(2rem,7.5vw,6.5rem);color:#fff;text-shadow:0 0 30px var(--c,#9fd8ff),0 0 80px var(--c,#9fd8ff)}
-.credit.on{animation:cred .6s cubic-bezier(.2,.7,.2,1) forwards}
+.credit.on{animation:cred .55s cubic-bezier(.2,.7,.2,1) forwards}
 @keyframes cred{0%{opacity:0;letter-spacing:.45em;filter:blur(10px)}35%{opacity:1;filter:blur(0)}100%{opacity:1;letter-spacing:.01em;filter:blur(0)}}
 .flare{width:100vw;height:2px;background:linear-gradient(90deg,transparent,var(--c,#bfe9ff),#fff,var(--c,#bfe9ff),transparent);
   box-shadow:0 0 24px var(--c,#bfe9ff);opacity:0;transform:translate(-50%,-50%) scaleX(0)}
@@ -178,35 +207,101 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 .compile span{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#8D93A0}
 .compile i{display:block;height:1px;width:100%;background:#bfe9ff;box-shadow:0 0 10px #bfe9ff;transform-origin:left;transform:scaleX(var(--p,0))}
 .intro>.skip{left:auto;top:auto;right:max(20px,env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:none;
-  font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8D93A0;background:none;border:1px solid #2b2f38;border-radius:999px;padding:8px 14px;cursor:pointer}
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#cfd5df;background:none;border:1px solid #3a404c;border-radius:999px;padding:9px 15px;cursor:pointer}
 .intro>.skip:hover{color:#fff;border-color:#8D93A0}
 
-/* recruiter cut */
-.cut{position:fixed;inset:0;z-index:9;background:rgba(5,5,7,.94);backdrop-filter:blur(14px);overflow:auto;
-  padding:calc(var(--bar-h) + 20px) max(20px,env(safe-area-inset-right,0px)) 40px max(20px,env(safe-area-inset-left,0px))}
-.cut-in{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
-.cut h2{font-family:var(--f-title);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:clamp(1.6rem,4vw,2.4rem);margin:0;line-height:1}
-.cut h3{margin:0;font-size:1.02rem}
-.cut p{margin:0;color:#c4c8d1;line-height:1.6}
-.cut .role{display:grid;grid-template-columns:150px 1fr;gap:16px;border-top:1px solid #ffffff1a;padding-top:14px}
-.cut .role>div{min-width:0;display:flex;flex-direction:column;gap:4px}
-.cut .when{font-family:var(--f-mono);font-size:11.5px;color:var(--dim)}
-.cut .top-row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+/* dialogs: recruiter dossier + AR */
+.dlg{position:fixed;inset:0;z-index:9;background:rgba(5,5,7,.96);backdrop-filter:blur(14px);overflow:auto;
+  padding:calc(var(--bar-h) + 20px) max(20px,env(safe-area-inset-right,0px)) 60px max(20px,env(safe-area-inset-left,0px))}
+.dlg-in{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:30px}
+.dtop{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;position:sticky;top:-20px;z-index:2;padding:10px 0;background:linear-gradient(#050507,#050507f0 70%,transparent)}
+.dsec{display:flex;flex-direction:column;gap:14px}
+.dsec h3{margin:0;font-family:var(--f-mono);font-size:11.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#9fd8ff;border-bottom:1px solid var(--line);padding-bottom:8px}
+.dhead{display:grid;grid-template-columns:132px 1fr;gap:24px;align-items:center}
+.dhead img{width:132px;height:132px;object-fit:cover;object-position:50% 18%;border-radius:16px;border:1px solid #ffffff2a}
+.dhead h2{font-family:var(--f-title);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:clamp(1.6rem,4vw,2.5rem);margin:0;line-height:1}
+.dhead .role{font-size:1.05rem;color:#cfe9ff;margin-top:6px}
+.dhead .row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.glance-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.glance-grid div{background:#0a0c11;padding:12px 14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.glance-grid span{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.glance-grid b{font-weight:500;color:var(--ink);font-size:.98rem}
+.glance-grid b span{font-family:inherit;font-size:inherit;letter-spacing:0;text-transform:none;color:var(--dim)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.tile{border:1px solid var(--line);border-radius:12px;padding:14px;background:#0a0c11;display:flex;flex-direction:column;gap:6px;min-width:0}
+.tile b{font-family:var(--f-title);font-stretch:125%;font-weight:900;font-size:1.9rem;color:#fff;font-variant-numeric:tabular-nums}
+.tile span{font-weight:600;color:#cfe9ff}
+.tile p{margin:0;font-size:.88rem;color:#a9b0bd;line-height:1.5}
+.pitch{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.pitch li{padding-left:22px;position:relative;line-height:1.6;color:#d9dee7}
+.pitch li::before{content:"";position:absolute;left:4px;top:.6em;width:8px;height:8px;border-radius:2px;background:#9fd8ff;box-shadow:0 0 10px #9fd8ff}
+.xp{display:grid;grid-template-columns:170px 1fr;gap:18px;border-top:1px solid var(--line);padding-top:16px}
+.xp:first-of-type{border-top:0;padding-top:0}
+.xp .when{font-family:var(--f-mono);font-size:11.5px;color:var(--dim);line-height:1.6}
+.xp>div{min-width:0;display:flex;flex-direction:column;gap:6px}
+.xp h4{margin:0;font-size:1.05rem}
+.xp h4 small{font-weight:400;color:var(--dim);font-size:.9rem}
+.xp p{margin:0;color:#b8bfcb;line-height:1.55;font-size:.93rem}
+.xp ul{margin:2px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:5px;color:#d3d8e1;font-size:.92rem;line-height:1.55}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.tags span{font-family:var(--f-mono);font-size:10.5px;padding:3px 8px;border-radius:6px;background:#9fd8ff12;border:1px solid #9fd8ff2e;color:#bfe3f7}
+.skg{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.skc{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#0a0c11;display:flex;flex-direction:column;gap:8px;min-width:0}
+.skc h4{margin:0;font-size:.95rem}
+.sk{display:flex;justify-content:space-between;gap:10px;font-size:.88rem;color:#d3d8e1;border-top:1px solid #ffffff0d;padding-top:6px}
+.sk em{font-style:normal;font-family:var(--f-mono);font-size:10.5px;color:#7ee2a8;text-align:right}
+.sk em.n{color:#6b7280}
+.prj{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.prj>div{border:1px solid var(--line);border-radius:12px;padding:14px;background:#0a0c11;display:flex;flex-direction:column;gap:6px;min-width:0}
+.prj h4{margin:0;font-size:.98rem}.prj p{margin:0;font-size:.88rem;color:#b8bfcb;line-height:1.5}
+.prj b{font-family:var(--f-mono);font-size:11px;color:#ffd36b;font-weight:500}
+.prj a{font-family:var(--f-mono);font-size:11px;color:#9fd8ff}
+.edu{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.edu>div{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#0a0c11;display:flex;flex-direction:column;gap:4px;min-width:0}
+.edu span{font-family:var(--f-mono);font-size:10.5px;color:var(--dim)}
+.jd{display:flex;flex-direction:column;gap:10px;border:1px solid #7ee2a855;border-radius:12px;padding:14px;background:#06100b}
+.jd textarea{width:100%;min-height:110px;resize:vertical;font-family:var(--f-mono);font-size:12px;line-height:1.5;color:var(--ink);background:#000a;border:1px solid #ffffff22;border-radius:8px;padding:10px}
+.jd .act{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.jd .act button{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;border-radius:8px;padding:8px 14px;cursor:pointer;border:1px solid #2b2f38;background:none;color:var(--ink)}
+.jd .act button.go{background:#7ee2a8;color:#03140a;border-color:#7ee2a8}
+.score{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.score b{font-family:var(--f-title);font-stretch:125%;font-weight:900;font-size:2.2rem;color:#7ee2a8}
+.score .bar2{flex:1 1 200px;height:6px;background:#ffffff14;border-radius:4px;overflow:hidden}
+.score .bar2 i{display:block;height:100%;background:#7ee2a8;box-shadow:0 0 10px #7ee2a8}
+.mt{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px;margin-top:10px}
+.mt div{font-size:.88rem;border-left:2px solid #7ee2a8;padding:4px 10px;color:#d3d8e1;min-width:0}
+.mt div.miss{border-left-color:#ffb86b;color:#c9b39a}
+.mt small{display:block;color:var(--dim);font-family:var(--f-mono);font-size:10.5px}
+.ar-box{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#050507}
+.ar-box model-viewer{display:block;width:100%;height:min(62vh,560px);background:radial-gradient(ellipse at 50% 40%,#0d1b2b,#050507 70%)}
+.ar-side{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.ar-side #qr{background:#050507;padding:8px;border-radius:10px;border:1px solid var(--line);line-height:0}
+.ar-side p{margin:0;color:#b8bfcb;line-height:1.6;max-width:52ch;flex:1 1 260px}
+.loading{font-family:var(--f-mono);font-size:12px;color:var(--dim);padding:40px;text-align:center;margin:0}
 
 @media (max-height:780px) and (min-width:761px){ .layer[data-i="4"] .body,.layer[data-i="5"] .body{display:none} }
 @media (max-width:760px){
-  :root{--bar-h:46px}
+  :root{--bar-h:46px;--scrub-h:30px}
   .gauge,.hide-sm{display:none}
-  .bar{gap:10px}
+  .bar{gap:8px}
   .layer{left:max(14px,env(safe-area-inset-left,0px));right:max(14px,env(safe-area-inset-right,0px));width:auto;top:auto;bottom:0;
     transform-origin:50% 100%;max-height:calc(100% - 4px);overflow:auto;gap:10px;padding:26px 0 10px;
-    background:linear-gradient(to bottom,transparent,rgba(5,5,7,.88) 26px)}
+    background:linear-gradient(to bottom,transparent,rgba(5,5,7,.9) 26px)}
   .title{font-size:clamp(1.7rem,8.5vw,2.4rem)}
-  .layer[data-i="4"] .body,.layer[data-i="5"] .body{display:none}
-  .layer[data-i="0"] .body{font-size:.95rem}
-  .cut .role{grid-template-columns:1fr;gap:4px}
+  .layer[data-i="4"] .body,.layer[data-i="5"] .body,.layer[data-i="0"] .hint{display:none}
+  .layer[data-i="0"] .body{font-size:.93rem}
+  .mk{font-size:8.5px;letter-spacing:.06em}
+  .mk .lb{display:none}
+  .xp,.dhead{grid-template-columns:1fr;gap:8px}
+  .dhead img{width:96px;height:96px}
   .live svg{display:none}
   .hstate{top:calc(var(--bar-h) + 10px)}
+}
+@media print{
+  body>*:not(#cut){display:none!important}
+  #cut{position:static;background:#fff;color:#111;padding:0;backdrop-filter:none}
+  #cut .dtop,#cut .noprint,#cut .row{display:none!important}
+  #cut *{color:#111!important;background:transparent!important;box-shadow:none!important;text-shadow:none!important;border-color:#ccc!important}
 }
 @media (prefers-reduced-motion:reduce){.grain,.dot,.caret,.hint i,.pulse,.hstate i{animation:none}.shutter{transition:none}}
 </style>
@@ -217,7 +312,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 <div class="vignette"></div>
 <div class="grain" id="grain"></div>
 <div class="nodes" id="nodes" aria-hidden="true"></div>
-<div class="hstate" id="hstate" data-s="idle" aria-live="polite"><i></i><span id="hstateT">Hologram · idle</span></div>
+<div class="hstate" id="hstate" data-s="idle" aria-live="polite"><i></i><span id="hstateT">AI twin · idle</span></div>
 
 <div class="bar top">
   <span class="dot" aria-hidden="true"></span>
@@ -225,53 +320,34 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
   <span class="layer-name" id="lname">00 · SOURCE</span>
   <span class="sp"></span>
   <span class="hide-sm" id="tc">TC 00:00:00:00</span>
-  <button class="btn askb" id="askJump" type="button">◎ Ask</button>
+  <button class="btn hl" id="askJump" type="button">◎ Ask<span class="hide-sm"> my twin</span></button>
   <button class="btn" id="sndBtn" aria-pressed="false" title="Ambient sound">♪<span class="hide-sm" id="sndT"> Sound off</span></button>
-  <button class="btn" id="cutBtn" aria-haspopup="dialog">Recruiter<span class="hide-sm"> cut</span></button>
+  <button class="btn solid" id="cutBtn" aria-haspopup="dialog">Recruiter<span class="hide-sm"> dossier</span></button>
 </div>
 
 <nav class="gauge" id="gauge" aria-label="Layers"></nav>
 
 <div class="stage" id="stage">
-
   <article class="layer" data-i="0">
-    <span class="eyebrow">A data reel · 2021 → 2026</span>
-    <h1 class="title">Every engineer<br>is a <em>pipeline.</em></h1>
-    <p class="body">That's me, rebuilt from 12,000 points of light. Move your mouse and I turn to follow. Scroll to watch me get refined through five layers, the way a lakehouse refines its data. At the end, you can ask me anything.</p>
-    <span class="hint"><i></i>SCROLL TO DESCEND · CLICK FOR SOUND</span>
+    <span class="eyebrow"></span><h1 class="title"></h1>
+    <div class="glance" id="glance"></div>
+    <p class="body"></p>
+    <div class="cta">
+      <button class="primary" type="button" data-open="cut">Recruiter dossier</button>
+      <a href="./Krishna_Nekkanti_Resume.pdf" target="_blank" rel="noreferrer" data-track="resume-pdf">Résumé PDF</a>
+      <button type="button" data-jump="ask">Ask my twin</button>
+    </div>
+    <span class="hint"><i></i>SCROLL, OR DRAG THE TIMELINE BELOW</span>
   </article>
-
-  <article class="layer" data-i="1">
-    <span class="eyebrow">Layer 01 · Raw · 2021 – 2022</span>
-    <h2 class="title">Vanguard<br>&amp; <em>UMBC</em></h2>
-    <p class="body">Tableau and Power BI over SQL Server and PostgreSQL for asset-management KPIs, fed by Azure Data Factory pipelines. In parallel, a Master's in Data Science at UMBC: YOLO number-plate detection, Chicago crime forecasting and Kafka fraud streams.</p>
-    <div class="metrics"><div class="metric"><b>+15%</b><span>Ops efficiency</span></div><div class="metric"><b>95%</b><span>Plate extraction</span></div></div>
-    <span class="stack">TABLEAU · POWER BI · AZURE DATA FACTORY · YOLO · OPENCV · KAFKA</span>
-  </article>
-
-  <article class="layer" data-i="2">
-    <span class="eyebrow">Layer 02 · Bronze · 2023</span>
-    <h2 class="title">Amazon.<br>Structure <em>at scale.</em></h2>
-    <p class="body">Data Engineer on AWS Glue and Informatica pipelines. Automated ETL with AWS Data Pipeline, ran Python and Redshift quality checks, and tuned Athena mappings for month-end close.</p>
-    <div class="metrics"><div class="metric"><b>+30%</b><span>Pipeline reliability</span></div><div class="metric"><b>−50%</b><span>Data anomalies</span></div><div class="metric"><b>−25%</b><span>Manual effort</span></div></div>
-    <span class="stack">AWS GLUE · REDSHIFT · ATHENA · INFORMATICA · PYTHON</span>
-  </article>
-
-  <article class="layer" data-i="3">
-    <span class="eyebrow">Layer 03 · Silver · 2024</span>
-    <h2 class="title">Global Payments.<br><em>Trusted</em> streams.</h2>
-    <p class="body">Data Analytics Engineer on high-throughput payment data. Built automated data-quality frameworks in Redshift, real-time Tableau views of settlement KPIs, and refined fraud features with the risk team.</p>
-    <div class="metrics"><div class="metric"><b>−40%</b><span>Data anomalies</span></div><div class="metric"><b>−15%</b><span>Fraud false positives</span></div></div>
+  <article class="layer" data-i="1"><span class="eyebrow"></span><h2 class="title"></h2><p class="body"></p><div class="metrics"></div><span class="stack"></span></article>
+  <article class="layer" data-i="2"><span class="eyebrow"></span><h2 class="title"></h2><p class="body"></p><div class="metrics"></div><span class="stack"></span></article>
+  <article class="layer" data-i="3"><span class="eyebrow"></span><h2 class="title"></h2><p class="body"></p><div class="metrics"></div>
     <div class="live" id="live">
       <svg id="spark" viewBox="0 0 120 38" aria-hidden="true"></svg>
       <div class="lt" id="liveText"><span><span class="pulse off"></span>Connecting to Chicago open data…</span></div>
     </div>
   </article>
-
-  <article class="layer" data-i="4">
-    <span class="eyebrow">Layer 04 · Gold · 2025 → now</span>
-    <h2 class="title">Trida Labs.<br>Questions <em>become SQL.</em></h2>
-    <p class="body">Forward Deployment AI Engineer: deploying AgentSQL and TridaPad, building MCP integrations across Snowflake, Databricks, PostgreSQL and Redshift, with guardrails that keep agent-written SQL 99%+ accurate. Query my career below. Matching skills light up.</p>
+  <article class="layer" data-i="4"><span class="eyebrow"></span><h2 class="title"></h2><p class="body"></p>
     <div class="console" id="console">
       <div class="chips" id="chips"></div>
       <div class="qrow">
@@ -283,14 +359,10 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
       <span class="schema">TABLES · roles · skills · skill_usage · metrics · projects &nbsp;|&nbsp; read-only · MiniSQL, running in your browser</span>
     </div>
   </article>
-
-  <article class="layer" data-i="5">
-    <span class="eyebrow">Layer 05 · Insight · ask me anything</span>
-    <h2 class="title">Krishna Sidhvi<br><em>Nekkanti</em></h2>
-    <p class="body">Forward Deployment AI Engineer and data engineer. AWS Certified Data Engineer. Based in Hyderabad, open to remote work and relocation.</p>
+  <article class="layer" data-i="5"><span class="eyebrow"></span><h2 class="title"></h2><p class="body"></p>
     <div class="ask" id="ask">
       <div class="qrow">
-        <label for="askIn" class="sr">Ask my hologram a question</label>
+        <label for="askIn" class="sr">Ask my AI twin a question</label>
         <input id="askIn" type="text" autocomplete="off" spellcheck="false" placeholder="Ask in English, e.g. Where did you use Spark?">
         <button class="mic" id="mic" type="button" aria-pressed="false" title="Speak your question (uses your browser's speech service)">🎙</button>
         <button class="go" id="askGo" type="button">Ask</button>
@@ -302,13 +374,16 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
     </div>
     <div class="cta">
       <button class="primary" id="copyMail" type="button">Copy email</button>
-      <a href="https://www.linkedin.com/in/krishnasidhvinekkanti/" target="_blank" rel="noreferrer">LinkedIn</a>
-      <a href="https://github.com/krishnasidhvi" target="_blank" rel="noreferrer">GitHub</a>
-      <a href="./Krishna_Nekkanti_Resume.pdf" target="_blank" rel="noreferrer">Résumé PDF</a>
+      <button type="button" data-open="cut">Recruiter dossier</button>
+      <button type="button" data-open="ar">◇ View twin in AR</button>
+      <a href="./Krishna_Nekkanti_Resume.pdf" target="_blank" rel="noreferrer" data-track="resume-pdf">Résumé PDF</a>
     </div>
-    <span class="stack" id="mailOut">krishnanekkanti04@gmail.com</span>
+    <span class="clock" id="clock5"></span>
   </article>
+</div>
 
+<div class="scrub" id="scrub" role="slider" aria-label="Timeline, 2021 to now" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+  <div class="scrub-in"><div class="rail" id="rail"><i id="scrubFill"></i><b id="scrubKnob"></b></div><div id="marks"></div></div>
 </div>
 
 <div class="bar bot">
@@ -317,26 +392,31 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
   <span class="hide-sm" id="pct">0%</span>
 </div>
 
+<div class="toast" id="toast" role="status" hidden>
+  <span>🔊 This reel has an ambient score and a talking AI twin.</span>
+  <button class="y" id="toastYes" type="button">Turn sound on</button>
+  <button id="toastNo" type="button">No thanks</button>
+</div>
+
 <div class="shutter t"></div><div class="shutter b"></div>
 
 <div class="intro" id="intro" role="presentation">
   <div class="flare" id="flare"></div>
   <p class="boot" id="boot"></p>
   <div class="credit" id="credit"><span class="cap" id="creditCap"></span><span class="big" id="creditBig"></span></div>
-  <div class="compile" id="compile"><b id="compileN">0</b><span>points compiled into a hologram</span><i id="compileBar"></i></div>
-  <button class="skip" id="skip" type="button">Skip intro</button>
+  <div class="compile" id="compile"><b id="compileN">0</b><span>points compiled into an AI twin</span><i id="compileBar"></i></div>
+  <button class="skip" id="skip" type="button">Skip intro ↵</button>
 </div>
 
-<div class="cut" id="cut" role="dialog" aria-modal="true" aria-label="Recruiter cut" hidden>
-  <div class="cut-in">
-    <div class="top-row"><span class="eyebrow">Recruiter cut · the 30-second version</span><span style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn" href="./classic/">Full classic portfolio →</a><button class="btn" id="cutClose">Close · Esc</button></span></div>
-    <h2>Krishna Sidhvi Nekkanti</h2>
-    <p>Forward Deployment AI Engineer with 4+ years across Trida Labs, Global Payments, Amazon and Vanguard. Deploys agentic text-to-SQL (AgentSQL) and MCP integrations on enterprise warehouses, and builds the reliable pipelines underneath them.</p>
-    <div class="role"><span class="when">May 2025 – now</span><div><h3>Forward Deployment AI Engineer · Trida Labs</h3><p>AgentSQL and TridaPad deployments, MCP integrations across Snowflake, Databricks, PostgreSQL and Redshift, guardrails with 99%+ relational accuracy, enterprise RBAC.</p></div></div>
-    <div class="role"><span class="when">Mar 2024 – Jan 2025</span><div><h3>Data Analytics Engineer · Global Payments</h3><p>Redshift data-quality frameworks (−40% anomalies), fraud feature refinement (−15% false positives), real-time Tableau settlement KPIs.</p></div></div>
-    <div class="role"><span class="when">Sep 2023 – Jan 2024</span><div><h3>Data Engineer · Amazon</h3><p>AWS Glue and Informatica pipelines (+30% reliability), automated ETL (−25% manual effort), Athena month-end mappings.</p></div></div>
-    <div class="role"><span class="when">Jul 2022 – Dec 2022</span><div><h3>Data Analyst · Vanguard</h3><p>Tableau and Power BI KPI dashboards (+15% efficiency), Azure Data Factory pipelines.</p></div></div>
-    <div class="role"><span class="when">2021 – 2023</span><div><h3>MPS Data Science · UMBC</h3><p>AWS Certified Data Engineer – Associate · Databricks Generative AI Fundamentals.</p></div></div>
+<div class="dlg" id="cut" role="dialog" aria-modal="true" aria-label="Recruiter dossier" hidden>
+  <div class="dlg-in" id="cutIn"><p class="loading">Loading dossier…</p></div>
+</div>
+
+<div class="dlg" id="ar" role="dialog" aria-modal="true" aria-label="View my AI twin in AR" hidden>
+  <div class="dlg-in">
+    <div class="dtop"><span class="eyebrow">AI twin · 3D / AR</span><button class="btn" data-close="ar">Close · Esc</button></div>
+    <div class="ar-box" id="arBox"><p class="loading">Loading the 3D viewer…</p></div>
+    <div class="ar-side"><div id="qr" hidden></div><p id="arNote">Drag to orbit the twin. On a phone, tap the AR button in the corner to place it in your room.</p></div>
   </div>
 </div>
 
@@ -564,71 +644,160 @@ var MiniSQL=(function(){
 })();
 </script>
 <script>
+/*SDF-START*/
+/* Procedural humanoid: a signed distance field built from ellipsoids and capsules (the head is about 2 units tall).
+   Shared by the particle twin below and scripts/make-twin-glb.mjs, which builds the AR model from this exact code. */
+var TwinSDF=(function(){
+  function ell(p,c,r){var x=(p[0]-c[0])/r[0],y=(p[1]-c[1])/r[1],z=(p[2]-c[2])/r[2],k0=Math.sqrt(x*x+y*y+z*z),
+    x1=x/r[0],y1=y/r[1],z1=z/r[2],k1=Math.sqrt(x1*x1+y1*y1+z1*z1);return k1===0?-Math.min(r[0],r[1],r[2]):k0*(k0-1)/k1;}
+  function cap(p,a,b,r){var pa=[p[0]-a[0],p[1]-a[1],p[2]-a[2]],ba=[b[0]-a[0],b[1]-a[1],b[2]-a[2]],
+    h=Math.max(0,Math.min(1,(pa[0]*ba[0]+pa[1]*ba[1]+pa[2]*ba[2])/(ba[0]*ba[0]+ba[1]*ba[1]+ba[2]*ba[2]))),
+    dx=pa[0]-ba[0]*h,dy=pa[1]-ba[1]*h,dz=pa[2]-ba[2]*h;return Math.sqrt(dx*dx+dy*dy+dz*dz)-r;}
+  function smin(a,b,k){var h=Math.max(k-Math.abs(a-b),0)/k;return Math.min(a,b)-h*h*k*.25;}
+  function smax(a,b,k){return -smin(-a,-b,k);}
+  var EYES=[[-.28,1.98,.8],[.28,1.98,.8]],CORE=[0,-.6,.7];
+  function sdf(p){
+    // head, jaw, nose, eye sockets, ears
+    var d=smin(ell(p,[0,1.95,0],[.72,.96,.84]),ell(p,[0,1.42,.1],[.5,.46,.58]),.35);
+    d=smin(d,ell(p,[0,1.76,.8],[.1,.22,.14]),.12);
+    d=smax(d,-ell(p,[-.28,1.98,.8],[.16,.09,.13]),.07);
+    d=smax(d,-ell(p,[.28,1.98,.8],[.16,.09,.13]),.07);
+    d=smin(d,ell(p,[-.73,1.86,0],[.08,.2,.14]),.06);
+    d=smin(d,ell(p,[.73,1.86,0],[.08,.2,.14]),.06);
+    // neck
+    d=smin(d,cap(p,[0,.8,-.04],[0,1.3,-.04],.31),.14);
+    // torso: chest, shoulder bar, tapered abdomen, arms
+    var t=smin(ell(p,[0,-.4,0],[1.12,1.15,.66]),cap(p,[-1.18,.34,-.06],[1.18,.34,-.06],.38),.55);
+    t=smin(t,ell(p,[0,-1.55,-.02],[.95,1.25,.6]),.45);
+    t=smin(t,cap(p,[-1.38,.22,-.06],[-1.52,-2.5,-.06],.32),.2);
+    t=smin(t,cap(p,[1.38,.22,-.06],[1.52,-2.5,-.06],.32),.2);
+    t=smax(t,-(p[1]+2.3),.04);
+    return smin(d,t,.22);
+  }
+  function normal(p){var e=.01,
+    nx=sdf([p[0]+e,p[1],p[2]])-sdf([p[0]-e,p[1],p[2]]),ny=sdf([p[0],p[1]+e,p[2]])-sdf([p[0],p[1]-e,p[2]]),nz=sdf([p[0],p[1],p[2]+e])-sdf([p[0],p[1],p[2]-e]),
+    l=Math.sqrt(nx*nx+ny*ny+nz*nz)||1;return [nx/l,ny/l,nz/l];}
+  function dist(a,b){var x=a[0]-b[0],y=a[1]-b[1],z=a[2]-b[2];return Math.sqrt(x*x+y*y+z*z);}
+  // panel seams that give the twin its designed, android look
+  function seam(p){
+    var ax=Math.abs(p[0]),y=p[1],z=p[2];
+    if(Math.abs(y-2.2)<.024&&z>.35&&ax<.48)return 1;            // brow line
+    if(Math.abs(y-1.5)<.02&&z>.38&&ax<.19)return 1;             // mouth line
+    if(ax<.02&&y>2.45&&z>-.6)return 1;                          // crown ridge
+    if(Math.abs(y-1.98)<.02&&ax>.48&&ax<.7&&z>0)return 1;       // temple line
+    if(Math.abs(y-.86)<.03&&ax<.5)return 1;                     // collar ring
+    if(ax<.02&&y<.7&&y>-2.25&&z>.25)return 1;                   // sternum
+    if(Math.abs(y+.15)<.024&&z>.3&&ax<1.05&&ax>.12)return 1;    // chest plate
+    if(Math.abs(y+1.25)<.024&&z>.25&&ax<.9&&ax>.12)return 1;    // waist line
+    if(Math.abs(ax-1.22)<.028&&y>-.5&&y<.75)return 1;           // shoulder joint
+    if(Math.abs(y+1.0)<.026&&ax>1.25)return 1;                  // elbow band
+    return 0;
+  }
+  // colour: lit shell with a cool rim, glowing seams, eyes and a warm core
+  function color(p,n){
+    var lam=Math.max(0,n[0]*-.35+n[1]*.45+n[2]*.82),rim=Math.pow(1-Math.abs(n[2]),2),k=.25+.6*lam;
+    var c=[.14+.5*k+.25*rim,.3+.5*k+.35*rim,.5+.42*k+.4*rim];
+    if(seam(p))c=[.55,.97,1];
+    if(dist(p,EYES[0])<.13||dist(p,EYES[1])<.13)c=[.8,1,1];
+    if(dist(p,CORE)<.2)c=[1,.82,.4];
+    return c;
+  }
+  return {sdf:sdf,normal:normal,color:color,seam:seam,EYES:EYES,CORE:CORE};
+})();
+/*SDF-END*/
+</script>
+<script>
 (function(){
 "use strict";
 var REDUCE = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-var PHOTO_SRC = "./avatar-photo.jpg";
-var L = 6;
-var NAMES = ['00 · SOURCE','01 · RAW','02 · BRONZE','03 · SILVER','04 · GOLD','05 · INSIGHT'];
-var HUE = ['#9fd8ff','#c9ced6','#ff9a52','#e8f1ff','#ffd36b','#9fd8ff'];
-var COLS = [['#1d5f8a','#bfe9ff'],['#4a4f58','#d4d8df'],['#6e3414','#ffa060'],['#5e6d82','#f0f6ff'],['#7a4e0c','#ffd978'],['#1d5f8a','#bfe9ff']];
-var PHOTO = [1,0,0,0,0,1], HOLO = [1,0,0,0,0,1], GOLD = [0,0,0,0,1,0], ALPHA = [.78,.8,.8,.85,.8,.78];
-var BASE_HZ = [55,49,58.27,65.41,73.42,82.41];
-var SQL = [
-  "<span class='kw'>SELECT</span> * <span class='kw'>FROM</span> hologram.krishna <span class='kw'>WHERE</span> points = 12000;  -- move your mouse",
+function loadCareer(){
+  if(window.__CAREER__)return Promise.resolve(window.__CAREER__);
+  return fetch('./career.json').then(function(r){if(!r.ok)throw new Error(r.status);return r.json();});
+}
+loadCareer().then(boot).catch(function(err){
+  var b=document.getElementById('boot');b.textContent='Could not load career data. Please reload the page.';b.classList.add('on');
+  if(window.console)console.error(err);
+});
+
+function boot(C){
+var P=C.personal,R=C.reel;
+var L=6;
+var NAMES=['00 · SOURCE','01 · RAW','02 · BRONZE','03 · SILVER','04 · GOLD','05 · INSIGHT'];
+var MARKS=[['2021','Source'],['2022','Raw'],['2023','Bronze'],['2024','Silver'],['2025','Gold'],['Now','Insight']];
+var HUE=['#9fd8ff','#c9ced6','#ff9a52','#e8f1ff','#ffd36b','#9fd8ff'];
+var COLS=[['#1d5f8a','#bfe9ff'],['#4a4f58','#d4d8df'],['#6e3414','#ffa060'],['#5e6d82','#f0f6ff'],['#7a4e0c','#ffd978'],['#1d5f8a','#bfe9ff']];
+var PHOTO=[1,0,0,0,0,1],HOLO=[1,0,0,0,0,1],GOLD=[0,0,0,0,1,0],ALPHA=[.72,.8,.8,.85,.8,.72];
+var BASE_HZ=[55,49,58.27,65.41,73.42,82.41];
+var SQL=[
+  "<span class='kw'>SELECT</span> * <span class='kw'>FROM</span> twin.krishna <span class='kw'>WHERE</span> points = 12000;  -- move your mouse",
   "<span class='kw'>SELECT</span> * <span class='kw'>FROM</span> raw.vanguard_2022 <span class='kw'>UNION ALL</span> <span class='kw'>SELECT</span> * <span class='kw'>FROM</span> raw.umbc_research;",
   "<span class='kw'>CREATE TABLE</span> bronze.amazon <span class='kw'>AS SELECT</span> * <span class='kw'>FROM</span> glue.etl <span class='kw'>WHERE</span> reliability_gain >= 0.30;",
   "<span class='kw'>MERGE INTO</span> silver.payments <span class='kw'>USING</span> dq_checks <span class='kw'>ON</span> txn_id;  -- Chicago open data drives this flow",
   "<span class='kw'>SELECT</span> answer <span class='kw'>FROM</span> gold.agentsql <span class='kw'>WHERE</span> question = :natural_language;  -- try the console",
-  "<span class='kw'>SELECT</span> answer <span class='kw'>FROM</span> insight.krishna <span class='kw'>WHERE</span> question = :yours;  -- ask me anything"
+  "<span class='kw'>SELECT</span> answer <span class='kw'>FROM</span> insight.krishna <span class='kw'>WHERE</span> question = :yours;  -- ask my twin"
 ];
 
-/* ================= career warehouse ================= */
-var SKILLS = ['SQL','Python','PySpark','Snowflake','Databricks','Redshift','AWS Glue','Tableau','MCP','AgentSQL',
-              'Power BI','Azure Data Factory','Kafka','Informatica','Athena','TridaPad','PostgreSQL'];
-var FAMILY = ['Language','Language','Processing','Warehouse','Lakehouse','Warehouse','ETL','BI','Agent tooling','Agentic AI',
-              'BI','ETL','Streaming','ETL','Query engine','AI workspace','Database'];
-var GRAPH_N = 10; // the first 10 skills are nodes in the gold-layer graph
-var ROLES = [
-  {role_id:1,company:'UMBC',title:'MPS Data Science (research)',start_year:2021,end_year:2023,layer:'raw'},
-  {role_id:2,company:'Vanguard',title:'Data Analyst',start_year:2022,end_year:2022,layer:'raw'},
-  {role_id:3,company:'Amazon',title:'Data Engineer',start_year:2023,end_year:2024,layer:'bronze'},
-  {role_id:4,company:'Global Payments',title:'Data Analytics Engineer',start_year:2024,end_year:2025,layer:'silver'},
-  {role_id:5,company:'Trida Labs',title:'Forward Deployment AI Engineer',start_year:2025,end_year:null,layer:'gold'}
-];
-var USAGE = [
-  [1,1,'YOLO number-plate detection, 95% extraction'],[1,7,'Chicago crime forecasting dashboards'],[1,12,'Streaming fraud-detection pipeline'],
-  [2,0,'KPI queries on SQL Server and PostgreSQL'],[2,7,'KPI dashboards, +15% efficiency'],[2,10,'Supplemental financial reporting'],[2,11,'Pipelines feeding real-time dashboards'],[2,16,'Dashboard source database'],
-  [3,6,'Glue + Informatica pipelines, +30% reliability'],[3,2,'Glue transformation jobs'],[3,5,'Quality checks, -50% anomalies'],[3,0,'Athena month-end mappings'],[3,1,'Data-quality automation'],[3,13,'Enterprise ETL pipelines'],[3,14,'Month-end data mapping'],
-  [4,5,'DQ framework, -40% anomalies'],[4,0,'High-volume transaction analysis'],[4,1,'Fraud feature analysis, -15% false positives'],[4,7,'Real-time settlement KPI dashboards'],[4,13,'ETL workflow refinement'],
-  [5,9,'Enterprise AgentSQL deployments'],[5,8,'MCP integrations to client warehouses'],[5,3,'MCP target warehouse'],[5,4,'MCP target lakehouse'],[5,5,'MCP target warehouse'],[5,0,'Guardrailed joins, 99%+ accuracy'],[5,1,'Prompt pipelines and guardrails'],[5,15,'Collaborative analytics workspace deployments'],[5,16,'MCP target database']
-].map(function(r){return {role_id:r[0],skill_id:r[1],evidence:r[2]};});
-var METRICS = [
-  {role_id:1,metric:'Plate extraction accuracy',change_pct:95},
-  {role_id:2,metric:'Operational efficiency',change_pct:15},
-  {role_id:3,metric:'Pipeline reliability',change_pct:30},{role_id:3,metric:'Data anomalies',change_pct:-50},{role_id:3,metric:'Manual effort',change_pct:-25},
-  {role_id:4,metric:'Data anomalies',change_pct:-40},{role_id:4,metric:'Fraud false positives',change_pct:-15},
-  {role_id:5,metric:'Relational SQL accuracy',change_pct:99}
-];
-var PROJECTS = [
-  {project:'Real-time number plate detection',year:2023,stack:'YOLO, OpenCV, Python',result:'95% extraction accuracy'},
-  {project:'Chicago crime analytics',year:2022,stack:'Python, Scikit-Learn, Tableau',result:'Spatial-temporal forecasts'},
-  {project:'Streaming fraud detection',year:2022,stack:'Kafka, AWS Lambda, MongoDB',result:'Real-time scoring'}
-];
-var WAREHOUSE={roles:ROLES,skills:SKILLS.map(function(s,i){return {skill_id:i,skill:s,family:FAMILY[i]};}),skill_usage:USAGE,metrics:METRICS,projects:PROJECTS};
-var PRESETS = [
+/* ================= career warehouse (from career.json) ================= */
+var SKILLS=R.skills.map(function(s){return s.skill;}),GRAPH_N=R.graphNodes;
+var ROLES=R.roles,USAGE=R.usage,METRICS=R.metrics,PROJECTS=R.projects;
+var WAREHOUSE={roles:ROLES,skills:R.skills,skill_usage:USAGE,metrics:METRICS,projects:PROJECTS};
+var PRESETS=[
   ['Where did I use Python?',"SELECT s.skill, r.company, u.evidence\nFROM skill_usage u\nJOIN roles r ON u.role_id = r.role_id\nJOIN skills s ON u.skill_id = s.skill_id\nWHERE s.skill = 'Python'"],
   ['Stack at Trida Labs',"SELECT s.skill, s.family, u.evidence\nFROM skill_usage u\nJOIN skills s ON u.skill_id = s.skill_id\nJOIN roles r ON u.role_id = r.role_id\nWHERE r.company = 'Trida Labs'"],
   ['Most-used skills',"SELECT s.skill, COUNT(*) AS n_roles\nFROM skill_usage u\nJOIN skills s ON u.skill_id = s.skill_id\nGROUP BY s.skill\nORDER BY n_roles DESC\nLIMIT 8"],
   ['Impact by role',"SELECT r.company, m.metric, m.change_pct\nFROM metrics m\nJOIN roles r ON m.role_id = r.role_id\nORDER BY r.start_year DESC"]
 ];
+function esc(s){return String(s==null?'NULL':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function escRe(k){return k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+
+/* ================= analytics (GoatCounter: no cookies, no personal data) ================= */
+var GCODE=(P.analytics&&P.analytics.goatcounter)||'';
+if(GCODE&&location.protocol.indexOf('http')===0){
+  var gs=document.createElement('script');gs.async=true;gs.src='https://gc.zgo.at/count.js';
+  gs.setAttribute('data-goatcounter','https://'+GCODE+'.goatcounter.com/count');document.head.appendChild(gs);
+}
+var tracked={};
+function track(name,once){
+  if(once){if(tracked[name])return;tracked[name]=1;}
+  try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'event/'+name,title:name,event:true});}catch(e){}
+}
+document.addEventListener('click',function(e){var a=e.target.closest('[data-track]');if(a)track(a.getAttribute('data-track'));});
+
+/* ================= time + device ================= */
+function hydTime(){try{return new Date().toLocaleTimeString('en-US',{timeZone:P.timezone||'Asia/Kolkata',hour:'numeric',minute:'2-digit'});}catch(e){return '';}}
+function localTime(){return new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});}
+function device(){
+  var gpu='';
+  try{var cv=document.createElement('canvas'),gl=cv.getContext('webgl');
+    if(gl){var ex=gl.getExtension('WEBGL_debug_renderer_info');gpu=ex?gl.getParameter(ex.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER);}}catch(e){}
+  var m=/ANGLE \(([^,]+),\s*([^,]+)/.exec(gpu||'');if(m)gpu=m[2];
+  gpu=String(gpu||'').replace(/\s*(Direct3D|vs_\d|ps_\d|\(0x|OpenGL Engine|Metal).*$/i,'').trim().slice(0,48);
+  var tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(e){}
+  return {gpu:gpu,cores:navigator.hardwareConcurrency||0,tz:tz};
+}
+function updateClocks(){
+  var c5=document.getElementById('clock5');if(c5)c5.innerHTML="It's <b>"+hydTime()+'</b> for me in '+esc(P.city||'Hyderabad')+' · '+esc(P.email);
+  var cd=document.getElementById('dClock');if(cd)cd.textContent=hydTime()+' local time';
+}
+
+/* ================= layer copy (from career.json) ================= */
+var layers=[].slice.call(document.querySelectorAll('.layer'));
+layers.forEach(function(el,i){
+  var d=R.layers[i]||{};
+  var ey=el.querySelector('.eyebrow'),ti=el.querySelector('.title'),bo=el.querySelector('.body'),me=el.querySelector('.metrics'),st=el.querySelector('.stack');
+  if(ey)ey.innerHTML=d.eyebrow||'';if(ti)ti.innerHTML=d.title||'';if(bo)bo.textContent=d.body||'';
+  if(me){if(d.metrics&&d.metrics.length)me.innerHTML=d.metrics.map(function(m){return '<div class="metric"><b>'+esc(m[0])+'</b><span>'+esc(m[1])+'</span></div>';}).join('');else me.remove();}
+  if(st){if(d.stack)st.textContent=d.stack;else st.remove();}
+});
+document.getElementById('glance').innerHTML=[esc(P.headline),esc(P.yearsExperience)+' yrs',esc(P.city),'<b>●</b> Open to remote &amp; relocation'].join(' <span aria-hidden="true">·</span> ');
+updateClocks();setInterval(updateClocks,30000);
 
 /* ================= film grain ================= */
 (function(){var c=document.createElement('canvas');c.width=c.height=160;var x=c.getContext('2d');var d=x.createImageData(160,160);
   for(var i=0;i<d.data.length;i+=4){var v=Math.random()*255|0;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=255;}
   x.putImageData(d,0,0);document.getElementById('grain').style.backgroundImage='url('+c.toDataURL()+')';})();
 
-/* ================= scroll track + gauge + keys ================= */
+/* ================= scroll track, gauge, timeline scrubber, keys ================= */
 document.getElementById('track').style.height=(L*100+20)+'vh';
 var gauge=document.getElementById('gauge'),ticks=[];
 NAMES.forEach(function(n,i){var b=document.createElement('button');b.className='tick';b.type='button';
@@ -636,17 +805,30 @@ NAMES.forEach(function(n,i){var b=document.createElement('button');b.className='
   b.addEventListener('click',function(){scrollToStage(i);});gauge.appendChild(b);ticks.push(b);});
 function maxScroll(){return Math.max(1,document.documentElement.scrollHeight-innerHeight);}
 function scrollToStage(i){window.scrollTo({top:i/(L-1)*maxScroll(),behavior:REDUCE?'auto':'smooth'});}
+var scrub=document.getElementById('scrub'),rail=document.getElementById('rail'),scrubFill=document.getElementById('scrubFill'),scrubKnob=document.getElementById('scrubKnob'),
+    marksEl=document.getElementById('marks'),markEls=[];
+MARKS.forEach(function(m,i){var s=document.createElement('span');s.className='mk';s.style.left=(i/(L-1)*100)+'%';
+  s.innerHTML=m[0]+'<span class="lb"> · '+m[1]+'</span>';marksEl.appendChild(s);markEls.push(s);});
+var dragging=false;
+function scrubTo(e){var r=rail.getBoundingClientRect(),f=Math.min(1,Math.max(0,(e.clientX-r.left)/r.width));window.scrollTo(0,f*maxScroll());}
+scrub.addEventListener('pointerdown',function(e){dragging=true;try{scrub.setPointerCapture(e.pointerId);}catch(x){}scrubTo(e);track('timeline',true);});
+scrub.addEventListener('pointermove',function(e){if(dragging)scrubTo(e);});
+scrub.addEventListener('pointerup',function(){dragging=false;});
+scrub.addEventListener('pointercancel',function(){dragging=false;});
+scrub.addEventListener('keydown',function(e){var c=Math.round(target);
+  if(e.key==='ArrowRight'){e.preventDefault();e.stopPropagation();scrollToStage(Math.min(L-1,c+1));}
+  if(e.key==='ArrowLeft'){e.preventDefault();e.stopPropagation();scrollToStage(Math.max(0,c-1));}});
 function typing(e){var t=e.target;return t&&(t.tagName==='TEXTAREA'||t.tagName==='INPUT');}
 addEventListener('keydown',function(e){
-  if(e.key==='Escape'){closeCut();return;}
-  if(!cut.hidden||typing(e))return;
-  var cur=Math.round(target);
-  if(e.key==='ArrowDown'||e.key==='PageDown'){e.preventDefault();scrollToStage(Math.min(L-1,cur+1));}
-  if(e.key==='ArrowUp'||e.key==='PageUp'){e.preventDefault();scrollToStage(Math.max(0,cur-1));}
+  if(e.key==='Escape'){closeDlg();return;}
+  if(openDlgEl||typing(e))return;
+  var c=Math.round(target);
+  if(e.key==='ArrowDown'||e.key==='PageDown'){e.preventDefault();scrollToStage(Math.min(L-1,c+1));}
+  if(e.key==='ArrowUp'||e.key==='PageUp'){e.preventDefault();scrollToStage(Math.max(0,c-1));}
 });
 
 /* ================= particle data (static, uploaded once; all motion runs on the GPU) ================= */
-var N=12000, GC=150, GR=80;
+var N=12000,GCOL=150,GROW=80;
 var aRand=new Float32Array(N*3),aDir=new Float32Array(N*3),aGrid=new Float32Array(N*3),aGA=new Float32Array(N*3),aGB=new Float32Array(N*3),
     aGS=new Float32Array(N),aNode=new Float32Array(N),aE1=new Float32Array(N),aE2=new Float32Array(N),avPos=new Float32Array(N*3),avCol=new Float32Array(N*3);
 var seed=1337;function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647;}
@@ -656,63 +838,39 @@ for(var i=0;i<N;i++){
   var a=rnd(),b=rnd(),c=rnd();aRand[i*3]=a;aRand[i*3+1]=b;aRand[i*3+2]=c;
   var u=rnd()*2-1,th=rnd()*Math.PI*2,s=Math.sqrt(1-u*u),dx=s*Math.cos(th),dy=u,dz=s*Math.sin(th);
   aDir[i*3]=dx;aDir[i*3+1]=dy;aDir[i*3+2]=dz;
-  var col=i%GC,row=Math.floor(i/GC);aGrid[i*3]=(col-(GC-1)/2)*.088;aGrid[i*3+1]=(row-(GR-1)/2)*.088;aGrid[i*3+2]=col;
+  var col=i%GCOL,row=Math.floor(i/GCOL);aGrid[i*3]=(col-(GCOL-1)/2)*.088;aGrid[i*3+1]=(row-(GROW-1)/2)*.088;aGrid[i*3+2]=col;
   if(a<.42){var nd=Math.floor(b*GRAPH_N)%GRAPH_N,n=NODES[nd],g=Math.abs(rnd()+rnd()+rnd()-1.5)*.55;
     aNode[i]=nd;aE1[i]=aE2[i]=-1;aGS[i]=-1;aGA[i*3]=n[0]+dx*g;aGA[i*3+1]=n[1]+dy*g;aGA[i*3+2]=n[2]+dz*g;}
   else{var e=EDGES[Math.floor(b*EDGES.length)%EDGES.length],p=NODES[e[0]],q=NODES[e[1]];
     aNode[i]=-1;aE1[i]=e[0];aE2[i]=e[1];aGS[i]=a>.85?.12:.015;
     aGA[i*3]=p[0];aGA[i*3+1]=p[1];aGA[i*3+2]=p[2];aGB[i*3]=q[0];aGB[i*3+1]=q[1];aGB[i*3+2]=q[2];}
-  avPos[i*3]=dx*3;avPos[i*3+1]=dy*4;avPos[i*3+2]=dz*2;avCol[i*3]=.6;avCol[i*3+1]=.8;avCol[i*3+2]=1;
 }
 
-/* ================= avatar: real photo, cut out and sculpted into 3D ================= */
-function n768(arr){return arr.map(function(p){return [p[0]/768,p[1]/768];});}
-var AV={poly:n768([[338,46],[374,50],[402,70],[414,100],[418,130],[424,150],[421,185],[411,202],[405,226],[401,246],[422,258],[470,284],[540,304],[570,334],[590,384],[604,450],[608,560],[606,680],[600,768],
-      [165,768],[162,650],[165,520],[168,420],[180,350],[205,316],[260,296],[292,268],[296,242],[282,216],[268,190],[262,160],[265,120],[278,84],[300,60]]),
-  head:{cu:340/768,cv:160/768,ru:80/768,rv:110/768},eyes:[[306/768,150/768],[368/768,150/768]],nose:[338/768,183/768],mouth:[338/768,205/768],chin:[338/768,252/768],
-  neck:{cu:345/768,v0:240/768,v1:290/768,ru:52/768},torso:{cu:390/768,v0:300/768,ru:225/768}};
-var AW=11.9;
-function sq(x){return x*x;}
-function g2(du,dv,su,sv){return Math.exp(-(du*du)/(2*su*su)-(dv*dv)/(2*sv*sv));}
-function smooth(e0,e1,x){x=Math.min(1,Math.max(0,(x-e0)/(e1-e0)));return x*x*(3-2*x);}
-function depthAt(u,v,lum){
-  var h=AV.head,E=sq((u-h.cu)/h.ru)+sq((v-h.cv)/h.rv),zh=E<1?Math.sqrt(1-E)*1.25:0,fw=h.ru;
-  if(E<1.15){var k=smooth(1.15,.85,E);
-    zh+=k*(.40*g2(u-AV.nose[0],v-AV.nose[1],fw*.10,fw*.13)+.24*g2(u-AV.nose[0],v-(AV.nose[1]+AV.eyes[0][1])/2,fw*.07,fw*.24)
-      -.17*g2(u-AV.eyes[0][0],v-AV.eyes[0][1],fw*.17,fw*.11)-.17*g2(u-AV.eyes[1][0],v-AV.eyes[1][1],fw*.17,fw*.11)
-      +.08*g2(u-AV.mouth[0],v-AV.mouth[1],fw*.24,fw*.08)+.07*g2(u-AV.chin[0],v-AV.chin[1],fw*.24,fw*.11)
-      +.07*g2(u-h.cu,v-(AV.eyes[0][1]-fw*.24),fw*.55,fw*.07));}
-  var n=AV.neck,zn=(v>n.v0&&v<n.v1+.06)?Math.sqrt(Math.max(0,1-sq((u-n.cu)/n.ru)))*.75:0;
-  var t=AV.torso,zt=Math.sqrt(Math.max(0,1-sq((u-t.cu)/t.ru)))*1.05*smooth(t.v0-.02,t.v0+.07,v);
-  return Math.max(zh,zn,zt)+lum*.1;
-}
-function buildAvatar(){
-  var img=new Image();
-  img.onload=function(){
-    var T=512,c=document.createElement('canvas');c.width=c.height=T;var x=c.getContext('2d');x.drawImage(img,0,0,T,T);
-    var m=document.createElement('canvas');m.width=m.height=T;var mx2=m.getContext('2d');mx2.fillStyle='#fff';mx2.beginPath();
-    AV.poly.forEach(function(p,i){i?mx2.lineTo(p[0]*T,p[1]*T):mx2.moveTo(p[0]*T,p[1]*T);});mx2.closePath();mx2.fill();
-    var mb=document.createElement('canvas');mb.width=mb.height=T;var mbx=mb.getContext('2d');try{mbx.filter='blur(4px)';}catch(e){}mbx.drawImage(m,0,0);
-    x.globalCompositeOperation='destination-in';x.drawImage(mb,0,0);
-    var d;try{d=x.getImageData(0,0,T,T).data;}catch(err){return;}
-    function px(u,v){var X=Math.min(T-1,Math.max(0,Math.round(u*(T-1)))),Y=Math.min(T-1,Math.max(0,Math.round(v*(T-1))));var o=(Y*T+X)*4;return [d[o]/255,d[o+1]/255,d[o+2]/255,d[o+3]/255];}
-    var h=AV.head,nHead=Math.floor(N*.28),j=0,guard=0;
-    while(j<N&&guard<N*90){guard++;
-      var uu,vv;
-      if(j<nHead){uu=h.cu+(Math.random()*2-1)*h.ru*1.2;vv=h.cv+(Math.random()*2-1)*h.rv*1.2;}else{uu=Math.random();vv=Math.random();}
-      var q=px(uu,vv);if(q[3]<.6)continue;
-      var lum=.299*q[0]+.587*q[1]+.114*q[2];
-      avPos[j*3]=(uu-h.cu)*AW;avPos[j*3+1]=(h.cv+.14-vv)*AW;avPos[j*3+2]=depthAt(uu,vv,lum)*1.25+.03;
-      avCol[j*3]=q[0];avCol[j*3+1]=q[1];avCol[j*3+2]=q[2];j++;
-    }
-    if(posAttr){posAttr.needsUpdate=true;colAttr.needsUpdate=true;}
-  };
-  img.src=PHOTO_SRC;
-}
+/* ================= the AI twin: a procedural humanoid sampled from a signed distance field ================= */
+(function buildTwin(){
+  var S=1.2,OY=-.35,j=0,sdf=TwinSDF.sdf;
+  function put(p,cl){if(j>=N)return;avPos[j*3]=p[0]*S;avPos[j*3+1]=p[1]*S+OY;avPos[j*3+2]=p[2]*S;avCol[j*3]=cl[0];avCol[j*3+1]=cl[1];avCol[j*3+2]=cl[2];j++;}
+  function project(p){for(var it=0;it<6;it++){var d=sdf(p),n=TwinSDF.normal(p);p=[p[0]-n[0]*d,p[1]-n[1]*d,p[2]-n[2]*d];}return p;}
+  function shell(count,box,accept,col){var g=0,goal=j+count;
+    while(j<goal&&j<N&&g<count*400){g++;
+      var p=[box[0]+rnd()*(box[1]-box[0]),box[2]+rnd()*(box[3]-box[2]),box[4]+rnd()*(box[5]-box[4])],d=sdf(p);
+      if(Math.abs(d)>.03)continue;var n=TwinSDF.normal(p);p=[p[0]-n[0]*d,p[1]-n[1]*d,p[2]-n[2]*d];
+      if(accept&&!accept(p))continue;put(p,col||TwinSDF.color(p,n));}}
+  // eyes: a tight bright cloud in each socket
+  for(var e=0;e<300;e++){var E=TwinSDF.EYES[e%2];put([E[0]+(rnd()-.5)*.2,E[1]+(rnd()-.5)*.06,E[2]+.03+rnd()*.04],[.85,1,1]);}
+  // core: a glowing ring on the chest
+  for(var c=0;c<220;c++){var a=rnd()*6.2832,r=.12+rnd()*.08,C=TwinSDF.CORE;put(project([C[0]+Math.cos(a)*r,C[1]+Math.sin(a)*r,1.2]),[1,.82,.4]);}
+  // panel seams
+  shell(2600,[-2,2,-2.3,3,-1,1.1],TwinSDF.seam,[.55,.97,1]);
+  // head, then body
+  shell(Math.floor((N-j)*.42),[-1,1,.8,3,-1,1.05]);
+  shell(N-j,[-2,2,-2.3,1.1,-1,1]);
+  while(j<N)put([0,-6,0],[0,0,0]);
+})();
 
 /* ================= three.js ================= */
 var canvas=document.getElementById('gl'),hasGL=typeof THREE!=='undefined';
-var renderer,scene,camera,group,geo,mat,posAttr,colAttr,HI=[0,0,0,0,0,0,0,0,0,0],HI_T=HI.slice();
+var renderer,scene,camera,group,geo,mat,HI=[0,0,0,0,0,0,0,0,0,0],HI_T=HI.slice();
 var VERT=[
   'attribute vec3 aCol;attribute vec3 aRand;attribute vec3 aDir;attribute vec3 aGrid;attribute vec3 aGA;attribute vec3 aGB;',
   'attribute float aGS;attribute float aNode;attribute float aE1;attribute float aE2;',
@@ -734,6 +892,7 @@ var VERT=[
   ' vec3 p=formAt(uA);',
   ' if(uM>0.0&&uB!=uA){vec3 q=formAt(uB);p=mix(p,q,uM)+aDir*uBurst*aRand.y;}',
   ' p+=aDir*uRipple*(0.5+aRand.x)*0.14;',
+  ' p.y+=sin(uTime*1.1)*0.05*uHolo;',
   ' p=p*uIntro+aDir*(1.0-uIntro)*(9.0+aRand.z*10.0);',
   ' vec4 mv=modelViewMatrix*vec4(p,1.0);gl_Position=projectionMatrix*mv;',
   ' float g=aNode>-0.5?hiAt(aNode):min(hiAt(aE1),hiAt(aE2));g*=uGold;',
@@ -745,10 +904,10 @@ var FRAG=[
   'uniform vec3 uCA;uniform vec3 uCB;uniform vec3 uHot;uniform vec3 uTint;uniform float uTintAmt;uniform float uAlpha;uniform float uPhoto;uniform float uPulse;',
   'varying float vS;varying vec3 vCol;varying float vGlow;varying float vScan;',
   'void main(){vec2 c=gl_PointCoord-0.5;float d=length(c);if(d>0.5)discard;float a=1.0-smoothstep(0.0,0.5,d);a*=a;',
-  ' vec3 base=mix(uCA,uCB,vS);vec3 photo=vCol*1.22+vec3(0.02,0.05,0.08);',
-  ' vec3 col=mix(base,photo,uPhoto);',
-  ' float lum=dot(vCol,vec3(0.299,0.587,0.114));col=mix(col,uTint*(0.55+lum*1.1),uTintAmt*uPhoto);',
-  ' col=mix(col,uHot,clamp(vGlow,0.0,1.0))+vec3(0.35,0.8,1.0)*vScan+vec3(0.25,0.55,0.7)*uPulse*uPhoto*0.35;',
+  ' vec3 base=mix(uCA,uCB,vS);vec3 twin=vCol*1.1;',
+  ' vec3 col=mix(base,twin,uPhoto);',
+  ' float lum=dot(vCol,vec3(0.299,0.587,0.114));col=mix(col,uTint*(0.45+lum*1.1),uTintAmt*uPhoto);',
+  ' col=mix(col,uHot,clamp(vGlow,0.0,1.0))+vec3(0.35,0.8,1.0)*vScan+vec3(0.25,0.55,0.7)*uPulse*uPhoto*0.4;',
   ' gl_FragColor=vec4(col,a*(uAlpha+vGlow*0.7));}'].join('\n');
 if(hasGL){
   try{
@@ -757,11 +916,9 @@ if(hasGL){
     scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(50,1,.1,100);camera.position.set(0,0,14);
     group=new THREE.Group();scene.add(group);
     geo=new THREE.BufferGeometry();
-    posAttr=new THREE.BufferAttribute(avPos,3);colAttr=new THREE.BufferAttribute(avCol,3);
-    geo.setAttribute('position',posAttr);geo.setAttribute('aCol',colAttr);
+    geo.setAttribute('position',new THREE.BufferAttribute(avPos,3));geo.setAttribute('aCol',new THREE.BufferAttribute(avCol,3));
     [['aRand',aRand,3],['aDir',aDir,3],['aGrid',aGrid,3],['aGA',aGA,3],['aGB',aGB,3],['aGS',aGS,1],['aNode',aNode,1],['aE1',aE1,1],['aE2',aE2,1]]
       .forEach(function(x){geo.setAttribute(x[0],new THREE.BufferAttribute(x[1],x[2]));});
-    geo.boundingSphere=new THREE.Sphere(new THREE.Vector3(),40);
     mat=new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,vertexShader:VERT,fragmentShader:FRAG,
       uniforms:{uA:{value:0},uB:{value:0},uM:{value:0},uBurst:{value:0},uTime:{value:0},uFlow:{value:0},uIntro:{value:0},
         uSize:{value:26},uPixel:{value:renderer.getPixelRatio()},uGold:{value:0},uScan:{value:0},uHolo:{value:1},uHi:{value:HI},
@@ -770,7 +927,6 @@ if(hasGL){
     var pts=new THREE.Points(geo,mat);pts.frustumCulled=false;group.add(pts);
   }catch(err){hasGL=false;canvas.style.display='none';}
 }
-buildAvatar();
 var tA,tB,v3;
 if(hasGL){tA=new THREE.Color();tB=new THREE.Color();v3=new THREE.Vector3();}
 var WIDE=true,ALPHA_K=1;
@@ -779,21 +935,18 @@ function resize(){
   if(!hasGL)return;
   renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();
   var big=innerWidth>1000;
-  group.position.set(WIDE?(big?3.4:2.4):0,WIDE?0:2.3,0);group.scale.setScalar(WIDE?(big?1:.82):.56);ALPHA_K=WIDE?1:.85;
+  group.position.set(WIDE?(big?3.6:2.6):0,WIDE?0:2.2,0);group.scale.setScalar(WIDE?(big?1:.82):.52);ALPHA_K=WIDE?1:.85;
 }
 addEventListener('resize',resize);resize();
 
-/* ================= node labels ================= */
+/* ================= node labels + pointer ================= */
 var nodesEl=document.getElementById('nodes'),labels=SKILLS.slice(0,GRAPH_N).map(function(s){var d=document.createElement('span');d.className='nl';d.textContent=s;nodesEl.appendChild(d);return d;});
-
-/* ================= pointer ================= */
 var mx=0,my=0,smx=0,smy=0;
 addEventListener('pointermove',function(e){mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5;});
 
 /* ================= HUD + text layers ================= */
-var layers=[].slice.call(document.querySelectorAll('.layer'));
 var lname=document.getElementById('lname'),tc=document.getElementById('tc'),pct=document.getElementById('pct'),sqlEl=document.getElementById('sql');
-var root=document.documentElement,target=0,prog=0,lastStage=-1,typeTimer=null;
+var root=document.documentElement,target=0,prog=0,lastStage=-1,typeTimer=null,maxReached=0;
 function readScroll(){target=Math.min(L-1,Math.max(0,scrollY/maxScroll()*(L-1)));}
 addEventListener('scroll',readScroll,{passive:true});readScroll();
 function typeSQL(i){
@@ -816,9 +969,11 @@ function updateLayers(p){
   });
   var s=Math.round(p);
   if(s!==lastStage){lastStage=s;root.style.setProperty('--layer',HUE[s]);lname.textContent=NAMES[s];
-    ticks.forEach(function(t,k){t.classList.toggle('on',k===s);});typeSQL(s);audioStage(s);}
+    ticks.forEach(function(t,k){t.classList.toggle('on',k===s);});markEls.forEach(function(t,k){t.classList.toggle('on',k===s);});
+    typeSQL(s);audioStage(s);if(s>maxReached){maxReached=s;track('layer-'+s,true);}}
+  var f=p/(L-1);scrubFill.style.width=(f*100).toFixed(2)+'%';scrubKnob.style.left=(f*100).toFixed(2)+'%';scrub.setAttribute('aria-valuenow',Math.round(f*100));
   var secs=p*14;tc.textContent='TC 00:'+pad(Math.floor(secs/60))+':'+pad(Math.floor(secs%60))+':'+pad(Math.floor((secs%1)*24));
-  pct.textContent=Math.round(p/(L-1)*100)+'% REFINED';
+  pct.textContent=Math.round(f*100)+'% REFINED';
 }
 
 /* ================= live open-data feed (silver) ================= */
@@ -826,12 +981,10 @@ var liveText=document.getElementById('liveText'),spark=document.getElementById('
 function renderLive(days,live,dropped){
   var vals=days.map(function(d){return d.n;}),mean=vals.reduce(function(a,b){return a+b;},0)/vals.length,last=days[0];
   LIVE_FLOW=Math.min(1.8,Math.max(.6,last.n/mean));
-  var checks=[
-    ['rows ≥ 5',days.length>=5],
-    ['no null counts',vals.every(function(v){return v>0;})],
+  var checks=[['rows ≥ 5',days.length>=5],['no null counts',vals.every(function(v){return v>0;})],
     ['fresh < 21 days',(Date.now()-new Date(last.day).getTime())/864e5<21],
-    ['dates contiguous',days.every(function(d,i){return i===0||Math.round((new Date(days[i-1].day)-new Date(d.day))/864e5)===1;})]
-  ],passed=checks.filter(function(c){return c[1];}).length;
+    ['dates contiguous',days.every(function(d,i){return i===0||Math.round((new Date(days[i-1].day)-new Date(d.day))/864e5)===1;})]],
+    passed=checks.filter(function(c){return c[1];}).length;
   var mn=Math.min.apply(null,vals),mxv=Math.max.apply(null,vals),pts=vals.slice().reverse().map(function(v,i){
     return (i/(vals.length-1)*116+2).toFixed(1)+','+(34-(v-mn)/Math.max(1,mxv-mn)*30).toFixed(1);}).join(' ');
   spark.innerHTML='<polyline points="'+pts+'" fill="none" stroke="#e8f1ff" stroke-width="1.5" stroke-linejoin="round"/>'+
@@ -858,7 +1011,6 @@ var SAMPLE=[{day:'2026-11-10',n:577},{day:'2026-11-09',n:556},{day:'2026-11-08',
 
 /* ================= SQL console (gold) ================= */
 var qEl=document.getElementById('q'),out=document.getElementById('out'),chips=document.getElementById('chips');
-function esc(s){return String(s==null?'NULL':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 function highlight(rows){
   var hot=HI.map(function(){return 0;}),found=false,companies={};
   rows.forEach(function(r){Object.keys(r).forEach(function(k){var v=String(r[k]).toLowerCase();
@@ -876,7 +1028,7 @@ function table(rows,ms){
     '<div class="meta">'+rows.length+' row'+(rows.length===1?'':'s')+' · '+ms+' ms · MiniSQL, running in your browser</div>';
 }
 function runQuery(){
-  var q=qEl.value.trim(),t0=performance.now(),rows;
+  var q=qEl.value.trim(),t0=performance.now(),rows;track('sql-console',true);
   try{rows=MiniSQL.run(WAREHOUSE,q);}catch(e){out.innerHTML='<div class="err">'+esc(e.message||e)+'</div>';return;}
   out.innerHTML=table(rows,(performance.now()-t0).toFixed(1));
   bleep(highlight(rows));
@@ -887,13 +1039,12 @@ qEl.value=PRESETS[0][1];
 document.getElementById('run').addEventListener('click',runQuery);
 qEl.addEventListener('keydown',function(e){if(e.key==='Enter'&&(e.ctrlKey||e.metaKey)){e.preventDefault();runQuery();}});
 
-/* ================= hologram states ================= */
+/* ================= twin states ================= */
 var HSTATE='idle',hEl=document.getElementById('hstate'),hT=document.getElementById('hstateT'),pulse=0,tintTarget=0;
 var TINTS={idle:['#9fd8ff',0],listening:['#c08bff',.6],thinking:['#ffd36b',.4],speaking:['#7ee2ff',.28]};
-var LABELS={idle:'Hologram · idle',listening:'Hologram · listening',thinking:'Hologram · thinking',speaking:'Hologram · speaking'};
-function setState(s){HSTATE=s;hEl.dataset.s=s;hT.textContent=LABELS[s];tintTarget=TINTS[s][1];if(hasGL)mat.uniforms.uTint.value.set(TINTS[s][0]);}
+function setState(s){HSTATE=s;hEl.dataset.s=s;hT.textContent='AI twin · '+s;tintTarget=TINTS[s][1];if(hasGL)mat.uniforms.uTint.value.set(TINTS[s][0]);}
 
-/* ================= ask my hologram: English → SQL → guardrails → answer ================= */
+/* ================= ask my twin: English → SQL → guardrails → answer ================= */
 var askIn=document.getElementById('askIn'),trace=document.getElementById('trace'),answer=document.getElementById('answer'),askChips=document.getElementById('askChips');
 var SKILL_ALIAS={'spark':'PySpark','pyspark':'PySpark','glue':'AWS Glue','aws glue':'AWS Glue','model context protocol':'MCP','mcp':'MCP',
   'agentsql':'AgentSQL','agent sql':'AgentSQL','text-to-sql':'AgentSQL','text to sql':'AgentSQL','tridapad':'TridaPad','snowflake':'Snowflake',
@@ -904,7 +1055,7 @@ var COMP_ALIAS={'trida labs':'Trida Labs','trida':'Trida Labs','amazon':'Amazon'
   'vanguard':'Vanguard','umbc':'UMBC','university':'UMBC',"master's":'UMBC','masters':'UMBC'};
 function findAll(text,dict){
   var keys=Object.keys(dict).sort(function(a,b){return b.length-a.length;}),hits=[],work=' '+text+' ';
-  keys.forEach(function(k){var re=new RegExp('([^a-z0-9])'+k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'([^a-z0-9])');
+  keys.forEach(function(k){var re=new RegExp('([^a-z0-9])'+escRe(k)+'([^a-z0-9])');
     var m=work.match(re);if(m){if(hits.indexOf(dict[k])<0)hits.push(dict[k]);work=work.replace(re,'$1'+new Array(k.length+1).join('#')+'$2');}});
   return hits;
 }
@@ -980,9 +1131,9 @@ function compose(p,rows){
   return '';
 }
 var STATIC={
-  contact:'The fastest way is email: krishnanekkanti04@gmail.com, or LinkedIn. Use the Copy email button just below.',
-  location:"I'm based in Hyderabad, India, and open to remote work and relocation.",
-  about:"I'm Krishna, a Forward Deployment AI Engineer. I turn plain-English questions into safe, accurate SQL on enterprise warehouses, and I build the data pipelines underneath.",
+  contact:'The fastest way is email: '+P.email+', or LinkedIn. Use the Copy email button just below.',
+  location:"I'm based in "+(P.city||'Hyderabad')+", India, and open to remote work and relocation.",
+  about:"I'm Krishna's AI twin. He's a Forward Deployment AI Engineer who turns plain-English questions into safe, accurate SQL on enterprise warehouses, and builds the data pipelines underneath.",
   unknown_skill:"That one isn't in my warehouse yet. My core stack is SQL, Python, Spark, Redshift, Snowflake and Databricks, and I learn new tools fast.",
   unknown:"I didn't catch that. Try asking where I used a tool, what I did at a company, my biggest results, or my projects."
 };
@@ -991,7 +1142,7 @@ function step(icon,html,ms,bad){var li=document.createElement('li');if(bad)li.cl
   li.innerHTML='<span class="s">'+icon+'</span><span>'+html+'</span><span class="ms">'+(ms==null?'':ms+' ms')+'</span>';trace.appendChild(li);trace.scrollTop=trace.scrollHeight;ping(660+trace.children.length*60,.018);}
 function ask(question){
   question=(question||'').trim();if(!question||asking)return;
-  asking=true;stopSpeech();trace.innerHTML='';answer.innerHTML='';setState('thinking');
+  asking=true;stopSpeech();trace.innerHTML='';answer.innerHTML='';setState('thinking');track('ask');
   var T0=performance.now(),p=plan(question),t1=performance.now(),seq=[],D=REDUCE?0:300;
   function later(fn){seq.push(fn);}
   later(function(){step('◆','<b>Understand</b> · intent <b>'+p.intent+'</b>'+(p.skill?' · skill='+esc(p.skill):'')+(p.company?' · company='+esc(p.company):''),(t1-T0).toFixed(1));});
@@ -1012,13 +1163,15 @@ function ask(question){
   later(function(){step('◆','<b>Compose answer</b> · '+text.split(/\s+/).length+' words',(performance.now()-T0).toFixed(1));});
   var i=0;(function next(){if(i<seq.length){seq[i++]();setTimeout(next,D);}else{asking=false;speak(text);}})();
 }
-var ASKS=['Where did you use Spark?','What did you do at Amazon?','Your biggest results?','What do you do now?','Tell me about your AI work'];
-ASKS.forEach(function(qs){var b=document.createElement('button');b.type='button';b.textContent=qs;b.addEventListener('click',function(){askIn.value=qs;ask(qs);});askChips.appendChild(b);});
+['Where did you use Spark?','What did you do at Amazon?','Your biggest results?','What do you do now?','Tell me about your AI work']
+  .forEach(function(qs){var b=document.createElement('button');b.type='button';b.textContent=qs;b.addEventListener('click',function(){askIn.value=qs;ask(qs);});askChips.appendChild(b);});
 document.getElementById('askGo').addEventListener('click',function(){ask(askIn.value);});
 askIn.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();ask(askIn.value);}});
-document.getElementById('askJump').addEventListener('click',function(){scrollToStage(L-1);setTimeout(function(){try{askIn.focus({preventScroll:true});}catch(e){askIn.focus();}},REDUCE?50:1300);});
+function jumpAsk(){scrollToStage(L-1);setTimeout(function(){try{askIn.focus({preventScroll:true});}catch(e){askIn.focus();}},REDUCE?50:1300);}
+document.getElementById('askJump').addEventListener('click',jumpAsk);
+[].forEach.call(document.querySelectorAll('[data-jump="ask"]'),function(b){b.addEventListener('click',jumpAsk);});
 
-/* voice out: speech synthesis, with word-paced pulses driving the hologram */
+/* voice out */
 var speakId=0,voiceOn=true,voiceBtn=document.getElementById('voiceBtn'),speakTimer=null,synth=window.speechSynthesis||null;
 voiceBtn.addEventListener('click',function(){voiceOn=!voiceOn;voiceBtn.setAttribute('aria-pressed',String(voiceOn));voiceBtn.textContent=voiceOn?'Voice on':'Voice off';if(!voiceOn&&synth)synth.cancel();});
 function pickVoice(){if(!synth)return null;var vs=synth.getVoices()||[];
@@ -1038,24 +1191,24 @@ function speak(text){
   }
   var ms=useVoice?330:150;
   speakTimer=setInterval(function(){if(my!==speakId)return;if(useVoice&&gotBoundary)return;wordOn();if(!useVoice&&k>=spans.length)done();},ms);
-  if(useVoice)setTimeout(function(){if(HSTATE==='speaking'&&!synth.speaking)done();},words.length*ms+4000);
+  if(useVoice)setTimeout(function(){if(my===speakId&&HSTATE==='speaking'&&!synth.speaking)done();},words.length*ms+4000);
 }
 
-/* voice in: browser speech recognition, where available */
+/* voice in */
 var SR=window.SpeechRecognition||window.webkitSpeechRecognition,micBtn=document.getElementById('mic'),rec=null;
 if(!SR){micBtn.hidden=true;}
 else micBtn.addEventListener('click',function(){
   if(rec){rec.stop();return;}
   stopSpeech();rec=new SR();rec.lang='en-US';rec.interimResults=true;rec.maxAlternatives=1;
-  var finalText='';micBtn.setAttribute('aria-pressed','true');setState('listening');
+  var finalText='';micBtn.setAttribute('aria-pressed','true');setState('listening');track('voice-input',true);
   rec.onresult=function(e){var s='';for(var i=0;i<e.results.length;i++){s+=e.results[i][0].transcript;if(e.results[i].isFinal)finalText=s;}askIn.value=s;};
   rec.onerror=function(){};
   rec.onend=function(){rec=null;micBtn.setAttribute('aria-pressed','false');if(HSTATE==='listening')setState('idle');var t=(finalText||askIn.value).trim();if(t)ask(t);};
   try{rec.start();}catch(e){rec=null;micBtn.setAttribute('aria-pressed','false');setState('idle');}
 });
 
-/* ================= ambient sound ================= */
-var introStart=null,AC=null,master=null,filt=null,oscs=[],soundOn=false,sndBtn=document.getElementById('sndBtn'),sndT=document.getElementById('sndT');
+/* ================= ambient sound: opt-in only ================= */
+var AC=null,master=null,filt=null,oscs=[],soundOn=false,sndBtn=document.getElementById('sndBtn'),sndT=document.getElementById('sndT');
 function startAudio(){
   var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
   AC=new Ctx();master=AC.createGain();master.gain.value=0;master.connect(AC.destination);
@@ -1070,34 +1223,167 @@ function setSound(on){
   if(AC.state==='suspended')AC.resume();
   soundOn=on;master.gain.setTargetAtTime(on?.06:0,AC.currentTime,on?1.2:.3);
   sndBtn.setAttribute('aria-pressed',String(on));sndT.textContent=on?' Sound on':' Sound off';
+  if(on)track('sound-on',true);hideToast();
 }
-function audioStage(s){
-  if(!AC||!soundOn)return;var now=AC.currentTime;
-  oscs.forEach(function(o){o.frequency.setTargetAtTime(BASE_HZ[s]*o._m,now,.6);});ping(BASE_HZ[s]*8,.035);
-}
+function audioStage(s){if(!AC||!soundOn)return;var now=AC.currentTime;oscs.forEach(function(o){o.frequency.setTargetAtTime(BASE_HZ[s]*o._m,now,.6);});ping(BASE_HZ[s]*8,.035);}
 function ping(f,vol){
   if(!AC||!soundOn)return;var o=AC.createOscillator(),g=AC.createGain(),n=AC.currentTime;o.type='sine';o.frequency.value=f;
   g.gain.setValueAtTime(0,n);g.gain.linearRampToValueAtTime(vol,n+.01);g.gain.exponentialRampToValueAtTime(.0001,n+.9);o.connect(g);g.connect(AC.destination);o.start(n);o.stop(n+1);
 }
 function bleep(k){for(var j=0;j<Math.min(k,5);j++)(function(j){setTimeout(function(){ping(880*Math.pow(1.122,j),.03);},j*70);})(j);}
 sndBtn.addEventListener('click',function(){setSound(!soundOn);});
-addEventListener('pointerdown',function first(e){
-  if(sndBtn.contains(e.target))return;removeEventListener('pointerdown',first);if(!AC)setSound(true);});
+var toast=document.getElementById('toast'),toastTimer=null;
+function showToast(){var no=false;try{no=sessionStorage.getItem('reel-sound-asked')==='1';}catch(e){}
+  if(no||soundOn)return;toast.hidden=false;requestAnimationFrame(function(){toast.classList.add('on');});toastTimer=setTimeout(hideToast,14000);}
+function hideToast(){clearTimeout(toastTimer);if(toast.hidden)return;toast.classList.remove('on');setTimeout(function(){toast.hidden=true;},400);try{sessionStorage.setItem('reel-sound-asked','1');}catch(e){}}
+document.getElementById('toastYes').addEventListener('click',function(){setSound(true);});
+document.getElementById('toastNo').addEventListener('click',hideToast);
+
+/* ================= dialogs ================= */
+var openDlgEl=null,lastFocus=null;
+function openDlg(id){var el=document.getElementById(id);if(!el)return;var prev=document.activeElement;closeDlg();lastFocus=prev;
+  el.hidden=false;openDlgEl=el;
+  if(id==='cut'){renderDossier();track('dossier');}if(id==='ar'){openAR();track('ar');}
+  var f=el.querySelector('[data-close],button,a');if(f)f.focus();}
+function closeDlg(){if(!openDlgEl)return;openDlgEl.hidden=true;openDlgEl=null;if(lastFocus&&lastFocus.focus)lastFocus.focus();}
+document.addEventListener('click',function(e){var o=e.target.closest('[data-open]');if(o){openDlg(o.getAttribute('data-open'));return;}
+  if(e.target.closest('[data-close]'))closeDlg();});
+document.getElementById('cutBtn').addEventListener('click',function(){openDlg('cut');});
+
+/* ================= recruiter dossier (all from career.json) ================= */
+function roleText(r){return (r.role+' '+r.tech.join(' ')+' '+r.achievements.join(' ')+' '+r.summary).toLowerCase();}
+var SK_EVID=C.technicalSkills.map(function(cat){return {category:cat.category,skills:cat.skills.map(function(s){
+  return {name:s.name,usedAt:C.workExperience.filter(function(r){var t=roleText(r);return s.keys.some(function(k){return t.indexOf(k)>=0;});}).map(function(r){return r.company.replace(' Inc.','');})};})};});
+var dossierDone=false;
+function renderDossier(){
+  if(dossierDone){updateClocks();return;}dossierDone=true;
+  var cur=C.workExperience[0],h='';
+  h+='<div class="dtop"><span class="eyebrow">Recruiter dossier · everything on one page</span><span style="display:flex;gap:8px;flex-wrap:wrap">'+
+     '<button class="btn" type="button" id="dPrint">Print / PDF</button><a class="btn" href="./classic/">Classic portfolio →</a><button class="btn" type="button" data-close="cut">Close · Esc</button></span></div>';
+  h+='<div class="dhead"><img src="./profile.jpg" alt="Photo of '+esc(P.name)+'" width="132" height="132"><div><h2>'+esc(P.name)+'</h2>'+
+     '<div class="role">'+esc(P.headline)+' · '+esc(cur.company)+'</div>'+
+     '<div class="row"><button class="btn solid" type="button" id="dMail">Copy email</button>'+
+     '<a class="btn" href="./Krishna_Nekkanti_Resume.pdf" target="_blank" rel="noreferrer" data-track="resume-pdf">Résumé PDF</a>'+
+     '<a class="btn" href="'+esc(P.linkedIn)+'" target="_blank" rel="noreferrer" data-track="linkedin">LinkedIn</a>'+
+     '<a class="btn" href="'+esc(P.github)+'" target="_blank" rel="noreferrer" data-track="github">GitHub</a></div>'+
+     '<div class="clock" style="margin-top:10px">'+esc(P.email)+'</div></div></div>';
+  h+='<section class="dsec"><h3>At a glance</h3><div class="glance-grid">'+
+     '<div><span>Current role</span><b>'+esc(cur.role)+', '+esc(cur.company)+'</b></div>'+
+     '<div><span>Experience</span><b>'+esc(P.yearsExperience)+' years · since 2022</b></div>'+
+     '<div><span>Location</span><b>'+esc(P.city)+', India <span>· <span id="dClock"></span></span></b></div>'+
+     '<div><span>Work mode</span><b>'+esc(P.workModes)+'</b></div>'+
+     '<div><span>Open to</span><b>'+P.openTo.map(esc).join(' · ')+'</b></div>'+
+     '<div><span>Education</span><b>'+esc(C.education[0].degree)+', '+esc(C.education[0].institution.replace(/ \(.*\)/,''))+'</b></div></div></section>';
+  h+='<section class="dsec"><h3>Why I fit forward-deployed AI roles</h3><ul class="pitch">'+P.pitch.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul></section>';
+  h+='<section class="dsec"><h3>Signature results</h3><div class="tiles">'+C.keyImpactMetrics.map(function(m){
+     return '<div class="tile"><b>'+esc(m.prefix)+esc(m.value)+'</b><span>'+esc(m.label)+'</span><p>'+esc(m.description)+'</p></div>';}).join('')+'</div></section>';
+  h+='<section class="dsec noprint"><h3>Match me to your job description</h3><div class="jd">'+
+     '<label for="jdIn" class="clock">Paste a job description. I check it against my real experience in your browser; nothing is sent anywhere.</label>'+
+     '<textarea id="jdIn" spellcheck="false" placeholder="e.g. We are hiring a Forward Deployed Engineer with Python, SQL, Snowflake, LLM agents, RAG, Kubernetes…"></textarea>'+
+     '<div class="act"><button class="go" type="button" id="jdGo">Check the match</button><button type="button" id="jdEx">Try an example</button></div>'+
+     '<div id="jdOut" aria-live="polite"></div></div></section>';
+  h+='<section class="dsec"><h3>Experience</h3>'+C.workExperience.map(function(r){
+     return '<div class="xp"><div class="when">'+esc(r.period)+'<br>'+esc(r.location)+'<br>'+esc(r.badge)+'</div><div>'+
+       '<h4>'+esc(r.role)+' <small>· '+esc(r.company)+'</small></h4><p>'+esc(r.summary)+'</p>'+
+       '<ul>'+r.achievements.map(function(a){return '<li>'+esc(a)+'</li>';}).join('')+'</ul>'+
+       '<div class="tags">'+r.tech.map(function(t){return '<span>'+esc(t)+'</span>';}).join('')+'</div></div></div>';}).join('')+'</section>';
+  h+='<section class="dsec"><h3>Skills, with where I used them</h3><div class="skg">'+SK_EVID.map(function(cat){
+     return '<div class="skc"><h4>'+esc(cat.category)+'</h4>'+cat.skills.map(function(s){
+       return '<div class="sk"><span>'+esc(s.name)+'</span><em'+(s.usedAt.length?'':' class="n"')+'>'+(s.usedAt.length?esc(s.usedAt.join(' · ')):'projects')+'</em></div>';}).join('')+'</div>';}).join('')+'</div></section>';
+  h+='<section class="dsec"><h3>Projects</h3><div class="prj">'+C.projects.map(function(p){
+     return '<div><h4>'+esc(p.title)+'</h4><b>'+esc(p.metrics)+'</b><p>'+esc(p.description)+'</p><p class="clock">'+esc(p.tags.join(' · '))+'</p>'+
+       (p.githubUrl&&p.githubUrl.indexOf('?tab=')<0?'<a href="'+esc(p.githubUrl)+'" target="_blank" rel="noreferrer">Code on GitHub →</a>':'')+'</div>';}).join('')+'</div></section>';
+  h+='<section class="dsec"><h3>Education &amp; certifications</h3><div class="edu">'+C.education.map(function(e){
+     return '<div><b>'+esc(e.degree)+'</b><span>'+esc(e.institution)+' · '+esc(e.year)+'</span></div>';}).join('')+
+     C.certifications.map(function(c){return '<div><b>'+esc(c.name)+'</b><span>'+esc(c.issuer)+(c.credentialUrl?' · <a href="'+esc(c.credentialUrl)+'" target="_blank" rel="noreferrer">verify</a>':'')+'</span></div>';}).join('')+'</div></section>';
+  document.getElementById('cutIn').innerHTML=h;
+  updateClocks();
+  document.getElementById('dPrint').addEventListener('click',function(){track('dossier-print');window.print();});
+  document.getElementById('dMail').addEventListener('click',function(){copyText(P.email,this,'Copy email');});
+  document.getElementById('jdGo').addEventListener('click',function(){matchJD(document.getElementById('jdIn').value);});
+  document.getElementById('jdEx').addEventListener('click',function(){var t='Forward Deployed Engineer. You will deploy our AI agents into customer data stacks. Requirements: Python, advanced SQL, Snowflake or Databricks, experience with LLM agents, RAG and prompt engineering, data pipelines (Spark, Airflow), dbt, Kubernetes, customer-facing communication, Terraform a plus.';
+    document.getElementById('jdIn').value=t;matchJD(t);});
+}
+
+/* job-description matcher: credits only skills that appear in my roles or projects; lists common tools I don't have as gaps */
+var MY_TERMS={'python':'Python','sql':'SQL','pyspark':'PySpark','spark':'PySpark','snowflake':'Snowflake','databricks':'Databricks','redshift':'Redshift',
+  'aws glue':'AWS Glue','glue':'AWS Glue','aws':'AWS','lambda':'AWS Lambda','athena':'Athena','tableau':'Tableau','power bi':'Power BI','kafka':'Kafka',
+  'informatica':'Informatica','azure data factory':'Azure Data Factory','azure':'Azure','postgresql':'PostgreSQL','postgres':'PostgreSQL','sql server':'SQL Server',
+  'dbt':'dbt','docker':'Docker','pandas':'Pandas','numpy':'NumPy','scikit-learn':'Scikit-Learn','langchain':'LangChain','rag':'RAG',
+  'llm':'LLMs','llms':'LLMs','large language model':'LLMs','agents':'AI agents','agent':'AI agents','agentic':'AI agents','mcp':'MCP',
+  'model context protocol':'MCP','text-to-sql':'Text-to-SQL','prompt engineering':'Prompt engineering','prompt':'Prompt engineering','etl':'ETL / ELT','elt':'ETL / ELT',
+  'data pipelines':'Data pipelines','data pipeline':'Data pipelines','pipelines':'Data pipelines','data quality':'Data quality','rbac':'RBAC & governance','governance':'RBAC & governance',
+  'customer-facing':'Customer-facing delivery','customer facing':'Customer-facing delivery','stakeholders':'Customer-facing delivery','forward deployed':'Forward deployment',
+  'forward deployment':'Forward deployment','solutions engineer':'Forward deployment','rest':'REST APIs','apis':'REST APIs','api':'REST APIs','machine learning':'Machine learning',
+  'fraud':'Fraud analytics','dashboards':'BI dashboards','computer vision':'Computer vision','opencv':'Computer vision','yolo':'Computer vision',
+  'tensorflow':'TensorFlow','hugging face':'Hugging Face','mongodb':'MongoDB'};
+var GAP_TERMS=['java','scala','golang','rust','c++','c#','kubernetes','k8s','terraform','airflow','dagster','gcp','bigquery','looker','fivetran','react','typescript','node.js',
+  'langgraph','llamaindex','pytorch','vertex ai','sagemaker','bedrock','fastapi','flink','mlflow','kubeflow','vector database','pinecone','weaviate','elasticsearch'];
+var EVID={};
+(function(){
+  var all=C.workExperience.map(function(r){return {c:r.company.replace(' Inc.',''),t:roleText(r)};})
+    .concat(C.projects.map(function(p){return {c:'UMBC project',t:(p.title+' '+p.description+' '+p.tags.join(' ')+' '+p.keyPoints.join(' ')).toLowerCase()};}));
+  Object.keys(MY_TERMS).forEach(function(k){var lab=MY_TERMS[k],re=new RegExp('(^|[^a-z0-9])'+escRe(k)+'([^a-z0-9]|$)');EVID[lab]=EVID[lab]||[];
+    all.forEach(function(x){if(re.test(x.t)&&EVID[lab].indexOf(x.c)<0)EVID[lab].push(x.c);});});
+})();
+function matchJD(text){
+  var t=' '+String(text||'').toLowerCase().replace(/[’']/g,"'")+' ',out=document.getElementById('jdOut');
+  if(t.trim().length<20){out.innerHTML='<p class="err">Paste a longer job description, at least a sentence or two.</p>';return;}
+  var have=[],gaps=[];
+  Object.keys(MY_TERMS).sort(function(a,b){return b.length-a.length;}).forEach(function(k){
+    var re=new RegExp('([^a-z0-9])'+escRe(k)+'([^a-z0-9])');
+    if(re.test(t)){var lab=MY_TERMS[k];if(have.indexOf(lab)<0)have.push(lab);t=t.replace(new RegExp('([^a-z0-9])'+escRe(k)+'([^a-z0-9])','g'),'$1 $2');}});
+  GAP_TERMS.forEach(function(k){if(new RegExp('([^a-z0-9])'+escRe(k)+'([^a-z0-9])').test(t)&&gaps.indexOf(k)<0)gaps.push(k);});
+  var total=have.length+gaps.length,score=total?Math.round(have.length/total*100):0;
+  track('jd-match');
+  if(!total){out.innerHTML='<p class="clock">I could not find any tools or skills I recognise in that text. Try pasting the requirements section.</p>';return;}
+  out.innerHTML='<div class="score"><b>'+score+'%</b><div class="bar2"><i style="width:'+score+'%"></i></div><span class="clock">'+have.length+' of '+total+' requirements I recognised are in my record</span></div>'+
+    '<div class="mt">'+have.map(function(h){var ev=EVID[h]||[];return '<div><b>'+esc(h)+'</b><small>'+(ev.length?'Used at '+esc(ev.join(' · ')):'Listed in my skills')+'</small></div>';}).join('')+
+    gaps.map(function(g){return '<div class="miss"><b>'+esc(g)+'</b><small>Not in my record yet</small></div>';}).join('')+'</div>'+
+    '<p class="clock" style="margin-top:10px">Keyword matching, done honestly: it only credits skills that appear in my roles, projects or skill list.</p>';
+}
+
+/* ================= AR / 3D viewer (Google model-viewer, loaded only when opened) ================= */
+var arReady=false;
+function openAR(){
+  if(arReady)return;arReady=true;
+  var box=document.getElementById('arBox');
+  import('https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js').then(function(){
+    box.innerHTML='<model-viewer src="./twin.glb" alt="Krishna\'s AI twin, a humanoid hologram" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" '+
+      'camera-controls auto-rotate rotation-per-second="18deg" camera-orbit="20deg 80deg auto" exposure="1.1" shadow-intensity="0" interaction-prompt="none"></model-viewer>';
+  }).catch(function(){box.innerHTML='<p class="loading">The 3D viewer could not load. Check your connection and try again.</p>';arReady=false;});
+  if(!/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){
+    var note=document.getElementById('arNote'),qr=document.getElementById('qr'),url=location.href.split('#')[0]+'#ar';
+    note.textContent='Drag to orbit the twin. To place it in your room, scan this code with your phone camera: the page opens straight into the AR viewer.';
+    var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';
+    s.onload=function(){try{new QRCode(qr,{text:url,width:132,height:132,colorDark:'#e8f6ff',colorLight:'#050507'});qr.hidden=false;}catch(e){}};document.head.appendChild(s);
+  }
+}
+
+/* ================= copy helpers ================= */
+function copyText(text,btn,label){
+  function done(){btn.textContent='Copied';setTimeout(function(){btn.textContent=label;},1800);}
+  function fallback(){window.prompt('Copy this email address',text);}
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(text).then(done,fallback);else fallback();
+  track('copy-email');
+}
+document.getElementById('copyMail').addEventListener('click',function(){copyText(P.email,this,'Copy email');});
 
 /* ================= main loop: only uniforms change per frame ================= */
-var t0=performance.now(),lastNow=t0,FLOW=0,ripple=0,tintAmt=0;
+var t0=performance.now(),lastNow=t0,FLOW=0,ripple=0,tintAmt=0,introStart=null;
+function ss(x){x=Math.min(1,Math.max(0,x));return x*x*(3-2*x);}
 function frame(now){
   var dt=Math.min(.05,(now-lastNow)/1000);lastNow=now;
   var t=REDUCE?0:(now-t0)/1000;
-  prog+=(target-prog)*(REDUCE?1:.07);if(Math.abs(target-prog)<.0005)prog=target;
+  prog+=(target-prog)*(REDUCE||dragging?1:.07);if(Math.abs(target-prog)<.0005)prog=target;
   updateLayers(prog);
   FLOW+=dt*LIVE_FLOW*(REDUCE?0:1);
   pulse*=REDUCE?0:.9;tintAmt+=(tintTarget-tintAmt)*.08;
   var listenWave=HSTATE==='listening'?(.5+.5*Math.sin(t*7))*.7:0;
   ripple+=((HSTATE==='speaking'?pulse*.9:0)+listenWave+(HSTATE==='thinking'?.25+.25*Math.sin(t*14):0)-ripple)*.25;
   if(hasGL){
-    var intro=REDUCE?1:(introStart===null?0:smooth(0,1,(now-introStart-150)/2600));
-    var a=Math.min(L-1,Math.floor(prog)),b=Math.min(L-1,a+1),f=prog-a,m=smooth(.15,.85,f);
+    var intro=REDUCE?1:(introStart===null?0:ss((now-introStart-150)/2600));
+    var a=Math.min(L-1,Math.floor(prog)),b=Math.min(L-1,a+1),f=prog-a,m=ss((f-.15)/.7);
     var U=mat.uniforms;
     U.uA.value=a;U.uB.value=b;U.uM.value=m;U.uBurst.value=REDUCE?0:Math.sin(Math.PI*m)*1.6;U.uTime.value=t;U.uFlow.value=FLOW;U.uIntro.value=intro;
     tA.set(COLS[a][0]);tB.set(COLS[b][0]);U.uCA.value.copy(tA.lerp(tB,m));
@@ -1109,7 +1395,7 @@ function frame(now){
     U.uPulse.value=pulse;U.uRipple.value=ripple*photo;U.uTintAmt.value=tintAmt;
     for(var h=0;h<GRAPH_N;h++)HI[h]+=(HI_T[h]-HI[h])*.08;
     smx+=(mx-smx)*.05;smy+=(my-smy)*.05;
-    group.rotation.y=Math.sin(t*.12)*.22*(1-photo)+smx*(.5+photo*.4);
+    group.rotation.y=Math.sin(t*.12)*.22*(1-photo)+smx*(.5+photo*.5)+Math.sin(t*.35)*.06*photo;
     group.rotation.x=smy*(.25+photo*.1);
     camera.position.z=14-Math.sin(Math.PI*m)*1.5;
     renderer.render(scene,camera);
@@ -1128,53 +1414,45 @@ function frame(now){
 }
 requestAnimationFrame(frame);
 
-/* ================= recruiter cut ================= */
-var cut=document.getElementById('cut'),cutBtn=document.getElementById('cutBtn');
-function openCut(){cut.hidden=false;document.getElementById('cutClose').focus();}
-function closeCut(){if(cut.hidden)return;cut.hidden=true;cutBtn.focus();}
-cutBtn.addEventListener('click',openCut);document.getElementById('cutClose').addEventListener('click',closeCut);
-
-/* ================= copy email ================= */
-var mail='krishnanekkanti04@gmail.com',mailBtn=document.getElementById('copyMail');
-mailBtn.addEventListener('click',function(){
-  function done(){mailBtn.textContent='Copied';setTimeout(function(){mailBtn.textContent='Copy email';},1800);}
-  function select(){var r=document.createRange();r.selectNodeContents(document.getElementById('mailOut'));var s=getSelection();s.removeAllRanges();s.addRange(r);}
-  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(mail).then(done,select);else select();
-});
-
-/* ================= opening titles ================= */
+/* ================= opening titles (device-aware, about 5 s, skippable) ================= */
 (function(){
-  var el=document.getElementById('intro'),boot=document.getElementById('boot'),cr=document.getElementById('credit'),
+  var el=document.getElementById('intro'),bootEl=document.getElementById('boot'),cr=document.getElementById('credit'),
       cap=document.getElementById('creditCap'),big=document.getElementById('creditBig'),flare=document.getElementById('flare'),
       comp=document.getElementById('compile'),compN=document.getElementById('compileN'),compBar=document.getElementById('compileBar'),
-      timers=[],done=false,seen=false;
+      timers=[],done=false,seen=false,dv=device(),hash=location.hash;
   try{seen=sessionStorage.getItem('reel-intro-seen')==='1';}catch(e){}
   function at(ms,fn){timers.push(setTimeout(fn,ms));}
   function credit(c,b,col){cr.classList.remove('on');void cr.offsetWidth;cap.textContent=c;big.textContent=b;
     cr.style.setProperty('--c',col);flare.style.setProperty('--c',col);cr.classList.add('on');
-    flare.classList.remove('go');void flare.offsetWidth;flare.classList.add('go');ping(BASE_HZ[3]*6,.02);}
+    flare.classList.remove('go');void flare.offsetWidth;flare.classList.add('go');}
   function finish(){
     if(done)return;done=true;timers.forEach(clearTimeout);
     el.classList.add('gone');document.body.classList.add('open');introStart=performance.now();
     try{sessionStorage.setItem('reel-intro-seen','1');}catch(e){}
     setTimeout(function(){el.hidden=true;},950);
     ['keydown','wheel','touchstart'].forEach(function(t){removeEventListener(t,finish);});
+    if(hash==='#ar')setTimeout(function(){openDlg('ar');},500);
+    else if(hash==='#dossier')setTimeout(function(){openDlg('cut');},500);
+    else setTimeout(showToast,2600);
   }
-  if(REDUCE||seen){el.hidden=true;document.body.classList.add('open');introStart=performance.now();done=true;return;}
+  if(REDUCE||seen||hash==='#ar'||hash==='#dossier'){el.hidden=true;finish();return;}
   el.addEventListener('click',finish);
   ['keydown','wheel','touchstart'].forEach(function(t){addEventListener(t,finish,{passive:true});});
-  at(250,function(){boot.textContent='> establishing connection to sidhvi.warehouse';boot.classList.add('on');});
-  at(1000,function(){boot.textContent='> ingesting 2021 → 2026 · 5 sources · 4 layers';});
-  at(1750,function(){boot.classList.remove('on');credit('raw · 2022','Vanguard','#c9ced6');});
+  var l1='&gt; handshake'+(dv.gpu?' · rendering on your <b>'+esc(dv.gpu)+'</b>':'')+(dv.cores?' · '+dv.cores+' cores':''),
+      l2='&gt; your time <b>'+localTime()+'</b>'+(dv.tz?' ('+esc(dv.tz)+')':'')+' · mine <b>'+hydTime()+'</b> in '+esc(P.city||'Hyderabad');
+  at(150,function(){bootEl.innerHTML=l1;bootEl.classList.add('on');});
+  at(900,function(){bootEl.innerHTML=l1+'<br>'+l2;});
+  at(1900,function(){bootEl.classList.remove('on');credit('raw · 2022','Vanguard','#c9ced6');});
   at(2350,function(){credit('bronze · 2023','Amazon','#ff9a52');});
-  at(2950,function(){credit('silver · 2024','Global Payments','#e8f1ff');});
-  at(3550,function(){credit('gold · 2025 → now','Trida Labs','#ffd36b');});
-  at(4250,function(){cr.classList.remove('on');comp.classList.add('on');var s0=performance.now();
-    (function tick(){var k=Math.min(1,(performance.now()-s0)/1000);compN.textContent=Math.round(k*k*N).toLocaleString();
+  at(2800,function(){credit('silver · 2024','Global Payments','#e8f1ff');});
+  at(3250,function(){credit('gold · 2025 → now','Trida Labs','#ffd36b');});
+  at(3800,function(){cr.classList.remove('on');comp.classList.add('on');var s0=performance.now();
+    (function tick(){var k=Math.min(1,(performance.now()-s0)/800);compN.textContent=Math.round(k*k*N).toLocaleString();
       compBar.style.setProperty('--p',k);if(k<1&&!done)requestAnimationFrame(tick);})();});
-  at(5450,function(){comp.classList.remove('on');credit('a data reel','Medallion Reel','#9fd8ff');});
-  at(6600,finish);
+  at(4700,function(){comp.classList.remove('on');credit('a data reel','Medallion Reel','#9fd8ff');});
+  at(5500,finish);
 })();
+}
 })();
 </script>
 </body>

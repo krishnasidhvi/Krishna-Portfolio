@@ -1,0 +1,1067 @@
+{
+  "personal": {
+    "name": "Krishna Sidhvi Nekkanti",
+    "title": "Forward Deployment AI Engineer & Enterprise Data Specialist",
+    "subtitles": [
+      "Forward Deployment AI Engineer @ Trida Labs",
+      "Agentic AI, Text-to-SQL & AgentSQL Systems",
+      "Model Context Protocol (MCP) & LLM Orchestration",
+      "Enterprise Data Architect (Snowflake, Databricks, Redshift)",
+      "High-Throughput Analytics & Data Quality Specialist"
+    ],
+    "tagline": "Forward Deployment AI Engineer @ Trida Labs · Ex-Global Payments, Amazon & Vanguard",
+    "availability": "Open to Enterprise AI, Forward Deployment & Data Engineering Opportunities (Hyderabad & Global Remote)",
+    "experienceYears": "4+ Years",
+    "location": "Hyderabad, India (Open to Relocation & Remote)",
+    "email": "krishnanekkanti04@gmail.com",
+    "linkedIn": "https://www.linkedin.com/in/krishnasidhvinekkanti/",
+    "github": "https://github.com/krishnasidhvi",
+    "profileImg": "../profile.jpg",
+    "avatarImg": "../avatar.png",
+    "resumePdfUrl": "../Krishna_Nekkanti_Resume.pdf",
+    "summary": "Forward Deployment AI Engineer and Enterprise Data Specialist with 4+ years of cross-functional experience designing, operationalizing, and scaling Agentic AI solutions and cloud data infrastructure across Trida Labs, Global Payments, Amazon, and Vanguard. Expert in productionizing AgentSQL (autonomous Text-to-SQL and dynamic dashboard engine) and TridaPad, architecting Model Context Protocol (MCP) server integrations across Snowflake, Databricks, PostgreSQL, and Redshift, and establishing deterministic guardrails with 99%+ relational accuracy. Proven record of cutting data anomalies by 40-50% and boosting pipeline reliability by 30% in high-volume enterprise environments.",
+    "headline": "Forward Deployment AI Engineer",
+    "yearsExperience": "4+",
+    "timezone": "Asia/Kolkata",
+    "city": "Hyderabad",
+    "openTo": [
+      "Forward Deployment / Solutions Engineering",
+      "Applied AI & LLM Engineering",
+      "Data Engineering"
+    ],
+    "workModes": "Remote, hybrid or relocation",
+    "pitch": [
+      "I sit between customers and engineering: I deploy AI products into real enterprise data stacks and make them work there.",
+      "I make LLM output trustworthy: schema-aware prompts, deterministic SQL guardrails and RBAC, at 99%+ relational accuracy.",
+      "Underneath, I'm a data engineer: AWS Glue, Redshift, Snowflake and Databricks pipelines, with measured quality gains at Amazon and Global Payments."
+    ],
+    "analytics": {
+      "goatcounter": "",
+      "_help": "Create a free GoatCounter site, then put its code here, e.g. \"krishna\" for krishna.goatcounter.com. Empty = no stats."
+    }
+  },
+  "keyImpactMetrics": [
+    {
+      "label": "Relational SQL Accuracy",
+      "value": "99%+",
+      "prefix": "",
+      "description": "Syntactic & relational accuracy on complex multi-table joins via AgentSQL & MCP guardrails at Trida Labs",
+      "color": "cyan"
+    },
+    {
+      "label": "Data Anomaly Reduction",
+      "value": "40%",
+      "prefix": "-",
+      "description": "Achieved via automated Redshift data validation frameworks across transaction tables at Global Payments",
+      "color": "emerald"
+    },
+    {
+      "label": "Pipeline Reliability Boost",
+      "value": "30%",
+      "prefix": "+",
+      "description": "Enhanced AWS Glue & Informatica ETL data pipelines scalability at Amazon",
+      "color": "amber"
+    },
+    {
+      "label": "Fraud False Positives",
+      "value": "15%",
+      "prefix": "-",
+      "description": "Historical anomaly refinement improving predictive model precision at Global Payments",
+      "color": "purple"
+    }
+  ],
+  "competencies": [
+    "Forward Deployment Engineering",
+    "Agentic AI & LLM Orchestration",
+    "Text-to-SQL & AgentSQL Architecture",
+    "Model Context Protocol (MCP) Integrations",
+    "Schema-Aware Guardrails & Hallucination Defense",
+    "Enterprise Data Warehouses (Snowflake, Databricks, Redshift)",
+    "Data Quality & Validation Frameworks",
+    "High-Throughput ETL & PySpark Pipelines",
+    "Enterprise RBAC, Governance & Compliance",
+    "Cross-Functional Client & Product Engineering"
+  ],
+  "technicalSkills": [
+    {
+      "category": "Agentic AI & LLM Systems",
+      "icon": "Sparkles",
+      "skills": [
+        {
+          "name": "AgentSQL & TridaPad",
+          "tag": "AI Analytics",
+          "keys": [
+            "agentsql",
+            "tridapad"
+          ]
+        },
+        {
+          "name": "Model Context Protocol (MCP)",
+          "tag": "Agent Tooling",
+          "keys": [
+            "mcp",
+            "model context protocol"
+          ]
+        },
+        {
+          "name": "Text-to-SQL Architecture",
+          "tag": "Autonomous SQL",
+          "keys": [
+            "text-to-sql",
+            "natural language"
+          ]
+        },
+        {
+          "name": "LLM Orchestration & Prompting",
+          "tag": "Context Pipelines",
+          "keys": [
+            "llm",
+            "prompt"
+          ]
+        },
+        {
+          "name": "Deterministic SQL Guardrails",
+          "tag": "Hallucination Control",
+          "keys": [
+            "guardrail"
+          ]
+        },
+        {
+          "name": "LangChain & RAG Architectures",
+          "tag": "Vector & Retrieval",
+          "keys": [
+            "langchain",
+            "rag"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Cloud & Data Warehousing",
+      "icon": "Cloud",
+      "skills": [
+        {
+          "name": "Snowflake",
+          "tag": "Cloud DW",
+          "keys": [
+            "snowflake"
+          ]
+        },
+        {
+          "name": "Databricks",
+          "tag": "Lakehouse",
+          "keys": [
+            "databricks"
+          ]
+        },
+        {
+          "name": "AWS Redshift",
+          "tag": "Data Warehouse",
+          "keys": [
+            "redshift"
+          ]
+        },
+        {
+          "name": "AWS Glue & Lambda",
+          "tag": "Serverless ETL",
+          "keys": [
+            "glue",
+            "lambda"
+          ]
+        },
+        {
+          "name": "PostgreSQL & SQL Server",
+          "tag": "Relational DB",
+          "keys": [
+            "postgresql",
+            "sql server"
+          ]
+        },
+        {
+          "name": "Azure Data Factory",
+          "tag": "Cloud Integration",
+          "keys": [
+            "azure data factory"
+          ]
+        },
+        {
+          "name": "dbt (Data Build Tool)",
+          "tag": "Data Modeling",
+          "keys": [
+            "dbt"
+          ]
+        },
+        {
+          "name": "Informatica",
+          "tag": "Enterprise ETL",
+          "keys": [
+            "informatica"
+          ]
+        },
+        {
+          "name": "AWS Athena",
+          "tag": "Serverless Query",
+          "keys": [
+            "athena"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Languages & Data Processing",
+      "icon": "Code",
+      "skills": [
+        {
+          "name": "Python",
+          "tag": "Primary Language",
+          "keys": [
+            "python"
+          ]
+        },
+        {
+          "name": "SQL (Advanced)",
+          "tag": "Core Querying",
+          "keys": [
+            "sql"
+          ]
+        },
+        {
+          "name": "Apache Spark (PySpark)",
+          "tag": "Distributed Computing",
+          "keys": [
+            "spark",
+            "pyspark",
+            "glue"
+          ]
+        },
+        {
+          "name": "Apache Kafka",
+          "tag": "Real-time Streaming",
+          "keys": [
+            "kafka"
+          ]
+        },
+        {
+          "name": "Pandas & NumPy",
+          "tag": "Data Manipulation",
+          "keys": [
+            "pandas",
+            "numpy"
+          ]
+        },
+        {
+          "name": "Docker & Containerization",
+          "tag": "DevOps & Containers",
+          "keys": [
+            "docker"
+          ]
+        },
+        {
+          "name": "REST & MCP APIs",
+          "tag": "API Architecture",
+          "keys": [
+            "rest api",
+            "mcp"
+          ]
+        },
+        {
+          "name": "Scikit-Learn",
+          "tag": "Machine Learning",
+          "keys": [
+            "scikit"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Analytics, BI & Governance",
+      "icon": "BarChart3",
+      "skills": [
+        {
+          "name": "Tableau",
+          "tag": "BI Dashboards",
+          "keys": [
+            "tableau"
+          ]
+        },
+        {
+          "name": "Power BI",
+          "tag": "Enterprise Reporting",
+          "keys": [
+            "power bi"
+          ]
+        },
+        {
+          "name": "Enterprise RBAC & Security",
+          "tag": "Data Governance",
+          "keys": [
+            "rbac",
+            "access control"
+          ]
+        },
+        {
+          "name": "Fraud Detection Analytics",
+          "tag": "Risk Modeling",
+          "keys": [
+            "fraud"
+          ]
+        },
+        {
+          "name": "Matplotlib & Seaborn",
+          "tag": "Data Viz",
+          "keys": [
+            "seaborn",
+            "matplotlib"
+          ]
+        },
+        {
+          "name": "Power Apps & Automate",
+          "tag": "Automation",
+          "keys": [
+            "power apps"
+          ]
+        }
+      ]
+    }
+  ],
+  "workExperience": [
+    {
+      "role_id": 5,
+      "layer": "gold",
+      "id": "trida-labs",
+      "company": "Trida Labs",
+      "location": "Hyderabad, Telangana, India",
+      "role": "Forward Deployment AI Engineer",
+      "period": "May 2025 – Present",
+      "badge": "Full-time",
+      "summary": "Spearheading customer-facing engineering and enterprise deployment for Trida Labs’ AI-native analytics ecosystem, including TridaPad (collaborative data workspace) and AgentSQL (agentic Text-to-SQL and autonomous dashboard engine).",
+      "achievements": [
+        "Deploy and operationalize AgentSQL across enterprise customer architectures, enabling non-technical stakeholders to autonomously generate production-grade SQL and dynamic dashboards from natural language queries.",
+        "Implement and optimize Model Context Protocol (MCP) server integrations, seamlessly connecting external LLMs and agentic AI tools directly to clients' distributed databases (PostgreSQL, Snowflake, Databricks, Redshift).",
+        "Design schema-aware contextual prompt pipelines and deterministic SQL guardrails, minimizing LLM hallucinations and ensuring 99%+ syntactic and relational accuracy on complex multi-table joins.",
+        "Bridge client requirements with core product engineering, identifying edge-case query patterns, optimizing execution latency, and tailoring real-time analytics collaboration workflows within TridaPad.",
+        "Configure enterprise role-based access controls (RBAC) and data governance policies to guarantee compliance and security across multi-tenant cloud and on-prem deployments."
+      ],
+      "tech": [
+        "Agentic AI",
+        "Text-to-SQL",
+        "Model Context Protocol (MCP)",
+        "LLM Orchestration",
+        "Python",
+        "SQL",
+        "Enterprise Data Integration",
+        "TridaPad",
+        "AgentSQL",
+        "Snowflake",
+        "Databricks",
+        "PostgreSQL",
+        "Redshift"
+      ],
+      "start": "May 2025",
+      "end": "Present",
+      "start_year": 2025,
+      "end_year": null
+    },
+    {
+      "role_id": 4,
+      "layer": "silver",
+      "id": "global-payments",
+      "company": "Global Payments Inc.",
+      "location": "Atlanta, Georgia, United States (Hybrid/Remote)",
+      "role": "Data Analytics Engineer",
+      "period": "March 2024 – January 2025",
+      "badge": "Contract",
+      "summary": "Engineered end-to-end analytics pipelines and business intelligence infrastructure to monitor high-volume payment transactions, reduce processing latency, and support risk mitigation initiatives.",
+      "achievements": [
+        "Analyzed high-throughput multi-channel transaction datasets using Python and advanced SQL, identifying bottleneck patterns and optimizing payment processing workflows across distributed gateways.",
+        "Developed and maintained operational Tableau dashboards integrated with live payment streams, providing real-time visibility into settlement KPIs, transaction failure rates, and interchange metrics for executive and risk teams.",
+        "Collaborated with fraud analytics teams to analyze historical transaction anomalies, refining fraud detection feature inputs to improve predictive model precision and decrease false positives by 15%.",
+        "Refined core ETL workflows in tandem with Data Engineering using AWS Redshift and Informatica, ensuring data pipeline resiliency, consistent data staging, and minimal downstream reporting latency.",
+        "Established automated data quality and validation frameworks across transactional tables, reducing data anomalies by 40% and ensuring adherence to PCI-DSS regulatory reporting standards."
+      ],
+      "tech": [
+        "Amazon Redshift",
+        "Python",
+        "SQL",
+        "Tableau",
+        "Informatica",
+        "Fraud Detection Analytics",
+        "Data Quality Frameworks",
+        "ETL"
+      ],
+      "start": "March 2024",
+      "end": "January 2025",
+      "start_year": 2024,
+      "end_year": 2025
+    },
+    {
+      "role_id": 3,
+      "layer": "bronze",
+      "id": "amazon",
+      "company": "Amazon",
+      "location": "Seattle, WA (Contract)",
+      "role": "Data Engineer",
+      "period": "September 2023 – January 2024",
+      "badge": "Contract",
+      "summary": "Architected high-throughput AWS ETL workflows and automated month-end data mapping frameworks.",
+      "achievements": [
+        "Spearheaded enhancements to data pipelines using AWS Glue and Informatica, achieving a 30% improvement in processing reliability and scalability.",
+        "Automated ETL workflows with AWS Data Pipeline, reducing manual effort and increasing efficiency by 25%, ensuring timely data delivery.",
+        "Conducted robust data quality checks with Python and AWS Redshift, reducing data anomalies by 50% for high-quality downstream analytics.",
+        "Integrated REST APIs with AWS services to enable seamless data extraction and accessibility across business analytics teams.",
+        "Optimized SQL-based data mapping using AWS Athena, ensuring precise and timely month-end financial and operational reporting."
+      ],
+      "tech": [
+        "AWS Glue",
+        "AWS Redshift",
+        "AWS Data Pipeline",
+        "AWS Athena",
+        "Informatica",
+        "Python",
+        "SQL",
+        "REST APIs"
+      ],
+      "start": "September 2023",
+      "end": "January 2024",
+      "start_year": 2023,
+      "end_year": 2024
+    },
+    {
+      "role_id": 2,
+      "layer": "raw",
+      "id": "vanguard",
+      "company": "Vanguard",
+      "location": "Malvern, PA (Contract)",
+      "role": "Data Analyst",
+      "period": "July 2022 – December 2022",
+      "badge": "Contract",
+      "summary": "Built KPI tracking dashboards and Azure Data Factory pipelines for enterprise asset management metrics.",
+      "achievements": [
+        "Optimized Tableau dashboards connected to SQL Server and PostgreSQL, driving real-time KPI monitoring and boosting operational efficiency by 15%.",
+        "Enhanced reporting capabilities by developing supplemental Power BI solutions to augment complex Tableau financial insights.",
+        "Managed Azure Data Factory pipelines, ensuring seamless and accurate data flows for real-time dashboard updates.",
+        "Coordinated Azure Fabric and REST API integration, enabling seamless cross-platform data flow and supporting dynamic reporting needs."
+      ],
+      "tech": [
+        "Tableau",
+        "Power BI",
+        "SQL Server",
+        "PostgreSQL",
+        "Azure Data Factory",
+        "Azure Fabric",
+        "REST APIs"
+      ],
+      "start": "July 2022",
+      "end": "December 2022",
+      "start_year": 2022,
+      "end_year": 2022
+    }
+  ],
+  "projects": [
+    {
+      "id": "license-plate",
+      "title": "Real-time Number Plate Detection System",
+      "subtitle": "Master's Degree Research | UMBC",
+      "period": "August 2021 – May 2023",
+      "metrics": "95% Extraction Accuracy",
+      "githubUrl": "https://github.com/krishnasidhvi/Capstone_DATA606",
+      "demoUrl": "https://github.com/krishnasidhvi/Capstone_DATA606/blob/main/number_plate_detection_Final.ipynb",
+      "demoLabel": "Jupyter Notebook",
+      "isInternalDemo": false,
+      "architectureSteps": [
+        "Input Video Stream",
+        "YOLOv8 CNN Detection",
+        "Bounding Box Crop",
+        "OCR Digit Recognition",
+        "95% Validated Extraction"
+      ],
+      "description": "Designed and implemented a deep learning vehicle registration number detection system using YOLO-based CNN for automated traffic monitoring and law enforcement workflows.",
+      "keyPoints": [
+        "Built custom object detection pipeline leveraging YOLO-based Convolutional Neural Networks and OpenCV.",
+        "Extracted plate numbers with 95% accuracy in real-time camera feeds, drastically reducing manual enforcement intervention.",
+        "Trained model in Google Colab environment using PyTorch and TensorFlow with custom image augmentation techniques."
+      ],
+      "tags": [
+        "YOLO CNN",
+        "OpenCV",
+        "TensorFlow",
+        "Python",
+        "Google Colab",
+        "NumPy"
+      ],
+      "gradient": "from-cyan-500/20 via-slate-900 to-blue-900/40",
+      "accentColor": "#0ea5e9"
+    },
+    {
+      "id": "chicago-crime",
+      "title": "Chicago Crime Analytics & Prediction",
+      "subtitle": "Master's Degree Research | UMBC",
+      "period": "August 2021 – May 2023",
+      "metrics": "12% Reduction in Targeted Area Crime",
+      "githubUrl": "https://github.com/krishnasidhvi?tab=repositories",
+      "demoUrl": null,
+      "demoLabel": "Methodology Walkthrough",
+      "isInternalDemo": true,
+      "architectureSteps": [
+        "Multi-GB Historical Crime Ingestion",
+        "Pandas & NumPy Feature Cleaning",
+        "Random Forest & XGBoost Models",
+        "Spatial-Temporal Tactical Allocation",
+        "12% Drop in Targeted Crime"
+      ],
+      "description": "Developed predictive machine learning models to forecast crime patterns in Chicago, empowering law enforcement to optimize resource allocation through interactive Tableau spatial dashboards.",
+      "keyPoints": [
+        "Processed multi-gigabyte historical crime datasets using Python, Pandas, and NumPy.",
+        "Trained spatial-temporal machine learning models using Scikit-Learn algorithms (Random Forests, XGBoost).",
+        "Delivered interactive Tableau visualization tool enabling tactical police unit deployment, directly contributing to a 12% crime drop in targeted zones."
+      ],
+      "tags": [
+        "Python",
+        "Scikit-Learn",
+        "Pandas",
+        "Tableau",
+        "Predictive Modeling"
+      ],
+      "gradient": "from-emerald-500/20 via-slate-900 to-teal-900/40",
+      "accentColor": "#10b981"
+    },
+    {
+      "id": "fraud-detection",
+      "title": "Real-Time Credit Card Fraud Detection",
+      "subtitle": "Master's Degree Research | UMBC",
+      "period": "August 2021 – May 2023",
+      "metrics": "25% Detection Accuracy Gain",
+      "githubUrl": "https://github.com/krishnasidhvi?tab=repositories",
+      "demoUrl": null,
+      "demoLabel": "Pipeline Architecture",
+      "isInternalDemo": true,
+      "architectureSteps": [
+        "Real-Time Transaction Stream",
+        "Apache Kafka Queue Ingestion",
+        "AWS Lambda Real-Time Scoring",
+        "MongoDB Event Store",
+        "25% Accuracy Boost (<50ms)"
+      ],
+      "description": "Built and deployed a streaming fraud prevention pipeline combining AWS Lambda and Apache Kafka to identify high-risk transaction anomalies in real time.",
+      "keyPoints": [
+        "Engineered real-time message streaming with Apache Kafka for microsecond transaction payload ingestion.",
+        "Deployed event-driven anomaly detection models on AWS Lambda, storing clean event streams in MongoDB.",
+        "Improved fraud detection accuracy by 25%, significantly cutting financial loss and false positive customer blocks."
+      ],
+      "tags": [
+        "AWS Lambda",
+        "Apache Kafka",
+        "MongoDB",
+        "Python",
+        "Seaborn",
+        "Streaming ETL"
+      ],
+      "gradient": "from-purple-500/20 via-slate-900 to-indigo-900/40",
+      "accentColor": "#a855f7"
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master of Professional Studies in Data Science",
+      "institution": "University of Maryland Baltimore County (UMBC)",
+      "location": "Baltimore, MD",
+      "year": "May 2023",
+      "details": "Focused on advanced machine learning, data engineering architectures, big data analytics, and cloud streaming systems."
+    },
+    {
+      "degree": "Bachelor of Science in Technology",
+      "institution": "Amity University of Rajasthan",
+      "location": "Jaipur, India",
+      "year": "May 2021",
+      "details": "Minors in Business Management and German (Foreign Language)."
+    }
+  ],
+  "certifications": [
+    {
+      "name": "AWS Certified Associate Data Engineer",
+      "issuer": "Amazon Web Services (AWS)",
+      "date": "Certified",
+      "icon": "Award",
+      "color": "amber",
+      "credentialUrl": null,
+      "issuerUrl": "https://cp.certmetrics.com/amazon/en/public/verify/credential"
+    },
+    {
+      "name": "Academy Accreditation – Generative AI Fundamentals",
+      "issuer": "Databricks",
+      "date": "Accredited",
+      "icon": "Sparkles",
+      "color": "cyan",
+      "credentialUrl": null,
+      "issuerUrl": "https://credentials.databricks.com/"
+    },
+    {
+      "name": "Introduction to Career Skills in Data Analytics",
+      "issuer": "LinkedIn",
+      "date": "Completed",
+      "icon": "CheckCircle",
+      "color": "emerald",
+      "credentialUrl": null,
+      "issuerUrl": "https://www.linkedin.com/learning/certificates/"
+    },
+    {
+      "name": "Salesforce Administrator",
+      "issuer": "Salesforce",
+      "date": "Certified",
+      "icon": "ShieldCheck",
+      "color": "purple",
+      "credentialUrl": null,
+      "issuerUrl": "https://trailhead.salesforce.com/en/credentials/administrator"
+    },
+    {
+      "name": "Execute and Evaluate Hugging Face AI Models",
+      "issuer": "Hugging Face / DeepLearning.AI",
+      "date": "Certified",
+      "icon": "Sparkles",
+      "color": "cyan",
+      "credentialUrl": null,
+      "issuerUrl": "https://www.deeplearning.ai/short-courses/"
+    },
+    {
+      "name": "Build LLM Evaluation Applications with LangChain",
+      "issuer": "LangChain / DeepLearning.AI",
+      "date": "Certified",
+      "icon": "Sparkles",
+      "color": "emerald",
+      "credentialUrl": null,
+      "issuerUrl": "https://www.deeplearning.ai/short-courses/"
+    }
+  ],
+  "sampleSqlQueries": [
+    {
+      "title": "AgentSQL: Schema-Aware Agentic Text-to-SQL & MCP Server Integration (Trida Labs)",
+      "tabLabel": "AgentSQL & MCP Agent",
+      "badge": "Agentic AI",
+      "description": "Model Context Protocol (MCP) server handler translating natural language queries into production-grade, syntax-verified SQL with schema-aware guardrails and deterministic validation",
+      "code": "import mcp.server.stdio\nfrom trida.agentsql import GuardrailEngine, SchemaContext\nfrom trida.database import SnowflakeConnector, PostgresConnector\n\n# Initialize MCP Server for enterprise client database inspection\nmcp_server = mcp.server.Server(\"trida-agentsql-mcp\")\nschema_ctx = SchemaContext.load_catalog(database=\"ENTERPRISE_ANALYTICS_DW\")\nguardrails = GuardrailEngine(strict_mode=True, max_join_depth=4)\n\n@mcp_server.call_tool()\nasync def generate_production_sql(natural_query: str, client_db_target: str) -> dict:\n    \"\"\"\n    Translates business stakeholder natural queries into production-grade,\n    syntax-verified SQL with schema-aware guardrails and deterministic validation.\n    \"\"\"\n    # 1. Extract context-aware schema embeddings\n    relevant_tables = schema_ctx.resolve_semantic_entities(natural_query)\n    \n    # 2. Synthesize SQL with LLM contextual prompt pipeline\n    raw_sql = await guardrails.synthesize_query(\n        prompt=natural_query, \n        schema_metadata=relevant_tables\n    )\n    \n    # 3. Deterministic relational integrity and RBAC verification\n    validated_sql = guardrails.verify_relational_integrity(\n        sql=raw_sql,\n        enforce_multi_tenant_rbac=True,\n        allowed_tables=[\"orders\", \"transactions\", \"customers\", \"settlements\"]\n    )\n    \n    return {\n        \"status\": \"VALIDATED_99_PCT_ACCURACY\",\n        \"sql\": validated_sql,\n        \"execution_target\": client_db_target,\n        \"guardrail_checks\": [\"SYNTAX_VALID\", \"RBAC_PASSED\", \"NO_CARTESIAN_PRODUCT\"]\n    }"
+    },
+    {
+      "title": "Data Quality Anomaly Audit Query (AWS Redshift / Athena - Global Payments)",
+      "tabLabel": "Redshift Quality Audit",
+      "badge": "Data Quality",
+      "description": "Detects schema drift and validates null percentage across high-throughput transaction pipelines to maintain PCI-DSS compliance",
+      "code": "SELECT \n    payment_channel,\n    COUNT(*) AS total_transactions,\n    SUM(CASE WHEN transaction_amount IS NULL THEN 1 ELSE 0 END) AS null_amounts,\n    ROUND(100.0 * SUM(CASE WHEN transaction_amount IS NULL THEN 1 ELSE 0 END) / COUNT(*), 2) AS null_pct,\n    AVG(processing_time_ms) AS avg_latency_ms\nFROM redshift_db.payment_events_raw\nWHERE transaction_timestamp >= CURRENT_DATE - INTERVAL '30 days'\nGROUP BY payment_channel\nHAVING null_pct > 0.5\nORDER BY total_transactions DESC;"
+    },
+    {
+      "title": "AWS Glue PySpark ETL Data Cleansing Job (Amazon)",
+      "tabLabel": "Glue PySpark Streaming",
+      "badge": "Distributed ETL",
+      "description": "Automated PySpark transformation script for streaming data deduplication, anomaly tagging, and Parquet partitioning",
+      "code": "from awsglue.transforms import *\nfrom awsglue.utils import getResolvedOptions\nfrom pyspark.context import SparkContext\nfrom awsglue.context import GlueContext\nfrom pyspark.sql.functions import col, when, current_timestamp\n\nglueContext = GlueContext(SparkContext.getOrCreate())\ndf = glueContext.create_dynamic_frame.from_catalog(\n    database=\"payment_dw\", \n    table_name=\"raw_fraud_stream\"\n).toDF()\n\n# Data Quality Filter: Remove anomalies & cast types\ncleaned_df = df.filter(col(\"amount\") > 0) \\\n    .withColumn(\"is_anomalous\", when(col(\"risk_score\") > 0.85, True).otherwise(False)) \\\n    .withColumn(\"etl_processed_at\", current_timestamp()) \\\n    .dropDuplicates([\"transaction_id\"])\n\ncleaned_df.write.mode(\"append\") \\\n    .partitionBy(\"payment_channel\") \\\n    .parquet(\"s3://global-payments-analytics-prod/processed_transactions/\")"
+    }
+  ],
+  "reel": {
+    "roles": [
+      {
+        "role_id": 1,
+        "company": "UMBC",
+        "title": "MPS Data Science (research)",
+        "start_year": 2021,
+        "end_year": 2023,
+        "layer": "raw"
+      },
+      {
+        "role_id": 2,
+        "company": "Vanguard",
+        "title": "Data Analyst",
+        "start_year": 2022,
+        "end_year": 2022,
+        "layer": "raw"
+      },
+      {
+        "role_id": 3,
+        "company": "Amazon",
+        "title": "Data Engineer",
+        "start_year": 2023,
+        "end_year": 2024,
+        "layer": "bronze"
+      },
+      {
+        "role_id": 4,
+        "company": "Global Payments",
+        "title": "Data Analytics Engineer",
+        "start_year": 2024,
+        "end_year": 2025,
+        "layer": "silver"
+      },
+      {
+        "role_id": 5,
+        "company": "Trida Labs",
+        "title": "Forward Deployment AI Engineer",
+        "start_year": 2025,
+        "end_year": null,
+        "layer": "gold"
+      }
+    ],
+    "skills": [
+      {
+        "skill_id": 0,
+        "skill": "SQL",
+        "family": "Language"
+      },
+      {
+        "skill_id": 1,
+        "skill": "Python",
+        "family": "Language"
+      },
+      {
+        "skill_id": 2,
+        "skill": "PySpark",
+        "family": "Processing"
+      },
+      {
+        "skill_id": 3,
+        "skill": "Snowflake",
+        "family": "Warehouse"
+      },
+      {
+        "skill_id": 4,
+        "skill": "Databricks",
+        "family": "Lakehouse"
+      },
+      {
+        "skill_id": 5,
+        "skill": "Redshift",
+        "family": "Warehouse"
+      },
+      {
+        "skill_id": 6,
+        "skill": "AWS Glue",
+        "family": "ETL"
+      },
+      {
+        "skill_id": 7,
+        "skill": "Tableau",
+        "family": "BI"
+      },
+      {
+        "skill_id": 8,
+        "skill": "MCP",
+        "family": "Agent tooling"
+      },
+      {
+        "skill_id": 9,
+        "skill": "AgentSQL",
+        "family": "Agentic AI"
+      },
+      {
+        "skill_id": 10,
+        "skill": "Power BI",
+        "family": "BI"
+      },
+      {
+        "skill_id": 11,
+        "skill": "Azure Data Factory",
+        "family": "ETL"
+      },
+      {
+        "skill_id": 12,
+        "skill": "Kafka",
+        "family": "Streaming"
+      },
+      {
+        "skill_id": 13,
+        "skill": "Informatica",
+        "family": "ETL"
+      },
+      {
+        "skill_id": 14,
+        "skill": "Athena",
+        "family": "Query engine"
+      },
+      {
+        "skill_id": 15,
+        "skill": "TridaPad",
+        "family": "AI workspace"
+      },
+      {
+        "skill_id": 16,
+        "skill": "PostgreSQL",
+        "family": "Database"
+      }
+    ],
+    "graphNodes": 10,
+    "usage": [
+      {
+        "role_id": 1,
+        "skill_id": 1,
+        "evidence": "YOLO number-plate detection, 95% extraction"
+      },
+      {
+        "role_id": 1,
+        "skill_id": 7,
+        "evidence": "Chicago crime forecasting dashboards"
+      },
+      {
+        "role_id": 1,
+        "skill_id": 12,
+        "evidence": "Streaming fraud-detection pipeline"
+      },
+      {
+        "role_id": 2,
+        "skill_id": 0,
+        "evidence": "KPI queries on SQL Server and PostgreSQL"
+      },
+      {
+        "role_id": 2,
+        "skill_id": 7,
+        "evidence": "KPI dashboards, +15% efficiency"
+      },
+      {
+        "role_id": 2,
+        "skill_id": 10,
+        "evidence": "Supplemental financial reporting"
+      },
+      {
+        "role_id": 2,
+        "skill_id": 11,
+        "evidence": "Pipelines feeding real-time dashboards"
+      },
+      {
+        "role_id": 2,
+        "skill_id": 16,
+        "evidence": "Dashboard source database"
+      },
+      {
+        "role_id": 3,
+        "skill_id": 6,
+        "evidence": "Glue + Informatica pipelines, +30% reliability"
+      },
+      {
+        "role_id": 3,
+        "skill_id": 2,
+        "evidence": "Glue transformation jobs"
+      },
+      {
+        "role_id": 3,
+        "skill_id": 5,
+        "evidence": "Quality checks, -50% anomalies"
+      },
+      {
+        "role_id": 3,
+        "skill_id": 0,
+        "evidence": "Athena month-end mappings"
+      },
+      {
+        "role_id": 3,
+        "skill_id": 1,
+        "evidence": "Data-quality automation"
+      },
+      {
+        "role_id": 3,
+        "skill_id": 13,
+        "evidence": "Enterprise ETL pipelines"
+      },
+      {
+        "role_id": 3,
+        "skill_id": 14,
+        "evidence": "Month-end data mapping"
+      },
+      {
+        "role_id": 4,
+        "skill_id": 5,
+        "evidence": "DQ framework, -40% anomalies"
+      },
+      {
+        "role_id": 4,
+        "skill_id": 0,
+        "evidence": "High-volume transaction analysis"
+      },
+      {
+        "role_id": 4,
+        "skill_id": 1,
+        "evidence": "Fraud feature analysis, -15% false positives"
+      },
+      {
+        "role_id": 4,
+        "skill_id": 7,
+        "evidence": "Real-time settlement KPI dashboards"
+      },
+      {
+        "role_id": 4,
+        "skill_id": 13,
+        "evidence": "ETL workflow refinement"
+      },
+      {
+        "role_id": 5,
+        "skill_id": 9,
+        "evidence": "Enterprise AgentSQL deployments"
+      },
+      {
+        "role_id": 5,
+        "skill_id": 8,
+        "evidence": "MCP integrations to client warehouses"
+      },
+      {
+        "role_id": 5,
+        "skill_id": 3,
+        "evidence": "MCP target warehouse"
+      },
+      {
+        "role_id": 5,
+        "skill_id": 4,
+        "evidence": "MCP target lakehouse"
+      },
+      {
+        "role_id": 5,
+        "skill_id": 5,
+        "evidence": "MCP target warehouse"
+      },
+      {
+        "role_id": 5,
+        "skill_id": 0,
+        "evidence": "Guardrailed joins, 99%+ accuracy"
+      },
+      {
+        "role_id": 5,
+        "skill_id": 1,
+        "evidence": "Prompt pipelines and guardrails"
+      },
+      {
+        "role_id": 5,
+        "skill_id": 15,
+        "evidence": "Collaborative analytics workspace deployments"
+      },
+      {
+        "role_id": 5,
+        "skill_id": 16,
+        "evidence": "MCP target database"
+      }
+    ],
+    "metrics": [
+      {
+        "role_id": 1,
+        "metric": "Plate extraction accuracy",
+        "change_pct": 95
+      },
+      {
+        "role_id": 2,
+        "metric": "Operational efficiency",
+        "change_pct": 15
+      },
+      {
+        "role_id": 3,
+        "metric": "Pipeline reliability",
+        "change_pct": 30
+      },
+      {
+        "role_id": 3,
+        "metric": "Data anomalies",
+        "change_pct": -50
+      },
+      {
+        "role_id": 3,
+        "metric": "Manual effort",
+        "change_pct": -25
+      },
+      {
+        "role_id": 4,
+        "metric": "Data anomalies",
+        "change_pct": -40
+      },
+      {
+        "role_id": 4,
+        "metric": "Fraud false positives",
+        "change_pct": -15
+      },
+      {
+        "role_id": 5,
+        "metric": "Relational SQL accuracy",
+        "change_pct": 99
+      }
+    ],
+    "projects": [
+      {
+        "project": "Real-time number plate detection",
+        "year": 2023,
+        "stack": "YOLO, OpenCV, Python",
+        "result": "95% extraction accuracy"
+      },
+      {
+        "project": "Chicago crime analytics",
+        "year": 2022,
+        "stack": "Python, Scikit-Learn, Tableau",
+        "result": "Spatial-temporal forecasts"
+      },
+      {
+        "project": "Streaming fraud detection",
+        "year": 2022,
+        "stack": "Kafka, AWS Lambda, MongoDB",
+        "result": "Real-time scoring"
+      }
+    ],
+    "layers": [
+      {
+        "eyebrow": "A data reel · 2021 → 2026",
+        "title": "Every engineer<br>is a <em>pipeline.</em>",
+        "body": "Meet my AI twin: a humanoid built from 12,000 points of light. Move your mouse and it turns to follow. Scroll to watch it get refined through five layers, the way a lakehouse refines data. At the end, ask it anything about me."
+      },
+      {
+        "eyebrow": "Layer 01 · Raw · 2021 – 2022",
+        "title": "Vanguard<br>&amp; <em>UMBC</em>",
+        "body": "Tableau and Power BI over SQL Server and PostgreSQL for asset-management KPIs, fed by Azure Data Factory pipelines. In parallel, a Master's in Data Science at UMBC: YOLO number-plate detection, Chicago crime forecasting and Kafka fraud streams.",
+        "metrics": [
+          [
+            "+15%",
+            "Ops efficiency"
+          ],
+          [
+            "95%",
+            "Plate extraction"
+          ]
+        ],
+        "stack": "TABLEAU · POWER BI · AZURE DATA FACTORY · YOLO · OPENCV · KAFKA"
+      },
+      {
+        "eyebrow": "Layer 02 · Bronze · Sep 2023 – Jan 2024",
+        "title": "Amazon.<br>Structure <em>at scale.</em>",
+        "body": "Data Engineer on AWS Glue and Informatica pipelines. Automated ETL with AWS Data Pipeline, ran Python and Redshift quality checks, and tuned Athena mappings for month-end close.",
+        "metrics": [
+          [
+            "+30%",
+            "Pipeline reliability"
+          ],
+          [
+            "−50%",
+            "Data anomalies"
+          ],
+          [
+            "−25%",
+            "Manual effort"
+          ]
+        ],
+        "stack": "AWS GLUE · REDSHIFT · ATHENA · INFORMATICA · PYTHON"
+      },
+      {
+        "eyebrow": "Layer 03 · Silver · Mar 2024 – Jan 2025",
+        "title": "Global Payments.<br><em>Trusted</em> streams.",
+        "body": "Data Analytics Engineer on high-throughput payment data. Built automated data-quality frameworks in Redshift, real-time Tableau views of settlement KPIs, and refined fraud features with the risk team.",
+        "metrics": [
+          [
+            "−40%",
+            "Data anomalies"
+          ],
+          [
+            "−15%",
+            "Fraud false positives"
+          ]
+        ]
+      },
+      {
+        "eyebrow": "Layer 04 · Gold · May 2025 → now",
+        "title": "Trida Labs.<br>Questions <em>become SQL.</em>",
+        "body": "Forward Deployment AI Engineer: deploying AgentSQL and TridaPad, building MCP integrations across Snowflake, Databricks, PostgreSQL and Redshift, with guardrails that keep agent-written SQL 99%+ accurate. Query my career below. Matching skills light up."
+      },
+      {
+        "eyebrow": "Layer 05 · Insight · ask my twin anything",
+        "title": "Krishna Sidhvi<br><em>Nekkanti</em>",
+        "body": "Forward Deployment AI Engineer and data engineer. AWS Certified Data Engineer. Based in Hyderabad, open to remote work and relocation."
+      }
+    ]
+  }
+}
