@@ -999,7 +999,8 @@
       {
         "eyebrow": "A data reel · 2021 → 2026",
         "title": "Every engineer<br>is a <em>pipeline.</em>",
-        "body": "Meet my AI twin: a humanoid built from 12,000 points of light. Move your mouse and it turns to follow. Scroll to watch it get refined through five layers, the way a lakehouse refines data. At the end, ask it anything about me."
+        "body": "Meet my AI twin: a humanoid built from 12,000 points of light. Move your mouse and it turns to follow. Scroll to watch it get refined through five layers, the way a lakehouse refines data. At the end, ask it anything about me.",
+        "case": null
       },
       {
         "eyebrow": "Layer 01 · Raw · 2021 – 2022",
@@ -1015,7 +1016,8 @@
             "Plate extraction"
           ]
         ],
-        "stack": "TABLEAU · POWER BI · AZURE DATA FACTORY · YOLO · OPENCV · KAFKA"
+        "stack": "TABLEAU · POWER BI · AZURE DATA FACTORY · YOLO · OPENCV · KAFKA",
+        "case": "plates"
       },
       {
         "eyebrow": "Layer 02 · Bronze · Sep 2023 – Jan 2024",
@@ -1035,7 +1037,8 @@
             "Manual effort"
           ]
         ],
-        "stack": "AWS GLUE · REDSHIFT · ATHENA · INFORMATICA · PYTHON"
+        "stack": "AWS GLUE · REDSHIFT · ATHENA · INFORMATICA · PYTHON",
+        "case": "amazon"
       },
       {
         "eyebrow": "Layer 03 · Silver · Mar 2024 – Jan 2025",
@@ -1050,18 +1053,166 @@
             "−15%",
             "Fraud false positives"
           ]
-        ]
+        ],
+        "case": "global-payments"
       },
       {
         "eyebrow": "Layer 04 · Gold · May 2025 → now",
         "title": "Trida Labs.<br>Questions <em>become SQL.</em>",
-        "body": "Forward Deployment AI Engineer: deploying AgentSQL and TridaPad, building MCP integrations across Snowflake, Databricks, PostgreSQL and Redshift, with guardrails that keep agent-written SQL 99%+ accurate. Query my career below. Matching skills light up."
+        "body": "Forward Deployment AI Engineer: deploying AgentSQL and TridaPad, building MCP integrations across Snowflake, Databricks, PostgreSQL and Redshift, with guardrails that keep agent-written SQL 99%+ accurate. Query my career below. Matching skills light up.",
+        "case": "trida"
       },
       {
         "eyebrow": "Layer 05 · Insight · ask my twin anything",
         "title": "Krishna Sidhvi<br><em>Nekkanti</em>",
-        "body": "Forward Deployment AI Engineer and data engineer. AWS Certified Data Engineer. Based in Hyderabad, open to remote work and relocation."
+        "body": "Forward Deployment AI Engineer and data engineer. AWS Certified Data Engineer. Based in Hyderabad, open to remote work and relocation.",
+        "case": null
       }
     ]
-  }
+  },
+  "caseStudies": [
+    {
+      "id": "trida",
+      "company": "Trida Labs",
+      "role": "Forward Deployment AI Engineer",
+      "period": "May 2025 – Present",
+      "layer": 4,
+      "title": "Making agent-written SQL safe enough for enterprise data",
+      "metric": [
+        "99%+",
+        "syntactic and relational accuracy on complex multi-table joins"
+      ],
+      "context": "Trida Labs builds AI-native analytics: AgentSQL turns plain-English questions into SQL and dashboards, and TridaPad is a collaborative data workspace. I deploy both into enterprise customers' own data stacks.",
+      "challenge": "Non-technical stakeholders needed answers from data spread across PostgreSQL, Snowflake, Databricks and Redshift. SQL written by an LLM can hallucinate tables and joins on schemas like these, and multi-tenant customers need strict access control.",
+      "actions": [
+        "Deployed and operationalised AgentSQL across enterprise customer architectures, so business users can generate production-grade SQL and dashboards from natural-language questions.",
+        "Built Model Context Protocol (MCP) server integrations that connect external LLMs and agent tools directly to customers' PostgreSQL, Snowflake, Databricks and Redshift databases.",
+        "Designed schema-aware prompt pipelines and deterministic SQL guardrails that keep generated queries inside the real schema.",
+        "Configured role-based access control and data-governance policies across multi-tenant cloud and on-prem deployments.",
+        "Brought edge-case query patterns and latency findings back to core product engineering, and tailored real-time collaboration workflows in TridaPad."
+      ],
+      "results": [
+        "99%+ syntactic and relational accuracy on complex multi-table joins",
+        "Business users generate SQL and dashboards on their own, in plain English",
+        "Compliance and security maintained across multi-tenant deployments"
+      ],
+      "stack": [
+        "AgentSQL",
+        "TridaPad",
+        "MCP",
+        "LLM orchestration",
+        "Python",
+        "SQL",
+        "Snowflake",
+        "Databricks",
+        "PostgreSQL",
+        "Redshift",
+        "RBAC"
+      ],
+      "note": "The 'Ask my twin' panel on this site shows the same pattern in miniature: allow-listed tables, key-equality joins, no cartesian products and row limits, checked before any query runs."
+    },
+    {
+      "id": "global-payments",
+      "company": "Global Payments",
+      "role": "Data Analytics Engineer",
+      "period": "March 2024 – January 2025",
+      "layer": 3,
+      "title": "Trustworthy numbers for a high-volume payments platform",
+      "metric": [
+        "−40%",
+        "data anomalies across transactional tables"
+      ],
+      "context": "Global Payments processes high-volume, multi-channel card transactions. Operations, risk and executive teams use the data for settlement, fraud and regulatory reporting.",
+      "challenge": "Anomalies in transactional tables put reporting and PCI-DSS compliance at risk, and the fraud model was flagging too many legitimate transactions.",
+      "actions": [
+        "Implemented automated data-quality and validation frameworks across transactional tables.",
+        "Refined ETL pipelines with the data engineering team on AWS Redshift and Informatica for consistent staging and low reporting latency.",
+        "Analysed historical transaction anomalies with the fraud analytics team and refined the model's input features.",
+        "Built and maintained Tableau dashboards on live payment streams for settlement KPIs, failure rates and interchange metrics.",
+        "Analysed multi-channel transaction patterns in Python and SQL to find processing bottlenecks."
+      ],
+      "results": [
+        "40% fewer data anomalies, in line with PCI-DSS reporting standards",
+        "15% fewer fraud false positives",
+        "Real-time visibility of payment KPIs for operations and risk teams"
+      ],
+      "stack": [
+        "AWS Redshift",
+        "Informatica",
+        "Python",
+        "SQL",
+        "Tableau",
+        "Fraud analytics",
+        "Data quality"
+      ]
+    },
+    {
+      "id": "amazon",
+      "company": "Amazon",
+      "role": "Data Engineer (contract)",
+      "period": "September 2023 – January 2024",
+      "layer": 2,
+      "title": "Hardening the AWS pipelines behind month-end reporting",
+      "metric": [
+        "+30%",
+        "processing reliability and scalability"
+      ],
+      "context": "Contract data engineer on AWS ETL workflows that feed month-end financial and operational reporting for business analytics teams.",
+      "challenge": "The AWS Glue and Informatica pipelines needed to be more reliable and scalable, manual steps slowed delivery, and data anomalies were reaching downstream analytics.",
+      "actions": [
+        "Enhanced data pipelines on AWS Glue and Informatica.",
+        "Automated ETL workflows with AWS Data Pipeline to remove manual steps.",
+        "Ran data-quality checks with Python and AWS Redshift before data reached analysts.",
+        "Integrated REST APIs with AWS services so analytics teams could extract data directly.",
+        "Optimised SQL-based data mapping in AWS Athena for month-end close."
+      ],
+      "results": [
+        "30% better processing reliability and scalability",
+        "25% less manual effort, with on-time data delivery",
+        "50% fewer data anomalies in downstream analytics"
+      ],
+      "stack": [
+        "AWS Glue",
+        "Informatica",
+        "AWS Data Pipeline",
+        "AWS Redshift",
+        "AWS Athena",
+        "Python",
+        "SQL",
+        "REST APIs"
+      ]
+    },
+    {
+      "id": "plates",
+      "company": "UMBC · Master's research",
+      "role": "Data Science research",
+      "period": "August 2021 – May 2023",
+      "layer": 1,
+      "title": "Reading number plates from live video",
+      "metric": [
+        "95%",
+        "plate extraction accuracy on real-time feeds"
+      ],
+      "context": "Master's research at the University of Maryland, Baltimore County.",
+      "challenge": "Automate vehicle registration reading for traffic monitoring and enforcement, from real-time camera feeds rather than still images.",
+      "actions": [
+        "Built a custom object-detection pipeline with YOLO-based convolutional neural networks and OpenCV.",
+        "Cropped detected plates and recognised their characters to extract the registration number.",
+        "Trained the model in Google Colab with PyTorch and TensorFlow, using custom image augmentation."
+      ],
+      "results": [
+        "95% plate extraction accuracy in real-time camera feeds",
+        "Far less manual review in enforcement workflows"
+      ],
+      "stack": [
+        "YOLO",
+        "OpenCV",
+        "PyTorch",
+        "TensorFlow",
+        "Python",
+        "Google Colab"
+      ],
+      "link": "https://github.com/krishnasidhvi/Capstone_DATA606"
+    }
+  ]
 }

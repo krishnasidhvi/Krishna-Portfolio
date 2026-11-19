@@ -272,6 +272,28 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .mt div{font-size:.88rem;border-left:2px solid #7ee2a8;padding:4px 10px;color:#d3d8e1;min-width:0}
 .mt div.miss{border-left-color:#ffb86b;color:#c9b39a}
 .mt small{display:block;color:var(--dim);font-family:var(--f-mono);font-size:10.5px}
+.casebtn{align-self:flex-start;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--layer);background:none;border:0;border-bottom:1px solid currentColor;padding:2px 0;cursor:pointer}
+.casebtn:hover{filter:brightness(1.25)}
+.cases{display:flex;flex-direction:column;gap:12px}
+.case{border:1px solid var(--line);border-radius:14px;background:#0a0c11;overflow:hidden}
+.case summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:6px 18px;align-items:center;padding:16px 18px}
+.case summary::-webkit-details-marker{display:none}
+.case summary .k{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);grid-column:1/-1}
+.case summary h4{margin:0;font-size:1.12rem;line-height:1.3}
+.case summary .m{text-align:right;min-width:0}
+.case summary .m b{display:block;font-family:var(--f-title);font-stretch:125%;font-weight:900;font-size:1.7rem;color:#7ee2a8;line-height:1}
+.case summary .m span{display:block;font-size:.75rem;color:var(--dim);max-width:22ch;margin-left:auto}
+.case summary .tog{grid-column:1/-1;font-family:var(--f-mono);font-size:10.5px;color:#9fd8ff;letter-spacing:.08em}
+.case[open] summary .tog::after{content:" · hide"}
+.case:not([open]) summary .tog::after{content:" · read"}
+.case .cb{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px 26px;padding:0 18px 18px;border-top:1px solid var(--line);padding-top:16px}
+.case .cb>div{min-width:0;display:flex;flex-direction:column;gap:6px}
+.case .cb h5{margin:0;font-family:var(--f-mono);font-size:10.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#9fd8ff}
+.case .cb p{margin:0;color:#c9cfd9;line-height:1.6;font-size:.92rem}
+.case .cb ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px;color:#d3d8e1;font-size:.92rem;line-height:1.55}
+.case .cb .wide{grid-column:1/-1}
+.case .cb .res li::marker{color:#7ee2a8}
+.case .note{font-size:.86rem;color:#a9b4c2;border-left:2px solid #9fd8ff;padding-left:10px}
 .ar-box{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#050507}
 .ar-box model-viewer{display:block;width:100%;height:min(62vh,560px);background:radial-gradient(ellipse at 50% 40%,#0d1b2b,#050507 70%)}
 .ar-side{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
@@ -300,7 +322,8 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 @media print{
   body>*:not(#cut){display:none!important}
   #cut{position:static;background:#fff;color:#111;padding:0;backdrop-filter:none}
-  #cut .dtop,#cut .noprint,#cut .row{display:none!important}
+  #cut .dtop,#cut .noprint,#cut .row,#cut .tog{display:none!important}
+  #cut .case{break-inside:avoid}
   #cut *{color:#111!important;background:transparent!important;box-shadow:none!important;text-shadow:none!important;border-color:#ccc!important}
 }
 @media (prefers-reduced-motion:reduce){.grain,.dot,.caret,.hint i,.pulse,.hstate i{animation:none}.shutter{transition:none}}
@@ -788,6 +811,7 @@ layers.forEach(function(el,i){
   if(ey)ey.innerHTML=d.eyebrow||'';if(ti)ti.innerHTML=d.title||'';if(bo)bo.textContent=d.body||'';
   if(me){if(d.metrics&&d.metrics.length)me.innerHTML=d.metrics.map(function(m){return '<div class="metric"><b>'+esc(m[0])+'</b><span>'+esc(m[1])+'</span></div>';}).join('');else me.remove();}
   if(st){if(d.stack)st.textContent=d.stack;else st.remove();}
+  if(d.case){var cb=document.createElement('button');cb.type='button';cb.className='casebtn';cb.setAttribute('data-case',d.case);cb.textContent='Read the case study →';el.appendChild(cb);}
 });
 document.getElementById('glance').innerHTML=[esc(P.headline),esc(P.yearsExperience)+' yrs',esc(P.city),'<b>●</b> Open to remote &amp; relocation'].join(' <span aria-hidden="true">·</span> ');
 updateClocks();setInterval(updateClocks,30000);
@@ -1065,6 +1089,7 @@ function plan(question){
   var q=question.toLowerCase().replace(/[?!.,]/g,' ').replace(/\s+/g,' ').trim(),sk=findAll(q,SKILL_ALIAS),co=findAll(q,COMP_ALIAS);
   var impact=/(impact|result|achiev|metric|number|improv|reduc|accura|outcome|win)/.test(q);
   if(/(contact|reach|email|hire|connect|get in touch|interview)/.test(q))return {intent:'contact'};
+  if(/(case stud|deep dive|walk me through|biggest project|hardest problem|proudest)/.test(q))return {intent:'case',company:co[0]||null};
   if(/(where are you|where do you live|based|locat|relocat|remote|move to)/.test(q)&&!sk.length&&!co.length)return {intent:'location'};
   if(/(how many years|years of experience|how long|experience level|seniority)/.test(q))
     return {intent:'years',sql:"SELECT MIN(start_year) AS first_year, COUNT(*) AS n_roles\nFROM roles\nWHERE company != 'UMBC'"};
@@ -1137,6 +1162,11 @@ var STATIC={
   unknown_skill:"That one isn't in my warehouse yet. My core stack is SQL, Python, Spark, Redshift, Snowflake and Databricks, and I learn new tools fast.",
   unknown:"I didn't catch that. Try asking where I used a tool, what I did at a company, my biggest results, or my projects."
 };
+function caseText(company){
+  var cs=(C.caseStudies||[]).filter(function(c){return company&&c.company.indexOf(company)===0;})[0]||(C.caseStudies||[])[0];
+  if(!cs)return STATIC.unknown;
+  return 'Case study, '+cs.company+': '+cs.title+'. '+cs.challenge+' The result: '+lc1(cs.results[0])+'. The full write-up is in my Recruiter dossier.';
+}
 var asking=false;
 function step(icon,html,ms,bad){var li=document.createElement('li');if(bad)li.className='bad';
   li.innerHTML='<span class="s">'+icon+'</span><span>'+html+'</span><span class="ms">'+(ms==null?'':ms+' ms')+'</span>';trace.appendChild(li);trace.scrollTop=trace.scrollHeight;ping(660+trace.children.length*60,.018);}
@@ -1158,12 +1188,12 @@ function ask(question){
     text=g.ok&&!err?compose(p,rows):'That query was blocked by my safety checks, so I won\'t answer it.';
   } else {
     later(function(){step('◆','<b>No data query needed</b> · answering from profile',null);});
-    text=STATIC[p.intent]||STATIC.unknown;
+    text=p.intent==='case'?caseText(p.company):(STATIC[p.intent]||STATIC.unknown);
   }
   later(function(){step('◆','<b>Compose answer</b> · '+text.split(/\s+/).length+' words',(performance.now()-T0).toFixed(1));});
   var i=0;(function next(){if(i<seq.length){seq[i++]();setTimeout(next,D);}else{asking=false;speak(text);}})();
 }
-['Where did you use Spark?','What did you do at Amazon?','Your biggest results?','What do you do now?','Tell me about your AI work']
+['Walk me through a case study','Where did you use Spark?','What did you do at Amazon?','Your biggest results?','Tell me about your AI work']
   .forEach(function(qs){var b=document.createElement('button');b.type='button';b.textContent=qs;b.addEventListener('click',function(){askIn.value=qs;ask(qs);});askChips.appendChild(b);});
 document.getElementById('askGo').addEventListener('click',function(){ask(askIn.value);});
 askIn.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();ask(askIn.value);}});
@@ -1246,7 +1276,8 @@ function openDlg(id){var el=document.getElementById(id);if(!el)return;var prev=d
   if(id==='cut'){renderDossier();track('dossier');}if(id==='ar'){openAR();track('ar');}
   var f=el.querySelector('[data-close],button,a');if(f)f.focus();}
 function closeDlg(){if(!openDlgEl)return;openDlgEl.hidden=true;openDlgEl=null;if(lastFocus&&lastFocus.focus)lastFocus.focus();}
-document.addEventListener('click',function(e){var o=e.target.closest('[data-open]');if(o){openDlg(o.getAttribute('data-open'));return;}
+function openCase(id){openDlg('cut');var el=document.getElementById('case-'+id);if(el){el.open=true;setTimeout(function(){el.scrollIntoView({behavior:REDUCE?'auto':'smooth',block:'start'});},60);}track('case-'+id);}
+document.addEventListener('click',function(e){var cs=e.target.closest('[data-case]');if(cs){openCase(cs.getAttribute('data-case'));return;}var o=e.target.closest('[data-open]');if(o){openDlg(o.getAttribute('data-open'));return;}
   if(e.target.closest('[data-close]'))closeDlg();});
 document.getElementById('cutBtn').addEventListener('click',function(){openDlg('cut');});
 
@@ -1277,6 +1308,15 @@ function renderDossier(){
   h+='<section class="dsec"><h3>Why I fit forward-deployed AI roles</h3><ul class="pitch">'+P.pitch.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul></section>';
   h+='<section class="dsec"><h3>Signature results</h3><div class="tiles">'+C.keyImpactMetrics.map(function(m){
      return '<div class="tile"><b>'+esc(m.prefix)+esc(m.value)+'</b><span>'+esc(m.label)+'</span><p>'+esc(m.description)+'</p></div>';}).join('')+'</div></section>';
+  h+='<section class="dsec"><h3>Case studies</h3><div class="cases">'+(C.caseStudies||[]).map(function(c,i){
+     return '<details class="case" id="case-'+esc(c.id)+'"'+(i===0?' open':'')+'><summary><span class="k">'+esc(c.company)+' · '+esc(c.role)+' · '+esc(c.period)+'</span>'+
+       '<h4>'+esc(c.title)+'</h4><span class="m"><b>'+esc(c.metric[0])+'</b><span>'+esc(c.metric[1])+'</span></span><span class="tog">Case study</span></summary>'+
+       '<div class="cb"><div><h5>Context</h5><p>'+esc(c.context)+'</p></div><div><h5>The challenge</h5><p>'+esc(c.challenge)+'</p></div>'+
+       '<div class="wide"><h5>What I did</h5><ul>'+c.actions.map(function(a){return '<li>'+esc(a)+'</li>';}).join('')+'</ul></div>'+
+       '<div><h5>Results</h5><ul class="res">'+c.results.map(function(a){return '<li>'+esc(a)+'</li>';}).join('')+'</ul></div>'+
+       '<div><h5>Stack</h5><div class="tags">'+c.stack.map(function(t){return '<span>'+esc(t)+'</span>';}).join('')+'</div>'+
+       (c.link?'<a class="clock" href="'+esc(c.link)+'" target="_blank" rel="noreferrer" style="color:#9fd8ff">Code on GitHub →</a>':'')+'</div>'+
+       (c.note?'<p class="note wide">'+esc(c.note)+'</p>':'')+'</div></details>';}).join('')+'</div></section>';
   h+='<section class="dsec noprint"><h3>Match me to your job description</h3><div class="jd">'+
      '<label for="jdIn" class="clock">Paste a job description. I check it against my real experience in your browser; nothing is sent anywhere.</label>'+
      '<textarea id="jdIn" spellcheck="false" placeholder="e.g. We are hiring a Forward Deployed Engineer with Python, SQL, Snowflake, LLM agents, RAG, Kubernetes…"></textarea>'+
@@ -1298,7 +1338,7 @@ function renderDossier(){
      C.certifications.map(function(c){return '<div><b>'+esc(c.name)+'</b><span>'+esc(c.issuer)+(c.credentialUrl?' · <a href="'+esc(c.credentialUrl)+'" target="_blank" rel="noreferrer">verify</a>':'')+'</span></div>';}).join('')+'</div></section>';
   document.getElementById('cutIn').innerHTML=h;
   updateClocks();
-  document.getElementById('dPrint').addEventListener('click',function(){track('dossier-print');window.print();});
+  document.getElementById('dPrint').addEventListener('click',function(){track('dossier-print');[].forEach.call(document.querySelectorAll('#cut details'),function(d){d.open=true;});window.print();});
   document.getElementById('dMail').addEventListener('click',function(){copyText(P.email,this,'Copy email');});
   document.getElementById('jdGo').addEventListener('click',function(){matchJD(document.getElementById('jdIn').value);});
   document.getElementById('jdEx').addEventListener('click',function(){var t='Forward Deployed Engineer. You will deploy our AI agents into customer data stacks. Requirements: Python, advanced SQL, Snowflake or Databricks, experience with LLM agents, RAG and prompt engineering, data pipelines (Spark, Airflow), dbt, Kubernetes, customer-facing communication, Terraform a plus.';

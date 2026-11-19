@@ -10,7 +10,8 @@
     "deploy": "gh-pages -d dist",
     "lint": "vite build",
     "preview": "vite preview",
-    "twin": "node scripts/make-twin-glb.mjs"
+    "twin": "node scripts/make-twin-glb.mjs",
+    "resume": "node scripts/make-resume.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.469.0",
