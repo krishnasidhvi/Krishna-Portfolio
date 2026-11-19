@@ -22,7 +22,10 @@
 
 The homepage is a cinematic reel: my career refined through the Raw → Bronze → Silver → Gold → Insight data layers.
 
-- **Opening titles** built in code, then a 12,000-point **3D hologram** of my avatar that turns with the mouse
+- **Opening titles** built in code, then a 12,000-point **3D particle portrait** made from my real photo, sculpted into 3D (head, nose, eyes, shoulders) and turning with the mouse
+- **Ask my hologram**: type or speak a question in English; an agent I built turns it into SQL, runs guardrail checks, queries the data and answers out loud, with a live trace of every step
+- **Hologram states**: listening, thinking and speaking each change the portrait's colour and motion
+- **GPU particles**: all 12,000 points animate in a vertex shader, so phones stay smooth; phone layout with the portrait on top and a bottom panel
 - **Particle formations** per layer: data rain, structured table, flowing pipelines, skill graph
 - **Live data** in the Silver layer: Chicago open data (my UMBC project dataset) sets the flow speed, with 4 data-quality checks
 - **SQL console** in the Gold layer, running **MiniSQL**, a small read-only SQL engine written for this site; matching skills light up

@@ -4,16 +4,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Krishna Sidhvi Nekkanti · Medallion Reel</title>
-<meta name="description" content="Forward Deployment AI Engineer and data engineer. A cinematic reel: my career refined through raw, bronze, silver and gold data layers, with a live SQL console.">
-<meta property="og:title" content="Krishna Sidhvi Nekkanti · Medallion Reel">
-<meta property="og:description" content="Forward Deployment AI Engineer (AgentSQL, MCP, Snowflake, Databricks). Query my career in SQL.">
+<meta name="description" content="Forward Deployment AI Engineer and data engineer. A cinematic reel: my career refined through raw, bronze, silver and gold data layers. Ask my hologram, or query my career in SQL.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://krishnasidhvi.github.io/Krishna-Portfolio/">
+<meta property="og:title" content="Krishna Sidhvi Nekkanti · Medallion Reel">
+<meta property="og:description" content="Forward Deployment AI Engineer (AgentSQL, MCP, Snowflake, Databricks). Ask my hologram, or query my career in SQL.">
+<meta property="og:image" content="https://krishnasidhvi.github.io/Krishna-Portfolio/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://krishnasidhvi.github.io/Krishna-Portfolio/og-image.png">
 <meta name="theme-color" content="#050507">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23050507'/><circle cx='16' cy='16' r='9' fill='none' stroke='%239fd8ff' stroke-width='2'/><circle cx='16' cy='16' r='3' fill='%23ffd36b'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,900&family=Geist:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: fixed WebGL particle stage + fixed stack of text layers that travel along the z-axis as you scroll; letterbox HUD top and bottom */
+/* Layout: fixed WebGL particle stage + fixed stack of text layers that travel along the z-axis as you scroll; letterbox HUD top and bottom.
+   Phones: the hologram sits in the upper half and each layer becomes a bottom panel. */
 :root{
   --bg:#050507; --ink:#EEF0F4; --dim:#8D93A0; --bar:#000; --hot:#fff3c4;
   --layer:#9fd8ff;
@@ -31,11 +39,12 @@ body{overflow-x:hidden}
 .vignette{position:fixed;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse at 60% 50%,transparent 35%,rgba(0,0,0,.75) 100%)}
 .grain{position:fixed;inset:-50%;pointer-events:none;z-index:2;opacity:.09;mix-blend-mode:overlay;animation:grain .7s steps(6) infinite}
 @keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-4%)}60%{transform:translate(-4%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* letterbox HUD */
 .bar{position:fixed;left:0;right:0;height:calc(var(--bar-h) + env(safe-area-inset-top,0px));background:var(--bar);z-index:5;
-  display:flex;align-items:center;gap:18px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;color:var(--dim);
-  padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+  display:flex;align-items:center;gap:14px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;color:var(--dim);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .bar.top{top:0;padding-top:env(safe-area-inset-top,0px)}
 .bar.bot{bottom:0;height:calc(var(--bar-h) + env(safe-area-inset-bottom,0px));padding-bottom:env(safe-area-inset-bottom,0px)}
 .brand{color:var(--ink);font-weight:500;white-space:nowrap}
@@ -43,10 +52,11 @@ body{overflow-x:hidden}
 @keyframes rec{50%{opacity:.25}}
 .sp{flex:1}
 .layer-name{color:var(--layer);transition:color .6s;white-space:nowrap}
-.btn{font:inherit;letter-spacing:inherit;color:var(--ink);background:transparent;border:1px solid #2b2f38;border-radius:999px;padding:7px 14px;cursor:pointer;text-transform:uppercase;white-space:nowrap}
+.btn{font:inherit;letter-spacing:inherit;color:var(--ink);background:transparent;border:1px solid #2b2f38;border-radius:999px;padding:7px 13px;cursor:pointer;text-transform:uppercase;white-space:nowrap;text-decoration:none}
 .btn:hover{border-color:var(--layer);color:var(--layer)}
 .btn[aria-pressed="true"]{border-color:var(--layer);color:var(--layer)}
-.btn:focus-visible,a:focus-visible,.tick:focus-visible,button:focus-visible,textarea:focus-visible{outline:2px solid var(--layer);outline-offset:3px}
+.btn.askb{border-color:#9fd8ff66;color:#bfe9ff}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--layer);outline-offset:3px}
 .sql{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1;color:#c9cdd6}
 .sql .kw{color:var(--layer)}
 .caret{display:inline-block;width:7px;height:13px;background:var(--layer);vertical-align:-2px;margin-left:2px;animation:rec 1s steps(2) infinite}
@@ -58,6 +68,15 @@ body{overflow-x:hidden}
 .tick i{display:block;width:18px;height:1px;background:currentColor;transition:width .5s,background .5s}
 .tick.on{color:var(--layer)}
 .tick.on i{width:40px;background:var(--layer);box-shadow:0 0 8px var(--layer)}
+
+/* hologram state badge */
+.hstate{position:fixed;z-index:3;right:max(20px,env(safe-area-inset-right,0px));top:calc(var(--bar-h) + 16px);font-family:var(--f-mono);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:8px;opacity:0;transition:opacity .5s;pointer-events:none}
+.hstate.on{opacity:1}
+.hstate i{width:8px;height:8px;border-radius:50%;background:#9fd8ff;box-shadow:0 0 10px #9fd8ff;animation:rec 2.4s ease-in-out infinite}
+.hstate[data-s="listening"] i{background:#c08bff;box-shadow:0 0 12px #c08bff;animation-duration:.6s}
+.hstate[data-s="thinking"] i{background:#ffd36b;box-shadow:0 0 12px #ffd36b;animation-duration:.35s}
+.hstate[data-s="speaking"] i{background:#7ee2ff;box-shadow:0 0 14px #7ee2ff;animation-duration:.25s}
 
 /* skill-node labels (gold layer) */
 .nodes{position:fixed;inset:0;pointer-events:none;z-index:3}
@@ -82,7 +101,7 @@ body{overflow-x:hidden}
 .stack{font-family:var(--f-mono);font-size:11px;color:var(--dim);letter-spacing:.04em}
 .cta{display:flex;flex-wrap:wrap;gap:10px}
 .cta a,.cta button{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);text-decoration:none;
-  border:1px solid #ffffff33;border-radius:999px;padding:10px 16px;background:#00000066;backdrop-filter:blur(6px);cursor:pointer}
+  border:1px solid #ffffff33;border-radius:999px;padding:9px 15px;background:#00000066;backdrop-filter:blur(6px);cursor:pointer}
 .cta a:hover,.cta button:hover{border-color:var(--layer);color:var(--layer)}
 .cta .primary{background:var(--layer);color:#050507;border-color:var(--layer)}
 .cta .primary:hover{color:#050507;filter:brightness(1.1)}
@@ -102,36 +121,42 @@ body{overflow-x:hidden}
 /* SQL console (gold) */
 .console{display:flex;flex-direction:column;gap:8px;border:1px solid #ffd97844;border-radius:12px;padding:12px;background:#07060399;backdrop-filter:blur(8px)}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chips button{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.04em;color:#ffd978;background:#ffd97814;border:1px solid #ffd97840;border-radius:999px;padding:5px 10px;cursor:pointer}
-.chips button:hover{background:#ffd97830}
+.chips button{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.04em;color:var(--chip,#ffd978);background:color-mix(in srgb,var(--chip,#ffd978) 9%,transparent);
+  border:1px solid color-mix(in srgb,var(--chip,#ffd978) 30%,transparent);border-radius:999px;padding:5px 10px;cursor:pointer}
+.chips button:hover{background:color-mix(in srgb,var(--chip,#ffd978) 20%,transparent)}
 .qrow{display:flex;gap:8px;align-items:stretch}
-.qrow textarea{flex:1;min-width:0;resize:none;font-family:var(--f-mono);font-size:12px;line-height:1.5;color:var(--ink);background:#000a;border:1px solid #ffffff22;border-radius:8px;padding:8px 10px}
+.qrow textarea,.qrow input{flex:1;min-width:0;font-family:var(--f-mono);font-size:12px;line-height:1.5;color:var(--ink);background:#000a;border:1px solid #ffffff22;border-radius:8px;padding:8px 10px}
+.qrow textarea{resize:none}
 .qrow button{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:#ffd978;color:#120d00;border:0;border-radius:8px;padding:0 14px;cursor:pointer;font-weight:500}
 .out{max-height:150px;overflow:auto;border-radius:6px}
 .out table{border-collapse:collapse;width:100%;font-family:var(--f-mono);font-size:11px}
 .out th{position:sticky;top:0;background:#14110a;color:#ffd978;text-align:left;font-weight:500;padding:5px 8px;white-space:nowrap}
 .out td{padding:4px 8px;border-top:1px solid #ffffff12;color:#d8dbe2;font-variant-numeric:tabular-nums}
-.out .meta{font-family:var(--f-mono);font-size:10.5px;color:var(--dim);padding:4px 2px}
-.out .err{font-family:var(--f-mono);font-size:11.5px;color:#ff9d8a;padding:4px 2px}
+.meta{font-family:var(--f-mono);font-size:10.5px;color:var(--dim);padding:4px 2px}
+.err{font-family:var(--f-mono);font-size:11.5px;color:#ff9d8a;padding:4px 2px}
 .schema{font-family:var(--f-mono);font-size:10px;color:var(--dim);letter-spacing:.04em}
 
-/* intro shutter */
+/* ask my hologram (insight) */
+.ask{--chip:#9fd8ff;display:flex;flex-direction:column;gap:8px;border:1px solid #9fd8ff44;border-radius:12px;padding:12px;background:#03070c99;backdrop-filter:blur(8px)}
+.ask .qrow button.go{background:#9fd8ff;color:#03070c}
+.ask .qrow .mic{background:transparent;border:1px solid #c08bff66;color:#d9b8ff;padding:0 11px;font-size:13px}
+.ask .qrow .mic[aria-pressed="true"]{background:#c08bff;color:#120320}
+.trace{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px;font-family:var(--f-mono);font-size:11px;color:var(--dim);max-height:132px;overflow:auto}
+.trace li{display:grid;grid-template-columns:14px 1fr auto;gap:8px;align-items:baseline;animation:tin .3s ease-out}
+.trace li .s{color:#7ee2a8}.trace li.bad .s{color:#ff9d8a}
+.trace li b{color:#d8dbe2;font-weight:500}
+.trace li code{display:block;white-space:pre-wrap;color:#bfe9ff;font-size:10.5px;margin-top:2px;word-break:break-word}
+.trace li .ms{color:#5e6573;font-variant-numeric:tabular-nums}
+@keyframes tin{from{opacity:0;transform:translateY(4px)}}
+.answer{margin:0;font-size:.98rem;line-height:1.55;color:#e8f6ff;min-height:1.5em;text-shadow:0 0 18px #0b2a3a}
+.answer .w{opacity:.25;transition:opacity .2s}.answer .w.on{opacity:1}
+.tiny{font-family:var(--f-mono);font-size:10px;color:var(--dim);letter-spacing:.03em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.tiny button{font:inherit;color:#bfe9ff;background:none;border:1px solid #2b2f38;border-radius:999px;padding:3px 9px;cursor:pointer}
+
+/* intro shutter + opening titles */
 .shutter{position:fixed;left:0;right:0;height:50vh;background:#000;z-index:8;transition:transform 1.6s cubic-bezier(.7,0,.2,1)}
 .shutter.t{top:0}.shutter.b{bottom:0}
 .open .shutter.t{transform:translateY(-100%)}.open .shutter.b{transform:translateY(100%)}
-
-/* recruiter cut */
-.cut{position:fixed;inset:0;z-index:9;background:rgba(5,5,7,.94);backdrop-filter:blur(14px);overflow:auto;
-  padding:calc(var(--bar-h) + 20px) max(20px,env(safe-area-inset-right,0px)) 40px max(20px,env(safe-area-inset-left,0px))}
-.cut-in{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
-.cut h2{font-family:var(--f-title);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:clamp(1.6rem,4vw,2.4rem);margin:0;line-height:1}
-.cut h3{margin:0;font-size:1.02rem}
-.cut p{margin:0;color:#c4c8d1;line-height:1.6}
-.cut .role{display:grid;grid-template-columns:150px 1fr;gap:16px;border-top:1px solid #ffffff1a;padding-top:14px}
-.cut .role>div{min-width:0;display:flex;flex-direction:column;gap:4px}
-.cut .when{font-family:var(--f-mono);font-size:11.5px;color:var(--dim)}
-.cut .top-row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-
 .intro{position:fixed;inset:0;z-index:10;background:#000;transition:opacity .9s ease;cursor:pointer}
 .intro.gone{opacity:0;pointer-events:none}
 .intro>*{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center}
@@ -155,16 +180,35 @@ body{overflow-x:hidden}
 .intro>.skip{left:auto;top:auto;right:max(20px,env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:none;
   font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8D93A0;background:none;border:1px solid #2b2f38;border-radius:999px;padding:8px 14px;cursor:pointer}
 .intro>.skip:hover{color:#fff;border-color:#8D93A0}
+
+/* recruiter cut */
+.cut{position:fixed;inset:0;z-index:9;background:rgba(5,5,7,.94);backdrop-filter:blur(14px);overflow:auto;
+  padding:calc(var(--bar-h) + 20px) max(20px,env(safe-area-inset-right,0px)) 40px max(20px,env(safe-area-inset-left,0px))}
+.cut-in{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.cut h2{font-family:var(--f-title);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:clamp(1.6rem,4vw,2.4rem);margin:0;line-height:1}
+.cut h3{margin:0;font-size:1.02rem}
+.cut p{margin:0;color:#c4c8d1;line-height:1.6}
+.cut .role{display:grid;grid-template-columns:150px 1fr;gap:16px;border-top:1px solid #ffffff1a;padding-top:14px}
+.cut .role>div{min-width:0;display:flex;flex-direction:column;gap:4px}
+.cut .when{font-family:var(--f-mono);font-size:11.5px;color:var(--dim)}
+.cut .top-row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+
+@media (max-height:780px) and (min-width:761px){ .layer[data-i="4"] .body,.layer[data-i="5"] .body{display:none} }
 @media (max-width:760px){
   :root{--bar-h:46px}
-  .gauge{display:none}
-  .layer{left:max(20px,env(safe-area-inset-left,0px));width:calc(100vw - 40px)}
-  .hide-sm{display:none}
+  .gauge,.hide-sm{display:none}
+  .bar{gap:10px}
+  .layer{left:max(14px,env(safe-area-inset-left,0px));right:max(14px,env(safe-area-inset-right,0px));width:auto;top:auto;bottom:0;
+    transform-origin:50% 100%;max-height:calc(100% - 4px);overflow:auto;gap:10px;padding:26px 0 10px;
+    background:linear-gradient(to bottom,transparent,rgba(5,5,7,.88) 26px)}
+  .title{font-size:clamp(1.7rem,8.5vw,2.4rem)}
+  .layer[data-i="4"] .body,.layer[data-i="5"] .body{display:none}
+  .layer[data-i="0"] .body{font-size:.95rem}
   .cut .role{grid-template-columns:1fr;gap:4px}
   .live svg{display:none}
+  .hstate{top:calc(var(--bar-h) + 10px)}
 }
-@media (max-height:760px) and (min-width:761px){ .layer[data-i="4"] .body{display:none} }
-@media (prefers-reduced-motion:reduce){.grain,.dot,.caret,.hint i,.pulse{animation:none}.shutter{transition:none}}
+@media (prefers-reduced-motion:reduce){.grain,.dot,.caret,.hint i,.pulse,.hstate i{animation:none}.shutter{transition:none}}
 </style>
 </head>
 <body>
@@ -173,15 +217,17 @@ body{overflow-x:hidden}
 <div class="vignette"></div>
 <div class="grain" id="grain"></div>
 <div class="nodes" id="nodes" aria-hidden="true"></div>
+<div class="hstate" id="hstate" data-s="idle" aria-live="polite"><i></i><span id="hstateT">Hologram · idle</span></div>
 
 <div class="bar top">
   <span class="dot" aria-hidden="true"></span>
-  <span class="brand">KSN // MEDALLION REEL</span>
+  <span class="brand">KSN<span class="hide-sm"> // MEDALLION REEL</span></span>
   <span class="layer-name" id="lname">00 · SOURCE</span>
   <span class="sp"></span>
   <span class="hide-sm" id="tc">TC 00:00:00:00</span>
-  <button class="btn" id="sndBtn" aria-pressed="false" title="Ambient sound">♪ Sound off</button>
-  <button class="btn" id="cutBtn" aria-haspopup="dialog">Recruiter cut</button>
+  <button class="btn askb" id="askJump" type="button">◎ Ask</button>
+  <button class="btn" id="sndBtn" aria-pressed="false" title="Ambient sound">♪<span class="hide-sm" id="sndT"> Sound off</span></button>
+  <button class="btn" id="cutBtn" aria-haspopup="dialog">Recruiter<span class="hide-sm"> cut</span></button>
 </div>
 
 <nav class="gauge" id="gauge" aria-label="Layers"></nav>
@@ -191,7 +237,7 @@ body{overflow-x:hidden}
   <article class="layer" data-i="0">
     <span class="eyebrow">A data reel · 2021 → 2026</span>
     <h1 class="title">Every engineer<br>is a <em>pipeline.</em></h1>
-    <p class="body">That's me, rebuilt from 12,000 points of light. Move your mouse to turn the hologram. Then scroll, and watch me get refined through five layers, the way a lakehouse refines its data.</p>
+    <p class="body">That's me, rebuilt from 12,000 points of light. Move your mouse and I turn to follow. Scroll to watch me get refined through five layers, the way a lakehouse refines its data. At the end, you can ask me anything.</p>
     <span class="hint"><i></i>SCROLL TO DESCEND · CLICK FOR SOUND</span>
   </article>
 
@@ -229,19 +275,31 @@ body{overflow-x:hidden}
     <div class="console" id="console">
       <div class="chips" id="chips"></div>
       <div class="qrow">
-        <label for="q" class="hide-sm" style="position:absolute;left:-9999px">SQL query</label>
+        <label for="q" class="sr">SQL query</label>
         <textarea id="q" rows="3" spellcheck="false" autocomplete="off"></textarea>
         <button id="run" type="button" title="Run (Ctrl+Enter)">Run</button>
       </div>
       <div class="out" id="out" aria-live="polite"></div>
-      <span class="schema">TABLES · roles · skills · skill_usage · metrics · projects &nbsp;|&nbsp; read-only · runs in your browser</span>
+      <span class="schema">TABLES · roles · skills · skill_usage · metrics · projects &nbsp;|&nbsp; read-only · MiniSQL, running in your browser</span>
     </div>
   </article>
 
   <article class="layer" data-i="5">
-    <span class="eyebrow">Layer 05 · Insight</span>
+    <span class="eyebrow">Layer 05 · Insight · ask me anything</span>
     <h2 class="title">Krishna Sidhvi<br><em>Nekkanti</em></h2>
     <p class="body">Forward Deployment AI Engineer and data engineer. AWS Certified Data Engineer. Based in Hyderabad, open to remote work and relocation.</p>
+    <div class="ask" id="ask">
+      <div class="qrow">
+        <label for="askIn" class="sr">Ask my hologram a question</label>
+        <input id="askIn" type="text" autocomplete="off" spellcheck="false" placeholder="Ask in English, e.g. Where did you use Spark?">
+        <button class="mic" id="mic" type="button" aria-pressed="false" title="Speak your question (uses your browser's speech service)">🎙</button>
+        <button class="go" id="askGo" type="button">Ask</button>
+      </div>
+      <div class="chips" id="askChips"></div>
+      <ol class="trace" id="trace" aria-label="Agent trace"></ol>
+      <p class="answer" id="answer" aria-live="polite"></p>
+      <div class="tiny"><button id="voiceBtn" type="button" aria-pressed="true">Voice on</button><span>An agent I built: English → SQL → guardrails → answer. Runs in your browser, no AI service, no data leaves this page.</span></div>
+    </div>
     <div class="cta">
       <button class="primary" id="copyMail" type="button">Copy email</button>
       <a href="https://www.linkedin.com/in/krishnasidhvinekkanti/" target="_blank" rel="noreferrer">LinkedIn</a>
@@ -271,7 +329,7 @@ body{overflow-x:hidden}
 
 <div class="cut" id="cut" role="dialog" aria-modal="true" aria-label="Recruiter cut" hidden>
   <div class="cut-in">
-    <div class="top-row"><span class="eyebrow">Recruiter cut · the 30-second version</span><span style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn" href="./classic/" style="text-decoration:none">Full classic portfolio →</a><button class="btn" id="cutClose">Close · Esc</button></span></div>
+    <div class="top-row"><span class="eyebrow">Recruiter cut · the 30-second version</span><span style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn" href="./classic/">Full classic portfolio →</a><button class="btn" id="cutClose">Close · Esc</button></span></div>
     <h2>Krishna Sidhvi Nekkanti</h2>
     <p>Forward Deployment AI Engineer with 4+ years across Trida Labs, Global Payments, Amazon and Vanguard. Deploys agentic text-to-SQL (AgentSQL) and MCP integrations on enterprise warehouses, and builds the reliable pipelines underneath them.</p>
     <div class="role"><span class="when">May 2025 – now</span><div><h3>Forward Deployment AI Engineer · Trida Labs</h3><p>AgentSQL and TridaPad deployments, MCP integrations across Snowflake, Databricks, PostgreSQL and Redshift, guardrails with 99%+ relational accuracy, enterprise RBAC.</p></div></div>
@@ -504,32 +562,33 @@ var MiniSQL=(function(){
   }
   return {run:run,parse:parse};
 })();
-
-
 </script>
 <script>
 (function(){
 "use strict";
 var REDUCE = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-var AVATAR_SRC = "./avatar-hologram.png";
+var PHOTO_SRC = "./avatar-photo.jpg";
 var L = 6;
 var NAMES = ['00 · SOURCE','01 · RAW','02 · BRONZE','03 · SILVER','04 · GOLD','05 · INSIGHT'];
-var HUE = ['#9fd8ff','#c9ced6','#ff9a52','#e8f1ff','#ffd36b','#8fb0ff'];
-var COLS = [['#1d5f8a','#bfe9ff'],['#4a4f58','#d4d8df'],['#6e3414','#ffa060'],['#5e6d82','#f0f6ff'],['#7a4e0c','#ffd978'],['#2f4cd6','#cfe0ff']];
-var PHOTO = [1,0,0,0,0,.5], HOLO = [1,0,0,0,0,1], GOLD = [0,0,0,0,1,0], ALPHA = [.6,.8,.8,.85,.8,.66];
+var HUE = ['#9fd8ff','#c9ced6','#ff9a52','#e8f1ff','#ffd36b','#9fd8ff'];
+var COLS = [['#1d5f8a','#bfe9ff'],['#4a4f58','#d4d8df'],['#6e3414','#ffa060'],['#5e6d82','#f0f6ff'],['#7a4e0c','#ffd978'],['#1d5f8a','#bfe9ff']];
+var PHOTO = [1,0,0,0,0,1], HOLO = [1,0,0,0,0,1], GOLD = [0,0,0,0,1,0], ALPHA = [.78,.8,.8,.85,.8,.78];
 var BASE_HZ = [55,49,58.27,65.41,73.42,82.41];
 var SQL = [
   "<span class='kw'>SELECT</span> * <span class='kw'>FROM</span> hologram.krishna <span class='kw'>WHERE</span> points = 12000;  -- move your mouse",
   "<span class='kw'>SELECT</span> * <span class='kw'>FROM</span> raw.vanguard_2022 <span class='kw'>UNION ALL</span> <span class='kw'>SELECT</span> * <span class='kw'>FROM</span> raw.umbc_research;",
   "<span class='kw'>CREATE TABLE</span> bronze.amazon <span class='kw'>AS SELECT</span> * <span class='kw'>FROM</span> glue.etl <span class='kw'>WHERE</span> reliability_gain >= 0.30;",
-  "<span class='kw'>MERGE INTO</span> silver.payments <span class='kw'>USING</span> dq_checks <span class='kw'>ON</span> txn_id;  -- live: Chicago open data drives this flow",
+  "<span class='kw'>MERGE INTO</span> silver.payments <span class='kw'>USING</span> dq_checks <span class='kw'>ON</span> txn_id;  -- Chicago open data drives this flow",
   "<span class='kw'>SELECT</span> answer <span class='kw'>FROM</span> gold.agentsql <span class='kw'>WHERE</span> question = :natural_language;  -- try the console",
-  "<span class='kw'>SELECT</span> * <span class='kw'>FROM</span> insight.krishna <span class='kw'>WHERE</span> open_to = 'the next mission';"
+  "<span class='kw'>SELECT</span> answer <span class='kw'>FROM</span> insight.krishna <span class='kw'>WHERE</span> question = :yours;  -- ask me anything"
 ];
 
-/* ================= career warehouse (data for the SQL console) ================= */
-var SKILLS = ['SQL','Python','PySpark','Snowflake','Databricks','Redshift','AWS Glue','Tableau','MCP','AgentSQL'];
-var FAMILY = ['Language','Language','Processing','Warehouse','Lakehouse','Warehouse','ETL','BI','Agent tooling','Agentic AI'];
+/* ================= career warehouse ================= */
+var SKILLS = ['SQL','Python','PySpark','Snowflake','Databricks','Redshift','AWS Glue','Tableau','MCP','AgentSQL',
+              'Power BI','Azure Data Factory','Kafka','Informatica','Athena','TridaPad','PostgreSQL'];
+var FAMILY = ['Language','Language','Processing','Warehouse','Lakehouse','Warehouse','ETL','BI','Agent tooling','Agentic AI',
+              'BI','ETL','Streaming','ETL','Query engine','AI workspace','Database'];
+var GRAPH_N = 10; // the first 10 skills are nodes in the gold-layer graph
 var ROLES = [
   {role_id:1,company:'UMBC',title:'MPS Data Science (research)',start_year:2021,end_year:2023,layer:'raw'},
   {role_id:2,company:'Vanguard',title:'Data Analyst',start_year:2022,end_year:2022,layer:'raw'},
@@ -538,11 +597,11 @@ var ROLES = [
   {role_id:5,company:'Trida Labs',title:'Forward Deployment AI Engineer',start_year:2025,end_year:null,layer:'gold'}
 ];
 var USAGE = [
-  [1,1,'YOLO number-plate detection, 95% extraction'],[1,7,'Chicago crime forecasting dashboards'],
-  [2,0,'KPI queries on SQL Server and PostgreSQL'],[2,7,'KPI dashboards, +15% efficiency'],
-  [3,6,'Glue + Informatica pipelines, +30% reliability'],[3,2,'Glue transformation jobs'],[3,5,'Quality checks, -50% anomalies'],[3,0,'Athena month-end mappings'],[3,1,'Data-quality automation'],
-  [4,5,'DQ framework, -40% anomalies'],[4,0,'High-volume transaction analysis'],[4,1,'Fraud feature analysis, -15% false positives'],[4,7,'Real-time settlement KPI dashboards'],
-  [5,9,'Enterprise AgentSQL deployments'],[5,8,'MCP integrations to client warehouses'],[5,3,'MCP target warehouse'],[5,4,'MCP target lakehouse'],[5,5,'MCP target warehouse'],[5,0,'Guardrailed joins, 99%+ accuracy'],[5,1,'Prompt pipelines and guardrails']
+  [1,1,'YOLO number-plate detection, 95% extraction'],[1,7,'Chicago crime forecasting dashboards'],[1,12,'Streaming fraud-detection pipeline'],
+  [2,0,'KPI queries on SQL Server and PostgreSQL'],[2,7,'KPI dashboards, +15% efficiency'],[2,10,'Supplemental financial reporting'],[2,11,'Pipelines feeding real-time dashboards'],[2,16,'Dashboard source database'],
+  [3,6,'Glue + Informatica pipelines, +30% reliability'],[3,2,'Glue transformation jobs'],[3,5,'Quality checks, -50% anomalies'],[3,0,'Athena month-end mappings'],[3,1,'Data-quality automation'],[3,13,'Enterprise ETL pipelines'],[3,14,'Month-end data mapping'],
+  [4,5,'DQ framework, -40% anomalies'],[4,0,'High-volume transaction analysis'],[4,1,'Fraud feature analysis, -15% false positives'],[4,7,'Real-time settlement KPI dashboards'],[4,13,'ETL workflow refinement'],
+  [5,9,'Enterprise AgentSQL deployments'],[5,8,'MCP integrations to client warehouses'],[5,3,'MCP target warehouse'],[5,4,'MCP target lakehouse'],[5,5,'MCP target warehouse'],[5,0,'Guardrailed joins, 99%+ accuracy'],[5,1,'Prompt pipelines and guardrails'],[5,15,'Collaborative analytics workspace deployments'],[5,16,'MCP target database']
 ].map(function(r){return {role_id:r[0],skill_id:r[1],evidence:r[2]};});
 var METRICS = [
   {role_id:1,metric:'Plate extraction accuracy',change_pct:95},
@@ -556,10 +615,11 @@ var PROJECTS = [
   {project:'Chicago crime analytics',year:2022,stack:'Python, Scikit-Learn, Tableau',result:'Spatial-temporal forecasts'},
   {project:'Streaming fraud detection',year:2022,stack:'Kafka, AWS Lambda, MongoDB',result:'Real-time scoring'}
 ];
+var WAREHOUSE={roles:ROLES,skills:SKILLS.map(function(s,i){return {skill_id:i,skill:s,family:FAMILY[i]};}),skill_usage:USAGE,metrics:METRICS,projects:PROJECTS};
 var PRESETS = [
   ['Where did I use Python?',"SELECT s.skill, r.company, u.evidence\nFROM skill_usage u\nJOIN roles r ON u.role_id = r.role_id\nJOIN skills s ON u.skill_id = s.skill_id\nWHERE s.skill = 'Python'"],
   ['Stack at Trida Labs',"SELECT s.skill, s.family, u.evidence\nFROM skill_usage u\nJOIN skills s ON u.skill_id = s.skill_id\nJOIN roles r ON u.role_id = r.role_id\nWHERE r.company = 'Trida Labs'"],
-  ['Most-used skills',"SELECT s.skill, COUNT(*) AS n_roles\nFROM skill_usage u\nJOIN skills s ON u.skill_id = s.skill_id\nGROUP BY s.skill\nORDER BY n_roles DESC"],
+  ['Most-used skills',"SELECT s.skill, COUNT(*) AS n_roles\nFROM skill_usage u\nJOIN skills s ON u.skill_id = s.skill_id\nGROUP BY s.skill\nORDER BY n_roles DESC\nLIMIT 8"],
   ['Impact by role',"SELECT r.company, m.metric, m.change_pct\nFROM metrics m\nJOIN roles r ON m.role_id = r.role_id\nORDER BY r.start_year DESC"]
 ];
 
@@ -568,7 +628,7 @@ var PRESETS = [
   for(var i=0;i<d.data.length;i+=4){var v=Math.random()*255|0;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=255;}
   x.putImageData(d,0,0);document.getElementById('grain').style.backgroundImage='url('+c.toDataURL()+')';})();
 
-/* ================= scroll track + gauge ================= */
+/* ================= scroll track + gauge + keys ================= */
 document.getElementById('track').style.height=(L*100+20)+'vh';
 var gauge=document.getElementById('gauge'),ticks=[];
 NAMES.forEach(function(n,i){var b=document.createElement('button');b.className='tick';b.type='button';
@@ -585,85 +645,111 @@ addEventListener('keydown',function(e){
   if(e.key==='ArrowUp'||e.key==='PageUp'){e.preventDefault();scrollToStage(Math.max(0,cur-1));}
 });
 
-/* ================= particle formations ================= */
+/* ================= particle data (static, uploaded once; all motion runs on the GPU) ================= */
 var N=12000, GC=150, GR=80;
-var rA=new Float32Array(N),rB=new Float32Array(N),rC=new Float32Array(N),dx=new Float32Array(N),dy=new Float32Array(N),dz=new Float32Array(N);
+var aRand=new Float32Array(N*3),aDir=new Float32Array(N*3),aGrid=new Float32Array(N*3),aGA=new Float32Array(N*3),aGB=new Float32Array(N*3),
+    aGS=new Float32Array(N),aNode=new Float32Array(N),aE1=new Float32Array(N),aE2=new Float32Array(N),avPos=new Float32Array(N*3),avCol=new Float32Array(N*3);
 var seed=1337;function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647;}
-for(var i=0;i<N;i++){rA[i]=rnd();rB[i]=rnd();rC[i]=rnd();
-  var u=rnd()*2-1,th=rnd()*Math.PI*2,s=Math.sqrt(1-u*u);dx[i]=s*Math.cos(th);dy[i]=u;dz[i]=s*Math.sin(th);}
-function fract(v){return v-Math.floor(v);}
-
-// gold: skill graph
 var NODES=[],EDGES=[[0,1],[0,7],[0,5],[5,6],[6,2],[1,2],[9,8],[9,0],[8,3],[8,4],[8,5],[3,4],[1,9],[7,5]];
-for(var k=0;k<10;k++){var yy=1-(k+.5)/10*2,rr=Math.sqrt(1-yy*yy),tt=k*2.39996;NODES.push([Math.cos(tt)*rr*4.6,yy*3.6,Math.sin(tt)*rr*3.2]);}
-var aNode=new Float32Array(N),aE1=new Float32Array(N),aE2=new Float32Array(N);
-for(i=0;i<N;i++){
-  if(rA[i]<.42){aNode[i]=Math.floor(rB[i]*10)%10;aE1[i]=aE2[i]=-1;}
-  else{var e=EDGES[Math.floor(rB[i]*EDGES.length)%EDGES.length];aNode[i]=-1;aE1[i]=e[0];aE2[i]=e[1];}
+for(var k=0;k<GRAPH_N;k++){var yy=1-(k+.5)/GRAPH_N*2,rr=Math.sqrt(1-yy*yy),tt=k*2.39996;NODES.push([Math.cos(tt)*rr*4.6,yy*3.6,Math.sin(tt)*rr*3.2]);}
+for(var i=0;i<N;i++){
+  var a=rnd(),b=rnd(),c=rnd();aRand[i*3]=a;aRand[i*3+1]=b;aRand[i*3+2]=c;
+  var u=rnd()*2-1,th=rnd()*Math.PI*2,s=Math.sqrt(1-u*u),dx=s*Math.cos(th),dy=u,dz=s*Math.sin(th);
+  aDir[i*3]=dx;aDir[i*3+1]=dy;aDir[i*3+2]=dz;
+  var col=i%GC,row=Math.floor(i/GC);aGrid[i*3]=(col-(GC-1)/2)*.088;aGrid[i*3+1]=(row-(GR-1)/2)*.088;aGrid[i*3+2]=col;
+  if(a<.42){var nd=Math.floor(b*GRAPH_N)%GRAPH_N,n=NODES[nd],g=Math.abs(rnd()+rnd()+rnd()-1.5)*.55;
+    aNode[i]=nd;aE1[i]=aE2[i]=-1;aGS[i]=-1;aGA[i*3]=n[0]+dx*g;aGA[i*3+1]=n[1]+dy*g;aGA[i*3+2]=n[2]+dz*g;}
+  else{var e=EDGES[Math.floor(b*EDGES.length)%EDGES.length],p=NODES[e[0]],q=NODES[e[1]];
+    aNode[i]=-1;aE1[i]=e[0];aE2[i]=e[1];aGS[i]=a>.85?.12:.015;
+    aGA[i*3]=p[0];aGA[i*3+1]=p[1];aGA[i*3+2]=p[2];aGB[i*3]=q[0];aGB[i*3+1]=q[1];aGB[i*3+2]=q[2];}
+  avPos[i*3]=dx*3;avPos[i*3+1]=dy*4;avPos[i*3+2]=dz*2;avCol[i*3]=.6;avCol[i*3+1]=.8;avCol[i*3+2]=1;
 }
 
-// avatar hologram: built from the embedded avatar image
-var AVX=new Float32Array(N),AVY=new Float32Array(N),AVZ=new Float32Array(N),aCol=new Float32Array(N*3);
-for(i=0;i<N;i++){AVX[i]=dx[i]*3;AVY[i]=dy[i]*4;AVZ[i]=dz[i]*2;aCol[i*3]=.6;aCol[i*3+1]=.8;aCol[i*3+2]=1;}
-var POLY=[[505,52],[560,62],[605,95],[630,140],[634,200],[628,250],[614,300],[600,340],[602,380],[640,410],[700,440],[780,470],[812,500],[838,600],[862,750],[880,900],[890,1024],
-  [170,1024],[185,880],[200,740],[215,600],[235,500],[270,470],[340,440],[400,410],[428,380],[424,340],[404,300],[386,250],[376,200],[380,140],[400,95],[445,62]];
-function inPoly(x,y,p){var c=false;for(var a=0,b=p.length-1;a<p.length;b=a++){var xi=p[a][0],yi=p[a][1],xj=p[b][0],yj=p[b][1];
-  if(((yi>y)!==(yj>y))&&(x<(xj-xi)*(y-yi)/(yj-yi)+xi))c=!c;}return c;}
+/* ================= avatar: real photo, cut out and sculpted into 3D ================= */
+function n768(arr){return arr.map(function(p){return [p[0]/768,p[1]/768];});}
+var AV={poly:n768([[338,46],[374,50],[402,70],[414,100],[418,130],[424,150],[421,185],[411,202],[405,226],[401,246],[422,258],[470,284],[540,304],[570,334],[590,384],[604,450],[608,560],[606,680],[600,768],
+      [165,768],[162,650],[165,520],[168,420],[180,350],[205,316],[260,296],[292,268],[296,242],[282,216],[268,190],[262,160],[265,120],[278,84],[300,60]]),
+  head:{cu:340/768,cv:160/768,ru:80/768,rv:110/768},eyes:[[306/768,150/768],[368/768,150/768]],nose:[338/768,183/768],mouth:[338/768,205/768],chin:[338/768,252/768],
+  neck:{cu:345/768,v0:240/768,v1:290/768,ru:52/768},torso:{cu:390/768,v0:300/768,ru:225/768}};
+var AW=11.9;
+function sq(x){return x*x;}
+function g2(du,dv,su,sv){return Math.exp(-(du*du)/(2*su*su)-(dv*dv)/(2*sv*sv));}
+function smooth(e0,e1,x){x=Math.min(1,Math.max(0,(x-e0)/(e1-e0)));return x*x*(3-2*x);}
+function depthAt(u,v,lum){
+  var h=AV.head,E=sq((u-h.cu)/h.ru)+sq((v-h.cv)/h.rv),zh=E<1?Math.sqrt(1-E)*1.25:0,fw=h.ru;
+  if(E<1.15){var k=smooth(1.15,.85,E);
+    zh+=k*(.40*g2(u-AV.nose[0],v-AV.nose[1],fw*.10,fw*.13)+.24*g2(u-AV.nose[0],v-(AV.nose[1]+AV.eyes[0][1])/2,fw*.07,fw*.24)
+      -.17*g2(u-AV.eyes[0][0],v-AV.eyes[0][1],fw*.17,fw*.11)-.17*g2(u-AV.eyes[1][0],v-AV.eyes[1][1],fw*.17,fw*.11)
+      +.08*g2(u-AV.mouth[0],v-AV.mouth[1],fw*.24,fw*.08)+.07*g2(u-AV.chin[0],v-AV.chin[1],fw*.24,fw*.11)
+      +.07*g2(u-h.cu,v-(AV.eyes[0][1]-fw*.24),fw*.55,fw*.07));}
+  var n=AV.neck,zn=(v>n.v0&&v<n.v1+.06)?Math.sqrt(Math.max(0,1-sq((u-n.cu)/n.ru)))*.75:0;
+  var t=AV.torso,zt=Math.sqrt(Math.max(0,1-sq((u-t.cu)/t.ru)))*1.05*smooth(t.v0-.02,t.v0+.07,v);
+  return Math.max(zh,zn,zt)+lum*.1;
+}
 function buildAvatar(){
   var img=new Image();
   img.onload=function(){
-    var S=200,c=document.createElement('canvas');c.width=c.height=S;var x=c.getContext('2d');x.drawImage(img,0,0,S,S);
-    var d;try{d=x.getImageData(0,0,S,S).data;}catch(err){return;}
-    var head=[],body=[],sc=S/1024,poly=POLY.map(function(p){return [p[0]*sc,p[1]*sc];});
-    for(var py=0;py<S;py++)for(var px=0;px<S;px++){
-      if(!inPoly(px+.5,py+.5,poly))continue;
-      var o=(py*S+px)*4,r=d[o]/255,g=d[o+1]/255,b=d[o+2]/255,lum=.299*r+.587*g+.114*b;
-      var rec=[px,py,r,g,b,lum];(py<80?head:body).push(rec);
+    var T=512,c=document.createElement('canvas');c.width=c.height=T;var x=c.getContext('2d');x.drawImage(img,0,0,T,T);
+    var m=document.createElement('canvas');m.width=m.height=T;var mx2=m.getContext('2d');mx2.fillStyle='#fff';mx2.beginPath();
+    AV.poly.forEach(function(p,i){i?mx2.lineTo(p[0]*T,p[1]*T):mx2.moveTo(p[0]*T,p[1]*T);});mx2.closePath();mx2.fill();
+    var mb=document.createElement('canvas');mb.width=mb.height=T;var mbx=mb.getContext('2d');try{mbx.filter='blur(4px)';}catch(e){}mbx.drawImage(m,0,0);
+    x.globalCompositeOperation='destination-in';x.drawImage(mb,0,0);
+    var d;try{d=x.getImageData(0,0,T,T).data;}catch(err){return;}
+    function px(u,v){var X=Math.min(T-1,Math.max(0,Math.round(u*(T-1)))),Y=Math.min(T-1,Math.max(0,Math.round(v*(T-1))));var o=(Y*T+X)*4;return [d[o]/255,d[o+1]/255,d[o+2]/255,d[o+3]/255];}
+    var h=AV.head,nHead=Math.floor(N*.28),j=0,guard=0;
+    while(j<N&&guard<N*90){guard++;
+      var uu,vv;
+      if(j<nHead){uu=h.cu+(Math.random()*2-1)*h.ru*1.2;vv=h.cv+(Math.random()*2-1)*h.rv*1.2;}else{uu=Math.random();vv=Math.random();}
+      var q=px(uu,vv);if(q[3]<.6)continue;
+      var lum=.299*q[0]+.587*q[1]+.114*q[2];
+      avPos[j*3]=(uu-h.cu)*AW;avPos[j*3+1]=(h.cv+.14-vv)*AW;avPos[j*3+2]=depthAt(uu,vv,lum)*1.25+.03;
+      avCol[j*3]=q[0];avCol[j*3+1]=q[1];avCol[j*3+2]=q[2];j++;
     }
-    if(!head.length||!body.length)return;
-    var hcx=505*sc,hcy=225*sc,hrx=128*sc,hry=175*sc,tcx=525*sc,trx=360*sc;
-    for(var i=0;i<N;i++){
-      var pool=rA[i]<.38?head:body,p=pool[(i*7919+Math.floor(rC[i]*97))%pool.length];
-      var X=p[0]+rB[i]-.5,Y=p[1]+rC[i]-.5;
-      var eh=Math.pow((X-hcx)/hrx,2)+Math.pow((Y-hcy)/hry,2),zh=eh<1?Math.sqrt(1-eh)*1.35:0;
-      var zt=Y>70?Math.sqrt(Math.max(0,1-Math.pow((X-tcx)/trx,2)))*.95*Math.min(1,(Y-70)/30):0;
-      AVX[i]=(X-S/2)/S*9.5;AVY[i]=-(Y-S/2)/S*9.5+.2;AVZ[i]=Math.max(zh,zt)+p[5]*.3-.5;
-      aCol[i*3]=p[2];aCol[i*3+1]=p[3];aCol[i*3+2]=p[4];
-    }
-    if(colAttr)colAttr.needsUpdate=true;
+    if(posAttr){posAttr.needsUpdate=true;colAttr.needsUpdate=true;}
   };
-  img.src=AVATAR_SRC;
+  img.src=PHOTO_SRC;
 }
-
-var FLOW=0, LIVE_FLOW=1;
-function form(s,i,t,out){
-  var a=rA[i],b=rB[i],c=rC[i];
-  switch(s){
-    case 0: case 5:{ // avatar hologram (5 adds a slow breathing drift)
-      var br=s===5?Math.sin(t*.9+AVY[i])*.04:0;
-      out[0]=AVX[i]+br;out[1]=AVY[i];out[2]=AVZ[i];break;}
-    case 1:{ // raw: falling data rain
-      out[0]=(a-.5)*15;out[2]=(c-.5)*8;out[1]=5-fract(b+t*.07*(.5+c))*10;break;}
-    case 2:{ // bronze: structured table
-      var col=i%GC,row=Math.floor(i/GC),gx=(col-(GC-1)/2)*.088,gy=(row-(GR-1)/2)*.088;
-      out[0]=gx;out[1]=gy*.82;out[2]=gy*.57+Math.sin(col*.14+t*.9)*.07+((col%15===0)?.12:0);break;}
-    case 3:{ // silver: flowing pipelines, speed driven by live open data
-      var lane=i%7,uu=fract(a+FLOW*.05*(.6+b*.8)),px=(uu-.5)*18;
-      out[0]=px;out[1]=(lane-3)*.85+Math.sin(px*.5+lane*1.3+t*.6)*.5+(c-.5)*.14;out[2]=Math.sin(px*.3+lane)*1.2+(b-.5)*.2;break;}
-    default:{ // gold: skill graph, packets travel along shared-use edges
-      if(aNode[i]>=0){var n=NODES[aNode[i]],g=Math.abs((rA[(i*7)%N]+rB[(i*13)%N]+rC[(i*29)%N]-1.5))*.55;
-        out[0]=n[0]+dx[i]*g;out[1]=n[1]+dy[i]*g;out[2]=n[2]+dz[i]*g;}
-      else{var p=NODES[aE1[i]],q=NODES[aE2[i]],w=fract(c+t*(a>.85?.12:.015));
-        out[0]=p[0]+(q[0]-p[0])*w+dx[i]*.04;out[1]=p[1]+(q[1]-p[1])*w+dy[i]*.04;out[2]=p[2]+(q[2]-p[2])*w+dz[i]*.04;}
-    }
-  }
-}
-function smooth(e0,e1,x){x=Math.min(1,Math.max(0,(x-e0)/(e1-e0)));return x*x*(3-2*x);}
-function lerp(a,b,m){return a+(b-a)*m;}
 
 /* ================= three.js ================= */
 var canvas=document.getElementById('gl'),hasGL=typeof THREE!=='undefined';
 var renderer,scene,camera,group,geo,mat,posAttr,colAttr,HI=[0,0,0,0,0,0,0,0,0,0],HI_T=HI.slice();
+var VERT=[
+  'attribute vec3 aCol;attribute vec3 aRand;attribute vec3 aDir;attribute vec3 aGrid;attribute vec3 aGA;attribute vec3 aGB;',
+  'attribute float aGS;attribute float aNode;attribute float aE1;attribute float aE2;',
+  'uniform float uA;uniform float uB;uniform float uM;uniform float uBurst;uniform float uTime;uniform float uFlow;uniform float uIntro;',
+  'uniform float uSize;uniform float uPixel;uniform float uGold;uniform float uScan;uniform float uHolo;uniform float uHi[10];',
+  'uniform float uPulse;uniform float uRipple;',
+  'varying float vS;varying vec3 vCol;varying float vGlow;varying float vScan;',
+  'float hiAt(float k){float v=0.0;for(int j=0;j<10;j++){if(abs(float(j)-k)<0.5)v=uHi[j];}return v;}',
+  'vec3 formAt(float s){',
+  ' if(s<0.5)return position;',
+  ' if(s<1.5)return vec3((aRand.x-0.5)*15.0,5.0-fract(aRand.y+uTime*0.07*(0.5+aRand.z))*10.0,(aRand.z-0.5)*8.0);',
+  ' if(s<2.5){float st=mod(aGrid.z,15.0)<0.5?0.12:0.0;return vec3(aGrid.x,aGrid.y*0.82,aGrid.y*0.57+sin(aGrid.z*0.14+uTime*0.9)*0.07+st);}',
+  ' if(s<3.5){float lane=floor(aRand.x*7.0);float u=fract(aRand.y+uFlow*0.05*(0.6+aRand.z*0.8));float px=(u-0.5)*18.0;',
+  '   return vec3(px,(lane-3.0)*0.85+sin(px*0.5+lane*1.3+uTime*0.6)*0.5+(aRand.z-0.5)*0.14,sin(px*0.3+lane)*1.2+(fract(aRand.x*7.0)-0.5)*0.2);}',
+  ' if(s<4.5){if(aGS<0.0)return aGA;float w=fract(aRand.z+uTime*aGS);return mix(aGA,aGB,w)+aDir*0.04;}',
+  ' return position+vec3(sin(uTime*0.9+position.y)*0.03,0.0,0.0);',
+  '}',
+  'void main(){',
+  ' vec3 p=formAt(uA);',
+  ' if(uM>0.0&&uB!=uA){vec3 q=formAt(uB);p=mix(p,q,uM)+aDir*uBurst*aRand.y;}',
+  ' p+=aDir*uRipple*(0.5+aRand.x)*0.14;',
+  ' p=p*uIntro+aDir*(1.0-uIntro)*(9.0+aRand.z*10.0);',
+  ' vec4 mv=modelViewMatrix*vec4(p,1.0);gl_Position=projectionMatrix*mv;',
+  ' float g=aNode>-0.5?hiAt(aNode):min(hiAt(aE1),hiAt(aE2));g*=uGold;',
+  ' float qy=(p.y-uScan)*2.2;float sc=uHolo*exp(-qy*qy);',
+  ' vS=aRand.x;vCol=aCol;vGlow=g;vScan=sc;',
+  ' gl_PointSize=uSize*uPixel*(0.45+aRand.x*0.9)*(1.0+g*1.4+sc*0.5+uPulse*0.3)/-mv.z;',
+  '}'].join('\n');
+var FRAG=[
+  'uniform vec3 uCA;uniform vec3 uCB;uniform vec3 uHot;uniform vec3 uTint;uniform float uTintAmt;uniform float uAlpha;uniform float uPhoto;uniform float uPulse;',
+  'varying float vS;varying vec3 vCol;varying float vGlow;varying float vScan;',
+  'void main(){vec2 c=gl_PointCoord-0.5;float d=length(c);if(d>0.5)discard;float a=1.0-smoothstep(0.0,0.5,d);a*=a;',
+  ' vec3 base=mix(uCA,uCB,vS);vec3 photo=vCol*1.22+vec3(0.02,0.05,0.08);',
+  ' vec3 col=mix(base,photo,uPhoto);',
+  ' float lum=dot(vCol,vec3(0.299,0.587,0.114));col=mix(col,uTint*(0.55+lum*1.1),uTintAmt*uPhoto);',
+  ' col=mix(col,uHot,clamp(vGlow,0.0,1.0))+vec3(0.35,0.8,1.0)*vScan+vec3(0.25,0.55,0.7)*uPulse*uPhoto*0.35;',
+  ' gl_FragColor=vec4(col,a*(uAlpha+vGlow*0.7));}'].join('\n');
 if(hasGL){
   try{
     renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:false,alpha:false,powerPreference:'high-performance'});
@@ -671,47 +757,34 @@ if(hasGL){
     scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(50,1,.1,100);camera.position.set(0,0,14);
     group=new THREE.Group();scene.add(group);
     geo=new THREE.BufferGeometry();
-    posAttr=new THREE.BufferAttribute(new Float32Array(N*3),3);posAttr.setUsage(THREE.DynamicDrawUsage);
-    colAttr=new THREE.BufferAttribute(aCol,3);
-    geo.setAttribute('position',posAttr);geo.setAttribute('aSeed',new THREE.BufferAttribute(rA,1));geo.setAttribute('aCol',colAttr);
-    geo.setAttribute('aNode',new THREE.BufferAttribute(aNode,1));geo.setAttribute('aE1',new THREE.BufferAttribute(aE1,1));geo.setAttribute('aE2',new THREE.BufferAttribute(aE2,1));
-    mat=new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,
-      uniforms:{uSize:{value:26},uPixel:{value:renderer.getPixelRatio()},uA:{value:new THREE.Color()},uB:{value:new THREE.Color()},
-        uAlpha:{value:.8},uPhoto:{value:1},uHolo:{value:1},uGold:{value:0},uScan:{value:0},uHi:{value:HI},uHot:{value:new THREE.Color('#fff3c4')}},
-      vertexShader:[
-        'attribute float aSeed;attribute vec3 aCol;attribute float aNode;attribute float aE1;attribute float aE2;',
-        'uniform float uSize;uniform float uPixel;uniform float uGold;uniform float uScan;uniform float uHolo;uniform float uHi[10];',
-        'varying float vS;varying vec3 vCol;varying float vGlow;varying float vScan;',
-        'float hiAt(float k){float v=0.0;for(int j=0;j<10;j++){if(abs(float(j)-k)<0.5)v=uHi[j];}return v;}',
-        'void main(){vec4 mv=modelViewMatrix*vec4(position,1.0);gl_Position=projectionMatrix*mv;',
-        'float g=aNode>-0.5?hiAt(aNode):min(hiAt(aE1),hiAt(aE2));g*=uGold;',
-        'float q=(position.y-uScan)*2.2;float sc=uHolo*exp(-q*q);',
-        'vS=aSeed;vCol=aCol;vGlow=g;vScan=sc;',
-        'gl_PointSize=uSize*uPixel*(0.45+aSeed*0.9)*(1.0+g*1.4+sc*0.5)/-mv.z;}'].join('\n'),
-      fragmentShader:[
-        'uniform vec3 uA;uniform vec3 uB;uniform vec3 uHot;uniform float uAlpha;uniform float uPhoto;',
-        'varying float vS;varying vec3 vCol;varying float vGlow;varying float vScan;',
-        'void main(){vec2 c=gl_PointCoord-0.5;float d=length(c);if(d>0.5)discard;float a=1.0-smoothstep(0.0,0.5,d);a*=a;',
-        'vec3 base=mix(uA,uB,vS);vec3 photo=vCol*1.35+vec3(0.02,0.06,0.10);',
-        'vec3 col=mix(base,photo,uPhoto);col=mix(col,uHot,clamp(vGlow,0.0,1.0))+vec3(0.35,0.8,1.0)*vScan;',
-        'gl_FragColor=vec4(col,a*(uAlpha+vGlow*0.7));}'].join('\n')});
-    group.add(new THREE.Points(geo,mat));
+    posAttr=new THREE.BufferAttribute(avPos,3);colAttr=new THREE.BufferAttribute(avCol,3);
+    geo.setAttribute('position',posAttr);geo.setAttribute('aCol',colAttr);
+    [['aRand',aRand,3],['aDir',aDir,3],['aGrid',aGrid,3],['aGA',aGA,3],['aGB',aGB,3],['aGS',aGS,1],['aNode',aNode,1],['aE1',aE1,1],['aE2',aE2,1]]
+      .forEach(function(x){geo.setAttribute(x[0],new THREE.BufferAttribute(x[1],x[2]));});
+    geo.boundingSphere=new THREE.Sphere(new THREE.Vector3(),40);
+    mat=new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,vertexShader:VERT,fragmentShader:FRAG,
+      uniforms:{uA:{value:0},uB:{value:0},uM:{value:0},uBurst:{value:0},uTime:{value:0},uFlow:{value:0},uIntro:{value:0},
+        uSize:{value:26},uPixel:{value:renderer.getPixelRatio()},uGold:{value:0},uScan:{value:0},uHolo:{value:1},uHi:{value:HI},
+        uPulse:{value:0},uRipple:{value:0},uCA:{value:new THREE.Color()},uCB:{value:new THREE.Color()},uHot:{value:new THREE.Color('#fff3c4')},
+        uTint:{value:new THREE.Color('#9fd8ff')},uTintAmt:{value:0},uAlpha:{value:.8},uPhoto:{value:1}}});
+    var pts=new THREE.Points(geo,mat);pts.frustumCulled=false;group.add(pts);
   }catch(err){hasGL=false;canvas.style.display='none';}
 }
 buildAvatar();
-var tA,tB,cA,cB,v3;
-if(hasGL){tA=new THREE.Color();tB=new THREE.Color();cA=new THREE.Color();cB=new THREE.Color();v3=new THREE.Vector3();}
+var tA,tB,v3;
+if(hasGL){tA=new THREE.Color();tB=new THREE.Color();v3=new THREE.Vector3();}
 var WIDE=true,ALPHA_K=1;
 function resize(){
-  WIDE=innerWidth>900;
+  WIDE=innerWidth>760;
   if(!hasGL)return;
   renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();
-  group.position.x=WIDE?3.4:0;group.scale.setScalar(WIDE?1:.62);ALPHA_K=WIDE?1:.6;
+  var big=innerWidth>1000;
+  group.position.set(WIDE?(big?3.4:2.4):0,WIDE?0:2.3,0);group.scale.setScalar(WIDE?(big?1:.82):.56);ALPHA_K=WIDE?1:.85;
 }
 addEventListener('resize',resize);resize();
 
 /* ================= node labels ================= */
-var nodesEl=document.getElementById('nodes'),labels=SKILLS.map(function(s){var d=document.createElement('span');d.className='nl';d.textContent=s;nodesEl.appendChild(d);return d;});
+var nodesEl=document.getElementById('nodes'),labels=SKILLS.slice(0,GRAPH_N).map(function(s){var d=document.createElement('span');d.className='nl';d.textContent=s;nodesEl.appendChild(d);return d;});
 
 /* ================= pointer ================= */
 var mx=0,my=0,smx=0,smy=0;
@@ -732,8 +805,9 @@ function typeSQL(i){
 }
 function pad(v){return (v<10?'0':'')+v;}
 function updateLayers(p){
+  var base=WIDE?-50:0,step=WIDE?-8:-6;
   layers.forEach(function(el,i){
-    var d=p-i,ad=Math.abs(d),op=Math.max(0,1-ad*1.7),sc=Math.pow(2.4,d),blur=Math.min(18,ad*16),ty=-50+d*-8;
+    var d=p-i,ad=Math.abs(d),op=Math.max(0,1-ad*1.7),sc=Math.pow(2.4,d),blur=Math.min(18,ad*16),ty=base+d*step;
     el.style.opacity=op.toFixed(3);
     el.style.transform='translate3d(0,'+ty+'%,0) scale('+sc.toFixed(4)+')';
     el.style.filter=blur>.3?'blur('+blur.toFixed(1)+'px)':'none';
@@ -748,7 +822,7 @@ function updateLayers(p){
 }
 
 /* ================= live open-data feed (silver) ================= */
-var liveText=document.getElementById('liveText'),spark=document.getElementById('spark');
+var liveText=document.getElementById('liveText'),spark=document.getElementById('spark'),LIVE_FLOW=1;
 function renderLive(days,live,dropped){
   var vals=days.map(function(d){return d.n;}),mean=vals.reduce(function(a,b){return a+b;},0)/vals.length,last=days[0];
   LIVE_FLOW=Math.min(1.8,Math.max(.6,last.n/mean));
@@ -762,8 +836,8 @@ function renderLive(days,live,dropped){
     return (i/(vals.length-1)*116+2).toFixed(1)+','+(34-(v-mn)/Math.max(1,mxv-mn)*30).toFixed(1);}).join(' ');
   spark.innerHTML='<polyline points="'+pts+'" fill="none" stroke="#e8f1ff" stroke-width="1.5" stroke-linejoin="round"/>'+
     '<circle cx="118" cy="'+pts.split(' ').pop().split(',')[1]+'" r="2.6" fill="#7ee2a8"/>';
-  liveText.innerHTML='<span><span class="pulse'+(live?'':' off')+'"></span><b>'+(live?'LIVE':'OFFLINE SAMPLE')+'</b> · Chicago open data, my UMBC project dataset</span>'+
-    '<span>'+last.day.slice(0,10)+': <b>'+last.n.toLocaleString()+'</b> records · flow <b>'+LIVE_FLOW.toFixed(2)+'×</b></span>'+
+  liveText.innerHTML='<span><span class="pulse'+(live?'':' off')+'"></span><b>'+(live?'LIVE FEED':'OFFLINE SAMPLE')+'</b> · Chicago open data, my UMBC project dataset</span>'+
+    '<span>Latest published day '+last.day.slice(0,10)+': <b>'+last.n.toLocaleString()+'</b> records · flow <b>'+LIVE_FLOW.toFixed(2)+'×</b></span>'+
     '<span class="'+(passed===checks.length?'ok':'warn')+'">'+passed+'/'+checks.length+' DQ checks passed'+(dropped?' · '+dropped+' partial day quarantined':'')+'</span>';
 }
 function cleanDays(rows){
@@ -784,36 +858,204 @@ var SAMPLE=[{day:'2026-11-10',n:577},{day:'2026-11-09',n:556},{day:'2026-11-08',
 
 /* ================= SQL console (gold) ================= */
 var qEl=document.getElementById('q'),out=document.getElementById('out'),chips=document.getElementById('chips');
-var WAREHOUSE={roles:ROLES,skills:SKILLS.map(function(s,i){return {skill_id:i,skill:s,family:FAMILY[i]};}),skill_usage:USAGE,metrics:METRICS,projects:PROJECTS};
 function esc(s){return String(s==null?'NULL':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 function highlight(rows){
-  var hot=SKILLS.map(function(){return 0;}),found=false,companies={};
+  var hot=HI.map(function(){return 0;}),found=false,companies={};
   rows.forEach(function(r){Object.keys(r).forEach(function(k){var v=String(r[k]).toLowerCase();
-    SKILLS.forEach(function(s,i){if(v===s.toLowerCase()){hot[i]=1;found=true;}});
+    SKILLS.forEach(function(s,i){if(i<GRAPH_N&&v===s.toLowerCase()){hot[i]=1;found=true;}});
     ROLES.forEach(function(ro){if(v===ro.company.toLowerCase())companies[ro.role_id]=1;});});});
-  if(!found)USAGE.forEach(function(u){if(companies[u.role_id])hot[u.skill_id]=1;});
+  if(!found)USAGE.forEach(function(u){if(companies[u.role_id]&&u.skill_id<GRAPH_N)hot[u.skill_id]=1;});
   HI_T=hot;labels.forEach(function(l,i){l.classList.toggle('hot',!!hot[i]);});
-  bleep(hot.filter(Boolean).length);
+  return hot.filter(Boolean).length;
+}
+function table(rows,ms){
+  if(!rows.length)return '<div class="meta">0 rows · '+ms+' ms</div>';
+  var cols=Object.keys(rows[0]);
+  return '<table><thead><tr>'+cols.map(function(c){return '<th>'+esc(c)+'</th>';}).join('')+'</tr></thead><tbody>'+
+    rows.slice(0,40).map(function(r){return '<tr>'+cols.map(function(c){return '<td>'+esc(r[c])+'</td>';}).join('')+'</tr>';}).join('')+'</tbody></table>'+
+    '<div class="meta">'+rows.length+' row'+(rows.length===1?'':'s')+' · '+ms+' ms · MiniSQL, running in your browser</div>';
 }
 function runQuery(){
-  var q=qEl.value.trim();
-  var t0=performance.now(),rows;
+  var q=qEl.value.trim(),t0=performance.now(),rows;
   try{rows=MiniSQL.run(WAREHOUSE,q);}catch(e){out.innerHTML='<div class="err">'+esc(e.message||e)+'</div>';return;}
-  var ms=(performance.now()-t0).toFixed(1);
-  if(!Array.isArray(rows)||!rows.length){out.innerHTML='<div class="meta">0 rows · '+ms+' ms</div>';HI_T=HI.map(function(){return 0;});return;}
-  var cols=Object.keys(rows[0]),html='<table><thead><tr>'+cols.map(function(c){return '<th>'+esc(c)+'</th>';}).join('')+'</tr></thead><tbody>'+
-    rows.slice(0,40).map(function(r){return '<tr>'+cols.map(function(c){return '<td>'+esc(r[c])+'</td>';}).join('')+'</tr>';}).join('')+'</tbody></table>';
-  out.innerHTML=html+'<div class="meta">'+rows.length+' row'+(rows.length===1?'':'s')+' · '+ms+' ms · MiniSQL, running in your browser</div>';
-  highlight(rows);
+  out.innerHTML=table(rows,(performance.now()-t0).toFixed(1));
+  bleep(highlight(rows));
 }
-PRESETS.forEach(function(p,i){var b=document.createElement('button');b.type='button';b.textContent=p[0];
+PRESETS.forEach(function(p){var b=document.createElement('button');b.type='button';b.textContent=p[0];
   b.addEventListener('click',function(){qEl.value=p[1];runQuery();});chips.appendChild(b);});
 qEl.value=PRESETS[0][1];
 document.getElementById('run').addEventListener('click',runQuery);
 qEl.addEventListener('keydown',function(e){if(e.key==='Enter'&&(e.ctrlKey||e.metaKey)){e.preventDefault();runQuery();}});
 
+/* ================= hologram states ================= */
+var HSTATE='idle',hEl=document.getElementById('hstate'),hT=document.getElementById('hstateT'),pulse=0,tintTarget=0;
+var TINTS={idle:['#9fd8ff',0],listening:['#c08bff',.6],thinking:['#ffd36b',.4],speaking:['#7ee2ff',.28]};
+var LABELS={idle:'Hologram · idle',listening:'Hologram · listening',thinking:'Hologram · thinking',speaking:'Hologram · speaking'};
+function setState(s){HSTATE=s;hEl.dataset.s=s;hT.textContent=LABELS[s];tintTarget=TINTS[s][1];if(hasGL)mat.uniforms.uTint.value.set(TINTS[s][0]);}
+
+/* ================= ask my hologram: English → SQL → guardrails → answer ================= */
+var askIn=document.getElementById('askIn'),trace=document.getElementById('trace'),answer=document.getElementById('answer'),askChips=document.getElementById('askChips');
+var SKILL_ALIAS={'spark':'PySpark','pyspark':'PySpark','glue':'AWS Glue','aws glue':'AWS Glue','model context protocol':'MCP','mcp':'MCP',
+  'agentsql':'AgentSQL','agent sql':'AgentSQL','text-to-sql':'AgentSQL','text to sql':'AgentSQL','tridapad':'TridaPad','snowflake':'Snowflake',
+  'databricks':'Databricks','redshift':'Redshift','tableau':'Tableau','power bi':'Power BI','powerbi':'Power BI','python':'Python','sql':'SQL',
+  'kafka':'Kafka','informatica':'Informatica','athena':'Athena','adf':'Azure Data Factory','azure data factory':'Azure Data Factory','azure':'Azure Data Factory',
+  'postgres':'PostgreSQL','postgresql':'PostgreSQL'};
+var COMP_ALIAS={'trida labs':'Trida Labs','trida':'Trida Labs','amazon':'Amazon','global payments':'Global Payments','globalpayments':'Global Payments',
+  'vanguard':'Vanguard','umbc':'UMBC','university':'UMBC',"master's":'UMBC','masters':'UMBC'};
+function findAll(text,dict){
+  var keys=Object.keys(dict).sort(function(a,b){return b.length-a.length;}),hits=[],work=' '+text+' ';
+  keys.forEach(function(k){var re=new RegExp('([^a-z0-9])'+k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'([^a-z0-9])');
+    var m=work.match(re);if(m){if(hits.indexOf(dict[k])<0)hits.push(dict[k]);work=work.replace(re,'$1'+new Array(k.length+1).join('#')+'$2');}});
+  return hits;
+}
+var JOIN_SU="FROM skill_usage u\nJOIN roles r ON u.role_id = r.role_id\nJOIN skills s ON u.skill_id = s.skill_id";
+function sqlStr(v){return "'"+String(v).replace(/'/g,"''")+"'";}
+function plan(question){
+  var q=question.toLowerCase().replace(/[?!.,]/g,' ').replace(/\s+/g,' ').trim(),sk=findAll(q,SKILL_ALIAS),co=findAll(q,COMP_ALIAS);
+  var impact=/(impact|result|achiev|metric|number|improv|reduc|accura|outcome|win)/.test(q);
+  if(/(contact|reach|email|hire|connect|get in touch|interview)/.test(q))return {intent:'contact'};
+  if(/(where are you|where do you live|based|locat|relocat|remote|move to)/.test(q)&&!sk.length&&!co.length)return {intent:'location'};
+  if(/(how many years|years of experience|how long|experience level|seniority)/.test(q))
+    return {intent:'years',sql:"SELECT MIN(start_year) AS first_year, COUNT(*) AS n_roles\nFROM roles\nWHERE company != 'UMBC'"};
+  if(sk.length&&co.length)return {intent:'skill_at_company',skill:sk[0],company:co[0],
+    sql:"SELECT s.skill, r.company, u.evidence\n"+JOIN_SU+"\nWHERE s.skill = "+sqlStr(sk[0])+" AND r.company = "+sqlStr(co[0])};
+  if(sk.length)return {intent:'skill_where',skill:sk[0],
+    sql:"SELECT s.skill, r.company, r.start_year, u.evidence\n"+JOIN_SU+"\nWHERE s.skill = "+sqlStr(sk[0])+"\nORDER BY r.start_year DESC"};
+  if(co.length&&impact)return {intent:'company_impact',company:co[0],
+    sql:"SELECT r.company, m.metric, m.change_pct\nFROM metrics m\nJOIN roles r ON m.role_id = r.role_id\nWHERE r.company = "+sqlStr(co[0])};
+  if(co.length)return {intent:'company_stack',company:co[0],
+    sql:"SELECT r.title, s.skill, u.evidence\n"+JOIN_SU+"\nWHERE r.company = "+sqlStr(co[0])};
+  if(/(project|research|thesis|capstone|built|side)/.test(q))return {intent:'projects',sql:"SELECT project, year, stack, result\nFROM projects\nORDER BY year DESC"};
+  var other=q.match(/\b(?:know|use|used|using|experience (?:with|in)|worked with|familiar with)\s+([a-z0-9+#.]+)/);
+  if(other&&!/^(the|a|an|any|your|you|it|this|that|sql|python)$/.test(other[1]))return {intent:'unknown_skill',name:other[1]};
+  if(/\b(now|current|currently|today|present|these days|job)\b/.test(q)&&!impact)
+    return {intent:'current',sql:"SELECT title, company, start_year\nFROM roles\nWHERE end_year IS NULL"};
+  if(impact)return {intent:'impact',sql:"SELECT r.company, m.metric, m.change_pct\nFROM metrics m\nJOIN roles r ON m.role_id = r.role_id\nWHERE r.company != 'UMBC'\nORDER BY ABS(m.change_pct) DESC"};
+  if(/(\bai\b|llm|agent|genai|gen ai|rag|artificial|machine learning|\bml\b)/.test(q))return {intent:'ai',
+    sql:"SELECT s.skill, r.company, u.evidence\n"+JOIN_SU+"\nWHERE s.family IN ('Agentic AI', 'Agent tooling', 'AI workspace')"};
+  if(/(skill|stack|tech|tool|strength|good at|best at|know|expert)/.test(q))return {intent:'top_skills',
+    sql:"SELECT s.skill, COUNT(*) AS n_roles\nFROM skill_usage u\nJOIN skills s ON u.skill_id = s.skill_id\nGROUP BY s.skill\nORDER BY n_roles DESC"};
+  if(/(who are you|about you|yourself|introduce|summary|tell me about)/.test(q))return {intent:'about'};
+  return {intent:'unknown'};
+}
+var ALLOWED={roles:1,skills:1,skill_usage:1,metrics:1,projects:1};
+function guardrails(sql){
+  var checks=[],tables=[],m,re=/\b(from|join)\s+([a-z_]+)/gi;
+  while((m=re.exec(sql)))tables.push(m[2].toLowerCase());
+  checks.push(['Read-only statement',/^\s*select\b/i.test(sql)&&!/\b(insert|update|delete|drop|alter|create)\b/i.test(sql)]);
+  checks.push(['Tables on the allow-list ('+tables.join(', ')+')',tables.every(function(t){return ALLOWED[t];})]);
+  var joins=(sql.match(/\bjoin\b/gi)||[]).length,ons=(sql.match(/\bon\b\s+[a-z_]+\.[a-z_]+_id\s*=\s*[a-z_]+\.[a-z_]+_id/gi)||[]).length;
+  checks.push(['Every JOIN uses a key equality ('+ons+'/'+joins+')',ons===joins]);
+  checks.push(['No cartesian product',joins===ons&&!/from\s+[a-z_]+\s*[a-z_]*\s*,/i.test(sql)]);
+  var limited=/\blimit\s+\d+/i.test(sql);
+  if(!limited)sql+='\nLIMIT 25';
+  checks.push(['Row limit '+(limited?'present':'added (25)'),true]);
+  return {sql:sql,checks:checks,ok:checks.every(function(c){return c[1];})};
+}
+function list(arr){arr=arr.filter(function(x,i){return arr.indexOf(x)===i;});return arr.length<2?arr.join(''):arr.slice(0,-1).join(', ')+' and '+arr[arr.length-1];}
+function lc1(t){return t.charAt(0).toLowerCase()+t.slice(1);}
+function result(r){var n=lc1(r.metric),v=r.change_pct;if(/accuracy/i.test(r.metric))return n+' of '+v+'%';return (v<0?'cut ':'improved ')+n+' by '+Math.abs(v)+'%';}
+function compose(p,rows){
+  switch(p.intent){
+    case 'skill_where':
+      if(!rows.length)return "I haven't used "+p.skill+" in a role yet, but I'd pick it up quickly.";
+      var cs=rows.map(function(r){return r.company;}).filter(function(x,i,a){return a.indexOf(x)===i;});
+      return cs.length<2?'I used '+p.skill+' at '+cs[0]+': '+rows[0].evidence+'.':'I used '+p.skill+' at '+list(cs)+'. Most recently at '+rows[0].company+': '+rows[0].evidence+'.';
+    case 'skill_at_company':
+      if(!rows.length)return "I didn't use "+p.skill+' at '+p.company+'.';
+      return 'Yes. At '+p.company+' I used '+p.skill+': '+rows.map(function(r){return r.evidence;}).join('; ')+'.';
+    case 'company_impact':
+      if(!rows.length)return "I don't have measured numbers for "+p.company+' in my warehouse.';
+      return 'At '+p.company+' I '+list(rows.map(result))+'.';
+    case 'company_stack':
+      if(!rows.length)return "I don't have records for "+p.company+'.';
+      return 'At '+p.company+' I was '+(/^[aeiou]/i.test(rows[0].title)?'an ':'a ')+rows[0].title+', working with '+list(rows.map(function(r){return r.skill;}))+'.';
+    case 'projects':return 'My research projects: '+rows.map(function(r){return r.project+' ('+lc1(r.result)+')';}).join('; ')+'.';
+    case 'current':return rows.length?'Right now I am the '+rows[0].title+' at '+rows[0].company+', since '+rows[0].start_year+'. I deploy AgentSQL and build MCP integrations for enterprise data teams.':'I am between roles.';
+    case 'impact':return 'My biggest measured results: '+rows.slice(0,4).map(function(r){return result(r)+' at '+r.company;}).join('; ')+'.';
+    case 'ai':return 'My AI work is at '+list(rows.map(function(r){return r.company;}))+': '+list(rows.map(function(r){return r.skill;}))+'. I make agent-written SQL safe and accurate on real enterprise warehouses.';
+    case 'top_skills':return 'My most-used skills are '+list(rows.slice(0,3).map(function(r){return r.skill+' ('+r.n_roles+' roles)';}))+', followed by '+list(rows.slice(3,6).map(function(r){return r.skill;}))+'.';
+    case 'years':var y=rows[0]?rows[0].first_year:2022;return 'I have '+(new Date().getFullYear()-y)+'+ years of professional data experience across '+(rows[0]?rows[0].n_roles:4)+' roles, since '+y+', plus a Master\'s in Data Science from UMBC.';
+  }
+  return '';
+}
+var STATIC={
+  contact:'The fastest way is email: krishnanekkanti04@gmail.com, or LinkedIn. Use the Copy email button just below.',
+  location:"I'm based in Hyderabad, India, and open to remote work and relocation.",
+  about:"I'm Krishna, a Forward Deployment AI Engineer. I turn plain-English questions into safe, accurate SQL on enterprise warehouses, and I build the data pipelines underneath.",
+  unknown_skill:"That one isn't in my warehouse yet. My core stack is SQL, Python, Spark, Redshift, Snowflake and Databricks, and I learn new tools fast.",
+  unknown:"I didn't catch that. Try asking where I used a tool, what I did at a company, my biggest results, or my projects."
+};
+var asking=false;
+function step(icon,html,ms,bad){var li=document.createElement('li');if(bad)li.className='bad';
+  li.innerHTML='<span class="s">'+icon+'</span><span>'+html+'</span><span class="ms">'+(ms==null?'':ms+' ms')+'</span>';trace.appendChild(li);trace.scrollTop=trace.scrollHeight;ping(660+trace.children.length*60,.018);}
+function ask(question){
+  question=(question||'').trim();if(!question||asking)return;
+  asking=true;stopSpeech();trace.innerHTML='';answer.innerHTML='';setState('thinking');
+  var T0=performance.now(),p=plan(question),t1=performance.now(),seq=[],D=REDUCE?0:300;
+  function later(fn){seq.push(fn);}
+  later(function(){step('◆','<b>Understand</b> · intent <b>'+p.intent+'</b>'+(p.skill?' · skill='+esc(p.skill):'')+(p.company?' · company='+esc(p.company):''),(t1-T0).toFixed(1));});
+  var text='';
+  if(p.sql){
+    var g=guardrails(p.sql),rows=[],ms='0',err=null;
+    later(function(){step('◆','<b>Map to schema</b> · '+esc((p.sql.match(/\b(from|join)\s+([a-z_]+)/gi)||[]).map(function(s){return s.split(/\s+/)[1];}).join(' ⋈ ')),null);});
+    later(function(){step('◆','<b>Write SQL</b><code>'+esc(g.sql)+'</code>',null);});
+    later(function(){g.checks.forEach(function(c){step(c[1]?'✓':'✗','Guardrail · '+esc(c[0]),null,!c[1]);});});
+    if(g.ok){var t2=performance.now();try{rows=MiniSQL.run(WAREHOUSE,g.sql);}catch(e){err=e.message;}ms=(performance.now()-t2).toFixed(1);}
+    later(function(){if(!g.ok)step('✗','<b>Blocked by guardrails</b>',null,true);else if(err)step('✗','<b>Execute</b> · '+esc(err),ms,true);
+      else{step('◆','<b>Execute on MiniSQL</b> · '+rows.length+' row'+(rows.length===1?'':'s'),ms);highlight(rows);}});
+    text=g.ok&&!err?compose(p,rows):'That query was blocked by my safety checks, so I won\'t answer it.';
+  } else {
+    later(function(){step('◆','<b>No data query needed</b> · answering from profile',null);});
+    text=STATIC[p.intent]||STATIC.unknown;
+  }
+  later(function(){step('◆','<b>Compose answer</b> · '+text.split(/\s+/).length+' words',(performance.now()-T0).toFixed(1));});
+  var i=0;(function next(){if(i<seq.length){seq[i++]();setTimeout(next,D);}else{asking=false;speak(text);}})();
+}
+var ASKS=['Where did you use Spark?','What did you do at Amazon?','Your biggest results?','What do you do now?','Tell me about your AI work'];
+ASKS.forEach(function(qs){var b=document.createElement('button');b.type='button';b.textContent=qs;b.addEventListener('click',function(){askIn.value=qs;ask(qs);});askChips.appendChild(b);});
+document.getElementById('askGo').addEventListener('click',function(){ask(askIn.value);});
+askIn.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();ask(askIn.value);}});
+document.getElementById('askJump').addEventListener('click',function(){scrollToStage(L-1);setTimeout(function(){try{askIn.focus({preventScroll:true});}catch(e){askIn.focus();}},REDUCE?50:1300);});
+
+/* voice out: speech synthesis, with word-paced pulses driving the hologram */
+var speakId=0,voiceOn=true,voiceBtn=document.getElementById('voiceBtn'),speakTimer=null,synth=window.speechSynthesis||null;
+voiceBtn.addEventListener('click',function(){voiceOn=!voiceOn;voiceBtn.setAttribute('aria-pressed',String(voiceOn));voiceBtn.textContent=voiceOn?'Voice on':'Voice off';if(!voiceOn&&synth)synth.cancel();});
+function pickVoice(){if(!synth)return null;var vs=synth.getVoices()||[];
+  return vs.filter(function(v){return /^en-IN/i.test(v.lang);})[0]||vs.filter(function(v){return /^en-(GB|US)/i.test(v.lang);})[0]||vs.filter(function(v){return /^en/i.test(v.lang);})[0]||null;}
+function stopSpeech(){speakId++;clearInterval(speakTimer);if(synth)try{synth.cancel();}catch(e){}}
+function speak(text){
+  var my=++speakId,words=text.split(/\s+/),k=0;
+  answer.innerHTML=words.map(function(w){return '<span class="w">'+esc(w)+'</span> ';}).join('');
+  var spans=answer.querySelectorAll('.w');setState('speaking');
+  function wordOn(){if(k<spans.length){spans[k].classList.add('on');k++;pulse=1;}}
+  function done(){if(my!==speakId)return;clearInterval(speakTimer);for(;k<spans.length;k++)spans[k].classList.add('on');setState('idle');}
+  var useVoice=voiceOn&&synth&&!REDUCE,gotBoundary=false;
+  if(useVoice){
+    try{var u=new SpeechSynthesisUtterance(text),v=pickVoice();if(v){u.voice=v;u.lang=v.lang;}u.rate=1.02;u.pitch=.95;
+      u.onboundary=function(e){if(e.name==='word'||e.name===undefined){gotBoundary=true;wordOn();}};
+      u.onend=done;u.onerror=done;synth.cancel();synth.speak(u);}catch(e){useVoice=false;}
+  }
+  var ms=useVoice?330:150;
+  speakTimer=setInterval(function(){if(my!==speakId)return;if(useVoice&&gotBoundary)return;wordOn();if(!useVoice&&k>=spans.length)done();},ms);
+  if(useVoice)setTimeout(function(){if(HSTATE==='speaking'&&!synth.speaking)done();},words.length*ms+4000);
+}
+
+/* voice in: browser speech recognition, where available */
+var SR=window.SpeechRecognition||window.webkitSpeechRecognition,micBtn=document.getElementById('mic'),rec=null;
+if(!SR){micBtn.hidden=true;}
+else micBtn.addEventListener('click',function(){
+  if(rec){rec.stop();return;}
+  stopSpeech();rec=new SR();rec.lang='en-US';rec.interimResults=true;rec.maxAlternatives=1;
+  var finalText='';micBtn.setAttribute('aria-pressed','true');setState('listening');
+  rec.onresult=function(e){var s='';for(var i=0;i<e.results.length;i++){s+=e.results[i][0].transcript;if(e.results[i].isFinal)finalText=s;}askIn.value=s;};
+  rec.onerror=function(){};
+  rec.onend=function(){rec=null;micBtn.setAttribute('aria-pressed','false');if(HSTATE==='listening')setState('idle');var t=(finalText||askIn.value).trim();if(t)ask(t);};
+  try{rec.start();}catch(e){rec=null;micBtn.setAttribute('aria-pressed','false');setState('idle');}
+});
+
 /* ================= ambient sound ================= */
-var introStart=null,AC=null,master=null,filt=null,oscs=[],soundOn=false,sndBtn=document.getElementById('sndBtn');
+var introStart=null,AC=null,master=null,filt=null,oscs=[],soundOn=false,sndBtn=document.getElementById('sndBtn'),sndT=document.getElementById('sndT');
 function startAudio(){
   var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
   AC=new Ctx();master=AC.createGain();master.gain.value=0;master.connect(AC.destination);
@@ -826,8 +1068,8 @@ function startAudio(){
 function setSound(on){
   if(on&&!AC)startAudio();if(!AC)return;
   if(AC.state==='suspended')AC.resume();
-  soundOn=on;master.gain.setTargetAtTime(on?.07:0,AC.currentTime,on?1.2:.3);
-  sndBtn.setAttribute('aria-pressed',String(on));sndBtn.textContent=on?'♪ Sound on':'♪ Sound off';
+  soundOn=on;master.gain.setTargetAtTime(on?.06:0,AC.currentTime,on?1.2:.3);
+  sndBtn.setAttribute('aria-pressed',String(on));sndT.textContent=on?' Sound on':' Sound off';
 }
 function audioStage(s){
   if(!AC||!soundOn)return;var now=AC.currentTime;
@@ -840,50 +1082,45 @@ function ping(f,vol){
 function bleep(k){for(var j=0;j<Math.min(k,5);j++)(function(j){setTimeout(function(){ping(880*Math.pow(1.122,j),.03);},j*70);})(j);}
 sndBtn.addEventListener('click',function(){setSound(!soundOn);});
 addEventListener('pointerdown',function first(e){
-  if(e.target===sndBtn)return;removeEventListener('pointerdown',first);if(!AC)setSound(true);});
+  if(sndBtn.contains(e.target))return;removeEventListener('pointerdown',first);if(!AC)setSound(true);});
 
-/* ================= main loop ================= */
-var t0=performance.now(),lastNow=t0;
+/* ================= main loop: only uniforms change per frame ================= */
+var t0=performance.now(),lastNow=t0,FLOW=0,ripple=0,tintAmt=0;
 function frame(now){
   var dt=Math.min(.05,(now-lastNow)/1000);lastNow=now;
   var t=REDUCE?0:(now-t0)/1000;
   prog+=(target-prog)*(REDUCE?1:.07);if(Math.abs(target-prog)<.0005)prog=target;
   updateLayers(prog);
   FLOW+=dt*LIVE_FLOW*(REDUCE?0:1);
+  pulse*=REDUCE?0:.9;tintAmt+=(tintTarget-tintAmt)*.08;
+  var listenWave=HSTATE==='listening'?(.5+.5*Math.sin(t*7))*.7:0;
+  ripple+=((HSTATE==='speaking'?pulse*.9:0)+listenWave+(HSTATE==='thinking'?.25+.25*Math.sin(t*14):0)-ripple)*.25;
   if(hasGL){
     var intro=REDUCE?1:(introStart===null?0:smooth(0,1,(now-introStart-150)/2600));
-    var a=Math.min(L-1,Math.floor(prog)),b=Math.min(L-1,a+1),f=prog-a,m=smooth(.15,.85,f),burst=REDUCE?0:Math.sin(Math.PI*m)*1.6;
-    var arr=posAttr.array,A=[0,0,0],B=[0,0,0];
-    for(var i=0;i<N;i++){
-      form(a,i,t,A);
-      if(m>0&&b!==a){form(b,i,t,B);var kb=burst*rB[i];
-        A[0]+=(B[0]-A[0])*m+dx[i]*kb;A[1]+=(B[1]-A[1])*m+dy[i]*kb;A[2]+=(B[2]-A[2])*m+dz[i]*kb;}
-      if(intro<1){var sp=(1-intro)*(9+rC[i]*10);A[0]=A[0]*intro+dx[i]*sp;A[1]=A[1]*intro+dy[i]*sp;A[2]=A[2]*intro+dz[i]*sp;}
-      arr[i*3]=A[0];arr[i*3+1]=A[1];arr[i*3+2]=A[2];
-    }
-    posAttr.needsUpdate=true;
+    var a=Math.min(L-1,Math.floor(prog)),b=Math.min(L-1,a+1),f=prog-a,m=smooth(.15,.85,f);
     var U=mat.uniforms;
-    tA.set(COLS[a][0]);tB.set(COLS[b][0]);U.uA.value.copy(tA.lerp(tB,m));
-    tA.set(COLS[a][1]);tB.set(COLS[b][1]);U.uB.value.copy(tA.lerp(tB,m));
-    U.uPhoto.value=lerp(PHOTO[a],PHOTO[b],m);U.uHolo.value=lerp(HOLO[a],HOLO[b],m)*(REDUCE?0:1);
-    var gold=lerp(GOLD[a],GOLD[b],m);U.uGold.value=gold;U.uAlpha.value=lerp(ALPHA[a],ALPHA[b],m)*ALPHA_K;
-    U.uScan.value=-5.5+fract(t*.18)*11;
-    for(var h=0;h<10;h++)HI[h]+=(HI_T[h]-HI[h])*.08;
+    U.uA.value=a;U.uB.value=b;U.uM.value=m;U.uBurst.value=REDUCE?0:Math.sin(Math.PI*m)*1.6;U.uTime.value=t;U.uFlow.value=FLOW;U.uIntro.value=intro;
+    tA.set(COLS[a][0]);tB.set(COLS[b][0]);U.uCA.value.copy(tA.lerp(tB,m));
+    tA.set(COLS[a][1]);tB.set(COLS[b][1]);U.uCB.value.copy(tA.lerp(tB,m));
+    var photo=PHOTO[a]+(PHOTO[b]-PHOTO[a])*m;
+    U.uPhoto.value=photo;U.uHolo.value=(HOLO[a]+(HOLO[b]-HOLO[a])*m)*(REDUCE?0:1);
+    var gold=GOLD[a]+(GOLD[b]-GOLD[a])*m;U.uGold.value=gold;U.uAlpha.value=(ALPHA[a]+(ALPHA[b]-ALPHA[a])*m)*ALPHA_K;
+    U.uScan.value=-5.5+((t*(HSTATE==='thinking'?.6:.18))%1)*11;
+    U.uPulse.value=pulse;U.uRipple.value=ripple*photo;U.uTintAmt.value=tintAmt;
+    for(var h=0;h<GRAPH_N;h++)HI[h]+=(HI_T[h]-HI[h])*.08;
     smx+=(mx-smx)*.05;smy+=(my-smy)*.05;
-    var holo=U.uPhoto.value;
-    group.rotation.y=Math.sin(t*.12)*.22*(1-holo)+smx*(.5+holo*.5);
-    group.rotation.x=smy*(.25+holo*.15);
+    group.rotation.y=Math.sin(t*.12)*.22*(1-photo)+smx*(.5+photo*.4);
+    group.rotation.x=smy*(.25+photo*.1);
     camera.position.z=14-Math.sin(Math.PI*m)*1.5;
     renderer.render(scene,camera);
-    // skill labels follow their nodes in the gold layer
+    hEl.classList.toggle('on',photo>.5&&intro>.9);
     group.updateMatrixWorld();
-    for(var j=0;j<10;j++){
+    for(var j=0;j<GRAPH_N;j++){
       var lb=labels[j];
       if(gold<.05){if(lb.style.opacity!=='0')lb.style.opacity='0';continue;}
       v3.set(NODES[j][0],NODES[j][1],NODES[j][2]).applyMatrix4(group.matrixWorld).project(camera);
-      var sx=(v3.x*.5+.5)*innerWidth,sy=(-v3.y*.5+.5)*innerHeight;
       lb.style.opacity=(gold*(WIDE?1:.7)).toFixed(2);
-      lb.style.transform='translate('+(sx+10).toFixed(0)+'px,'+(sy-8).toFixed(0)+'px)';
+      lb.style.transform='translate('+((v3.x*.5+.5)*innerWidth+10).toFixed(0)+'px,'+((-v3.y*.5+.5)*innerHeight-8).toFixed(0)+'px)';
     }
     if(AC&&soundOn&&filt)filt.frequency.setTargetAtTime(380+Math.min(1,Math.abs(target-prog))*1600,AC.currentTime,.2);
   }
