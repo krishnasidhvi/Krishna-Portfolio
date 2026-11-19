@@ -12,14 +12,12 @@ export const personalInfo = {
   availability: "Open to Enterprise AI, Forward Deployment & Data Engineering Opportunities (Hyderabad & Global Remote)",
   experienceYears: "4+ Years",
   location: "Hyderabad, India (Open to Relocation & Remote)",
-  phone: "+91 8341145666",
   email: "krishnanekkanti04@gmail.com",
   linkedIn: "https://www.linkedin.com/in/krishnasidhvinekkanti/",
   github: "https://github.com/krishnasidhvi",
-  whatsapp: "https://wa.me/918341145666?text=Hi%20Krishna,%20I%20reviewed%20your%20portfolio%20and%20would%20like%20to%20connect%20regarding%20an%20opportunity.",
-  profileImg: "./profile.jpg",
-  avatarImg: "./avatar.png",
-  resumePdfUrl: "./Krishna_Nekkanti_Resume.pdf",
+  profileImg: "../profile.jpg",
+  avatarImg: "../avatar.png",
+  resumePdfUrl: "../Krishna_Nekkanti_Resume.pdf",
   summary: "Forward Deployment AI Engineer and Enterprise Data Specialist with 4+ years of cross-functional experience designing, operationalizing, and scaling Agentic AI solutions and cloud data infrastructure across Trida Labs, Global Payments, Amazon, and Vanguard. Expert in productionizing AgentSQL (autonomous Text-to-SQL and dynamic dashboard engine) and TridaPad, architecting Model Context Protocol (MCP) server integrations across Snowflake, Databricks, PostgreSQL, and Redshift, and establishing deterministic guardrails with 99%+ relational accuracy. Proven record of cutting data anomalies by 40-50% and boosting pipeline reliability by 30% in high-volume enterprise environments."
 };
 

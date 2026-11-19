@@ -18,7 +18,18 @@
 
 ---
 
-## 💡 Core Portfolio Features
+## 🎬 Medallion Reel (homepage, v2)
+
+The homepage is a cinematic reel: my career refined through the Raw → Bronze → Silver → Gold → Insight data layers.
+
+- **Opening titles** built in code, then a 12,000-point **3D hologram** of my avatar that turns with the mouse
+- **Particle formations** per layer: data rain, structured table, flowing pipelines, skill graph
+- **Live data** in the Silver layer: Chicago open data (my UMBC project dataset) sets the flow speed, with 4 data-quality checks
+- **SQL console** in the Gold layer, running **MiniSQL**, a small read-only SQL engine written for this site; matching skills light up
+- **Ambient sound** that changes pitch per layer, a **Recruiter cut** panel, and the original site at [`/classic/`](https://krishnasidhvi.github.io/Krishna-Portfolio/classic/)
+- The original version is preserved at git tag `v1`
+
+## 💡 Classic Portfolio Features (/classic/)
 
 - **Executive Hero & Dual Photo Switcher**: Features professional portrait (`/profile.jpg`) alongside a generated **3D AI Data Avatar** (`/avatar.png`) with 1-click view toggle.
 - **Quantified Business Impact Cards**:
@@ -84,7 +95,6 @@ npm run build
 
 - **Name**: Krishna Sidhvi Nekkanti
 - **Location**: Relocated: Hyderabad, India
-- **Phone**: +91 8341145666
 - **Email**: [krishnanekkanti04@gmail.com](mailto:krishnanekkanti04@gmail.com)
 - **LinkedIn**: [linkedin.com/in/krishnasidhvinekkanti](https://www.linkedin.com/in/krishnasidhvinekkanti/)
 - **GitHub**: [github.com/krishnasidhvi](https://github.com/krishnasidhvi)

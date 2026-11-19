@@ -91,7 +91,7 @@ export default function Hero({ onOpenResume }) {
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 pt-4">
               <a
-                href="./Krishna_Nekkanti_Resume.pdf"
+                href="../Krishna_Nekkanti_Resume.pdf"
                 download="Krishna_Nekkanti_Resume.pdf"
                 className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold text-sm shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 active:scale-95 transition-all"
               >
@@ -106,16 +106,6 @@ export default function Hero({ onOpenResume }) {
                 <FileText className="w-4 h-4 text-cyan-400" />
                 View Master Resume
               </button>
-
-              <a
-                href={personalInfo.whatsapp}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-2 px-4 py-3 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold text-xs transition-all hover:border-emerald-400"
-              >
-                <MessageCircle className="w-4 h-4 text-emerald-400" />
-                WhatsApp Connect
-              </a>
             </div>
 
             {/* Verified Social Profile Buttons */}

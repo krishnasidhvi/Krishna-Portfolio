@@ -172,7 +172,7 @@ export default function ResumeModal({ isOpen, onClose }) {
         <div class="header">
           <h1>${personalInfo.name}</h1>
           <div class="contact-line">
-            ${personalInfo.location} • ${personalInfo.phone} • ${personalInfo.email}
+            ${personalInfo.location} • ${personalInfo.email}
           </div>
           <div class="links-line">
             <a href="${personalInfo.linkedIn}" target="_blank">LinkedIn Profile</a> • 
@@ -270,7 +270,7 @@ export default function ResumeModal({ isOpen, onClose }) {
   const handleCopyText = () => {
     const rawResumeText = `
 KRISHNA SIDHVI NEKKANTI
-Relocated: Hyderabad, India | ${personalInfo.phone} | ${personalInfo.email}
+Relocated: Hyderabad, India | ${personalInfo.email}
 LinkedIn: ${personalInfo.linkedIn} | GitHub: ${personalInfo.github}
 
 SUMMARY:
@@ -315,7 +315,7 @@ ${certifications.map(c => `• ${c.name} (${c.issuer})`).join('\n')}
 
           <div className="flex items-center gap-2.5">
             <a
-              href="./Krishna_Nekkanti_Resume.pdf"
+              href="../Krishna_Nekkanti_Resume.pdf"
               download="Krishna_Nekkanti_Resume.pdf"
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-xs font-semibold text-cyan-300 transition-all"
             >
@@ -358,8 +358,6 @@ ${certifications.map(c => `• ${c.name} (${c.issuer})`).join('\n')}
             </h1>
             <div className="flex flex-wrap justify-center items-center gap-4 text-xs font-mono text-slate-300">
               <span>{personalInfo.location}</span>
-              <span>•</span>
-              <span>{personalInfo.phone}</span>
               <span>•</span>
               <span>{personalInfo.email}</span>
             </div>

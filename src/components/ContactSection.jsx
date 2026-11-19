@@ -60,28 +60,10 @@ export default function ContactSection() {
             </h2>
 
             <p className="text-slate-300 text-sm leading-relaxed">
-              Open for Forward Deployment AI Engineer, Data Analytics Engineer, and Enterprise AI/Data Architecture roles. Feel free to reach out directly via WhatsApp, email, or LinkedIn.
+              Open for Forward Deployment AI Engineer, Data Analytics Engineer, and Enterprise AI/Data Architecture roles. Feel free to reach out directly via email or LinkedIn.
             </p>
 
             <div className="space-y-3.5 pt-2">
-              {/* WhatsApp Quick Connect Card */}
-              <a
-                href={personalInfo.whatsapp}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-4 p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 hover:border-emerald-400 hover:bg-emerald-500/15 transition-all group shadow-lg"
-              >
-                <div className="p-3 rounded-xl bg-emerald-500/20 text-emerald-400">
-                  <MessageCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                </div>
-                <div className="flex-1">
-                  <span className="text-[11px] font-mono text-emerald-300 block font-semibold">Fastest Recruiter Response</span>
-                  <span className="text-sm font-semibold text-white group-hover:text-emerald-300 transition-colors">
-                    Instant WhatsApp Chat
-                  </span>
-                </div>
-                <ExternalLink className="w-4 h-4 text-emerald-400 group-hover:translate-x-0.5 transition-transform" />
-              </a>
 
               {/* Email Card with 1-Click Copy */}
               <div className="flex items-center justify-between p-4 rounded-2xl bg-slate-900 border border-slate-800">
@@ -103,19 +85,6 @@ export default function ContactSection() {
                 >
                   {copiedEmail ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
                 </button>
-              </div>
-
-              {/* Phone Card */}
-              <div className="flex items-center gap-4 p-4 rounded-2xl bg-slate-900 border border-slate-800">
-                <div className="p-3 rounded-xl bg-blue-500/10 text-blue-400">
-                  <Phone className="w-5 h-5" />
-                </div>
-                <div>
-                  <span className="text-[11px] font-mono text-slate-400 block">Direct Phone</span>
-                  <a href={`tel:${personalInfo.phone}`} className="text-sm font-semibold text-white hover:text-cyan-400 transition-colors">
-                    {personalInfo.phone}
-                  </a>
-                </div>
               </div>
 
               {/* Location & Availability Card */}
@@ -173,7 +142,7 @@ export default function ContactSection() {
                   <CheckCircle2 className="w-12 h-12 text-emerald-400 mx-auto animate-bounce" />
                   <h4 className="text-lg font-bold text-white">Inquiry Received Successfully!</h4>
                   <p className="text-xs text-slate-300 max-w-md mx-auto">
-                    Thank you for reaching out. Krishna will review your message and reply promptly. For urgent requirements, feel free to connect via WhatsApp or phone.
+                    Thank you for reaching out. Krishna will review your message and reply promptly. For urgent requirements, feel free to connect via email or LinkedIn.
                   </p>
                   <div className="pt-2">
                     <button

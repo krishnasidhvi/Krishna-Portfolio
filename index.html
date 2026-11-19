@@ -1,18 +1,944 @@
-<!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230ea5e9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><ellipse cx='12' cy='5' rx='9' ry='3'/><path d='M3 5V19A9 3 0 0 0 21 19V5'/><path d='M3 12A9 3 0 0 0 21 12'/></svg>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Krishna Sidhvi Nekkanti | Forward Deployment AI Engineer & Enterprise Data Specialist</title>
-    <meta name="description" content="Professional Portfolio of Krishna Sidhvi Nekkanti - Forward Deployment AI Engineer at Trida Labs specializing in AgentSQL, Model Context Protocol (MCP), Text-to-SQL, Snowflake, Databricks, Redshift, AWS Glue, and Scalable AI Analytics." />
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  </head>
-  <body class="bg-darkbg-900 text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-black min-h-screen">
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Krishna Sidhvi Nekkanti · Medallion Reel</title>
+<meta name="description" content="Forward Deployment AI Engineer and data engineer. A cinematic reel: my career refined through raw, bronze, silver and gold data layers, with a live SQL console.">
+<meta property="og:title" content="Krishna Sidhvi Nekkanti · Medallion Reel">
+<meta property="og:description" content="Forward Deployment AI Engineer (AgentSQL, MCP, Snowflake, Databricks). Query my career in SQL.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#050507">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,900&family=Geist:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: fixed WebGL particle stage + fixed stack of text layers that travel along the z-axis as you scroll; letterbox HUD top and bottom */
+:root{
+  --bg:#050507; --ink:#EEF0F4; --dim:#8D93A0; --bar:#000; --hot:#fff3c4;
+  --layer:#9fd8ff;
+  --f-title:"Archivo",ui-sans-serif,system-ui,sans-serif;
+  --f-body:"Geist",ui-sans-serif,system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  --bar-h:52px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body)}
+body{overflow-x:hidden}
+#gl{position:fixed;inset:0;width:100vw;height:100vh;display:block;z-index:0}
+.track{position:relative;z-index:-1}
+.vignette{position:fixed;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse at 60% 50%,transparent 35%,rgba(0,0,0,.75) 100%)}
+.grain{position:fixed;inset:-50%;pointer-events:none;z-index:2;opacity:.09;mix-blend-mode:overlay;animation:grain .7s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-4%)}60%{transform:translate(-4%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+
+/* letterbox HUD */
+.bar{position:fixed;left:0;right:0;height:calc(var(--bar-h) + env(safe-area-inset-top,0px));background:var(--bar);z-index:5;
+  display:flex;align-items:center;gap:18px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;color:var(--dim);
+  padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.bar.top{top:0;padding-top:env(safe-area-inset-top,0px)}
+.bar.bot{bottom:0;height:calc(var(--bar-h) + env(safe-area-inset-bottom,0px));padding-bottom:env(safe-area-inset-bottom,0px)}
+.brand{color:var(--ink);font-weight:500;white-space:nowrap}
+.dot{width:7px;height:7px;border-radius:50%;background:#ff3b3b;box-shadow:0 0 10px #ff3b3b;animation:rec 1.4s ease-in-out infinite;flex:none}
+@keyframes rec{50%{opacity:.25}}
+.sp{flex:1}
+.layer-name{color:var(--layer);transition:color .6s;white-space:nowrap}
+.btn{font:inherit;letter-spacing:inherit;color:var(--ink);background:transparent;border:1px solid #2b2f38;border-radius:999px;padding:7px 14px;cursor:pointer;text-transform:uppercase;white-space:nowrap}
+.btn:hover{border-color:var(--layer);color:var(--layer)}
+.btn[aria-pressed="true"]{border-color:var(--layer);color:var(--layer)}
+.btn:focus-visible,a:focus-visible,.tick:focus-visible,button:focus-visible,textarea:focus-visible{outline:2px solid var(--layer);outline-offset:3px}
+.sql{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1;color:#c9cdd6}
+.sql .kw{color:var(--layer)}
+.caret{display:inline-block;width:7px;height:13px;background:var(--layer);vertical-align:-2px;margin-left:2px;animation:rec 1s steps(2) infinite}
+.hide-sm{display:inline}
+
+/* depth gauge */
+.gauge{position:fixed;left:max(20px,env(safe-area-inset-left,0px));top:50%;transform:translateY(-50%);z-index:4;display:flex;flex-direction:column;gap:14px}
+.tick{display:flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;color:#565c68;cursor:pointer;background:none;border:0;padding:0;text-align:left}
+.tick i{display:block;width:18px;height:1px;background:currentColor;transition:width .5s,background .5s}
+.tick.on{color:var(--layer)}
+.tick.on i{width:40px;background:var(--layer);box-shadow:0 0 8px var(--layer)}
+
+/* skill-node labels (gold layer) */
+.nodes{position:fixed;inset:0;pointer-events:none;z-index:3}
+.nl{position:absolute;left:0;top:0;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;color:#ffd978;text-transform:uppercase;white-space:nowrap;
+  padding:2px 6px;border-radius:4px;background:#0008;transition:color .4s,background .4s,box-shadow .4s;opacity:0}
+.nl.hot{color:#120d00;background:var(--hot);box-shadow:0 0 18px #ffd978}
+
+/* z-axis text layers */
+.stage{position:fixed;inset:var(--bar-h) 0;z-index:4;pointer-events:none}
+.layer{position:absolute;left:clamp(110px,12vw,220px);top:50%;width:min(600px,calc(100vw - 150px));transform-origin:20% 50%;
+  display:flex;flex-direction:column;gap:14px;will-change:transform,opacity,filter;opacity:0}
+.layer.live{pointer-events:auto}
+.eyebrow{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.2em;color:var(--layer);text-transform:uppercase}
+.title{font-family:var(--f-title);font-stretch:125%;font-weight:900;text-transform:uppercase;line-height:.95;letter-spacing:-.01em;
+  font-size:clamp(2rem,5vw,4.4rem);margin:0;text-wrap:balance;text-shadow:0 4px 40px rgba(0,0,0,.8)}
+.title em{font-style:normal;color:var(--layer)}
+.body{font-size:clamp(.96rem,1.2vw,1.06rem);line-height:1.62;color:#c4c8d1;max-width:52ch;margin:0;text-shadow:0 2px 18px rgba(0,0,0,.95)}
+.metrics{display:flex;flex-wrap:wrap;gap:10px 26px;padding-top:6px;border-top:1px solid #ffffff1c}
+.metric{display:flex;flex-direction:column;gap:2px}
+.metric b{font-family:var(--f-title);font-stretch:125%;font-weight:700;font-size:1.45rem;color:var(--ink);font-variant-numeric:tabular-nums}
+.metric span{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+.stack{font-family:var(--f-mono);font-size:11px;color:var(--dim);letter-spacing:.04em}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.cta a,.cta button{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);text-decoration:none;
+  border:1px solid #ffffff33;border-radius:999px;padding:10px 16px;background:#00000066;backdrop-filter:blur(6px);cursor:pointer}
+.cta a:hover,.cta button:hover{border-color:var(--layer);color:var(--layer)}
+.cta .primary{background:var(--layer);color:#050507;border-color:var(--layer)}
+.cta .primary:hover{color:#050507;filter:brightness(1.1)}
+.hint{font-family:var(--f-mono);font-size:11px;letter-spacing:.2em;color:var(--dim);display:flex;align-items:center;gap:10px}
+.hint i{display:block;width:1px;height:34px;background:linear-gradient(var(--layer),transparent);animation:drop 1.8s ease-in-out infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* live feed (silver) */
+.live{display:flex;align-items:center;gap:14px;border:1px solid #ffffff22;border-radius:10px;padding:10px 12px;background:#0009;backdrop-filter:blur(6px);max-width:520px}
+.live svg{flex:none;width:120px;height:38px}
+.live .lt{display:flex;flex-direction:column;gap:3px;font-family:var(--f-mono);font-size:11px;color:var(--dim);min-width:0}
+.live .lt b{color:var(--ink);font-weight:500}
+.ok{color:#7ee2a8}.warn{color:#ffb86b}
+.pulse{display:inline-block;width:7px;height:7px;border-radius:50%;background:#7ee2a8;box-shadow:0 0 8px #7ee2a8;margin-right:6px;animation:rec 1.6s infinite}
+.pulse.off{background:#ffb86b;box-shadow:0 0 8px #ffb86b}
+
+/* SQL console (gold) */
+.console{display:flex;flex-direction:column;gap:8px;border:1px solid #ffd97844;border-radius:12px;padding:12px;background:#07060399;backdrop-filter:blur(8px)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.04em;color:#ffd978;background:#ffd97814;border:1px solid #ffd97840;border-radius:999px;padding:5px 10px;cursor:pointer}
+.chips button:hover{background:#ffd97830}
+.qrow{display:flex;gap:8px;align-items:stretch}
+.qrow textarea{flex:1;min-width:0;resize:none;font-family:var(--f-mono);font-size:12px;line-height:1.5;color:var(--ink);background:#000a;border:1px solid #ffffff22;border-radius:8px;padding:8px 10px}
+.qrow button{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:#ffd978;color:#120d00;border:0;border-radius:8px;padding:0 14px;cursor:pointer;font-weight:500}
+.out{max-height:150px;overflow:auto;border-radius:6px}
+.out table{border-collapse:collapse;width:100%;font-family:var(--f-mono);font-size:11px}
+.out th{position:sticky;top:0;background:#14110a;color:#ffd978;text-align:left;font-weight:500;padding:5px 8px;white-space:nowrap}
+.out td{padding:4px 8px;border-top:1px solid #ffffff12;color:#d8dbe2;font-variant-numeric:tabular-nums}
+.out .meta{font-family:var(--f-mono);font-size:10.5px;color:var(--dim);padding:4px 2px}
+.out .err{font-family:var(--f-mono);font-size:11.5px;color:#ff9d8a;padding:4px 2px}
+.schema{font-family:var(--f-mono);font-size:10px;color:var(--dim);letter-spacing:.04em}
+
+/* intro shutter */
+.shutter{position:fixed;left:0;right:0;height:50vh;background:#000;z-index:8;transition:transform 1.6s cubic-bezier(.7,0,.2,1)}
+.shutter.t{top:0}.shutter.b{bottom:0}
+.open .shutter.t{transform:translateY(-100%)}.open .shutter.b{transform:translateY(100%)}
+
+/* recruiter cut */
+.cut{position:fixed;inset:0;z-index:9;background:rgba(5,5,7,.94);backdrop-filter:blur(14px);overflow:auto;
+  padding:calc(var(--bar-h) + 20px) max(20px,env(safe-area-inset-right,0px)) 40px max(20px,env(safe-area-inset-left,0px))}
+.cut-in{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.cut h2{font-family:var(--f-title);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:clamp(1.6rem,4vw,2.4rem);margin:0;line-height:1}
+.cut h3{margin:0;font-size:1.02rem}
+.cut p{margin:0;color:#c4c8d1;line-height:1.6}
+.cut .role{display:grid;grid-template-columns:150px 1fr;gap:16px;border-top:1px solid #ffffff1a;padding-top:14px}
+.cut .role>div{min-width:0;display:flex;flex-direction:column;gap:4px}
+.cut .when{font-family:var(--f-mono);font-size:11.5px;color:var(--dim)}
+.cut .top-row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+
+.intro{position:fixed;inset:0;z-index:10;background:#000;transition:opacity .9s ease;cursor:pointer}
+.intro.gone{opacity:0;pointer-events:none}
+.intro>*{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center}
+.boot{font-family:var(--f-mono);font-size:13px;letter-spacing:.06em;color:#8D93A0;margin:0;white-space:nowrap;opacity:0;transition:opacity .3s}
+.boot.on{opacity:1}
+.credit{display:flex;flex-direction:column;gap:14px;align-items:center;width:92vw;opacity:0}
+.credit .cap{font-family:var(--f-mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--c,#9fd8ff)}
+.credit .big{font-family:var(--f-title);font-stretch:125%;font-weight:900;text-transform:uppercase;line-height:.95;
+  font-size:clamp(2rem,7.5vw,6.5rem);color:#fff;text-shadow:0 0 30px var(--c,#9fd8ff),0 0 80px var(--c,#9fd8ff)}
+.credit.on{animation:cred .6s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes cred{0%{opacity:0;letter-spacing:.45em;filter:blur(10px)}35%{opacity:1;filter:blur(0)}100%{opacity:1;letter-spacing:.01em;filter:blur(0)}}
+.flare{width:100vw;height:2px;background:linear-gradient(90deg,transparent,var(--c,#bfe9ff),#fff,var(--c,#bfe9ff),transparent);
+  box-shadow:0 0 24px var(--c,#bfe9ff);opacity:0;transform:translate(-50%,-50%) scaleX(0)}
+.flare.go{animation:flare .7s ease-out}
+@keyframes flare{0%{opacity:1;transform:translate(-50%,-50%) scaleX(0)}55%{opacity:.9;transform:translate(-50%,-50%) scaleX(1)}100%{opacity:0;transform:translate(-50%,-50%) scaleX(1.1)}}
+.compile{display:flex;flex-direction:column;gap:10px;align-items:center;opacity:0;transition:opacity .3s;width:min(420px,80vw)}
+.compile.on{opacity:1}
+.compile b{font-family:var(--f-title);font-stretch:125%;font-weight:700;font-size:clamp(2.4rem,6vw,4rem);color:#bfe9ff;font-variant-numeric:tabular-nums}
+.compile span{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#8D93A0}
+.compile i{display:block;height:1px;width:100%;background:#bfe9ff;box-shadow:0 0 10px #bfe9ff;transform-origin:left;transform:scaleX(var(--p,0))}
+.intro>.skip{left:auto;top:auto;right:max(20px,env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:none;
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8D93A0;background:none;border:1px solid #2b2f38;border-radius:999px;padding:8px 14px;cursor:pointer}
+.intro>.skip:hover{color:#fff;border-color:#8D93A0}
+@media (max-width:760px){
+  :root{--bar-h:46px}
+  .gauge{display:none}
+  .layer{left:max(20px,env(safe-area-inset-left,0px));width:calc(100vw - 40px)}
+  .hide-sm{display:none}
+  .cut .role{grid-template-columns:1fr;gap:4px}
+  .live svg{display:none}
+}
+@media (max-height:760px) and (min-width:761px){ .layer[data-i="4"] .body{display:none} }
+@media (prefers-reduced-motion:reduce){.grain,.dot,.caret,.hint i,.pulse{animation:none}.shutter{transition:none}}
+</style>
+</head>
+<body>
+
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="vignette"></div>
+<div class="grain" id="grain"></div>
+<div class="nodes" id="nodes" aria-hidden="true"></div>
+
+<div class="bar top">
+  <span class="dot" aria-hidden="true"></span>
+  <span class="brand">KSN // MEDALLION REEL</span>
+  <span class="layer-name" id="lname">00 · SOURCE</span>
+  <span class="sp"></span>
+  <span class="hide-sm" id="tc">TC 00:00:00:00</span>
+  <button class="btn" id="sndBtn" aria-pressed="false" title="Ambient sound">♪ Sound off</button>
+  <button class="btn" id="cutBtn" aria-haspopup="dialog">Recruiter cut</button>
+</div>
+
+<nav class="gauge" id="gauge" aria-label="Layers"></nav>
+
+<div class="stage" id="stage">
+
+  <article class="layer" data-i="0">
+    <span class="eyebrow">A data reel · 2021 → 2026</span>
+    <h1 class="title">Every engineer<br>is a <em>pipeline.</em></h1>
+    <p class="body">That's me, rebuilt from 12,000 points of light. Move your mouse to turn the hologram. Then scroll, and watch me get refined through five layers, the way a lakehouse refines its data.</p>
+    <span class="hint"><i></i>SCROLL TO DESCEND · CLICK FOR SOUND</span>
+  </article>
+
+  <article class="layer" data-i="1">
+    <span class="eyebrow">Layer 01 · Raw · 2021 – 2022</span>
+    <h2 class="title">Vanguard<br>&amp; <em>UMBC</em></h2>
+    <p class="body">Tableau and Power BI over SQL Server and PostgreSQL for asset-management KPIs, fed by Azure Data Factory pipelines. In parallel, a Master's in Data Science at UMBC: YOLO number-plate detection, Chicago crime forecasting and Kafka fraud streams.</p>
+    <div class="metrics"><div class="metric"><b>+15%</b><span>Ops efficiency</span></div><div class="metric"><b>95%</b><span>Plate extraction</span></div></div>
+    <span class="stack">TABLEAU · POWER BI · AZURE DATA FACTORY · YOLO · OPENCV · KAFKA</span>
+  </article>
+
+  <article class="layer" data-i="2">
+    <span class="eyebrow">Layer 02 · Bronze · 2023</span>
+    <h2 class="title">Amazon.<br>Structure <em>at scale.</em></h2>
+    <p class="body">Data Engineer on AWS Glue and Informatica pipelines. Automated ETL with AWS Data Pipeline, ran Python and Redshift quality checks, and tuned Athena mappings for month-end close.</p>
+    <div class="metrics"><div class="metric"><b>+30%</b><span>Pipeline reliability</span></div><div class="metric"><b>−50%</b><span>Data anomalies</span></div><div class="metric"><b>−25%</b><span>Manual effort</span></div></div>
+    <span class="stack">AWS GLUE · REDSHIFT · ATHENA · INFORMATICA · PYTHON</span>
+  </article>
+
+  <article class="layer" data-i="3">
+    <span class="eyebrow">Layer 03 · Silver · 2024</span>
+    <h2 class="title">Global Payments.<br><em>Trusted</em> streams.</h2>
+    <p class="body">Data Analytics Engineer on high-throughput payment data. Built automated data-quality frameworks in Redshift, real-time Tableau views of settlement KPIs, and refined fraud features with the risk team.</p>
+    <div class="metrics"><div class="metric"><b>−40%</b><span>Data anomalies</span></div><div class="metric"><b>−15%</b><span>Fraud false positives</span></div></div>
+    <div class="live" id="live">
+      <svg id="spark" viewBox="0 0 120 38" aria-hidden="true"></svg>
+      <div class="lt" id="liveText"><span><span class="pulse off"></span>Connecting to Chicago open data…</span></div>
+    </div>
+  </article>
+
+  <article class="layer" data-i="4">
+    <span class="eyebrow">Layer 04 · Gold · 2025 → now</span>
+    <h2 class="title">Trida Labs.<br>Questions <em>become SQL.</em></h2>
+    <p class="body">Forward Deployment AI Engineer: deploying AgentSQL and TridaPad, building MCP integrations across Snowflake, Databricks, PostgreSQL and Redshift, with guardrails that keep agent-written SQL 99%+ accurate. Query my career below. Matching skills light up.</p>
+    <div class="console" id="console">
+      <div class="chips" id="chips"></div>
+      <div class="qrow">
+        <label for="q" class="hide-sm" style="position:absolute;left:-9999px">SQL query</label>
+        <textarea id="q" rows="3" spellcheck="false" autocomplete="off"></textarea>
+        <button id="run" type="button" title="Run (Ctrl+Enter)">Run</button>
+      </div>
+      <div class="out" id="out" aria-live="polite"></div>
+      <span class="schema">TABLES · roles · skills · skill_usage · metrics · projects &nbsp;|&nbsp; read-only · runs in your browser</span>
+    </div>
+  </article>
+
+  <article class="layer" data-i="5">
+    <span class="eyebrow">Layer 05 · Insight</span>
+    <h2 class="title">Krishna Sidhvi<br><em>Nekkanti</em></h2>
+    <p class="body">Forward Deployment AI Engineer and data engineer. AWS Certified Data Engineer. Based in Hyderabad, open to remote work and relocation.</p>
+    <div class="cta">
+      <button class="primary" id="copyMail" type="button">Copy email</button>
+      <a href="https://www.linkedin.com/in/krishnasidhvinekkanti/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href="https://github.com/krishnasidhvi" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="./Krishna_Nekkanti_Resume.pdf" target="_blank" rel="noreferrer">Résumé PDF</a>
+    </div>
+    <span class="stack" id="mailOut">krishnanekkanti04@gmail.com</span>
+  </article>
+
+</div>
+
+<div class="bar bot">
+  <span class="hide-sm">QUERY&gt;</span>
+  <span class="sql" id="sql" aria-live="off"></span>
+  <span class="hide-sm" id="pct">0%</span>
+</div>
+
+<div class="shutter t"></div><div class="shutter b"></div>
+
+<div class="intro" id="intro" role="presentation">
+  <div class="flare" id="flare"></div>
+  <p class="boot" id="boot"></p>
+  <div class="credit" id="credit"><span class="cap" id="creditCap"></span><span class="big" id="creditBig"></span></div>
+  <div class="compile" id="compile"><b id="compileN">0</b><span>points compiled into a hologram</span><i id="compileBar"></i></div>
+  <button class="skip" id="skip" type="button">Skip intro</button>
+</div>
+
+<div class="cut" id="cut" role="dialog" aria-modal="true" aria-label="Recruiter cut" hidden>
+  <div class="cut-in">
+    <div class="top-row"><span class="eyebrow">Recruiter cut · the 30-second version</span><span style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn" href="./classic/" style="text-decoration:none">Full classic portfolio →</a><button class="btn" id="cutClose">Close · Esc</button></span></div>
+    <h2>Krishna Sidhvi Nekkanti</h2>
+    <p>Forward Deployment AI Engineer with 4+ years across Trida Labs, Global Payments, Amazon and Vanguard. Deploys agentic text-to-SQL (AgentSQL) and MCP integrations on enterprise warehouses, and builds the reliable pipelines underneath them.</p>
+    <div class="role"><span class="when">May 2025 – now</span><div><h3>Forward Deployment AI Engineer · Trida Labs</h3><p>AgentSQL and TridaPad deployments, MCP integrations across Snowflake, Databricks, PostgreSQL and Redshift, guardrails with 99%+ relational accuracy, enterprise RBAC.</p></div></div>
+    <div class="role"><span class="when">Mar 2024 – Jan 2025</span><div><h3>Data Analytics Engineer · Global Payments</h3><p>Redshift data-quality frameworks (−40% anomalies), fraud feature refinement (−15% false positives), real-time Tableau settlement KPIs.</p></div></div>
+    <div class="role"><span class="when">Sep 2023 – Jan 2024</span><div><h3>Data Engineer · Amazon</h3><p>AWS Glue and Informatica pipelines (+30% reliability), automated ETL (−25% manual effort), Athena month-end mappings.</p></div></div>
+    <div class="role"><span class="when">Jul 2022 – Dec 2022</span><div><h3>Data Analyst · Vanguard</h3><p>Tableau and Power BI KPI dashboards (+15% efficiency), Azure Data Factory pipelines.</p></div></div>
+    <div class="role"><span class="when">2021 – 2023</span><div><h3>MPS Data Science · UMBC</h3><p>AWS Certified Data Engineer – Associate · Databricks Generative AI Fundamentals.</p></div></div>
+  </div>
+</div>
+
+<div class="track" id="track"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* MiniSQL: a tiny read-only SQL engine written for the Medallion Reel.
+   Supports: SELECT [DISTINCT] … FROM t [alias] [LEFT] JOIN … ON … WHERE … GROUP BY … HAVING … ORDER BY … LIMIT n
+   Expressions: AND OR NOT, = != <> < > <= >=, LIKE, IN (…), IS [NOT] NULL, + - * /, literals, t.col
+   Functions: COUNT SUM AVG MIN MAX (aggregates), ABS ROUND UPPER LOWER LENGTH COALESCE */
+var MiniSQL=(function(){
+  var KW=['SELECT','DISTINCT','FROM','JOIN','LEFT','INNER','ON','WHERE','GROUP','BY','HAVING','ORDER','ASC','DESC','LIMIT','AS','AND','OR','NOT','LIKE','IN','IS','NULL','TRUE','FALSE'];
+  var AGG={COUNT:1,SUM:1,AVG:1,MIN:1,MAX:1};
+  function err(m){var e=new Error(m);e.sql=true;throw e;}
+  function lex(src){
+    var t=[],i=0,c;
+    while(i<src.length){
+      c=src[i];
+      if(/\s/.test(c)){i++;continue;}
+      if(c==='-'&&src[i+1]==='-'){while(i<src.length&&src[i]!=='\n')i++;continue;}
+      if(/[0-9]/.test(c)||(c==='.'&&/[0-9]/.test(src[i+1]))){var j=i;while(j<src.length&&/[0-9.]/.test(src[j]))j++;t.push({k:'num',v:parseFloat(src.slice(i,j))});i=j;continue;}
+      if(c==="'"){var s='',j2=i+1;for(;;){if(j2>=src.length)err('Unclosed string literal');if(src[j2]==="'"){if(src[j2+1]==="'"){s+="'";j2+=2;continue;}break;}s+=src[j2++];}t.push({k:'str',v:s});i=j2+1;continue;}
+      if(/[A-Za-z_]/.test(c)){var j3=i;while(j3<src.length&&/[A-Za-z0-9_]/.test(src[j3]))j3++;var w=src.slice(i,j3),u=w.toUpperCase();
+        t.push(KW.indexOf(u)>=0?{k:'kw',v:u}:{k:'id',v:w});i=j3;continue;}
+      if(c==='"'){var j4=src.indexOf('"',i+1);if(j4<0)err('Unclosed quoted identifier');t.push({k:'id',v:src.slice(i+1,j4)});i=j4+1;continue;}
+      var two=src.substr(i,2);
+      if(two==='<='||two==='>='||two==='!='||two==='<>'){t.push({k:'op',v:two==='<>'?'!=':two});i+=2;continue;}
+      if('=<>*,().+-/;'.indexOf(c)>=0){t.push({k:'op',v:c});i++;continue;}
+      err('Unexpected character "'+c+'"');
+    }
+    t.push({k:'eof'});return t;
+  }
+  function parse(src){
+    var t=lex(src),p=0;
+    function pk(){return t[p];}
+    function isKw(v){return t[p].k==='kw'&&t[p].v===v;}
+    function isOp(v){return t[p].k==='op'&&t[p].v===v;}
+    function eatKw(v){if(isKw(v)){p++;return true;}return false;}
+    function eatOp(v){if(isOp(v)){p++;return true;}return false;}
+    function needKw(v){if(!eatKw(v))err('Expected '+v+' near '+desc());}
+    function needOp(v){if(!eatOp(v))err('Expected "'+v+'" near '+desc());}
+    function desc(){var x=t[p];return x.k==='eof'?'end of query':'"'+x.v+'"';}
+    function ident(){if(t[p].k!=='id')err('Expected a name near '+desc());return t[p++].v;}
+    function expr(){return orE();}
+    function orE(){var l=andE();while(eatKw('OR'))l={t:'bin',o:'OR',l:l,r:andE()};return l;}
+    function andE(){var l=notE();while(eatKw('AND'))l={t:'bin',o:'AND',l:l,r:notE()};return l;}
+    function notE(){if(eatKw('NOT'))return {t:'not',e:notE()};return cmp();}
+    function cmp(){
+      var l=add();
+      for(;;){
+        var x=pk();
+        if(x.k==='op'&&['=','!=','<','>','<=','>='].indexOf(x.v)>=0){p++;l={t:'bin',o:x.v,l:l,r:add()};continue;}
+        var neg=false,save=p;
+        if(isKw('NOT')){p++;neg=true;}
+        if(eatKw('LIKE')){l={t:'like',l:l,r:add(),neg:neg};continue;}
+        if(eatKw('IN')){needOp('(');var list=[expr()];while(eatOp(','))list.push(expr());needOp(')');l={t:'in',l:l,list:list,neg:neg};continue;}
+        if(neg){p=save;break;}
+        if(eatKw('IS')){var n2=eatKw('NOT');needKw('NULL');l={t:'isnull',e:l,neg:n2};continue;}
+        break;
+      }
+      return l;
+    }
+    function add(){var l=mul();for(;;){if(eatOp('+'))l={t:'bin',o:'+',l:l,r:mul()};else if(eatOp('-'))l={t:'bin',o:'-',l:l,r:mul()};else return l;}}
+    function mul(){var l=un();for(;;){if(eatOp('*'))l={t:'bin',o:'*',l:l,r:un()};else if(eatOp('/'))l={t:'bin',o:'/',l:l,r:un()};else return l;}}
+    function un(){if(eatOp('-'))return {t:'neg',e:un()};return prim();}
+    function prim(){
+      var x=pk();
+      if(x.k==='num'||x.k==='str'){p++;return {t:'lit',v:x.v};}
+      if(eatKw('NULL'))return {t:'lit',v:null};
+      if(eatKw('TRUE'))return {t:'lit',v:true};
+      if(eatKw('FALSE'))return {t:'lit',v:false};
+      if(eatOp('(')){var e=expr();needOp(')');return e;}
+      if(x.k==='id'){
+        p++;
+        if(eatOp('(')){
+          var fn=x.v.toUpperCase(),args=[],dist=false;
+          if(eatOp('*'))args.push({t:'star'});
+          else if(!isOp(')')){dist=eatKw('DISTINCT');args.push(expr());while(eatOp(','))args.push(expr());}
+          needOp(')');return {t:AGG[fn]?'agg':'fn',f:fn,args:args,dist:dist};
+        }
+        if(eatOp('.'))return {t:'col',tb:x.v,c:ident()};
+        return {t:'col',tb:null,c:x.v};
+      }
+      err('Unexpected '+desc());
+    }
+    function tref(){var name=ident(),alias=name;if(eatKw('AS'))alias=ident();else if(t[p].k==='id')alias=ident();return {name:name,alias:alias};}
+
+    if(!eatKw('SELECT'))err('Read-only console: queries must start with SELECT');
+    var q={distinct:eatKw('DISTINCT'),cols:[],joins:[],where:null,group:[],having:null,order:[],limit:null};
+    do{
+      if(eatOp('*')){q.cols.push({star:true});continue;}
+      if(t[p].k==='id'&&t[p+1].k==='op'&&t[p+1].v==='.'&&t[p+2].k==='op'&&t[p+2].v==='*'){var tb=t[p].v;p+=3;q.cols.push({star:true,tb:tb});continue;}
+      var start=p,e=expr(),alias=null;
+      if(eatKw('AS'))alias=ident();else if(t[p].k==='id')alias=ident();
+      q.cols.push({e:e,alias:alias,text:tokText(t,start,p)});
+    }while(eatOp(','));
+    needKw('FROM');q.from=tref();
+    for(;;){
+      var left=false;
+      if(eatKw('LEFT')){left=true;needKw('JOIN');}
+      else if(eatKw('INNER')){needKw('JOIN');}
+      else if(!eatKw('JOIN'))break;
+      var r=tref();needKw('ON');q.joins.push({ref:r,on:expr(),left:left});
+    }
+    if(eatKw('WHERE'))q.where=expr();
+    if(eatKw('GROUP')){needKw('BY');do{q.group.push(expr());}while(eatOp(','));}
+    if(eatKw('HAVING'))q.having=expr();
+    if(eatKw('ORDER')){needKw('BY');do{var oe=expr(),dir=1;if(eatKw('DESC'))dir=-1;else eatKw('ASC');q.order.push({e:oe,dir:dir});}while(eatOp(','));}
+    if(eatKw('LIMIT')){var lt=pk();if(lt.k!=='num')err('LIMIT needs a number');p++;q.limit=lt.v;}
+    eatOp(';');
+    if(pk().k!=='eof')err('Unexpected '+desc());
+    return q;
+  }
+  function tokText(t,a,b){var s=[];for(var i=a;i<b;i++){var x=t[i];if(x.k==='kw'&&(x.v==='AS'))break;s.push(x.k==='str'?"'"+x.v+"'":String(x.v));}
+    return s.join(' ').replace(/ \. /g,'.').replace(/ \( /g,'(').replace(/\( /g,'(').replace(/ \)/g,')').replace(/ ,/g,',');}
+
+  function hasAgg(n){if(!n||typeof n!=='object')return false;if(n.t==='agg')return true;
+    for(var k in n){var v=n[k];if(Array.isArray(v)){for(var i=0;i<v.length;i++)if(hasAgg(v[i]))return true;}else if(v&&typeof v==='object'&&hasAgg(v))return true;}return false;}
+  function cmpv(a,b){if(a===b)return 0;if(a==null)return -1;if(b==null)return 1;
+    if(typeof a==='number'&&typeof b==='number')return a<b?-1:1;var x=String(a),y=String(b);return x<y?-1:x>y?1:0;}
+
+  function run(tables,sql){
+    var q=parse(sql);
+    function tbl(name){var k=Object.keys(tables).filter(function(n){return n.toLowerCase()===name.toLowerCase();})[0];
+      if(!k)err('Unknown table "'+name+'". Tables: '+Object.keys(tables).join(', '));return {key:k,rows:tables[k]};}
+    var aliases=[],F=tbl(q.from.name);aliases.push({a:q.from.alias,key:F.key});
+    var rows=F.rows.map(function(r){var e={};e[q.from.alias]=r;return e;});
+
+    function col(n,env){
+      if(n.tb){var r=null,found=false;for(var a in env){if(a.toLowerCase()===n.tb.toLowerCase()){found=true;r=env[a];break;}}
+        if(!found)err('Unknown table alias "'+n.tb+'"');
+        return r==null?null:(n.c in r?r[n.c]:lookupCI(r,n.c,n.tb+'.'+n.c));}
+      for(var al in env){var row=env[al];if(row&&hasKeyCI(row,n.c))return lookupCI(row,n.c);}
+      for(var al2 in env){if(env[al2]===null&&colsOf(al2).some(function(c){return c.toLowerCase()===n.c.toLowerCase();}))return null;}
+      err('Unknown column "'+n.c+'"');
+    }
+    function colsOf(alias){var a=aliases.filter(function(x){return x.a===alias;})[0];var rs=a?tables[a.key]:[];return rs.length?Object.keys(rs[0]):[];}
+    function hasKeyCI(r,c){if(c in r)return true;var l=c.toLowerCase();for(var k in r)if(k.toLowerCase()===l)return true;return false;}
+    function lookupCI(r,c,label){if(c in r)return r[c];var l=c.toLowerCase();for(var k in r)if(k.toLowerCase()===l)return r[k];if(label)err('Unknown column "'+label+'"');return undefined;}
+
+    function ev(n,ctx){
+      switch(n.t){
+        case 'lit':return n.v;
+        case 'col':
+          if(ctx.out&&!n.tb){for(var k in ctx.out)if(k.toLowerCase()===n.c.toLowerCase())return ctx.out[k];}
+          return col(n,ctx.row||{});
+        case 'neg':var v=ev(n.e,ctx);return v==null?null:-v;
+        case 'not':var b=ev(n.e,ctx);return b==null?null:!b;
+        case 'isnull':var z=ev(n.e,ctx)==null;return n.neg?!z:z;
+        case 'like':var s=ev(n.l,ctx),pt=ev(n.r,ctx);if(s==null||pt==null)return null;
+          var re=new RegExp('^'+String(pt).replace(/[.*+?^${}()|[\]\\]/g,'\\$&').replace(/%/g,'.*').replace(/_/g,'.')+'$','i');var m=re.test(String(s));return n.neg?!m:m;
+        case 'in':var x=ev(n.l,ctx);if(x==null)return null;var hit=n.list.some(function(e){return cmpv(ev(e,ctx),x)===0;});return n.neg?!hit:hit;
+        case 'bin':
+          if(n.o==='AND'){var l1=ev(n.l,ctx);if(l1===false)return false;var r1=ev(n.r,ctx);if(r1===false)return false;return (l1==null||r1==null)?null:true;}
+          if(n.o==='OR'){var l2=ev(n.l,ctx);if(l2)return true;var r2=ev(n.r,ctx);if(r2)return true;return (l2==null||r2==null)?null:false;}
+          var a=ev(n.l,ctx),c=ev(n.r,ctx);if(a==null||c==null)return null;
+          switch(n.o){case '=':return cmpv(a,c)===0;case '!=':return cmpv(a,c)!==0;case '<':return cmpv(a,c)<0;case '>':return cmpv(a,c)>0;
+            case '<=':return cmpv(a,c)<=0;case '>=':return cmpv(a,c)>=0;case '+':return (typeof a==='string'||typeof c==='string')?String(a)+String(c):a+c;
+            case '-':return a-c;case '*':return a*c;case '/':return c===0?null:a/c;}
+          break;
+        case 'fn':
+          var args=n.args.map(function(e){return ev(e,ctx);});
+          switch(n.f){case 'ABS':return args[0]==null?null:Math.abs(args[0]);
+            case 'ROUND':if(args[0]==null)return null;var d=Math.pow(10,args[1]||0);return Math.round(args[0]*d)/d;
+            case 'UPPER':return args[0]==null?null:String(args[0]).toUpperCase();
+            case 'LOWER':return args[0]==null?null:String(args[0]).toLowerCase();
+            case 'LENGTH':return args[0]==null?null:String(args[0]).length;
+            case 'COALESCE':for(var i=0;i<args.length;i++)if(args[i]!=null)return args[i];return null;}
+          err('Unknown function '+n.f+'()');
+        case 'agg':
+          if(!ctx.group)err(n.f+'() is not allowed in WHERE or JOIN');
+          var vals;
+          if(n.args[0]&&n.args[0].t==='star')vals=ctx.group.map(function(){return 1;});
+          else vals=ctx.group.map(function(r){return ev(n.args[0],{row:r});}).filter(function(v){return v!=null;});
+          if(n.dist){var seen={};vals=vals.filter(function(v){var k=typeof v+':'+v;if(seen[k])return false;seen[k]=1;return true;});}
+          switch(n.f){case 'COUNT':return vals.length;
+            case 'SUM':return vals.length?vals.reduce(function(a,b){return a+b;},0):null;
+            case 'AVG':return vals.length?vals.reduce(function(a,b){return a+b;},0)/vals.length:null;
+            case 'MIN':return vals.length?vals.reduce(function(a,b){return cmpv(a,b)<=0?a:b;}):null;
+            case 'MAX':return vals.length?vals.reduce(function(a,b){return cmpv(a,b)>=0?a:b;}):null;}
+      }
+      err('Cannot evaluate expression');
+    }
+
+    q.joins.forEach(function(j){
+      var J=tbl(j.ref.name);aliases.push({a:j.ref.alias,key:J.key});var next=[];
+      rows.forEach(function(env){var matched=false;
+        J.rows.forEach(function(r){var e=Object.assign({},env);e[j.ref.alias]=r;if(ev(j.on,{row:e})===true){matched=true;next.push(e);}});
+        if(!matched&&j.left){var e2=Object.assign({},env);e2[j.ref.alias]=null;next.push(e2);}});
+      rows=next;
+    });
+    if(q.where)rows=rows.filter(function(env){return ev(q.where,{row:env})===true;});
+
+    var grouped=q.group.length>0||q.cols.some(function(c){return c.e&&hasAgg(c.e);})||(q.having&&hasAgg(q.having));
+    var sources;
+    if(grouped){
+      var map={},order=[];
+      rows.forEach(function(env){var key=JSON.stringify(q.group.map(function(g){return ev(g,{row:env});}));
+        if(!map[key]){map[key]=[];order.push(key);}map[key].push(env);});
+      if(!q.group.length&&!order.length){order.push('[]');map['[]']=[];}
+      sources=order.map(function(k){return {row:map[k][0]||{},group:map[k]};});
+      if(q.having)sources=sources.filter(function(s){return ev(q.having,s)===true;});
+    } else sources=rows.map(function(env){return {row:env,group:null};});
+
+    var out=sources.map(function(src){
+      var o={};
+      q.cols.forEach(function(c){
+        if(c.star){aliases.forEach(function(a){if(c.tb&&a.a.toLowerCase()!==c.tb.toLowerCase())return;var r=src.row[a.a];
+          colsOf(a.a).forEach(function(k){if(!(k in o))o[k]=r?r[k]:null;});});return;}
+        var name=c.alias||(c.e.t==='col'?c.e.c:c.text);o[name]=ev(c.e,src);
+      });
+      return {o:o,src:src};
+    });
+    if(q.order.length){
+      out.forEach(function(x){x.k=q.order.map(function(ob){return ev(ob.e,{row:x.src.row,group:x.src.group,out:x.o});});});
+      out.sort(function(a,b){for(var i=0;i<q.order.length;i++){var c=cmpv(a.k[i],b.k[i]);if(c)return c*q.order[i].dir;}return 0;});
+    }
+    var res=out.map(function(x){return x.o;});
+    if(q.distinct){var seen={};res=res.filter(function(r){var k=JSON.stringify(r);if(seen[k])return false;seen[k]=1;return true;});}
+    if(q.limit!=null)res=res.slice(0,q.limit);
+    return res;
+  }
+  return {run:run,parse:parse};
+})();
+
+
+</script>
+<script>
+(function(){
+"use strict";
+var REDUCE = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+var AVATAR_SRC = "./avatar-hologram.png";
+var L = 6;
+var NAMES = ['00 · SOURCE','01 · RAW','02 · BRONZE','03 · SILVER','04 · GOLD','05 · INSIGHT'];
+var HUE = ['#9fd8ff','#c9ced6','#ff9a52','#e8f1ff','#ffd36b','#8fb0ff'];
+var COLS = [['#1d5f8a','#bfe9ff'],['#4a4f58','#d4d8df'],['#6e3414','#ffa060'],['#5e6d82','#f0f6ff'],['#7a4e0c','#ffd978'],['#2f4cd6','#cfe0ff']];
+var PHOTO = [1,0,0,0,0,.5], HOLO = [1,0,0,0,0,1], GOLD = [0,0,0,0,1,0], ALPHA = [.6,.8,.8,.85,.8,.66];
+var BASE_HZ = [55,49,58.27,65.41,73.42,82.41];
+var SQL = [
+  "<span class='kw'>SELECT</span> * <span class='kw'>FROM</span> hologram.krishna <span class='kw'>WHERE</span> points = 12000;  -- move your mouse",
+  "<span class='kw'>SELECT</span> * <span class='kw'>FROM</span> raw.vanguard_2022 <span class='kw'>UNION ALL</span> <span class='kw'>SELECT</span> * <span class='kw'>FROM</span> raw.umbc_research;",
+  "<span class='kw'>CREATE TABLE</span> bronze.amazon <span class='kw'>AS SELECT</span> * <span class='kw'>FROM</span> glue.etl <span class='kw'>WHERE</span> reliability_gain >= 0.30;",
+  "<span class='kw'>MERGE INTO</span> silver.payments <span class='kw'>USING</span> dq_checks <span class='kw'>ON</span> txn_id;  -- live: Chicago open data drives this flow",
+  "<span class='kw'>SELECT</span> answer <span class='kw'>FROM</span> gold.agentsql <span class='kw'>WHERE</span> question = :natural_language;  -- try the console",
+  "<span class='kw'>SELECT</span> * <span class='kw'>FROM</span> insight.krishna <span class='kw'>WHERE</span> open_to = 'the next mission';"
+];
+
+/* ================= career warehouse (data for the SQL console) ================= */
+var SKILLS = ['SQL','Python','PySpark','Snowflake','Databricks','Redshift','AWS Glue','Tableau','MCP','AgentSQL'];
+var FAMILY = ['Language','Language','Processing','Warehouse','Lakehouse','Warehouse','ETL','BI','Agent tooling','Agentic AI'];
+var ROLES = [
+  {role_id:1,company:'UMBC',title:'MPS Data Science (research)',start_year:2021,end_year:2023,layer:'raw'},
+  {role_id:2,company:'Vanguard',title:'Data Analyst',start_year:2022,end_year:2022,layer:'raw'},
+  {role_id:3,company:'Amazon',title:'Data Engineer',start_year:2023,end_year:2024,layer:'bronze'},
+  {role_id:4,company:'Global Payments',title:'Data Analytics Engineer',start_year:2024,end_year:2025,layer:'silver'},
+  {role_id:5,company:'Trida Labs',title:'Forward Deployment AI Engineer',start_year:2025,end_year:null,layer:'gold'}
+];
+var USAGE = [
+  [1,1,'YOLO number-plate detection, 95% extraction'],[1,7,'Chicago crime forecasting dashboards'],
+  [2,0,'KPI queries on SQL Server and PostgreSQL'],[2,7,'KPI dashboards, +15% efficiency'],
+  [3,6,'Glue + Informatica pipelines, +30% reliability'],[3,2,'Glue transformation jobs'],[3,5,'Quality checks, -50% anomalies'],[3,0,'Athena month-end mappings'],[3,1,'Data-quality automation'],
+  [4,5,'DQ framework, -40% anomalies'],[4,0,'High-volume transaction analysis'],[4,1,'Fraud feature analysis, -15% false positives'],[4,7,'Real-time settlement KPI dashboards'],
+  [5,9,'Enterprise AgentSQL deployments'],[5,8,'MCP integrations to client warehouses'],[5,3,'MCP target warehouse'],[5,4,'MCP target lakehouse'],[5,5,'MCP target warehouse'],[5,0,'Guardrailed joins, 99%+ accuracy'],[5,1,'Prompt pipelines and guardrails']
+].map(function(r){return {role_id:r[0],skill_id:r[1],evidence:r[2]};});
+var METRICS = [
+  {role_id:1,metric:'Plate extraction accuracy',change_pct:95},
+  {role_id:2,metric:'Operational efficiency',change_pct:15},
+  {role_id:3,metric:'Pipeline reliability',change_pct:30},{role_id:3,metric:'Data anomalies',change_pct:-50},{role_id:3,metric:'Manual effort',change_pct:-25},
+  {role_id:4,metric:'Data anomalies',change_pct:-40},{role_id:4,metric:'Fraud false positives',change_pct:-15},
+  {role_id:5,metric:'Relational SQL accuracy',change_pct:99}
+];
+var PROJECTS = [
+  {project:'Real-time number plate detection',year:2023,stack:'YOLO, OpenCV, Python',result:'95% extraction accuracy'},
+  {project:'Chicago crime analytics',year:2022,stack:'Python, Scikit-Learn, Tableau',result:'Spatial-temporal forecasts'},
+  {project:'Streaming fraud detection',year:2022,stack:'Kafka, AWS Lambda, MongoDB',result:'Real-time scoring'}
+];
+var PRESETS = [
+  ['Where did I use Python?',"SELECT s.skill, r.company, u.evidence\nFROM skill_usage u\nJOIN roles r ON u.role_id = r.role_id\nJOIN skills s ON u.skill_id = s.skill_id\nWHERE s.skill = 'Python'"],
+  ['Stack at Trida Labs',"SELECT s.skill, s.family, u.evidence\nFROM skill_usage u\nJOIN skills s ON u.skill_id = s.skill_id\nJOIN roles r ON u.role_id = r.role_id\nWHERE r.company = 'Trida Labs'"],
+  ['Most-used skills',"SELECT s.skill, COUNT(*) AS n_roles\nFROM skill_usage u\nJOIN skills s ON u.skill_id = s.skill_id\nGROUP BY s.skill\nORDER BY n_roles DESC"],
+  ['Impact by role',"SELECT r.company, m.metric, m.change_pct\nFROM metrics m\nJOIN roles r ON m.role_id = r.role_id\nORDER BY r.start_year DESC"]
+];
+
+/* ================= film grain ================= */
+(function(){var c=document.createElement('canvas');c.width=c.height=160;var x=c.getContext('2d');var d=x.createImageData(160,160);
+  for(var i=0;i<d.data.length;i+=4){var v=Math.random()*255|0;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=255;}
+  x.putImageData(d,0,0);document.getElementById('grain').style.backgroundImage='url('+c.toDataURL()+')';})();
+
+/* ================= scroll track + gauge ================= */
+document.getElementById('track').style.height=(L*100+20)+'vh';
+var gauge=document.getElementById('gauge'),ticks=[];
+NAMES.forEach(function(n,i){var b=document.createElement('button');b.className='tick';b.type='button';
+  b.innerHTML='<i></i>'+n.split(' · ')[1];b.setAttribute('aria-label','Go to '+n);
+  b.addEventListener('click',function(){scrollToStage(i);});gauge.appendChild(b);ticks.push(b);});
+function maxScroll(){return Math.max(1,document.documentElement.scrollHeight-innerHeight);}
+function scrollToStage(i){window.scrollTo({top:i/(L-1)*maxScroll(),behavior:REDUCE?'auto':'smooth'});}
+function typing(e){var t=e.target;return t&&(t.tagName==='TEXTAREA'||t.tagName==='INPUT');}
+addEventListener('keydown',function(e){
+  if(e.key==='Escape'){closeCut();return;}
+  if(!cut.hidden||typing(e))return;
+  var cur=Math.round(target);
+  if(e.key==='ArrowDown'||e.key==='PageDown'){e.preventDefault();scrollToStage(Math.min(L-1,cur+1));}
+  if(e.key==='ArrowUp'||e.key==='PageUp'){e.preventDefault();scrollToStage(Math.max(0,cur-1));}
+});
+
+/* ================= particle formations ================= */
+var N=12000, GC=150, GR=80;
+var rA=new Float32Array(N),rB=new Float32Array(N),rC=new Float32Array(N),dx=new Float32Array(N),dy=new Float32Array(N),dz=new Float32Array(N);
+var seed=1337;function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647;}
+for(var i=0;i<N;i++){rA[i]=rnd();rB[i]=rnd();rC[i]=rnd();
+  var u=rnd()*2-1,th=rnd()*Math.PI*2,s=Math.sqrt(1-u*u);dx[i]=s*Math.cos(th);dy[i]=u;dz[i]=s*Math.sin(th);}
+function fract(v){return v-Math.floor(v);}
+
+// gold: skill graph
+var NODES=[],EDGES=[[0,1],[0,7],[0,5],[5,6],[6,2],[1,2],[9,8],[9,0],[8,3],[8,4],[8,5],[3,4],[1,9],[7,5]];
+for(var k=0;k<10;k++){var yy=1-(k+.5)/10*2,rr=Math.sqrt(1-yy*yy),tt=k*2.39996;NODES.push([Math.cos(tt)*rr*4.6,yy*3.6,Math.sin(tt)*rr*3.2]);}
+var aNode=new Float32Array(N),aE1=new Float32Array(N),aE2=new Float32Array(N);
+for(i=0;i<N;i++){
+  if(rA[i]<.42){aNode[i]=Math.floor(rB[i]*10)%10;aE1[i]=aE2[i]=-1;}
+  else{var e=EDGES[Math.floor(rB[i]*EDGES.length)%EDGES.length];aNode[i]=-1;aE1[i]=e[0];aE2[i]=e[1];}
+}
+
+// avatar hologram: built from the embedded avatar image
+var AVX=new Float32Array(N),AVY=new Float32Array(N),AVZ=new Float32Array(N),aCol=new Float32Array(N*3);
+for(i=0;i<N;i++){AVX[i]=dx[i]*3;AVY[i]=dy[i]*4;AVZ[i]=dz[i]*2;aCol[i*3]=.6;aCol[i*3+1]=.8;aCol[i*3+2]=1;}
+var POLY=[[505,52],[560,62],[605,95],[630,140],[634,200],[628,250],[614,300],[600,340],[602,380],[640,410],[700,440],[780,470],[812,500],[838,600],[862,750],[880,900],[890,1024],
+  [170,1024],[185,880],[200,740],[215,600],[235,500],[270,470],[340,440],[400,410],[428,380],[424,340],[404,300],[386,250],[376,200],[380,140],[400,95],[445,62]];
+function inPoly(x,y,p){var c=false;for(var a=0,b=p.length-1;a<p.length;b=a++){var xi=p[a][0],yi=p[a][1],xj=p[b][0],yj=p[b][1];
+  if(((yi>y)!==(yj>y))&&(x<(xj-xi)*(y-yi)/(yj-yi)+xi))c=!c;}return c;}
+function buildAvatar(){
+  var img=new Image();
+  img.onload=function(){
+    var S=200,c=document.createElement('canvas');c.width=c.height=S;var x=c.getContext('2d');x.drawImage(img,0,0,S,S);
+    var d;try{d=x.getImageData(0,0,S,S).data;}catch(err){return;}
+    var head=[],body=[],sc=S/1024,poly=POLY.map(function(p){return [p[0]*sc,p[1]*sc];});
+    for(var py=0;py<S;py++)for(var px=0;px<S;px++){
+      if(!inPoly(px+.5,py+.5,poly))continue;
+      var o=(py*S+px)*4,r=d[o]/255,g=d[o+1]/255,b=d[o+2]/255,lum=.299*r+.587*g+.114*b;
+      var rec=[px,py,r,g,b,lum];(py<80?head:body).push(rec);
+    }
+    if(!head.length||!body.length)return;
+    var hcx=505*sc,hcy=225*sc,hrx=128*sc,hry=175*sc,tcx=525*sc,trx=360*sc;
+    for(var i=0;i<N;i++){
+      var pool=rA[i]<.38?head:body,p=pool[(i*7919+Math.floor(rC[i]*97))%pool.length];
+      var X=p[0]+rB[i]-.5,Y=p[1]+rC[i]-.5;
+      var eh=Math.pow((X-hcx)/hrx,2)+Math.pow((Y-hcy)/hry,2),zh=eh<1?Math.sqrt(1-eh)*1.35:0;
+      var zt=Y>70?Math.sqrt(Math.max(0,1-Math.pow((X-tcx)/trx,2)))*.95*Math.min(1,(Y-70)/30):0;
+      AVX[i]=(X-S/2)/S*9.5;AVY[i]=-(Y-S/2)/S*9.5+.2;AVZ[i]=Math.max(zh,zt)+p[5]*.3-.5;
+      aCol[i*3]=p[2];aCol[i*3+1]=p[3];aCol[i*3+2]=p[4];
+    }
+    if(colAttr)colAttr.needsUpdate=true;
+  };
+  img.src=AVATAR_SRC;
+}
+
+var FLOW=0, LIVE_FLOW=1;
+function form(s,i,t,out){
+  var a=rA[i],b=rB[i],c=rC[i];
+  switch(s){
+    case 0: case 5:{ // avatar hologram (5 adds a slow breathing drift)
+      var br=s===5?Math.sin(t*.9+AVY[i])*.04:0;
+      out[0]=AVX[i]+br;out[1]=AVY[i];out[2]=AVZ[i];break;}
+    case 1:{ // raw: falling data rain
+      out[0]=(a-.5)*15;out[2]=(c-.5)*8;out[1]=5-fract(b+t*.07*(.5+c))*10;break;}
+    case 2:{ // bronze: structured table
+      var col=i%GC,row=Math.floor(i/GC),gx=(col-(GC-1)/2)*.088,gy=(row-(GR-1)/2)*.088;
+      out[0]=gx;out[1]=gy*.82;out[2]=gy*.57+Math.sin(col*.14+t*.9)*.07+((col%15===0)?.12:0);break;}
+    case 3:{ // silver: flowing pipelines, speed driven by live open data
+      var lane=i%7,uu=fract(a+FLOW*.05*(.6+b*.8)),px=(uu-.5)*18;
+      out[0]=px;out[1]=(lane-3)*.85+Math.sin(px*.5+lane*1.3+t*.6)*.5+(c-.5)*.14;out[2]=Math.sin(px*.3+lane)*1.2+(b-.5)*.2;break;}
+    default:{ // gold: skill graph, packets travel along shared-use edges
+      if(aNode[i]>=0){var n=NODES[aNode[i]],g=Math.abs((rA[(i*7)%N]+rB[(i*13)%N]+rC[(i*29)%N]-1.5))*.55;
+        out[0]=n[0]+dx[i]*g;out[1]=n[1]+dy[i]*g;out[2]=n[2]+dz[i]*g;}
+      else{var p=NODES[aE1[i]],q=NODES[aE2[i]],w=fract(c+t*(a>.85?.12:.015));
+        out[0]=p[0]+(q[0]-p[0])*w+dx[i]*.04;out[1]=p[1]+(q[1]-p[1])*w+dy[i]*.04;out[2]=p[2]+(q[2]-p[2])*w+dz[i]*.04;}
+    }
+  }
+}
+function smooth(e0,e1,x){x=Math.min(1,Math.max(0,(x-e0)/(e1-e0)));return x*x*(3-2*x);}
+function lerp(a,b,m){return a+(b-a)*m;}
+
+/* ================= three.js ================= */
+var canvas=document.getElementById('gl'),hasGL=typeof THREE!=='undefined';
+var renderer,scene,camera,group,geo,mat,posAttr,colAttr,HI=[0,0,0,0,0,0,0,0,0,0],HI_T=HI.slice();
+if(hasGL){
+  try{
+    renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:false,alpha:false,powerPreference:'high-performance'});
+    renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));renderer.setClearColor(0x050507,1);
+    scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(50,1,.1,100);camera.position.set(0,0,14);
+    group=new THREE.Group();scene.add(group);
+    geo=new THREE.BufferGeometry();
+    posAttr=new THREE.BufferAttribute(new Float32Array(N*3),3);posAttr.setUsage(THREE.DynamicDrawUsage);
+    colAttr=new THREE.BufferAttribute(aCol,3);
+    geo.setAttribute('position',posAttr);geo.setAttribute('aSeed',new THREE.BufferAttribute(rA,1));geo.setAttribute('aCol',colAttr);
+    geo.setAttribute('aNode',new THREE.BufferAttribute(aNode,1));geo.setAttribute('aE1',new THREE.BufferAttribute(aE1,1));geo.setAttribute('aE2',new THREE.BufferAttribute(aE2,1));
+    mat=new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,
+      uniforms:{uSize:{value:26},uPixel:{value:renderer.getPixelRatio()},uA:{value:new THREE.Color()},uB:{value:new THREE.Color()},
+        uAlpha:{value:.8},uPhoto:{value:1},uHolo:{value:1},uGold:{value:0},uScan:{value:0},uHi:{value:HI},uHot:{value:new THREE.Color('#fff3c4')}},
+      vertexShader:[
+        'attribute float aSeed;attribute vec3 aCol;attribute float aNode;attribute float aE1;attribute float aE2;',
+        'uniform float uSize;uniform float uPixel;uniform float uGold;uniform float uScan;uniform float uHolo;uniform float uHi[10];',
+        'varying float vS;varying vec3 vCol;varying float vGlow;varying float vScan;',
+        'float hiAt(float k){float v=0.0;for(int j=0;j<10;j++){if(abs(float(j)-k)<0.5)v=uHi[j];}return v;}',
+        'void main(){vec4 mv=modelViewMatrix*vec4(position,1.0);gl_Position=projectionMatrix*mv;',
+        'float g=aNode>-0.5?hiAt(aNode):min(hiAt(aE1),hiAt(aE2));g*=uGold;',
+        'float q=(position.y-uScan)*2.2;float sc=uHolo*exp(-q*q);',
+        'vS=aSeed;vCol=aCol;vGlow=g;vScan=sc;',
+        'gl_PointSize=uSize*uPixel*(0.45+aSeed*0.9)*(1.0+g*1.4+sc*0.5)/-mv.z;}'].join('\n'),
+      fragmentShader:[
+        'uniform vec3 uA;uniform vec3 uB;uniform vec3 uHot;uniform float uAlpha;uniform float uPhoto;',
+        'varying float vS;varying vec3 vCol;varying float vGlow;varying float vScan;',
+        'void main(){vec2 c=gl_PointCoord-0.5;float d=length(c);if(d>0.5)discard;float a=1.0-smoothstep(0.0,0.5,d);a*=a;',
+        'vec3 base=mix(uA,uB,vS);vec3 photo=vCol*1.35+vec3(0.02,0.06,0.10);',
+        'vec3 col=mix(base,photo,uPhoto);col=mix(col,uHot,clamp(vGlow,0.0,1.0))+vec3(0.35,0.8,1.0)*vScan;',
+        'gl_FragColor=vec4(col,a*(uAlpha+vGlow*0.7));}'].join('\n')});
+    group.add(new THREE.Points(geo,mat));
+  }catch(err){hasGL=false;canvas.style.display='none';}
+}
+buildAvatar();
+var tA,tB,cA,cB,v3;
+if(hasGL){tA=new THREE.Color();tB=new THREE.Color();cA=new THREE.Color();cB=new THREE.Color();v3=new THREE.Vector3();}
+var WIDE=true,ALPHA_K=1;
+function resize(){
+  WIDE=innerWidth>900;
+  if(!hasGL)return;
+  renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();
+  group.position.x=WIDE?3.4:0;group.scale.setScalar(WIDE?1:.62);ALPHA_K=WIDE?1:.6;
+}
+addEventListener('resize',resize);resize();
+
+/* ================= node labels ================= */
+var nodesEl=document.getElementById('nodes'),labels=SKILLS.map(function(s){var d=document.createElement('span');d.className='nl';d.textContent=s;nodesEl.appendChild(d);return d;});
+
+/* ================= pointer ================= */
+var mx=0,my=0,smx=0,smy=0;
+addEventListener('pointermove',function(e){mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5;});
+
+/* ================= HUD + text layers ================= */
+var layers=[].slice.call(document.querySelectorAll('.layer'));
+var lname=document.getElementById('lname'),tc=document.getElementById('tc'),pct=document.getElementById('pct'),sqlEl=document.getElementById('sql');
+var root=document.documentElement,target=0,prog=0,lastStage=-1,typeTimer=null;
+function readScroll(){target=Math.min(L-1,Math.max(0,scrollY/maxScroll()*(L-1)));}
+addEventListener('scroll',readScroll,{passive:true});readScroll();
+function typeSQL(i){
+  clearInterval(typeTimer);var html=SQL[i],plain=html.replace(/<[^>]+>/g,''),n=0;
+  if(REDUCE){sqlEl.innerHTML=html+'<span class="caret"></span>';return;}
+  typeTimer=setInterval(function(){n+=2;
+    if(n>=plain.length){clearInterval(typeTimer);sqlEl.innerHTML=html+'<span class="caret"></span>';return;}
+    sqlEl.textContent=plain.slice(0,n);sqlEl.insertAdjacentHTML('beforeend','<span class="caret"></span>');},22);
+}
+function pad(v){return (v<10?'0':'')+v;}
+function updateLayers(p){
+  layers.forEach(function(el,i){
+    var d=p-i,ad=Math.abs(d),op=Math.max(0,1-ad*1.7),sc=Math.pow(2.4,d),blur=Math.min(18,ad*16),ty=-50+d*-8;
+    el.style.opacity=op.toFixed(3);
+    el.style.transform='translate3d(0,'+ty+'%,0) scale('+sc.toFixed(4)+')';
+    el.style.filter=blur>.3?'blur('+blur.toFixed(1)+'px)':'none';
+    el.style.visibility=op<=.01?'hidden':'visible';
+    el.classList.toggle('live',ad<.3);
+  });
+  var s=Math.round(p);
+  if(s!==lastStage){lastStage=s;root.style.setProperty('--layer',HUE[s]);lname.textContent=NAMES[s];
+    ticks.forEach(function(t,k){t.classList.toggle('on',k===s);});typeSQL(s);audioStage(s);}
+  var secs=p*14;tc.textContent='TC 00:'+pad(Math.floor(secs/60))+':'+pad(Math.floor(secs%60))+':'+pad(Math.floor((secs%1)*24));
+  pct.textContent=Math.round(p/(L-1)*100)+'% REFINED';
+}
+
+/* ================= live open-data feed (silver) ================= */
+var liveText=document.getElementById('liveText'),spark=document.getElementById('spark');
+function renderLive(days,live,dropped){
+  var vals=days.map(function(d){return d.n;}),mean=vals.reduce(function(a,b){return a+b;},0)/vals.length,last=days[0];
+  LIVE_FLOW=Math.min(1.8,Math.max(.6,last.n/mean));
+  var checks=[
+    ['rows ≥ 5',days.length>=5],
+    ['no null counts',vals.every(function(v){return v>0;})],
+    ['fresh < 21 days',(Date.now()-new Date(last.day).getTime())/864e5<21],
+    ['dates contiguous',days.every(function(d,i){return i===0||Math.round((new Date(days[i-1].day)-new Date(d.day))/864e5)===1;})]
+  ],passed=checks.filter(function(c){return c[1];}).length;
+  var mn=Math.min.apply(null,vals),mxv=Math.max.apply(null,vals),pts=vals.slice().reverse().map(function(v,i){
+    return (i/(vals.length-1)*116+2).toFixed(1)+','+(34-(v-mn)/Math.max(1,mxv-mn)*30).toFixed(1);}).join(' ');
+  spark.innerHTML='<polyline points="'+pts+'" fill="none" stroke="#e8f1ff" stroke-width="1.5" stroke-linejoin="round"/>'+
+    '<circle cx="118" cy="'+pts.split(' ').pop().split(',')[1]+'" r="2.6" fill="#7ee2a8"/>';
+  liveText.innerHTML='<span><span class="pulse'+(live?'':' off')+'"></span><b>'+(live?'LIVE':'OFFLINE SAMPLE')+'</b> · Chicago open data, my UMBC project dataset</span>'+
+    '<span>'+last.day.slice(0,10)+': <b>'+last.n.toLocaleString()+'</b> records · flow <b>'+LIVE_FLOW.toFixed(2)+'×</b></span>'+
+    '<span class="'+(passed===checks.length?'ok':'warn')+'">'+passed+'/'+checks.length+' DQ checks passed'+(dropped?' · '+dropped+' partial day quarantined':'')+'</span>';
+}
+function cleanDays(rows){
+  var days=rows.map(function(r){return {day:r.day,n:+r.n};}).filter(function(d){return d.day&&isFinite(d.n);});
+  var sorted=days.map(function(d){return d.n;}).sort(function(a,b){return a-b;}),med=sorted[Math.floor(sorted.length/2)]||0,dropped=0;
+  while(days.length&&days[0].n<med*.3){days.shift();dropped++;}
+  return {days:days,dropped:dropped};
+}
+var SAMPLE=[{day:'2026-11-10',n:577},{day:'2026-11-09',n:556},{day:'2026-11-08',n:577},{day:'2026-11-07',n:595},{day:'2026-11-06',n:637},{day:'2026-11-05',n:562},{day:'2026-11-04',n:644}];
+(function fetchLive(){
+  var url='https://data.cityofchicago.org/resource/ijzp-q8t2.json?'+[
+    '$select='+encodeURIComponent('date_trunc_ymd(date) as day, count(id) as n'),'$group=day','$order='+encodeURIComponent('day DESC'),'$limit=9'].join('&');
+  var ctl=window.AbortController?new AbortController():null,timer=setTimeout(function(){if(ctl)ctl.abort();},8000);
+  fetch(url,ctl?{signal:ctl.signal}:{}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
+    .then(function(rows){clearTimeout(timer);var c=cleanDays(rows);if(c.days.length<3)throw new Error('thin');renderLive(c.days.slice(0,8),true,c.dropped);})
+    .catch(function(){clearTimeout(timer);renderLive(SAMPLE,false,0);});
+})();
+
+/* ================= SQL console (gold) ================= */
+var qEl=document.getElementById('q'),out=document.getElementById('out'),chips=document.getElementById('chips');
+var WAREHOUSE={roles:ROLES,skills:SKILLS.map(function(s,i){return {skill_id:i,skill:s,family:FAMILY[i]};}),skill_usage:USAGE,metrics:METRICS,projects:PROJECTS};
+function esc(s){return String(s==null?'NULL':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function highlight(rows){
+  var hot=SKILLS.map(function(){return 0;}),found=false,companies={};
+  rows.forEach(function(r){Object.keys(r).forEach(function(k){var v=String(r[k]).toLowerCase();
+    SKILLS.forEach(function(s,i){if(v===s.toLowerCase()){hot[i]=1;found=true;}});
+    ROLES.forEach(function(ro){if(v===ro.company.toLowerCase())companies[ro.role_id]=1;});});});
+  if(!found)USAGE.forEach(function(u){if(companies[u.role_id])hot[u.skill_id]=1;});
+  HI_T=hot;labels.forEach(function(l,i){l.classList.toggle('hot',!!hot[i]);});
+  bleep(hot.filter(Boolean).length);
+}
+function runQuery(){
+  var q=qEl.value.trim();
+  var t0=performance.now(),rows;
+  try{rows=MiniSQL.run(WAREHOUSE,q);}catch(e){out.innerHTML='<div class="err">'+esc(e.message||e)+'</div>';return;}
+  var ms=(performance.now()-t0).toFixed(1);
+  if(!Array.isArray(rows)||!rows.length){out.innerHTML='<div class="meta">0 rows · '+ms+' ms</div>';HI_T=HI.map(function(){return 0;});return;}
+  var cols=Object.keys(rows[0]),html='<table><thead><tr>'+cols.map(function(c){return '<th>'+esc(c)+'</th>';}).join('')+'</tr></thead><tbody>'+
+    rows.slice(0,40).map(function(r){return '<tr>'+cols.map(function(c){return '<td>'+esc(r[c])+'</td>';}).join('')+'</tr>';}).join('')+'</tbody></table>';
+  out.innerHTML=html+'<div class="meta">'+rows.length+' row'+(rows.length===1?'':'s')+' · '+ms+' ms · MiniSQL, running in your browser</div>';
+  highlight(rows);
+}
+PRESETS.forEach(function(p,i){var b=document.createElement('button');b.type='button';b.textContent=p[0];
+  b.addEventListener('click',function(){qEl.value=p[1];runQuery();});chips.appendChild(b);});
+qEl.value=PRESETS[0][1];
+document.getElementById('run').addEventListener('click',runQuery);
+qEl.addEventListener('keydown',function(e){if(e.key==='Enter'&&(e.ctrlKey||e.metaKey)){e.preventDefault();runQuery();}});
+
+/* ================= ambient sound ================= */
+var introStart=null,AC=null,master=null,filt=null,oscs=[],soundOn=false,sndBtn=document.getElementById('sndBtn');
+function startAudio(){
+  var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+  AC=new Ctx();master=AC.createGain();master.gain.value=0;master.connect(AC.destination);
+  filt=AC.createBiquadFilter();filt.type='lowpass';filt.frequency.value=380;filt.Q.value=5;filt.connect(master);
+  [['sawtooth',1,-8,.22],['sawtooth',1,8,.22],['sine',.5,0,.5],['triangle',2,3,.08]].forEach(function(o){
+    var osc=AC.createOscillator(),g=AC.createGain();osc.type=o[0];osc.detune.value=o[2];g.gain.value=o[3];
+    osc.frequency.value=BASE_HZ[Math.max(0,lastStage)]*o[1];osc._m=o[1];osc.connect(g);g.connect(filt);osc.start();oscs.push(osc);});
+  var lfo=AC.createOscillator(),lg=AC.createGain();lfo.frequency.value=.07;lg.gain.value=140;lfo.connect(lg);lg.connect(filt.frequency);lfo.start();
+}
+function setSound(on){
+  if(on&&!AC)startAudio();if(!AC)return;
+  if(AC.state==='suspended')AC.resume();
+  soundOn=on;master.gain.setTargetAtTime(on?.07:0,AC.currentTime,on?1.2:.3);
+  sndBtn.setAttribute('aria-pressed',String(on));sndBtn.textContent=on?'♪ Sound on':'♪ Sound off';
+}
+function audioStage(s){
+  if(!AC||!soundOn)return;var now=AC.currentTime;
+  oscs.forEach(function(o){o.frequency.setTargetAtTime(BASE_HZ[s]*o._m,now,.6);});ping(BASE_HZ[s]*8,.035);
+}
+function ping(f,vol){
+  if(!AC||!soundOn)return;var o=AC.createOscillator(),g=AC.createGain(),n=AC.currentTime;o.type='sine';o.frequency.value=f;
+  g.gain.setValueAtTime(0,n);g.gain.linearRampToValueAtTime(vol,n+.01);g.gain.exponentialRampToValueAtTime(.0001,n+.9);o.connect(g);g.connect(AC.destination);o.start(n);o.stop(n+1);
+}
+function bleep(k){for(var j=0;j<Math.min(k,5);j++)(function(j){setTimeout(function(){ping(880*Math.pow(1.122,j),.03);},j*70);})(j);}
+sndBtn.addEventListener('click',function(){setSound(!soundOn);});
+addEventListener('pointerdown',function first(e){
+  if(e.target===sndBtn)return;removeEventListener('pointerdown',first);if(!AC)setSound(true);});
+
+/* ================= main loop ================= */
+var t0=performance.now(),lastNow=t0;
+function frame(now){
+  var dt=Math.min(.05,(now-lastNow)/1000);lastNow=now;
+  var t=REDUCE?0:(now-t0)/1000;
+  prog+=(target-prog)*(REDUCE?1:.07);if(Math.abs(target-prog)<.0005)prog=target;
+  updateLayers(prog);
+  FLOW+=dt*LIVE_FLOW*(REDUCE?0:1);
+  if(hasGL){
+    var intro=REDUCE?1:(introStart===null?0:smooth(0,1,(now-introStart-150)/2600));
+    var a=Math.min(L-1,Math.floor(prog)),b=Math.min(L-1,a+1),f=prog-a,m=smooth(.15,.85,f),burst=REDUCE?0:Math.sin(Math.PI*m)*1.6;
+    var arr=posAttr.array,A=[0,0,0],B=[0,0,0];
+    for(var i=0;i<N;i++){
+      form(a,i,t,A);
+      if(m>0&&b!==a){form(b,i,t,B);var kb=burst*rB[i];
+        A[0]+=(B[0]-A[0])*m+dx[i]*kb;A[1]+=(B[1]-A[1])*m+dy[i]*kb;A[2]+=(B[2]-A[2])*m+dz[i]*kb;}
+      if(intro<1){var sp=(1-intro)*(9+rC[i]*10);A[0]=A[0]*intro+dx[i]*sp;A[1]=A[1]*intro+dy[i]*sp;A[2]=A[2]*intro+dz[i]*sp;}
+      arr[i*3]=A[0];arr[i*3+1]=A[1];arr[i*3+2]=A[2];
+    }
+    posAttr.needsUpdate=true;
+    var U=mat.uniforms;
+    tA.set(COLS[a][0]);tB.set(COLS[b][0]);U.uA.value.copy(tA.lerp(tB,m));
+    tA.set(COLS[a][1]);tB.set(COLS[b][1]);U.uB.value.copy(tA.lerp(tB,m));
+    U.uPhoto.value=lerp(PHOTO[a],PHOTO[b],m);U.uHolo.value=lerp(HOLO[a],HOLO[b],m)*(REDUCE?0:1);
+    var gold=lerp(GOLD[a],GOLD[b],m);U.uGold.value=gold;U.uAlpha.value=lerp(ALPHA[a],ALPHA[b],m)*ALPHA_K;
+    U.uScan.value=-5.5+fract(t*.18)*11;
+    for(var h=0;h<10;h++)HI[h]+=(HI_T[h]-HI[h])*.08;
+    smx+=(mx-smx)*.05;smy+=(my-smy)*.05;
+    var holo=U.uPhoto.value;
+    group.rotation.y=Math.sin(t*.12)*.22*(1-holo)+smx*(.5+holo*.5);
+    group.rotation.x=smy*(.25+holo*.15);
+    camera.position.z=14-Math.sin(Math.PI*m)*1.5;
+    renderer.render(scene,camera);
+    // skill labels follow their nodes in the gold layer
+    group.updateMatrixWorld();
+    for(var j=0;j<10;j++){
+      var lb=labels[j];
+      if(gold<.05){if(lb.style.opacity!=='0')lb.style.opacity='0';continue;}
+      v3.set(NODES[j][0],NODES[j][1],NODES[j][2]).applyMatrix4(group.matrixWorld).project(camera);
+      var sx=(v3.x*.5+.5)*innerWidth,sy=(-v3.y*.5+.5)*innerHeight;
+      lb.style.opacity=(gold*(WIDE?1:.7)).toFixed(2);
+      lb.style.transform='translate('+(sx+10).toFixed(0)+'px,'+(sy-8).toFixed(0)+'px)';
+    }
+    if(AC&&soundOn&&filt)filt.frequency.setTargetAtTime(380+Math.min(1,Math.abs(target-prog))*1600,AC.currentTime,.2);
+  }
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+/* ================= recruiter cut ================= */
+var cut=document.getElementById('cut'),cutBtn=document.getElementById('cutBtn');
+function openCut(){cut.hidden=false;document.getElementById('cutClose').focus();}
+function closeCut(){if(cut.hidden)return;cut.hidden=true;cutBtn.focus();}
+cutBtn.addEventListener('click',openCut);document.getElementById('cutClose').addEventListener('click',closeCut);
+
+/* ================= copy email ================= */
+var mail='krishnanekkanti04@gmail.com',mailBtn=document.getElementById('copyMail');
+mailBtn.addEventListener('click',function(){
+  function done(){mailBtn.textContent='Copied';setTimeout(function(){mailBtn.textContent='Copy email';},1800);}
+  function select(){var r=document.createRange();r.selectNodeContents(document.getElementById('mailOut'));var s=getSelection();s.removeAllRanges();s.addRange(r);}
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(mail).then(done,select);else select();
+});
+
+/* ================= opening titles ================= */
+(function(){
+  var el=document.getElementById('intro'),boot=document.getElementById('boot'),cr=document.getElementById('credit'),
+      cap=document.getElementById('creditCap'),big=document.getElementById('creditBig'),flare=document.getElementById('flare'),
+      comp=document.getElementById('compile'),compN=document.getElementById('compileN'),compBar=document.getElementById('compileBar'),
+      timers=[],done=false,seen=false;
+  try{seen=sessionStorage.getItem('reel-intro-seen')==='1';}catch(e){}
+  function at(ms,fn){timers.push(setTimeout(fn,ms));}
+  function credit(c,b,col){cr.classList.remove('on');void cr.offsetWidth;cap.textContent=c;big.textContent=b;
+    cr.style.setProperty('--c',col);flare.style.setProperty('--c',col);cr.classList.add('on');
+    flare.classList.remove('go');void flare.offsetWidth;flare.classList.add('go');ping(BASE_HZ[3]*6,.02);}
+  function finish(){
+    if(done)return;done=true;timers.forEach(clearTimeout);
+    el.classList.add('gone');document.body.classList.add('open');introStart=performance.now();
+    try{sessionStorage.setItem('reel-intro-seen','1');}catch(e){}
+    setTimeout(function(){el.hidden=true;},950);
+    ['keydown','wheel','touchstart'].forEach(function(t){removeEventListener(t,finish);});
+  }
+  if(REDUCE||seen){el.hidden=true;document.body.classList.add('open');introStart=performance.now();done=true;return;}
+  el.addEventListener('click',finish);
+  ['keydown','wheel','touchstart'].forEach(function(t){addEventListener(t,finish,{passive:true});});
+  at(250,function(){boot.textContent='> establishing connection to sidhvi.warehouse';boot.classList.add('on');});
+  at(1000,function(){boot.textContent='> ingesting 2021 → 2026 · 5 sources · 4 layers';});
+  at(1750,function(){boot.classList.remove('on');credit('raw · 2022','Vanguard','#c9ced6');});
+  at(2350,function(){credit('bronze · 2023','Amazon','#ff9a52');});
+  at(2950,function(){credit('silver · 2024','Global Payments','#e8f1ff');});
+  at(3550,function(){credit('gold · 2025 → now','Trida Labs','#ffd36b');});
+  at(4250,function(){cr.classList.remove('on');comp.classList.add('on');var s0=performance.now();
+    (function tick(){var k=Math.min(1,(performance.now()-s0)/1000);compN.textContent=Math.round(k*k*N).toLocaleString();
+      compBar.style.setProperty('--p',k);if(k<1&&!done)requestAnimationFrame(tick);})();});
+  at(5450,function(){comp.classList.remove('on');credit('a data reel','Medallion Reel','#9fd8ff');});
+  at(6600,finish);
+})();
+})();
+</script>
+</body>
 </html>
